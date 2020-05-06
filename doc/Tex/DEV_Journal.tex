@@ -1,0 +1,99 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+% For testing wether an argument of a macro is empty.
+\usepackage{xifthen}
+\usepackage{bm}
+
+\newcommand{\dl}{\mathrm{d}\lambda}
+\setlength{\parindent}{0cm}
+
+%opening
+\title{Development Journal and Specs of the MESLAS package
+}
+
+% \input{macros}
+\input{macros}
+
+\begin{document}
+\maketitle
+
+\section{General Considerations}
+The setup of the package is the following: $\gp$ is a $\no$-dimensional random
+field on a domain $\nd$-dimensional
+domain $D$.
+
+Our philosophy is to always specify spatial location and response indices
+together. That is, one should always specify \textbf{where} and \textbf{what}.
+
+Spatial locations are denoted by $s$ and response indices by $\ell$. We will
+use boldface (or, in the code, alternatively uppercase or plurals) to denote
+vectors of such objects.
+
+\medskip
+A generalized sampling location is thus entirely defined by specifying two vectors
+\begin{align*}
+    \bm{s} &= \left(s_1, ..., s_n\right)\in D^n\\
+    \bm{\ell} &= \left(\ell_1, ..., \ell_n\right) \in \lbrace 1, ..., \no
+    \rbrace^n
+\end{align*}
+We will refer to $n$ as the \textit{dimension} of the generalized sampling
+location and usually just talk of location, using the word \textit{spatial
+location} when we want to specifically refer to points in $D$. Also, we will
+use boldface $x$ as a shortcut to refer to the couple $\left(\bm{s},
+\bm{\ell}\right)$ of spatial location vector and response index vector.
+The shortcut notation $\gp[\bm{x}]$ thus refers to the
+vector
+\[
+    \gp[\bm{x}]:=\left(\gp[s_1]^{\ell_1}, ..., \gp[s_n]^{\ell_n}\right) \in
+    \mathbb{R}^n.
+\]
+
+\subsection{Covariance Model}
+We assume a factor model which is the product of a stationary spatial component
+with a response-index component
+\begin{equation}
+    \textrm{Cov}\left(\gp[s]^i, \gp[t]^j\right) = k\left(s - t\right)
+    \gamma\left(i, j\right).
+\end{equation}
+
+This makes implementation easier, since then, to compute the covariance matrix
+of a generalized observations $\left(S, L\right)$, we first compute the
+pairwise distance matrix
+\[
+    H = \textrm{cdist}\left(S,S, p=2\right) = \begin{pmatrix}
+        ||s_1 - s_1||^2 & \dots & ||s_1 - s_n||^2\\
+        \vdots &  & \vdots \\
+        ||s_n - s_1||^2 & \dots & ||s_n - s_n||^2\\
+    \end{pmatrix}
+\]
+which can then be feeded to a vectorized stationary covariance function to get
+$K(H)$.
+
+For the response index part, we compute $L_1, L_2=\textrm{meshgrid}\left(L,
+L\right)$ which yields
+\begin{align*}
+    L_1 =  \begin{pmatrix}
+        l_1 & \dots & l_1\\
+        \vdots &  & \vdots \\
+        l_n & \dots & l_n\\
+    \end{pmatrix}
+    &,~ 
+    L_2 =  \begin{pmatrix}
+        l_1 & \dots & l_n\\
+        \vdots &  & \vdots \\
+        l_1 & \dots & l_n\\
+    \end{pmatrix}
+\end{align*}
+and then feed it to a vectorized cross-covariance function $\gamma(L_1, L_2)$.
+Finally, we get the covariance matrix by elementwise multiplication
+\[
+    K = K\left(H\right) \odot \gamma\left(L_1, L_2\right)
+\]
+
+
+
+\end{document}

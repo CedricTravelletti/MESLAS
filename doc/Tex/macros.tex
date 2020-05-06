@@ -1,0 +1,132 @@
+% Macro file. We start with macros that are notation dependent, and hence
+% susceptible to change.
+% Purely static convenience mathematical macros (those that wont change) are
+% grouped at the end of the file.
+
+% Number of input dimensions nd and output dimensions no.
+\newcommand{\no}{p}
+\newcommand{\nd}{d}
+
+% Mean and cov at time zero.
+\newcommand{\mean}[1]{\mu
+\left(#1\right)}
+\newcommand{\covmat}[1]{K
+\left(#1\right)}
+
+% Product measure.
+\newcommand{\productMeasure}{
+d\nu^{\otimes}\left(\bm{u}\right)}
+
+% Field value at x. Can either switch between parenthesis or subscripting.
+% If no argument provided, then will just print xi.
+\newcommand{\gp}[1][]{
+    \ifthenelse{\isempty{#1}}
+    {Z}
+    {Z_{#1}}
+}
+
+% Covariance function k(., .).
+\newcommand{\covFunc}[4]{k_{#2#4}\left(#1,#3\right)}
+
+% Covariance matrix K = k(X, X).
+\newcommand{\covMat}[4]{\bm{K}_{#2#4}(#1#3)}
+
+% Mean function \mu(x).
+\newcommand{\meanFunc}[2]{\mu_{#2}\left(#1\right)}
+
+% Mean vector \mu(X).
+\newcommand{\meanVec}[2]{\bm{\mu}_{#2}(#1)}
+
+% Excursion probability in the set T^r.
+\newcommand{\jointExcuProb}{
+    \mathbb{P}\left(
+    \gp[\bm{u}]\in T^r \right)
+}
+
+% In Proposition 1, the mean vector at the uu concatenation and the
+% corresponding covariance matrix.
+\newcommand{\meanUU}{
+    \mu(\bm{u})
+}
+
+\newcommand{\covUU}{
+    K\left(\bm{u},\bm{u}\right)
+}
+
+% ----------
+% SEQUENTIAL
+% ----------
+% Probability distribution now (after 1 conditioning).
+\newcommand{\currentProba}[1]{\mathbb{P}_{n}
+\left(#1\right)}
+% Probability distribution in the future (after 2 conditioning).
+\newcommand{\futureProba}[1]{\mathbb{P}_{n+1}
+\left(#1\right)}
+
+% Same for expectations.
+\newcommand{\currentExp}[1]{\mathbb{E}_{n}
+\left[#1\right]}
+\newcommand{\futureExp}[1]{\mathbb{E}_{n+1}
+\left[#1\right]}
+
+% For mean vectors.
+\newcommand{\currentMean}[1]{\mu_{n}
+\left(#1\right)}
+\newcommand{\futureMean}[1]{\mu_{n+1}
+\left(#1\right)}
+
+% And covariance matrices.
+\newcommand{\currentCov}[1]{K_{n}
+\left(#1\right)}
+\newcommand{\futureCov}[1]{K_{n+1}
+\left(#1\right)}
+
+
+% For nice expectations.
+\usepackage{mathtools}
+\newcommand{\expect}{\mathbb{E}\expectarg}
+\DeclarePairedDelimiterX{\expectarg}[1]{[}{]}{%
+  \ifnum\currentgrouptype=16 \else\begingroup\fi
+  \activatebar#1
+  \ifnum\currentgrouptype=16 \else\endgroup\fi
+}
+
+\newcommand{\innermid}{\nonscript\;\delimsize\vert\nonscript\;}
+\newcommand{\activatebar}{%
+  \begingroup\lccode`\~=`\|
+  \lowercase{\endgroup\let~}\innermid
+  \mathcode`|=\string"8000
+}
+
+% ----------
+% General Mathematics (nothing to do with general notation choices.
+% ----------
+\DeclareMathOperator*{\argmin}{\arg\!\min}
+
+% ----------
+% OLD SEQUENTIAL
+% ----------
+% Probability distribution now (after 1 conditioning).
+% \newcommand{\currentProba}[1]{\mathbb{P}_{\bm{Y}}
+% \left(#1\right)}
+% % Probability distribution in the future (after 2 conditioning).
+% \newcommand{\futureProba}[1]{\mathbb{P}_{\bm{Y}\bm{Y}^{new}}
+% \left(#1\right)}
+% 
+% % Same for expectations.
+% \newcommand{\currentExp}[1]{\mathbb{E}_{\bm{Y}}
+% \left[#1\right]}
+% \newcommand{\futureExp}[1]{\mathbb{E}_{\bm{Y}\bm{Y}^{new}}
+% \left[#1\right]}
+% 
+% % For mean vectors.
+% \newcommand{\currentMean}[1]{\mu_{\bm{Y}}
+% \left(#1\right)}
+% \newcommand{\futureMean}[1]{\mu_{\bm{Y}\bm{Y}^{new}}
+% \left(#1\right)}
+% 
+% % And covariance matrices.
+% \newcommand{\currentCov}[1]{K_{\bm{Y}}
+% \left(#1\right)}
+% \newcommand{\futureCov}[1]{K_{\bm{Y}\bm{Y}^{new}}
+% \left(#1\right)}
