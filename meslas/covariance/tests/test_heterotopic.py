@@ -1,5 +1,5 @@
 import torch
-from meslas.sampling.heterotopic import matern32, uniform_mixing_crosscov, Covariance
+from meslas.covariance.heterotopic import matern32, uniform_mixing_crosscov, Covariance
 
 
 # Array of locations.
