@@ -44,7 +44,7 @@ class Covariance():
         Covariance function. Only allow covariances that factor into a
         stationary spatial part that only depends on the euclidean distance
         matrix H and a purely response index component. L1 and L2 are the
-        index matrice.
+        index matrix.
 
     """
     def __init__(self, factor_stationary_cov):
@@ -75,3 +75,17 @@ class Covariance():
         H = torch.cdist(S1, S2, p=2)
     
         return self.factor_stationary_cov(H, L1, L2)
+
+class FactorCovariance(Covariance):
+    """ Convenience class for specifiying a factor model.
+
+    Parameters
+    ----------
+    spatial_cov: function(H)
+        Spatial covariance function.
+    cross_cov: function(L1, L2)
+        Cross-covariance function.
+
+    """
+    def __init__(self, spatial_cov, cross_cov):
+        self.factor_stationary_cov = lambda H, L1, L2: spatial_cov(H) * cross_cov(L1, L2)
