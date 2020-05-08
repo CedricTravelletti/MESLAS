@@ -3,6 +3,7 @@
 """
 import torch
 from torch.distributions.multivariate_normal import MultivariateNormal
+from meslas.grid import Grid, get_isotopic_generalized_location
 
 
 class GRF():
@@ -25,6 +26,7 @@ class GRF():
     def __init__(self, mean, covariance):
         self.mean = mean
         self.covariance = covariance
+        self.n_out = covariance.n_out
 
     def sample(self, S, L):
         """ Sample the GRF at generalized location (S, L).
@@ -54,5 +56,31 @@ class GRF():
         sample = distr.sample()
 
         #sample = mu + chol @ v 
+
+        return sample
+
+    def sample_grid(self, grid):
+        """ Sample the GRF (all components) on a grid.
+
+        Parameters
+        ----------
+        grid: Grid
+
+        Returns
+        -------
+        sample: (n1, ..., n_d, ,p) Tensor
+            The sampled field on the grid. Here p is the number of output
+            components and n1, ..., nd are the number of cells along each axis.
+
+        """
+        S_iso, L_iso = get_isotopic_generalized_location(
+                grid.coordinate_vector, self.n_out)
+
+        sample = self.sample(S_iso, L_iso)
+
+        # Separate indices.
+        sample = sample.reshape((self.n_out, grid.size**grid.dim)).t()
+        # Put back in grid form.
+        sample = sample.reshape((*grid.shape, self.n_out))
 
         return sample

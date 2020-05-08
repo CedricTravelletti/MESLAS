@@ -45,10 +45,13 @@ class Covariance():
         stationary spatial part that only depends on the euclidean distance
         matrix H and a purely response index component. L1 and L2 are the
         index matrix.
+    n_out: int
+        Number of output dimensions.
 
     """
     def __init__(self, factor_stationary_cov):
         self.factor_stationary_cov = factor_stationary_cov
+        self.n_out = n_out
 
     def K(self, S1, S2, L1, L2):
         """ Same as above, but for vector of measurements.
@@ -85,7 +88,10 @@ class FactorCovariance(Covariance):
         Spatial covariance function.
     cross_cov: function(L1, L2)
         Cross-covariance function.
+    n_out: int
+        Number of output dimensions.
 
     """
-    def __init__(self, spatial_cov, cross_cov):
+    def __init__(self, spatial_cov, cross_cov, n_out):
         self.factor_stationary_cov = lambda H, L1, L2: spatial_cov(H) * cross_cov(L1, L2)
+        self.n_out = n_out

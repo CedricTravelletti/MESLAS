@@ -28,6 +28,10 @@ class Grid():
         self.grid = create_square_grid(size, dim)
 
     @property
+    def shape(self):
+        return tuple(self.dim * [self.size])
+
+    @property
     def coordinate_vector(self):
         """ Returns the grid coordinates in a list.
 

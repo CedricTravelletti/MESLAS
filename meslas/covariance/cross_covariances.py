@@ -19,6 +19,10 @@ def UniformMixing(gamma0, sigmas):
     function(L1, L2)
 
     """
+    # Convert to tensor if not.
+    if not torch.is_tensor(gamma0): gamma0 = torch.tensor(gamma0)
+    if not torch.is_tensor(sigmas): sigmas = torch.tensor(sigmas)
+
     return lambda L1, L2: _uniform_mixing_crosscov(L1, L2, gamma0, sigmas)
 
 def _uniform_mixing_crosscov(L1, L2, gamma0, sigmas):

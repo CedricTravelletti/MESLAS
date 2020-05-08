@@ -4,7 +4,7 @@
 import torch
 
 
-def Matern32(lmbda, sigma=1):
+def Matern32(lmbda, sigma=1.0):
     """ Create a Matern32 covariance function.
 
     Note that in the multivariate case, we usually set sigma to 1 and define
@@ -24,6 +24,9 @@ def Matern32(lmbda, sigma=1):
         input.
 
     """
+    if not torch.is_tensor(lmbda): lmbda = torch.tensor(lmbda)
+    if not torch.is_tensor(sigma): sigma = torch.tensor(sigma)
+
     return lambda H: _matern32(H, lmbda, sigma)
 
 def _matern32(H, lmbda, sigma):
