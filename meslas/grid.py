@@ -28,6 +28,7 @@ def square_grid(size, dim):
     # Mesh with itself dim times. Stacking along dim -1 mean create new dim at
     # the end.
     grid = torch.stack(torch.meshgrid(dim * [x]), dim=-1)
+    grid = grid.reshape((size**dim, dim))
 
     return grid
 
