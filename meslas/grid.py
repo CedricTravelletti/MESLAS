@@ -4,7 +4,37 @@
 import torch
 
 
-def square_grid(size, dim):
+class Grid():
+    """ Create a regular square grid of given dimension and size.
+    The grid will contain size^dim points. We alway grid over the unit cube in
+    dimension dim.
+
+    Parameters
+    ----------
+    size: int
+        Number of point along one axis.
+    dim: int
+        Dimension of the space to grid.
+
+    Returns
+    -------
+    coords: (size^dim, dim)
+        List of coordinate of each point in the grid.
+
+    """
+    def __init__(self, size, dim):
+        self.size = size
+        self.dim = dim
+        self.grid = create_square_grid(size, dim)
+
+    @property
+    def coordinate_vector(self):
+        """ Returns the grid coordinates in a list.
+
+        """
+        return self.grid.reshape((self.size**self.dim, self.dim))
+
+def create_square_grid(size, dim):
     """ Create a regualar square grid of given dimension and size.
     The grid will contain size^dim points. We alway grid over the unit cube in
     dimension dim.
@@ -28,7 +58,6 @@ def square_grid(size, dim):
     # Mesh with itself dim times. Stacking along dim -1 mean create new dim at
     # the end.
     grid = torch.stack(torch.meshgrid(dim * [x]), dim=-1)
-    grid = grid.reshape((size**dim, dim))
 
     return grid
 
@@ -60,12 +89,3 @@ def get_isotopic_generalized_location(S, p):
     S_iso = S.repeat((p, 1))
 
     return S_iso, inds_iso
-
-
-# Replicate Tensor b n_cells times.
-# Note that this is just a view, it doesnt use any storage.
-# It can be used to generate a generalized measurement vector for full
-# isotopic sampling.
-# That is, if we have locations X, and we want to sample ALL responses, then we
-# have to stack X n_responses times.
-# c = b.unsqueeze(-1).expand(*b.shape, n_cells)
