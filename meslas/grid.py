@@ -4,17 +4,17 @@
 import torch
 
 
-def square_grid(dim, size):
+def square_grid(size, dim):
     """ Create a regualar square grid of given dimension and size.
     The grid will contain size^dim points. We alway grid over the unit cube in
     dimension dim.
 
     Parameters
     ----------
-    dim: int
-        Dimension of the space to grid.
     size: int
         Number of point along one axis.
+    dim: int
+        Dimension of the space to grid.
 
     Returns
     -------
