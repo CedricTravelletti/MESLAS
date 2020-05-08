@@ -4,7 +4,8 @@
 import torch
 from meslas.means import ConstantMean
 from meslas.covariance.covariance_functions import Matern32
-from meslas.covariance.heterotopic import uniform_mixing_crosscov, Covariance
+from meslas.covariance.cross_covariances import UniformMixing
+from meslas.covariance.heterotopic import Covariance
 from meslas.sampling import GRF
 
 # Specifiy Covariance function.
@@ -18,10 +19,10 @@ gamma0 = torch.Tensor([0.3])
 sigmas = torch.sqrt(torch.Tensor([0.25, 0.6]))
 
 matern_cov = Matern32(lmbda, sigma)
+cross_cov = UniformMixing(gamma0, sigmas)
 
 def my_factor_cov(H, L1, L2):
-    cross_cov = uniform_mixing_crosscov(L1, L2, gamma0, sigmas)
-    return cross_cov * matern_cov(H)
+    return cross_cov(L1, L2) * matern_cov(H)
 
 covariance = Covariance(my_factor_cov)
 
