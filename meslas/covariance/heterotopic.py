@@ -33,30 +33,6 @@ import torch
 from torch.distributions import multivariate_normal
 
 
-def matern32(H, lmbda, sigma):
-    """ Given a matrix of euclidean distances between pairs, compute the
-    corresponding Matern 3/2 covariance matrix.
-
-    Note that in the multivariate case, we usually set sigma to 1 and define
-    the variances in the cross-covariance function.
-
-    Parameters
-    ----------
-    H: (M, N) Tensor
-    lmbda: Tensor
-        Lengthscale parameter.
-    sigma: Tensor
-        Standard deviation.
-
-    Returns
-    -------
-    K: (M, N) Tensor
-
-    """
-    sqrt3 = torch.sqrt(torch.Tensor([3]))
-    K = sigma**2 * (1 + sqrt3/lmbda * H) * torch.exp(- sqrt3/lmbda * H)
-    return K
-
 def uniform_mixing_crosscov(L1, L2, gamma0, sigmas):
     """ Given two vectors of response indices,
     comutes the uniform mixing cross covariance (only response index part).
