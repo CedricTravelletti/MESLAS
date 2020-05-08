@@ -16,7 +16,7 @@ class ConstantMean():
     def __init__(self, means):
         # Convert to tensor if not already one.
         self.means = torch.Tensor(means)
-        self.dim = means.shape[0]
+        self.dim = self.means.shape[0]
 
     def __call__(self, S, L):
         """
