@@ -12,7 +12,8 @@ dim = 2
 lmbda = torch.Tensor([0.1])
 sigma = torch.Tensor([1.0])
 # Cross covariance parameters.
-gamma0 = torch.Tensor([0.6])
+# gamma0 = torch.Tensor([0.9])
+gamma0 = torch.Tensor([0.3])
 sigmas = torch.sqrt(torch.Tensor([0.25, 0.6]))
 
 def my_factor_cov(H, L1, L2):
@@ -38,4 +39,20 @@ my_grid = square_grid(100, dim)
 S_iso, L_iso = get_isotopic_generalized_location(my_grid, dim)
 
 # Test the sampling.
-print(myGRF.sample(S_iso, L_iso))
+sample = myGRF.sample(S_iso, L_iso)
+print(sample.shape)
+print(L_iso)
+print(L_iso.reshape((100,100,2)))
+
+import matplotlib.pyplot as plt
+
+# Separate indices.
+sample = sample.reshape((2, 100*100))
+
+plt.subplot(121)
+plt.imshow(sample[0, :].reshape((100, 100)).numpy(), vmin=-3.5, vmax=3.5, cmap='jet')
+plt.colorbar()
+plt.subplot(122)
+plt.imshow(sample[1, :].reshape((100, 100)).numpy(), vmin=-3.5, vmax=3.5, cmap='jet')
+plt.colorbar()
+plt.show()
