@@ -29,14 +29,11 @@ myGRF = GRF(mean, covariance)
 dim = 2
 my_grid = Grid(100, dim)
 
-
 # Sample all components at all locations.
 sample = myGRF.sample_grid(my_grid)
 
 # Plot.
 import matplotlib.pyplot as plt
-
-
 plt.subplot(121)
 plt.imshow(sample[:, :, 0].numpy(), vmin=-3.5, vmax=3.5, cmap='jet')
 plt.colorbar()
