@@ -1,4 +1,5 @@
-""" Try to test all functionalities together.
+""" Demonstrates how to define a multivariate Gaussian Random Field,
+sample a realization and plot it.
 
 """
 import numpy as np
@@ -14,7 +15,7 @@ from meslas.sampling import GRF
 matern_cov = Matern32(lmbda=0.1, sigma=1.0)
 
 # Cross covariance.
-cross_cov = UniformMixing(gamma0=0.3, sigmas=[np.sqrt(0.25), np.sqrt(0.6)])
+cross_cov = UniformMixing(gamma0=0.9, sigmas=[np.sqrt(0.25), np.sqrt(0.6)])
 
 covariance = FactorCovariance(matern_cov, cross_cov, n_out=2)
 
@@ -33,11 +34,5 @@ my_grid = Grid(100, dim)
 sample = myGRF.sample_grid(my_grid)
 
 # Plot.
-import matplotlib.pyplot as plt
-plt.subplot(121)
-plt.imshow(sample[:, :, 0].numpy(), vmin=-3.5, vmax=3.5, cmap='jet')
-plt.colorbar()
-plt.subplot(122)
-plt.imshow(sample[:, :, 1].numpy(), vmin=-3.5, vmax=3.5, cmap='jet')
-plt.colorbar()
-plt.show()
+from meslas.plotting import plot_2d_slice
+plot_2d_slice(sample)
