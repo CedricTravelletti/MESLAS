@@ -40,7 +40,8 @@ def plot_2d_slice(sliced_sample):
         plot_grid[i].set_title(r"$Z^" + str(i+1) + "$")
         im = plot_grid[i].imshow(
                 sliced_sample[:, :, i].numpy(),
-                vmin=sample_min, vmax=sample_max, cmap='jet')
+                vmin=0.8*sample_min, vmax=0.8*sample_max,
+                extent=[0,1,0,1], cmap='plasma')
 
     # Hide the unused plots.
     for i in range(n_out, len(plot_grid)):

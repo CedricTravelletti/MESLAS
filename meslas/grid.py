@@ -26,6 +26,7 @@ class Grid():
         self.size = size
         self.dim = dim
         self.grid = create_square_grid(size, dim)
+        self.n_cells = self.size**self.dim
 
     @property
     def shape(self):
@@ -37,6 +38,30 @@ class Grid():
 
         """
         return self.grid.reshape((self.size**self.dim, self.dim))
+
+    def isotopic_vector_to_grid(self, vector, n_out):
+        """ Given  an isotopic measurement vector, reshape it to grid form.
+        I.e., the input vector is a list of sites, which are duplicated because
+        there is one instance per reponse index. We reshape it to a grid.
+
+        Parameter
+        ---------
+        vector: (n_out * n_cells) Tensor
+            Vector corresponding to isotopic measurement at every grid
+            coordinate.
+        n_out: int
+            Number of repsonses.
+
+        Returns
+        -------
+        grid_vector: (grid dim, n_out)
+            Vector projected back to grid.
+
+        """
+        grid_vector = vector.reshape((n_out, self.n_cells)).t()
+        grid_vector = grid_vector.reshape((*self.shape, n_out))
+
+        return grid_vector
 
 def create_square_grid(size, dim):
     """ Create a regualar square grid of given dimension and size.
