@@ -4,6 +4,9 @@
 \usepackage{hyperref}
 \usepackage{cleveref}
 
+\usepackage[margin=1.2in]{geometry}
+
+
 % For testing wether an argument of a macro is empty.
 \usepackage{xifthen}
 \usepackage{bm}
@@ -65,9 +68,9 @@ of a generalized observations $\left(S, L\right)$, we first compute the
 pairwise distance matrix
 \[
     H = \textrm{cdist}\left(S,S, p=2\right) = \begin{pmatrix}
-        ||s_1 - s_1||^2 & \dots & ||s_1 - s_n||^2\\
+        ||s_1 - s_1|| & \dots & ||s_1 - s_n||\\
         \vdots &  & \vdots \\
-        ||s_n - s_1||^2 & \dots & ||s_n - s_n||^2\\
+        ||s_n - s_1|| & \dots & ||s_n - s_n||\\
     \end{pmatrix}
 \]
 which can then be feeded to a vectorized stationary covariance function to get
@@ -94,11 +97,81 @@ Finally, we get the covariance matrix by elementwise multiplication
     K = K\left(H\right) \odot \gamma\left(L_1, L_2\right)
 \]
 
+\subsection{Cross-Covariance Models}
+We here review different usual models for the cross-covariance part $\gamma(.,
+.)$ of the covariance function. Recall that this is the part that specifies how
+different components of the response vector at one fixed location interact.
+
+\medskip
+The simplest model we will consider is \textbf{uniform mixing}. In this model,
+all components interact with the same coupling $\gamma_0$:
+\begin{equation}
+    \gamma(l, m) = \begin{cases} \sigma_l^2,~ l=m\\ 
+        \gamma_0\sigma_l\sigma_m,~l\neq m
+    \end{cases}
+\end{equation}
+and $\sigma_1^2, ..., \sigma_{\no}^2$ are the variances of the individual
+components.
+
+\subsection{Implementation Details}
+ATTENTION: torch.meshgrid behaves differently than numpy's one.
+First of all, it takes single dimensional vectors.
+\[
+    L=(1,2,3,4),~ \textrm{torch.meshgrid}(L,L)=
+    \begin{pmatrix}
+        1 & \dots & 1\\
+        \vdots &  & \vdots \\
+        n & \dots & n\\
+    \end{pmatrix}
+    ,~ 
+    \begin{pmatrix}
+        1 & \dots & n\\
+        \vdots &  & \vdots \\
+        1 & \dots & n\\
+    \end{pmatrix}
+\]
+
+\subsection{Mean Module}
+\subsection{Covariance Module}
+\subsection{Gaussian Random Field Class and Sampling}
+\subsection{Gridding}
+
+\newpage
+
+\section{Example Run}
+We consider a $2$-dimensional GRF on a a $2$-dimensional $100\times 100$ regular grid on
+$[0,1]^2$. The GRF has a factor covariance model, where the spatial part is a
+Mat\'{e}rn $3/2$ with unit variance and lengthscale $\lambda_0 = 0.1$. The
+cross-covariance is a uniform mixing with parameters
+\[
+    \sigma_1^2 = 0.25,~\sigma_2^2 = 0.6, \gamma_0 = 0.3
+\]
+and the mean function is a constant one with $\mu_0=(1, -2)$.
+\medskip
+
+The plot below shows one realization of the field on the full grid.
+\begin{figure}[tbh!p]
+\centering
+\includegraphics[scale=0.65]{images/sample_low_correlation.png}
+\caption{Simulated first (left) and second (right) component of the field.}
+\end{figure}
+
+We can also increase the cross-correlation factor $\gamma_0$ to $0.9$ to see
+its effect.
+\begin{figure}[tbh!p]
+\centering
+\includegraphics[scale=0.65]{images/sample_high_correlation.png}
+\caption{Simulation of highly cross-correlated field.}
+\end{figure}
+
+
+\newpage
 \section{Hardware/Software Specifications}
 The AUV feature a Nvidia TX1 with ubuntu 16.04. Current programs use Python
 2.7, but 3.7 can be used.
 In order to run 3.7, we have to run
 another backseat-driver (responsible for sending waypoints to the low-leve
 controllers).
+
 
 \end{document}
