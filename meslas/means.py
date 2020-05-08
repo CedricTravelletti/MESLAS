@@ -1,6 +1,7 @@
 """ Mean functions for GRFs.
 
 """
+import torch
 
 
 class ConstantMean():
@@ -8,12 +9,13 @@ class ConstantMean():
 
     Parameters
     ----------
-    means: (p) Tensor
+    means: (p) array-like.
         Constant mean of each of the p-components.
 
     """
     def __init__(self, means):
-        self.means = means
+        # Convert to tensor if not already one.
+        self.means = torch.Tensor(means)
         self.dim = means.shape[0]
 
     def __call__(self, S, L):
