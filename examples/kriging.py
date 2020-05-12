@@ -11,6 +11,7 @@ from meslas.covariance.heterotopic import FactorCovariance
 from meslas.grid import Grid
 from meslas.sampling import GRF
 
+
 # Dimension of the response.
 n_out = 2
 
@@ -46,8 +47,8 @@ krig_mean, krig_mean_1d, K_cond = myGRF.krig_grid(my_grid, S_y, L_y, y,
         compute_post_cov=True)
 
 # Plot.
-from meslas.plotting import plot_2d_slice
-plot_2d_slice(krig_mean)
+from meslas.plotting import plot_2d_slice, plot_krig_slice
+plot_krig_slice(krig_mean, S_y, L_y)
 
 # Sample from the posterior.
 from torch.distributions.multivariate_normal import MultivariateNormal
@@ -56,4 +57,5 @@ sample = distr.sample()
 
 # Reshape to a regular grid.
 grid_sample = my_grid.isotopic_vector_to_grid(sample, n_out)
-plot_2d_slice(grid_sample)
+# plot_2d_slice(grid_sample)
+plot_krig_slice(grid_sample, S_y, L_y)
