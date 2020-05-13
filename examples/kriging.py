@@ -42,17 +42,18 @@ S_y = torch.tensor([[0.2, 0.1], [0.2, 0.2], [0.2, 0.3],
 L_y = torch.tensor([0, 0, 0, 0, 0, 1, 1, 0 ,0 ,0])
 y = torch.tensor(10*[-6])
 
-krig_mean, krig_mean_1d, K_cond = myGRF.krig_grid(my_grid, S_y, L_y, y,
+krig_mean_grid, krig_mean_list, K_cond_list, K_con_iso = myGRF.krig_grid(
+        my_grid, S_y, L_y, y,
         noise_std=0.05,
         compute_post_cov=True)
 
 # Plot.
 from meslas.plotting import plot_2d_slice, plot_krig_slice
-plot_krig_slice(krig_mean, S_y, L_y)
+plot_krig_slice(krig_mean_grid, S_y, L_y)
 
 # Sample from the posterior.
 from torch.distributions.multivariate_normal import MultivariateNormal
-distr = MultivariateNormal(loc=krig_mean_1d, covariance_matrix=K_cond)
+distr = MultivariateNormal(loc=krig_mean_list, covariance_matrix=K_cond_list)
 sample = distr.sample()
 
 # Reshape to a regular grid.
