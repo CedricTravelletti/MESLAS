@@ -183,15 +183,15 @@ class GRF():
 
         # Reshape to regular grid form. Begin by adding a dimension for the
         # response indices.
-        mu_cond_grid = mu_cond_list.reshape((self.n_out, grid.n_cells)).t()
+        mu_cond_iso = mu_cond_list.reshape((self.n_out, grid.n_cells)).t()
         # Put back in grid form.
-        mu_cond_grid = mu_cond_grid.reshape((*grid.shape, self.n_out))
+        mu_cond_grid = mu_cond_iso.reshape((*grid.shape, self.n_out))
 
         if compute_post_cov: 
             # Reshape to isotopic form by adding dimensions for the response
             # indices.
             K_cond_iso = K_cond_list.reshape(
                     (grid.n_cells, self.n_out, grid.n_cells, self.n_out)).transpose(1,2)
-            return mu_cond_grid, mu_cond_list, K_cond_list, K_cond_iso
+            return mu_cond_grid, mu_cond_list, mu_cond_iso, K_cond_list, K_cond_iso
 
         return mu_cond_grid
