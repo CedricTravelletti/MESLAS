@@ -19,16 +19,26 @@ def plot_2d_slice(sliced_sample):
         Two dimensional slice of a sample or prediction.
 
     """
-    # Number of responses.
-    n_out = sliced_sample.shape[-1]
-
-    # Dimensions of the plotting area.
-    n_col = int(np.ceil(np.sqrt(n_out)))
-    
-    n_row = int(n_out/n_col)
-
     sample_min = torch.min(sliced_sample).item()
     sample_max = torch.max(sliced_sample).item()
+
+    # Number of responses.
+    # Special case if only one, since do not need grid of plots.
+    if len(sliced_sample.shape) <= 3:
+        plt.title(r"$Z^1$")
+        im = plt.imshow(
+                sliced_sample[:, :].numpy(),
+                vmin=0.8*sample_min, vmax=0.8*sample_max,
+                extent=[0,1,0,1], cmap='plasma')
+        plt.colorbar(im)
+        # plt.toggle_label(True)
+        plt.show()
+        return
+
+    n_out = sliced_sample.shape[-1]
+    # Dimensions of the plotting area.
+    n_col = int(np.ceil(np.sqrt(n_out)))
+    n_row = int(n_out/n_col)
 
     fig = plt.figure()
     plot_grid = ImageGrid(fig, 111, nrows_ncols=(n_row, n_col),
