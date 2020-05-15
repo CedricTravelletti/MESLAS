@@ -8,7 +8,7 @@ import matplotlib as mpl
 from mpl_toolkits.axes_grid1 import ImageGrid
 
 
-def plot_2d_slice(sliced_sample, title=None):
+def plot_2d_slice(sliced_sample, title=None, cmin=None, cmax=None):
     """ Plots 2 dimensional slice.
 
     For each of the n_out responses, plot a two dimensional image.
@@ -19,8 +19,8 @@ def plot_2d_slice(sliced_sample, title=None):
         Two dimensional slice of a sample or prediction.
 
     """
-    sample_min = torch.min(sliced_sample).item()
-    sample_max = torch.max(sliced_sample).item()
+    if cmin is None: cmin = 0.8 * torch.min(sliced_sample).item()
+    if cmax is None: cmax = 0.8 * torch.max(sliced_sample).item()
 
     # Number of responses.
     # Special case if only one, since do not need grid of plots.
@@ -30,7 +30,7 @@ def plot_2d_slice(sliced_sample, title=None):
         plt.title(title)
         im = plt.imshow(
                 sliced_sample[:, :].numpy(),
-                vmin=0.8*sample_min, vmax=0.8*sample_max,
+                vmin=cmin, vmax=cmax,
                 origin="lower",
                 extent=[0,1,0,1],
                 cmap='plasma')
