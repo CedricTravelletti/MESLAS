@@ -2,6 +2,8 @@
 
 """
 import torch
+import numpy as np
+from scipy.spatial import KDTree
 
 
 class Grid():
@@ -62,6 +64,33 @@ class Grid():
         grid_vector = grid_vector.reshape((*self.shape, n_out))
 
         return grid_vector
+
+    def get_closest(self, points):
+        """ Given a list of points, for each of them return the closest grid
+        point. Also returns its index in the grid.
+
+        Parameters
+        ----------
+        points: (N, dim) Tensor
+            List of point coordinates.
+
+        Returns
+        -------
+        closests: (N, dim) Tensor
+            Coordinates of closes grid points.
+        closests_inds: (N, dim) Tensor
+            Grid indices of the closest points.
+
+        """
+        # Note that KDTree takes a list of points, so have to reshape.
+        tree = KDTree(np.reshape(self.grid, (self.n_cells, self.dim)))
+        closests, closests_inds = tree.query(points)
+
+        # The tree returns one dimensional indices, we turn them back to
+        # multidim.
+        closests_inds = np.unravel_index(closests_inds, self.shape)
+
+        return closests, closests_inds
 
 def create_square_grid(size, dim):
     """ Create a regualar square grid of given dimension and size.
