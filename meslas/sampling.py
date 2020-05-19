@@ -25,6 +25,7 @@ means vector has shape (n. p).
 import torch
 from torch.distributions.multivariate_normal import MultivariateNormal
 from meslas.grid import Grid, get_isotopic_generalized_location
+from gpytorch.utils.cholesky import psd_safe_cholesky
 
 
 class GRF():
@@ -71,9 +72,10 @@ class GRF():
 
         # Sample M independent N(0, 1) RVs.
         # TODO: Determine if this is better than doing Cholesky ourselves.
+        lower_chol = psd_safe_cholesky(K)
         distr = MultivariateNormal(
                 loc=mu,
-                covariance_matrix=K)
+                scale_tril=lower_chol)
         sample = distr.sample()
 
         #sample = mu + chol @ v 
