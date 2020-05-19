@@ -4,12 +4,19 @@
 \usepackage{hyperref}
 \usepackage{cleveref}
 
-\usepackage[margin=1.2in]{geometry}
+% For Python syntax highlighting.
+\usepackage{minted}
+
+\usepackage[margin=1.0in]{geometry}
 
 
 % For testing wether an argument of a macro is empty.
 \usepackage{xifthen}
 \usepackage{bm}
+
+% Figures and subfigures.
+\usepackage{subfig}
+\usepackage{graphicx}
 
 \newcommand{\dl}{\mathrm{d}\lambda}
 \setlength{\parindent}{0cm}
@@ -25,6 +32,8 @@
 \maketitle
 
 \section{General Considerations}
+The MESLAS package (\textbf{M}ulti-variate \textbf{E}xcursion \textbf{S}et \textbf{L}earning by \textbf{A}daptive \textbf{S}ampling) is a toolbox for simulation and prediction of mulitivariate Gaussian random fields.\\
+
 The setup of the package is the following: $\gp$ is a $\no$-dimensional random
 field on a domain $\nd$-dimensional
 domain $D$.
@@ -164,8 +173,58 @@ its effect.
 \caption{Simulation of highly cross-correlated field.}
 \end{figure}
 
+\newpage
+The code below shows how simple it is to sample a multivariate GRF using MESLAS.
+\usemintedstyle{tango}
+\inputminted{python}{example_sample.py}
+
+\section{Co-Kriging}
+Cokriging is also implemented in full generality (heterotopic) in MESLAS. The package also provides conditional simulations. Plots below show an example of cokriging and conditional simulation. The GRF is the same as in the previous section, with a high cross-correlation $\gamma_0=0.9$.
+
+\begin{figure}[tbh!p]
+\centering
+\subfloat[Conditional mean]{\includegraphics[scale=0.6]{images/cond_mean_high_corr.png}}\\
+\subfloat[Conditional realisation]{\includegraphics[scale=0.6]{images/cond_realisation_high_corr.png}}
+\caption{Example of co-kriging a 2-dimensional GRF with MESLAS, observation locations in red.}
+\label{fig:example_inv_prob}
+\end{figure}
 
 \newpage
+
+\section{Coverage Function}
+We compute the $p$-dimensional CDF using the MVNORM package of Sebastion Marmin. We re-packaged it for streamlined distribution via PiPy. The implementation is $3$ times faster than barebone PyTorch (in dimension 2). It is also vectorized over the batch dimension.
+
+Below we demonstrate the computation of the coverage function for excursion
+above $t=\left(-1.0, -1.0\right)$.
+\begin{figure}[tbh!p]
+\centering
+\subfloat[Conditional mean]{\includegraphics[scale=0.6]{images/coverage_mean.png}}\\
+\subfloat[Sample conditional realisation]{\includegraphics[scale=0.6]{images/coverage_realisation.png}}\\
+\subfloat[Conditional Coverage Function]{\includegraphics[scale=0.6]{images/coverage_coverage.png}}
+\caption{Diagnostics of problems in computation of the coverage function.}
+\label{fig:example_inv_prob}
+\end{figure}
+
+\subsection{Illustrations}
+The agreed-upon goal was to produce plots to illustrate multivariate excursion
+sets vs univariate.
+
+I suggest we do that by trying to replace figure 4 in the paper.
+So: sample unconditionally, illustrate various excursions, krig using this
+realisation, plot coverages.
+
+\begin{figure}[tbh!p]
+\centering
+\subfloat[Simulated Realisation]{\includegraphics[scale=0.6]{images/Figure4/cond_realisation.png}}\\
+\subfloat[Cokriging Mean (observation locations in red)]{\includegraphics[scale=0.6]{images/Figure4/cond_mean.png}}\\
+\subfloat[Coverage Function]{
+	\includegraphics[scale=0.45]{images/Figure4/salinity_excu.png}
+	\includegraphics[scale=0.45]{images/Figure4/temperature_excu.png}
+	\includegraphics[scale=0.45]{images/Figure4/joint_excu.png}}
+\caption{Diagnostics of problems in computation of the coverage function.}
+\label{fig:example_inv_prob}
+\end{figure}
+
 \section{Hardware/Software Specifications}
 The AUV feature a Nvidia TX1 with ubuntu 16.04. Current programs use Python
 2.7, but 3.7 can be used.
