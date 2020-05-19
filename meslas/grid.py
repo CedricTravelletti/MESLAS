@@ -89,6 +89,7 @@ class Grid():
         # The tree returns one dimensional indices, we turn them back to
         # multidim.
         closests_inds = np.unravel_index(closests_inds, self.shape)
+        # closests_inds = np.array(closests_inds).T
 
         return closests, closests_inds
 
