@@ -19,8 +19,8 @@ def plot_2d_slice(sliced_sample, title=None, cmin=None, cmax=None):
         Two dimensional slice of a sample or prediction.
 
     """
-    if cmin is None: cmin = 0.8 * torch.min(sliced_sample).item()
-    if cmax is None: cmax = 0.8 * torch.max(sliced_sample).item()
+    sample_min = torch.min(sliced_sample).item()
+    sample_max = torch.max(sliced_sample).item()
 
     # Number of responses.
     # Special case if only one, since do not need grid of plots.
@@ -46,27 +46,27 @@ def plot_2d_slice(sliced_sample, title=None, cmin=None, cmax=None):
 
     fig = plt.figure()
     plot_grid = ImageGrid(fig, 111, nrows_ncols=(n_row, n_col),
-            axes_pad=0.15, share_all=True,
-            cbar_location="right", cbar_mode="single", cbar_size="7%", cbar_pad=0.15,)
+            axes_pad=0.45, share_all=True,
+            cbar_location="right", cbar_mode="each", cbar_size="7%", cbar_pad=0.15,)
 
     for i in range(n_out):
         # fig.axes[i].set_title(r"$Z^" + str(i+1) + "$")
         plot_grid[i].set_title(r"$Z^" + str(i+1) + "$")
         im = plot_grid[i].imshow(
                 sliced_sample[:, :, i].numpy(),
-                vmin=0.8*sample_min, vmax=0.8*sample_max,
+                # vmin=0.8*sample_min, vmax=0.8*sample_max,
                 origin="lower",
                 extent=[0,1,0,1],
                 cmap='plasma')
-
+        cax = plot_grid.cbar_axes[i]
+        cax.colorbar(im)
     # Hide the unused plots.
     for i in range(n_out, len(plot_grid)):
         plot_grid[i].axis("off")
 
-    # Colorbar
-    ax = plot_grid[i]
-    ax.cax.colorbar(im)
-    ax.cax.toggle_label(True)
+    plot_grid.axes_llc.set_xticks([0.2, 0.4, 0.6, 0.8])
+    plot_grid.axes_llc.set_yticks([0.2, 0.4, 0.6, 0.8])
+
     plt.show()
 
 def plot_krig_slice(sliced_sample, S_y, L_y):
@@ -82,7 +82,7 @@ def plot_krig_slice(sliced_sample, S_y, L_y):
         plt.title(r"$Z^1$")
         im = plt.imshow(
                 sliced_sample[:, :].numpy(),
-                vmin=0.8*sample_min, vmax=0.8*sample_max,
+                # vmin=0.8*sample_min, vmax=0.8*sample_max,
                 origin="lower",
                 extent=[0,1,0,1],
                 cmap='plasma')
@@ -103,18 +103,20 @@ def plot_krig_slice(sliced_sample, S_y, L_y):
 
     fig = plt.figure()
     plot_grid = ImageGrid(fig, 111, nrows_ncols=(n_row, n_col),
-            axes_pad=0.15, share_all=True,
-            cbar_location="right", cbar_mode="single", cbar_size="7%", cbar_pad=0.15,)
+            axes_pad=0.45, share_all=True,
+            cbar_location="right", cbar_mode="each", cbar_size="7%", cbar_pad=0.15,)
 
     for i in range(n_out):
         # fig.axes[i].set_title(r"$Z^" + str(i+1) + "$")
         plot_grid[i].set_title(r"$Z^" + str(i+1) + "$")
         im = plot_grid[i].imshow(
                 sliced_sample[:, :, i].numpy(),
-                vmin=0.8*sample_min, vmax=0.8*sample_max,
+                # vmin=0.8*sample_min, vmax=0.8*sample_max,
                 origin="lower",
                 extent=[0,1,0,1],
                 cmap='plasma')
+        cax = plot_grid.cbar_axes[i]
+        cax.colorbar(im)
 
         # Add the location of the measurement points on top.
         locs = S_y[L_y == i].numpy()
@@ -130,3 +132,27 @@ def plot_krig_slice(sliced_sample, S_y, L_y):
     ax.cax.toggle_label(True)
     plt.show()
 
+def plot_proba(coverage_image, title=None):
+    """ Plots excursion probability.
+
+    Parameters
+    ----------
+    coverage_image: (n1, n2) Tensor
+    title: string
+
+    """
+    if title is None:
+        title = r"$Excursion Probability$"
+    plt.title(title)
+    im = plt.imshow(
+                coverage_image[:, :].numpy(),
+                vmin=0.0, vmax=1.0,
+                origin="lower",
+                extent=[0,1,0,1],
+                cmap='cividis')
+    plt.colorbar(im)
+    # plt.toggle_label(True)
+    plt.xticks([0.2, 0.4, 0.6, 0.8])
+    plt.yticks([0.2, 0.4, 0.6, 0.8])
+    plt.show()
+    return
