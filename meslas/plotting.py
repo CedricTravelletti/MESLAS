@@ -3,9 +3,21 @@
 """
 import numpy as np
 import torch
+import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from mpl_toolkits.axes_grid1 import ImageGrid
+
+
+sns.set()
+sns.set_style("whitegrid", {'axes.grid' : False})
+
+# Color palettes
+# cmap = sns.cubehelix_palette(light=1, as_cmap=True)
+from matplotlib.colors import ListedColormap
+cmap_proba = ListedColormap(sns.color_palette("RdBu_r", 30))
+cmap = ListedColormap(sns.color_palette("BrBG", 100))
+
 
 
 def plot_2d_slice(sliced_sample, title=None, cmin=None, cmax=None):
@@ -19,8 +31,6 @@ def plot_2d_slice(sliced_sample, title=None, cmin=None, cmax=None):
         Two dimensional slice of a sample or prediction.
 
     """
-    sample_min = torch.min(sliced_sample).item()
-    sample_max = torch.max(sliced_sample).item()
 
     # Number of responses.
     # Special case if only one, since do not need grid of plots.
@@ -33,9 +43,11 @@ def plot_2d_slice(sliced_sample, title=None, cmin=None, cmax=None):
                 vmin=cmin, vmax=cmax,
                 origin="lower",
                 extent=[0,1,0,1],
-                cmap='plasma')
+                cmap=cmap)
         plt.colorbar(im)
         # plt.toggle_label(True)
+        ptl.xticks([0.2, 0.4, 0.6, 0.8])
+        plt.yticks([0.2, 0.4, 0.6, 0.8])
         plt.show()
         return
 
@@ -57,7 +69,7 @@ def plot_2d_slice(sliced_sample, title=None, cmin=None, cmax=None):
                 # vmin=0.8*sample_min, vmax=0.8*sample_max,
                 origin="lower",
                 extent=[0,1,0,1],
-                cmap='plasma')
+                cmap=cmap)
         cax = plot_grid.cbar_axes[i]
         cax.colorbar(im)
     # Hide the unused plots.
@@ -85,12 +97,13 @@ def plot_krig_slice(sliced_sample, S_y, L_y):
                 # vmin=0.8*sample_min, vmax=0.8*sample_max,
                 origin="lower",
                 extent=[0,1,0,1],
-                cmap='plasma')
+                cmap=cmap)
         # Add the location of the measurement points on top.
         locs = S_y[L_y == i].numpy()
         plt.scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color="red")
         plt.colorbar(im)
-        # plt.toggle_label(True)
+        ptl.xticks([0.2, 0.4, 0.6, 0.8])
+        plt.yticks([0.2, 0.4, 0.6, 0.8])
         plt.show()
         return
 
@@ -114,7 +127,7 @@ def plot_krig_slice(sliced_sample, S_y, L_y):
                 # vmin=0.8*sample_min, vmax=0.8*sample_max,
                 origin="lower",
                 extent=[0,1,0,1],
-                cmap='plasma')
+                cmap=cmap)
         cax = plot_grid.cbar_axes[i]
         cax.colorbar(im)
 
@@ -130,6 +143,10 @@ def plot_krig_slice(sliced_sample, S_y, L_y):
     ax = plot_grid[i]
     ax.cax.colorbar(im)
     ax.cax.toggle_label(True)
+
+    plot_grid.axes_llc.set_xticks([0.2, 0.4, 0.6, 0.8])
+    plot_grid.axes_llc.set_yticks([0.2, 0.4, 0.6, 0.8])
+
     plt.show()
 
 def plot_proba(coverage_image, title=None):
@@ -149,7 +166,7 @@ def plot_proba(coverage_image, title=None):
                 vmin=0.0, vmax=1.0,
                 origin="lower",
                 extent=[0,1,0,1],
-                cmap='cividis')
+                cmap=cmap_proba)
     plt.colorbar(im)
     # plt.toggle_label(True)
     plt.xticks([0.2, 0.4, 0.6, 0.8])
