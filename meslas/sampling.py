@@ -72,7 +72,7 @@ class GRF():
 
         # Sample M independent N(0, 1) RVs.
         # TODO: Determine if this is better than doing Cholesky ourselves.
-        lower_chol = psd_safe_cholesky(K)
+        lower_chol = psd_safe_cholesky(K, jitter=1e-3)
         distr = MultivariateNormal(
                 loc=mu,
                 scale_tril=lower_chol)
