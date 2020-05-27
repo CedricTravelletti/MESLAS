@@ -1,8 +1,8 @@
-""" Test script for meslas.grid
+""" Test script for meslas.geometry.regular_grids
 
 """
 import torch
-from meslas.grid import square_grid
+from meslas.geometry.regular_grids import square_grid
 
 print(square_grid(10, 4))
 print(square_grid(10, 4).shape)

@@ -24,7 +24,7 @@ means vector has shape (n. p).
 """
 import torch
 from torch.distributions.multivariate_normal import MultivariateNormal
-from meslas.grid import Grid, get_isotopic_generalized_location
+from meslas.geometry.regular_grids import Grid, get_isotopic_generalized_location
 from gpytorch.utils.cholesky import psd_safe_cholesky
 
 

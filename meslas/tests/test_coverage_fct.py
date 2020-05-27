@@ -8,7 +8,7 @@ from meslas.means import ConstantMean
 from meslas.covariance.covariance_functions import Matern32
 from meslas.covariance.cross_covariances import UniformMixing
 from meslas.covariance.heterotopic import FactorCovariance
-from meslas.grid import Grid
+from meslas.geometry.regular_grids import Grid
 from meslas.sampling import GRF
 from meslas.excursion import coverage_fct_fixed_location
 
