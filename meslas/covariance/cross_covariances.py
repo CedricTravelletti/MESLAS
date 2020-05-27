@@ -2,6 +2,7 @@
 
 """
 import torch
+torch.set_default_dtype(torch.float32)
 
 
 def UniformMixing(gamma0, sigmas):
@@ -20,8 +21,8 @@ def UniformMixing(gamma0, sigmas):
 
     """
     # Convert to tensor if not.
-    if not torch.is_tensor(gamma0): gamma0 = torch.tensor(gamma0)
-    if not torch.is_tensor(sigmas): sigmas = torch.tensor(sigmas)
+    if not torch.is_tensor(gamma0): gamma0 = torch.tensor(gamma0).float()
+    if not torch.is_tensor(sigmas): sigmas = torch.tensor(sigmas).float()
 
     return lambda L1, L2: _uniform_mixing_crosscov(L1, L2, gamma0, sigmas)
 
