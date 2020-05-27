@@ -109,17 +109,37 @@ class GRF():
         return sample
 
     def krig(self, S, L, S_y, L_y, y, noise_std=0.0, compute_post_cov=False):
-        """ Predict field at some points, based on some measured data at other
-        points.
-    
+        """ Predict field at some generalized locations, based on some measured data at other
+        generalized locations.
+
+        This is the most general possible form of kriging, since it takes
+        measurements at generalized locations and predicts at generalized
+        locations.
+
         Parameters
         ----------
+        S: (N, d)
+            Spatial locations at which to predict
+        L: (N) Tensor
+            Response indices to predict.
+        S_y: (M, d) Tensor
+            Spatial locations of the measurements.
+        L_y: (M) Tensor
+            Response indices of the measurements.
+        y: (M) Tensor
+            Measured values.
+        noise_std: float
+            Noise standard deviation. Uniform across all measurments.
+        compute_post_cov: bool
+            If true, compute and return posterior covariance.
     
         Returns
         -------
-        m
-        K
-    
+        mu_cond: (N) Tensor
+            Kriging means at each generalized location.
+        K_cond: (N, N) Tensor
+            Conditional covariance matrix between the generalized locations.    
+
         """
         mu_pred = self.mean(S, L)
         mu_y = self.mean(S_y, L_y)
@@ -158,10 +178,13 @@ class GRF():
     
         Returns
         -------
-        krig_mean: (grid.shape, p) Tensor
+        mu_cond_grid: (grid.shape, p) Tensor
             Kriging means at each grid node.
-        krig_mean_list (grid.n_cells, p)
+        mu_cond_list: (grid.n_cells*p) Tensor
             Kriging mean, but in list form.
+        mu_cond_iso: (grid.n_cells, p) Tensor
+            Kriging means in isotopic list form.
+        mu_cond_iso: 
         K_cond_list: (grid.n_cells * p, grid.n_cells * p) Tensor
             Conditional covariance matrix in heterotopic form.
         K_cond_iso: (grid.n_cells, grid.n_cells, p, p) Tensor
