@@ -184,7 +184,6 @@ class GRF():
             Kriging mean, but in list form.
         mu_cond_iso: (grid.n_cells, p) Tensor
             Kriging means in isotopic list form.
-        mu_cond_iso: 
         K_cond_list: (grid.n_cells * p, grid.n_cells * p) Tensor
             Conditional covariance matrix in heterotopic form.
         K_cond_iso: (grid.n_cells, grid.n_cells, p, p) Tensor
@@ -221,3 +220,64 @@ class GRF():
             return mu_cond_grid, mu_cond_list, mu_cond_iso, K_cond_list, K_cond_iso
 
         return mu_cond_grid
+
+    def krig_isotopic(self, points, S_y, L_y, y, noise_std=0.0, compute_post_cov=False):
+        """ Predict field at some points, based on some measured data at other
+        points. Predicts all repsonses (isotopic).
+    
+        Parameters
+        ----------
+        points: (N, d) Tensor
+            List of points at which to predict.
+        S_y: (M, d) Tensor
+            Spatial locations of the measurements.
+        L_y: (M) Tensor
+            Response indices of the measurements.
+        y: (M) Tensor
+            Measured values.
+        noise_std: float
+            Noise standard deviation. Uniform across all measurments.
+        compute_post_cov: bool
+            If true, compute and return posterior covariance.
+    
+        Returns
+        -------
+        mu_cond_list: (N*p) Tensor
+            Kriging mean, but in list form.
+        mu_cond_iso: (N, p) Tensor
+            Kriging means in isotopic list form.
+        K_cond_list: (N * p, N * p) Tensor
+            Conditional covariance matrix in heterotopic form.
+        K_cond_iso: (N, N, p, p) Tensor
+            Conditional covariance matrix in isotopic ordered form.
+            It means that the covariance matrix at cell i can be otained by
+            subsetting K_cond_iso[i, i, :, :].
+    
+        """
+        n_pts = points.shape[0]
+        # Generate prediction locations corrresponding to the full grid.
+        S, L = get_isotopic_generalized_location(
+                points, self.n_out)
+
+        if compute_post_cov:
+            mu_cond_list, K_cond_list = self.krig(
+                    S, L, S_y, L_y, y, noise_std=noise_std,
+                    compute_post_cov=compute_post_cov)
+        else:
+            mu_cond_list = self.krig(
+                    S, L, S_y, L_y, y, noise_std=noise_std,
+                    compute_post_cov=compute_post_cov)
+
+        # Reshape to isotopic form. Begin by adding a dimension for the
+        # response indices.
+        mu_cond_iso = mu_cond_list.reshape((self.n_out, n_pts)).t()
+
+        if compute_post_cov: 
+            # Reshape to isotopic form by adding dimensions for the response
+            # indices.
+            K_cond_iso = K_cond_list.reshape(
+                    (self.n_out, n_pts, self.n_out,
+                            n_pts)).transpose(0,1).transpose(2,3).transpose(1,2)
+            return mu_cond_list, mu_cond_iso, K_cond_list, K_cond_iso
+
+        return mu_cond_list, mu_cond_iso
