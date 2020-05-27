@@ -1,2 +1,5 @@
-sphinx==1.8.1
+sphinx>=2.0
 pytest==3.10.0
+sphinxcontrib-bibtex
+numpydoc
+sphinx-rtd-theme
