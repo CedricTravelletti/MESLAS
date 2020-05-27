@@ -2,6 +2,7 @@
 
 """
 import torch
+torch.set_default_dtype(torch.float32)
 
 
 def Matern32(lmbda, sigma=1.0):
