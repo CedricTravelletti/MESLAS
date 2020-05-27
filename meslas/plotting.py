@@ -46,7 +46,7 @@ def plot_2d_slice(sliced_sample, title=None, cmin=None, cmax=None):
                 cmap=cmap)
         plt.colorbar(im)
         # plt.toggle_label(True)
-        ptl.xticks([0.2, 0.4, 0.6, 0.8])
+        plt.xticks([0.2, 0.4, 0.6, 0.8])
         plt.yticks([0.2, 0.4, 0.6, 0.8])
         plt.show()
         return
@@ -99,7 +99,7 @@ def plot_krig_slice(sliced_sample, S_y, L_y):
                 extent=[0,1,0,1],
                 cmap=cmap)
         # Add the location of the measurement points on top.
-        locs = S_y[L_y == i].numpy()
+        locs = S_y[L_y == 0].numpy()
         plt.scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color="red")
         plt.colorbar(im)
         ptl.xticks([0.2, 0.4, 0.6, 0.8])
@@ -173,3 +173,28 @@ def plot_proba(coverage_image, title=None):
     plt.yticks([0.2, 0.4, 0.6, 0.8])
     plt.show()
     return
+
+def plot_2D_triangular_grid(grid_coords, grid_vals, S_y=None, L_y=None):
+    # Special case if only one, since do not need grid of plots.
+    if len(grid_vals.shape) <= 1:
+        plt.title(r"$Z^1$")
+        """
+        im = plt.scatter(
+                grid_coords[:, 0].numpy(), grid_coords[:, 1].numpy(),
+                c=grid_vals.numpy(),
+                cmap=cmap)
+        """
+        im = plt.tricontourf(
+                grid_coords[:, 0].numpy(), grid_coords[:, 1].numpy(),
+                grid_vals.numpy(),
+                cmap=cmap)
+        # Add the location of the measurement points on top.
+        if S_y is not None and L_y is not None:
+            locs = S_y[L_y == 0].numpy()
+            plt.scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color="red")
+
+        plt.colorbar(im)
+        plt.xticks([0.2, 0.4, 0.6, 0.8])
+        plt.yticks([0.2, 0.4, 0.6, 0.8])
+        plt.show()
+        return

@@ -8,7 +8,7 @@ from meslas.means import ConstantMean
 from meslas.covariance.covariance_functions import Matern32
 from meslas.covariance.cross_covariances import UniformMixing
 from meslas.covariance.heterotopic import FactorCovariance
-from meslas.grid import Grid
+from meslas.geometry.grid import SquareGrid
 from meslas.sampling import GRF
 from meslas.excursion import coverage_fct_fixed_location
 
@@ -33,7 +33,7 @@ myGRF = GRF(mean, covariance)
 # Create a regular square grid in 2 dims.
 # Number of repsones.
 dim = 2
-my_grid = Grid(100, dim)
+my_grid = SquareGrid(100, dim)
 
 # Observe some data.
 S_y = torch.tensor([[0.2, 0.1], [0.2, 0.2], [0.2, 0.3],

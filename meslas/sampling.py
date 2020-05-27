@@ -24,8 +24,10 @@ means vector has shape (n. p).
 """
 import torch
 from torch.distributions.multivariate_normal import MultivariateNormal
-from meslas.geometry.regular_grids import Grid, get_isotopic_generalized_location
+from meslas.geometry.grid import get_isotopic_generalized_location
 from gpytorch.utils.cholesky import psd_safe_cholesky
+
+torch.set_default_dtype(torch.float32)
 
 
 class GRF():
@@ -91,22 +93,24 @@ class GRF():
 
         Returns
         -------
-        sample: (n1, ..., n_d, ,p) Tensor
+        sample_grid: (n1, ..., n_d, ,p) Tensor
             The sampled field on the grid. Here p is the number of output
             components and n1, ..., nd are the number of cells along each axis.
+        sample_list: (n_points, p) Tensor
+            Same as above, but in list form.
 
         """
         S_iso, L_iso = get_isotopic_generalized_location(
-                grid.coordinate_vector, self.n_out)
+                grid.points, self.n_out)
 
         sample = self.sample(S_iso, L_iso)
 
         # Separate indices.
-        sample = sample.reshape((self.n_out, grid.n_cells)).t()
+        sample_list = sample.reshape((self.n_out, grid.n_points)).t()
         # Put back in grid form.
-        sample = sample.reshape((*grid.shape, self.n_out))
+        sample_grid = sample_list.reshape((*grid.shape, self.n_out))
 
-        return sample
+        return sample_grid, sample_list
 
     def krig(self, S, L, S_y, L_y, y, noise_std=0.0, compute_post_cov=False):
         """ Predict field at some generalized locations, based on some measured data at other
@@ -180,13 +184,13 @@ class GRF():
         -------
         mu_cond_grid: (grid.shape, p) Tensor
             Kriging means at each grid node.
-        mu_cond_list: (grid.n_cells*p) Tensor
+        mu_cond_list: (grid.n_points*p) Tensor
             Kriging mean, but in list form.
-        mu_cond_iso: (grid.n_cells, p) Tensor
+        mu_cond_iso: (grid.n_points, p) Tensor
             Kriging means in isotopic list form.
-        K_cond_list: (grid.n_cells * p, grid.n_cells * p) Tensor
+        K_cond_list: (grid.n_points * p, grid.n_points * p) Tensor
             Conditional covariance matrix in heterotopic form.
-        K_cond_iso: (grid.n_cells, grid.n_cells, p, p) Tensor
+        K_cond_iso: (grid.n_points, grid.n_points, p, p) Tensor
             Conditional covariance matrix in isotopic ordered form.
             It means that the covariance matrix at cell i can be otained by
             subsetting K_cond_iso[i, i, :, :].
@@ -194,7 +198,7 @@ class GRF():
         """
         # Generate prediction locations corrresponding to the full grid.
         S, L = get_isotopic_generalized_location(
-                grid.coordinate_vector, self.n_out)
+                grid.points, self.n_out)
 
         if compute_post_cov:
             mu_cond_list, K_cond_list = self.krig(
@@ -207,7 +211,7 @@ class GRF():
 
         # Reshape to regular grid form. Begin by adding a dimension for the
         # response indices.
-        mu_cond_iso = mu_cond_list.reshape((self.n_out, grid.n_cells)).t()
+        mu_cond_iso = mu_cond_list.reshape((self.n_out, grid.n_points)).t()
         # Put back in grid form.
         mu_cond_grid = mu_cond_iso.reshape((*grid.shape, self.n_out))
 
@@ -215,8 +219,8 @@ class GRF():
             # Reshape to isotopic form by adding dimensions for the response
             # indices.
             K_cond_iso = K_cond_list.reshape(
-                    (self.n_out, grid.n_cells, self.n_out,
-                            grid.n_cells)).transpose(0,1).transpose(2,3).transpose(1,2)
+                    (self.n_out, grid.n_points, self.n_out,
+                            grid.n_points)).transpose(0,1).transpose(2,3).transpose(1,2)
             return mu_cond_grid, mu_cond_list, mu_cond_iso, K_cond_list, K_cond_iso
 
         return mu_cond_grid
