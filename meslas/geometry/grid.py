@@ -177,7 +177,7 @@ class IrregularGrid():
 
         return neighbors_inds
 
-    def interpolate_to_image(self, vals, IM_HEIGHT=30, IM_WIDTH=30, method="linear"):
+    def interpolate_to_image(self, vals, IM_HEIGHT=1000, IM_WIDTH=1000, method="linear"):
         """ Given a list of values at each point of the grid, interpolate it to
         a regular square grid. Used to plot values as images.
 
