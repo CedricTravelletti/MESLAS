@@ -294,3 +294,35 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None):
         plot_grid.axes_llc.set_yticks([0.2, 0.4, 0.6, 0.8])
     
         plt.show()
+
+def plot_grid_probas(grid, probas, title=None):
+    """ Plots excursion probability.
+
+    Parameters
+    ----------
+    grid: IrregularGrid
+        Grid on which the values are defined.
+    probas: (grid.n_points)
+        Probalilities to plot, defined at the grid nodes.
+    title: string
+
+    """
+    if title is None:
+        title = r"$Excursion Probability$"
+    plt.title(title)
+
+    # Interpolate to regular grid
+    reshaped_probas = grid.interpolate_to_image(probas)
+
+    im = plt.imshow(
+                reshaped_probas[:, :].numpy(),
+                vmin=0.0, vmax=1.0,
+                origin="lower",
+                extent=[0,1,0,1],
+                cmap=cmap_proba)
+    plt.colorbar(im)
+    # plt.toggle_label(True)
+    plt.xticks([0.2, 0.4, 0.6, 0.8])
+    plt.yticks([0.2, 0.4, 0.6, 0.8])
+    plt.show()
+    return
