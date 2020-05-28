@@ -162,6 +162,7 @@ class IrregularGrid():
             Grid indices of the neighboring points.
 
         """
+        ind_tensor = ind
         if not torch.is_tensor(ind):
             ind_tensor = torch.tensor(ind)
         ind_tensor = ind_tensor.long()
