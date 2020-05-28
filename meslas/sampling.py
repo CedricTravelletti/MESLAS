@@ -84,6 +84,30 @@ class GRF():
 
         return sample
 
+    def sample_isotopic(self, points):
+        """ Sample the GRF (all components) on a list of points.
+
+        Parameters
+        ----------
+        points: (N, d) Tensor
+            Spatial locations where to sample.
+
+        Returns
+        -------
+        sample_list: (N, p) Tensor
+            The sampled values.
+
+        """
+        S_iso, L_iso = get_isotopic_generalized_location(
+                points, self.n_out)
+        sample = self.sample(S_iso, L_iso)
+
+        # Separate indices.
+        sample_list = sample.reshape((self.n_out, points.shape[0])).t()
+        return sample_list
+
+    # TODO: delegate stuff to grid to allow it to return regular only if square
+    # grid.
     def sample_grid(self, grid):
         """ Sample the GRF (all components) on a grid.
 
@@ -100,10 +124,7 @@ class GRF():
             Same as above, but in list form.
 
         """
-        S_iso, L_iso = get_isotopic_generalized_location(
-                grid.points, self.n_out)
-
-        sample = self.sample(S_iso, L_iso)
+        sample = self.sample_iso(grid.points)
 
         # Separate indices.
         sample_list = sample.reshape((self.n_out, grid.n_points)).t()
