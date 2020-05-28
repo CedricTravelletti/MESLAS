@@ -131,8 +131,7 @@ class IrregularGrid():
             Grid indices of the closest points.
 
         """
-        tree = KDTree(self.points,)
-        closests, closests_inds = tree.query(points)
+        closests, closests_inds = self.tree.query(points)
 
         # TODO: How should we handle this? This is used by the sampling
         """
@@ -190,6 +189,9 @@ class TriangularGrid(IrregularGrid):
         self.points = torch.from_numpy(create_triangular_grid(size)).float()
         self.n_points = self.points.shape[0]
 
+        # Initialize a KDTree once and for all for neighbor search.
+        self.tree = KDTree(self.points,)
+
 def get_isotopic_generalized_location(S, p):
     """ Given a list of spatial location, create the generalized measurement
     vector that corresponds to measuring ALL responses at those locations.
@@ -240,8 +242,12 @@ class SquareGrid(IrregularGrid):
     def __init__(self, size, dim):
         self.size = size
         self.dim = dim
-        self.grid = create_square_grid(size, dim)
+        # TODO: I think it would be more economic
+        self.points = create_square_grid(size, dim).reshape((self.size**self.dim, self.dim))
         self.n_points = self.size**self.dim
+
+        # Initialize a KDTree once and for all for neighbor search.
+        self.tree = KDTree(self.points,)
 
     # TODO: Inspect these methods. Ther are used by sampling for some
     # reshaping. Should be delegated to the grid.
@@ -249,11 +255,12 @@ class SquareGrid(IrregularGrid):
     def shape(self):
         return tuple(self.dim * [self.size])
     @property
-    def points(self):
-        """ Returns the grid coordinates in a list.
+    def grid(self):
+        """ Returns the grid coordinates in grid shape, i.e. one axis per
+        dimension.
 
         """
-        return self.grid.reshape((self.size**self.dim, self.dim))
+        return self.points.reshape((self.dim * [self.size] + self.dim))
 
     # TODO: Currently only used to plot posterior, but should be delegated to
     # the GRF posterior sampling procedure.
