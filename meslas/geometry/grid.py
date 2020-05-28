@@ -288,33 +288,6 @@ class SquareGrid(IrregularGrid):
 
         return grid_vector
 
-    # TODO: Update.
-    def get_closest(self, points):
-        """ Given a list of points, for each of them return the closest grid
-        point. Also returns its index in the grid.
-
-        Parameters
-        ----------
-        points: (N, dim) Tensor
-            List of point coordinates.
-
-        Returns
-        -------
-        closests: (N, dim) Tensor
-            Coordinates of closest grid points.
-        closests_inds: (N, dim) Tensor
-            Grid indices of the closest points.
-
-        """
-        closests, closests_inds = super(SquareGrid, self).get_closest(points)
-
-        # TODO: How should we handle this? This is used by the sampling
-        # The tree returns one dimensional indices, we turn them back to
-        # multidim.
-        closests_inds = np.unravel_index(closests_inds, self.shape)
-
-        return closests, closests_inds
-
     def interpolate_to_image(self, vals):
         """ Given a list of values at each point of the grid, interpolate it to
         a regular square grid. Used to plot values as images.
