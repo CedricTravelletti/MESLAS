@@ -4,7 +4,9 @@
 import torch
 import numpy as np
 from scipy.spatial import KDTree
+from scipy.interpolate import griddata
 from meslas.geometry.tilings import generate_triangles
+
 
 torch.set_default_dtype(torch.float32)
 
@@ -141,6 +143,29 @@ class IrregularGrid():
 
         return closests, closests_inds
 
+    def interpolate_to_image(self, vals, IM_HEIGHT=100, IM_WIDTH=100):
+        """ Given a list of values at each point of the grid, interpolate it to
+        a regular square grid. Used to plot values as images.
+
+        Parameters
+        ----------
+        vals: (n_points) Tensor
+            Values of a field defined at each point of the grid.
+
+        Returns
+        -------
+        image (IM_HEIGHT, IM_WIDTH) Tensor
+            Values interpolated to a regular square grid (image).
+
+        """
+        xi = np.linspace(0, 1, IM_HEIGHT)
+        yi = np.linspace(0, 1, IM_WIDTH)
+
+        zi = griddata((self.points[:, 0], self.points[:, 1]),
+                vals, (xi[None,:], yi[:,None]), method='linear')
+        return zi.reshape(xi.shape[0], yi.shape[0])
+            
+
 class TriangularGrid(IrregularGrid):
     """ Create a grid of triangular cells. Only valid for two dimensions.
 
@@ -274,3 +299,22 @@ class SquareGrid(IrregularGrid):
         closests_inds = np.unravel_index(closests_inds, self.shape)
 
         return closests, closests_inds
+
+    def interpolate_to_image(self, vals):
+        """ Given a list of values at each point of the grid, interpolate it to
+        a regular square grid. Used to plot values as images.
+
+        On an already regular grid, we just reshape, no interpolation.
+
+        Parameters
+        ----------
+        vals: (n_points) Tensor
+            Values of a field defined at each point of the grid.
+
+        Returns
+        -------
+        image (IM_HEIGHT, IM_WIDTH) Tensor
+            Values interpolated to a regular square grid (image).
+
+        """
+        return vals.reshape(self.shape)
