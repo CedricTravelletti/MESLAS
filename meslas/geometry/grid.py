@@ -143,7 +143,7 @@ class IrregularGrid():
 
         return closests, closests_inds
 
-    def interpolate_to_image(self, vals, IM_HEIGHT=100, IM_WIDTH=100):
+    def interpolate_to_image(self, vals, IM_HEIGHT=30, IM_WIDTH=30, method="linear"):
         """ Given a list of values at each point of the grid, interpolate it to
         a regular square grid. Used to plot values as images.
 
@@ -151,6 +151,14 @@ class IrregularGrid():
         ----------
         vals: (n_points) Tensor
             Values of a field defined at each point of the grid.
+        IM_HEIGHT: int
+            Number of pixels in the resulting image.
+        IM_WIDTH: int
+            Number of pixels in the resulting image.
+        method: string
+            Method to use for interpolation. Default is 'linear', which can
+            cause blanks where no points are present. Can chage to 'nearest' if
+            want to remove blanks, but the image will be more bumpy.
 
         Returns
         -------
@@ -161,9 +169,9 @@ class IrregularGrid():
         xi = np.linspace(0, 1, IM_HEIGHT)
         yi = np.linspace(0, 1, IM_WIDTH)
 
-        zi = griddata((self.points[:, 0], self.points[:, 1]),
-                vals, (xi[None,:], yi[:,None]), method='linear')
-        return zi.reshape(xi.shape[0], yi.shape[0])
+        zi = griddata((self.points[:, 1], self.points[:, 0]),
+                vals, (xi[None,:], yi[:,None]), method=method)
+        return torch.from_numpy(zi.reshape(xi.shape[0], yi.shape[0]))
             
 
 class TriangularGrid(IrregularGrid):
@@ -179,7 +187,7 @@ class TriangularGrid(IrregularGrid):
         self.size = size
         # WARNING: Really needs to be Tensor in order to be compatible with the
         # rest.
-        self.points = torch.tensor(create_triangular_grid(size)).float()
+        self.points = torch.from_numpy(create_triangular_grid(size)).float()
         self.n_points = self.points.shape[0]
 
 def get_isotopic_generalized_location(S, p):
