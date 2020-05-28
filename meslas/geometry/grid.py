@@ -61,7 +61,9 @@ def create_triangular_grid(size):
         # Exclude if not in grid
         if (0 <= point[0] <= 1) and (0 <= point[1] <= 1):
             coords.append(point)
-    return np.array(coords)
+
+    # For some reason, there are duplicates
+    return np.unique(np.array(coords), axis=0)
 
 class IrregularGrid():
     """ Gridding of space that is just a collection of points, with no
@@ -125,13 +127,11 @@ class IrregularGrid():
 
         Returns
         -------
-        closests: (N, dim) Tensor
-            Coordinates of closest grid points.
         closests_inds: (N, dim) Tensor
             Grid indices of the closest points.
 
         """
-        closests, closests_inds = self.tree.query(points)
+        _, closests_inds = self.tree.query(points)
 
         # TODO: How should we handle this? This is used by the sampling
         """
@@ -140,7 +140,35 @@ class IrregularGrid():
         closests_inds = np.unravel_index(closests_inds, self.shape)
         """
 
-        return closests, closests_inds
+        return torch.from_numpy(closests_inds).long()
+
+    def get_neighbors(self, ind):
+        """ Get the neighbors of a node.
+        
+        Parameters
+        ----------
+        ind: int
+            Index of the node in the grid points list.
+
+        Returns
+        -------
+        neighbors_inds: (N, dim) Tensor
+            Grid indices of the neighboring points.
+
+        """
+        if not torch.is_tensor(ind):
+            ind_tensor = torch.tensor(ind)
+        ind_tensor = ind_tensor.long()
+
+        point_coord = self.points[ind]
+        _, neighbors_inds = self.tree.query(
+                point_coord, k=self.n_neighbors + 1)
+
+        # Remove the point istelf from the list.
+        neighbors_inds = neighbors_inds[neighbors_inds != int(ind)]
+        neighbors_inds = torch.from_numpy(neighbors_inds).long()
+
+        return neighbors_inds
 
     def interpolate_to_image(self, vals, IM_HEIGHT=30, IM_WIDTH=30, method="linear"):
         """ Given a list of values at each point of the grid, interpolate it to
@@ -191,6 +219,10 @@ class TriangularGrid(IrregularGrid):
 
         # Initialize a KDTree once and for all for neighbor search.
         self.tree = KDTree(self.points,)
+
+        # Defines the neighbor structure, i.e. how many neighbors a cell is
+        # supposed to have.
+        self.n_neighbors = 6
 
 def get_isotopic_generalized_location(S, p):
     """ Given a list of spatial location, create the generalized measurement
@@ -248,6 +280,10 @@ class SquareGrid(IrregularGrid):
 
         # Initialize a KDTree once and for all for neighbor search.
         self.tree = KDTree(self.points,)
+
+        # Defines the neighbor structure, i.e. how many neighbors a cell is
+        # supposed to have.
+        self.n_neighbors = 4
 
     # TODO: Inspect these methods. Ther are used by sampling for some
     # reshaping. Should be delegated to the grid.
