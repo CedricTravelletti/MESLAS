@@ -62,7 +62,9 @@ class Sensor():
         """
         if not torch.is_tensor(location):
             location = torch.tensor(location)
-        self.location = location
+        # In order to append correctly, we want the location to ba a line
+        # vector.
+        self.location = location.reshape(1, -1).float()
         self.current_node_ind = self.grid.get_closest(self.location)
 
         # 0-dim tensor cannot be concatenated, so have to unsqueeze.
@@ -89,7 +91,7 @@ class Sensor():
             raise ValueError("Shouldn't have Scalar tensor, wrap it inside [].")
         self.S_y_tot = torch.cat([self.S_y_tot, S_y], dim=0)
         self.L_y_tot = torch.cat([self.L_y_tot, L_y], dim=0)
-        self.y_tot = torch.cat([self.y_tot, y], dim=0)
+        self.y_tot = torch.cat([self.y_tot, y], dim=1)
         return
 
     def get_neighbors(self):
