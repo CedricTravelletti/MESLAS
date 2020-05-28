@@ -82,7 +82,7 @@ class GRF():
 
         #sample = mu + chol @ v 
 
-        return sample
+        return sample.float()
 
     def sample_isotopic(self, points):
         """ Sample the GRF (all components) on a list of points.
@@ -124,7 +124,7 @@ class GRF():
             Same as above, but in list form.
 
         """
-        sample = self.sample_iso(grid.points)
+        sample = self.sample_isotopic(grid.points)
 
         # Separate indices.
         sample_list = sample.reshape((self.n_out, grid.n_points)).t()
@@ -166,6 +166,9 @@ class GRF():
             Conditional covariance matrix between the generalized locations.    
 
         """
+        # We need y to be a single dimensional vector.
+        y = y.reshape(-1)
+
         mu_pred = self.mean(S, L)
         mu_y = self.mean(S_y, L_y)
         K_pred_y = self.covariance.K(S, S_y, L, L_y)
