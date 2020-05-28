@@ -55,15 +55,14 @@ S_y = torch.tensor([[0.1, 0.5], [0.2, 0.5], [0.3, 0.5],
         [0.4, 0.5], [0.5, 0.5], [0.6, 0.5],
         [0.7, 0.5], [0.8, 0.5], [0.9, 0.5]])
 # Get the corresponding indices.
-_, S_inds = my_grid.get_closest(S_y)
+S_inds = my_grid.get_closest(S_y)
 
 # Get the data and flatten to a list.
-print(sample[S_inds].shape)
-y = sample[S_inds].reshape(-1) 
+y = sample_list[S_inds].reshape(-1) 
 
 # Get corresponding coordinates, dupplicated so we have one instance per
 # response.
-S_y_simple = my_grid.grid[S_inds]
+S_y_simple = my_grid.points[S_inds]
 S_y = torch.repeat_interleave(S_y_simple, myGRF.n_out, dim=0)
 
 # Response index vector.
