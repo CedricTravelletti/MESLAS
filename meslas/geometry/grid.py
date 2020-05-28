@@ -133,6 +133,12 @@ class IrregularGrid():
         """
         _, closests_inds = self.tree.query(points)
 
+        # If there is only one, we nevertheless want to convert the index to an
+        # array, so we can put it in Tensor to have a coherent data format all
+        # acros.
+        if not isinstance(closests_inds, (list, tuple, np.ndarray)):
+            closests_inds = np.array(closests_inds)
+
         # TODO: How should we handle this? This is used by the sampling
         """
         # The tree returns one dimensional indices, we turn them back to
