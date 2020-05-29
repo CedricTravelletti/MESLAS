@@ -328,7 +328,7 @@ def plot_grid_probas(grid, probas, points, title=None):
     if points is not None:
         # Add the location of the measurement points on top.
         plt.scatter(points.numpy()[:, 1], points.numpy()[:, 0], marker="x",
-                s=1.8, color="lightgreen")
+                s=2.5, color="lightgreen")
 
     # plt.toggle_label(True)
     plt.xlim([0, 1])
