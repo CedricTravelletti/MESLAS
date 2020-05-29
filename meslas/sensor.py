@@ -69,7 +69,7 @@ class Sensor():
 
         # 0-dim tensor cannot be concatenated, so have to unsqueeze.
         self.visited_node_inds = torch.cat(
-                [self.visited_node_inds, self.current_node_ind.unsqueeze(0)], dim=0)
+                [self.visited_node_inds, self.current_node_ind])
 
     def add_data(self, S_y, L_y, y):
         """ Add new data to the already collected one.
