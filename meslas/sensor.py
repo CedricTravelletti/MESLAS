@@ -95,6 +95,17 @@ class Sensor():
         return
 
     def get_neighbors(self):
+        """ Get the neighbouring grid nodes of the current sensor location.
+
+        This is done by first finding the node closes to the sensor location,
+        and then returning its neighbors.
+
+        Returns
+        -------
+        neighbors_inds: (n_neighbors)
+            Grid indices of the neighbors.
+
+        """
         # First find the grid node at which we are sitting
         # (the closest one).
         current_node_ind = self.grid.get_closest(self.location)
