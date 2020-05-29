@@ -27,12 +27,12 @@ indentification of river plumes in coastal regions (:cite:`Fossum`).
 Excursion Sets
 --------------
 One of the main functionality of MESLAS is the estimation of excursion sets of
-Gaussian random field. Given an :math:`n`-dimensional multivariate GRF :math:`\bm{Z}`, 
+Gaussian random field. Given an :math:`n`-dimensional multivariate GRF :math:`\boldsymbol{Z}`, 
 an excursion set is defined as
 
 .. math::
 
-   \Gamma = \lbrace x \in X: t_i \leq \bm{Z}_x^{i} \leq t'_i,~i=1,...,n \rbrace
+   \Gamma = \lbrace x \in X: t_i \leq \boldsymbol{Z}_x^{i} \leq t'_i,~i=1,...,n \rbrace
 
 where the thresholds are allowed to be infinite.
 
@@ -57,14 +57,14 @@ Implementation
 MESLAS aims at providing Gaussian Random Field functionalities that are easy to
 use, fully modular and reusable.
 
-For example, the GRF :math:`\bm{Z}` used inf Fig.1 has a linear trend
+For example, the GRF :math:`\boldsymbol{Z}` used inf Fig.1 has a linear trend
 
 .. math::
    :label: important
    :nowrap:
 
    \begin{align}
-    \bm{\mu}(\bm{x}) &= \bm{\beta}_i + \bm{\beta}_1^t \bm{x}
+    \boldsymbol{\mu}(\boldsymbol{x}) &= \boldsymbol{\beta}_i + \boldsymbol{\beta}_1^t \boldsymbol{x}
    \end{align}
 
 and factor-covariance model
@@ -74,7 +74,7 @@ and factor-covariance model
    :nowrap:
 
    \begin{align}
-   Cov\left[\bm{Z}_x^i, \bm{Z}_y^j\right] &= k(x, y) \gamma(i, j)
+   Cov\left[\boldsymbol{Z}_x^i, \boldsymbol{Z}_y^j\right] &= k(x, y) \gamma(i, j)
    \end{align}
 
 .. toctree::
