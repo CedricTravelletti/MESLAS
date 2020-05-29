@@ -1,4 +1,5 @@
-""" Plotting capabilities.
+""" Plot physical variable, i.e. Temperature and Salinity.
+The only change compared to the plotting script is in the plot titles.
 
 """
 import numpy as np
@@ -262,7 +263,10 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None):
     
         for i in range(n_out):
             reshaped_vals = grid.interpolate_to_image(vals[:, i])
-            plot_grid[i].set_title(r"$Z^" + str(i+1) + "$")
+            if i == 0:
+                plot_grid[i].set_title(r"Temperature [$^\circ$C]")
+            if i == 1:
+                plot_grid[i].set_title(r"Salinity [g/kg]")
             im = plot_grid[i].imshow(
                     reshaped_vals[:, :].numpy(),
                     origin="lower",
@@ -295,7 +299,7 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None):
     
         plt.show()
 
-def plot_grid_probas(grid, probas, points, title=None):
+def plot_grid_probas(grid, probas, points=None, title=None):
     """ Plots excursion probability.
 
     Parameters
