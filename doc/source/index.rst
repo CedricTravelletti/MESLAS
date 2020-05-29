@@ -57,7 +57,7 @@ Implementation
 MESLAS aims at providing Gaussian Random Field functionalities that are easy to
 use, fully modular and reusable.
 
-For example, the GRF :math:`\boldsymbol{Z}` used inf Fig.1 has a linear trend
+For example, the GRF :math:`\boldsymbol{Z}` used inf Fig.1 with linear trend
 
 .. math::
    :label: important
@@ -74,8 +74,57 @@ and factor-covariance model
    :nowrap:
 
    \begin{align}
-   Cov\left[\boldsymbol{Z}_x^i, \boldsymbol{Z}_y^j\right] &= k(x, y) \gamma(i, j)
+   Cov\left[\boldsymbol{Z}_x^i, \boldsymbol{Z}_y^j\right] &= k(x, y) \gamma(i, j)\\
    \end{align}
+
+with Martern 3/2 spatial covariance, and *uniform mixing* covariance defined by
+
+.. math::
+   :label: important
+   :nowrap:
+
+   \begin{align}
+   \gamma(i, j) &= \begin{cases} \sigma_l^2,~ i=j\\
+   γ_0σ_iσ_j,~i≠ j
+        \end{cases}
+   \end{align}
+
+is straightforward to define in MESLAS and to sample from
+
+.. code-block:: python
+
+   # Spatial Covariance.
+   matern_cov = Matern32(lmbda=0.5, sigma=1.0)
+   
+   # Cross covariance.
+   cross_cov = UniformMixing(gamma0=0.2, sigmas=[2.25, 2.25])
+   covariance = FactorCovariance(matern_cov, cross_cov, n_out=n_out)
+   
+   # Specify mean function, here it is a linear trend that decreases with the
+   # horizontal coordinate.
+   beta0s = np.array([7.8, 24.0])
+   beta1s = np.array([
+           [0, -7.0],
+           [0, -5.0]])
+   mean = LinearMean(beta0s, beta1s)
+   
+   # Create the GRF.
+   myGRF = GRF(mean, covariance)
+   
+   # Create an equilateral tringular grid, with 80 nodes per line.
+   my_grid = TriangularGrid(80)
+   
+   # Sample all components (isotopic) at all locations of the grid.
+   ground_truth = myGRF.sample_isotopic(my_grid.points)
+
+Autonomous Adaptive Sampling
+----------------------------
+The ultimate goal of the package is for a sensor to automatically choose
+measurement locations learn an excursion set.
+(UNFINISHED).
+
+For implementation, see :ref:`sensor-label`.
+
 
 .. toctree::
    :glob:
@@ -93,6 +142,7 @@ and factor-covariance model
 
    grid
    sampling
+   sensor
    means
    excursion
    plotting
