@@ -32,8 +32,8 @@ myGRF = GRF(mean, covariance)
 
 # Create an equilateral triangular grid in 2 dims.
 # Number of respones.
-# my_grid = TriangularGrid(50)
-my_grid = SquareGrid(100, 2)
+my_grid = TriangularGrid(40)
+my_square_grid = SquareGrid(50, 2)
 print(my_grid.n_points)
 
 # Observe some data.
@@ -48,15 +48,16 @@ mu_cond_list, mu_cond_iso , K_cond_list, K_cond_iso = myGRF.krig_isotopic(
         my_grid.points, S_y, L_y, y,
         noise_std=0.05,
         compute_post_cov=True)
-"""
+
+mu_cond_list_sq, mu_cond_iso_sq , K_cond_list_sq, K_cond_iso_sq = myGRF.krig_isotopic(
+        my_square_grid.points, S_y, L_y, y,
+        noise_std=0.05,
+        compute_post_cov=True)
+
 # Plot.
-from meslas.plotting import plot_2D_triangular_grid
-plot_2D_triangular_grid(my_grid.grid, mu_cond_iso[:, 0], S_y, L_y)
-"""
-import matplotlib.pyplot as plt
-image = my_grid.interpolate_to_image(mu_cond_iso[:, 0])
-plt.imshow(image)
-plt.show()
+from meslas.plotting import plot_grid_values
+plot_grid_values(my_grid, mu_cond_iso, S_y, L_y)
+plot_grid_values(my_square_grid, mu_cond_iso_sq, S_y, L_y)
 
 """
 K_cond_diag = torch.diagonal(K_cond_iso, dim1=0, dim2=1).T
