@@ -123,6 +123,23 @@ The ultimate goal of the package is for a sensor to automatically choose
 measurement locations learn an excursion set.
 (UNFINISHED).
 
+Note that since we are working on a fiexed discretization, there are two
+possible way to implement the updating:
+
+  * *Pointwise*: The collected data is stored, and each time we want to predict
+    at a point, we do one step of krigging with the whole current dataset
+    concatenated.
+
+  * *Global* At each data collection step, we compute the krigging mean an
+    covariance on the whole desgin. Then we update at each data step.
+
+*Comments*: The pointwise approach become expansive once we have lots of data.
+If the desgin is small enough so that the full-design covariance matrix can be
+stored, then the global approach might be interessting, since it (kind of)
+allows multi-steps planning.
+
+Currently, we follow the pointwise approach.
+
 For implementation, see :ref:`sensor-label`.
 
 
