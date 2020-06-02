@@ -15,9 +15,8 @@ sns.set_style("whitegrid", {'axes.grid' : False})
 # Color palettes
 # cmap = sns.cubehelix_palette(light=1, as_cmap=True)
 from matplotlib.colors import ListedColormap
-cmap_proba = ListedColormap(sns.color_palette("RdBu_r", 30))
-cmap = ListedColormap(sns.color_palette("BrBG", 100))
-
+CMAP_PROBA = ListedColormap(sns.color_palette("RdBu_r", 30))
+CMAP = ListedColormap(sns.color_palette("BrBG", 100))
 
 
 def plot_2d_slice(sliced_sample, title=None, cmin=None, cmax=None):
@@ -43,7 +42,7 @@ def plot_2d_slice(sliced_sample, title=None, cmin=None, cmax=None):
                 vmin=cmin, vmax=cmax,
                 origin="lower",
                 extent=[0,1,0,1],
-                cmap=cmap)
+                cmap=CMAP)
         plt.colorbar(im)
         # plt.toggle_label(True)
         plt.xticks([0.2, 0.4, 0.6, 0.8])
@@ -69,7 +68,7 @@ def plot_2d_slice(sliced_sample, title=None, cmin=None, cmax=None):
                 # vmin=0.8*sample_min, vmax=0.8*sample_max,
                 origin="lower",
                 extent=[0,1,0,1],
-                cmap=cmap)
+                cmap=CMAP)
         cax = plot_grid.cbar_axes[i]
         cax.colorbar(im)
     # Hide the unused plots.
@@ -97,7 +96,7 @@ def plot_krig_slice(sliced_sample, S_y, L_y):
                 # vmin=0.8*sample_min, vmax=0.8*sample_max,
                 origin="lower",
                 extent=[0,1,0,1],
-                cmap=cmap)
+                cmap=CMAP)
         # Add the location of the measurement points on top.
         locs = S_y[L_y == 0].numpy()
         plt.scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color="red")
@@ -127,7 +126,7 @@ def plot_krig_slice(sliced_sample, S_y, L_y):
                 # vmin=0.8*sample_min, vmax=0.8*sample_max,
                 origin="lower",
                 extent=[0,1,0,1],
-                cmap=cmap)
+                cmap=CMAP)
         cax = plot_grid.cbar_axes[i]
         cax.colorbar(im)
 
@@ -187,7 +186,7 @@ def plot_2D_triangular_grid(grid_coords, grid_vals, S_y=None, L_y=None):
         im = plt.tricontourf(
                 grid_coords[:, 0].numpy(), grid_coords[:, 1].numpy(),
                 grid_vals.numpy(),
-                cmap=cmap)
+                cmap=CMAP)
         # Add the location of the measurement points on top.
         if S_y is not None and L_y is not None:
             locs = S_y[L_y == 0].numpy()
@@ -199,7 +198,7 @@ def plot_2D_triangular_grid(grid_coords, grid_vals, S_y=None, L_y=None):
         plt.show()
         return
 
-def plot_grid_values(grid, vals, S_y=None, L_y=None):
+def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
     """ Plot values defined on a grid. Values can me multidimensional
     responses. In this case, one plot per response will be produced.
     One can also provide a generalized location vector, those will be added as
@@ -218,8 +217,14 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None):
     L_y: (n) Tensor (optional)
         Vector of response indices. Will specify on which plot the points will
         be added.
+    cmap: string
+        If set to "proba", will use red-blue.
 
     """
+    if cmap == "proba":
+        cmap = CMAP_PROBA
+    else: cmap = CMAP
+
     # Special case if only one, since do not need grid of plots.
     if len(vals.shape) <= 1:
         # Interpolate to regular grid
