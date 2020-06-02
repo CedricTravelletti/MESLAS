@@ -151,7 +151,8 @@ class GRF():
 
         return sample_grid, sample_list
 
-    def krig(self, S, L, S_y, L_y, y, noise_std=0.0, compute_post_var = False, compute_post_cov=False):
+    def krig(self, S, L, S_y, L_y, y, noise_std=0.0,
+            compute_post_var = False, compute_post_cov=False):
         """ Predict field at some generalized locations, based on some measured data at other
         generalized locations.
 
@@ -363,3 +364,73 @@ class GRF():
             return mu_cond_grid, mu_cond_list, mu_cond_iso, K_cond_list, K_cond_iso
 
         return mu_cond_grid
+
+    def variance_reduction(self, S, L, S_y, L_y, noise_std=0.0):
+        """ Computes the reduction in variance at generalized
+        locations (S, L) that would be caused by observing data at generalized
+        locations (S_y, L_y).
+        Note that this doesn't depend on the measured data.
+
+        Parameters
+        ----------
+        S: (N, d)
+            Spatial locations at which to predict
+        L: (N) Tensor
+            Response indices to predict.
+        S_y: (M, d) Tensor
+            Spatial locations of the measurements.
+        L_y: (M) Tensor
+            Response indices of the measurements.
+        noise_std: float
+            Noise standard deviation. Uniform across all measurments.
+
+        Returns
+        -------
+        variance_reduction: (N) Tensor
+            Reduction in variance at each generalized location.
+
+        """
+        K_pred_y = self.covariance.K(S, S_y, L, L_y)
+        K_yy = self.covariance.K(S_y, S_y, L_y, L_y)
+
+        noise = noise_std**2 * torch.eye(L_y.shape[0])
+        weights = K_pred_y @ torch.inverse(K_yy + noise)
+        variance_reduction = torch.einsum('ik,ik->i', weights, K_pred_y)
+
+        return variance_reduction
+
+    def variance_reduction_isotopic(self, points, S_y, L_y, noise_std=0.0):
+        """ Computes the reduction in variance (all components) at location S
+        that would be caused by observing data at generalized locations (S_y, L_y).
+        Note that this doesn't depend on the measured data.
+
+        Parameters
+        ----------
+        points: (N, d) Tensor
+            List of points at which to predict.
+        S_y: (M, d) Tensor
+            Spatial locations of the measurements.
+        L_y: (M) Tensor
+            Response indices of the measurements.
+        noise_std: float
+            Noise standard deviation. Uniform across all measurments.
+
+        Returns
+        -------
+        variance_reduction: (N) Tensor
+            Reduction in variance at each generalized location.
+
+        """
+        n_pts = points.shape[0]
+        # Generate prediction locations corrresponding to the full grid.
+        S, L = get_isotopic_generalized_location(
+                points, self.n_out)
+        
+        variance_reduction_list = self.variance_reduction(
+                S, L, S_y, L_y, noise_std=noise_std)
+
+        # Reshape to isotopic form by adding dimensions for the response
+        # indices.
+        variance_reduction_iso = variance_reduction_list.reshape(
+                    (self.n_out, n_pts)).transpose(0,1)
+        return variance_reduction_iso

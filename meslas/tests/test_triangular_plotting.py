@@ -67,6 +67,13 @@ mu_cond_list, mu_cond_iso , var_cond_list, var_cond_iso = myGRF.krig_isotopic(
 
 plot_grid_values(my_grid, var_cond_iso, S_y, L_y, cmap="proba")
 
+
+variance_reduction_iso = myGRF.variance_reduction_isotopic(
+        my_grid.points, S_y, L_y,
+        noise_std=0.05)
+
+plot_grid_values(my_grid, variance_reduction_iso, S_y, L_y, cmap="proba")
+
 """
 K_cond_diag = torch.diagonal(K_cond_iso, dim1=0, dim2=1).T
 lower = torch.tensor([-1.0, -1.0]).double()
