@@ -2,33 +2,36 @@
 
 """
 import torch
+import numpy as np
 from meslas.means import ConstantMean
-from meslas.covariance.heterotopic import matern32, uniform_mixing_crosscov, Covariance
+from meslas.covariance.covariance_functions import Matern32
+from meslas.covariance.cross_covariances import UniformMixing
+from meslas.covariance.heterotopic import FactorCovariance
+from meslas.geometry.grid import TriangularGrid, SquareGrid
 from meslas.sampling import GRF
+from meslas.excursion import coverage_fct_fixed_location
 
-# Specifiy Covariance function.
-dim = 4
+# Dimension of the response.
+n_out = 4
 
-lmbda = torch.Tensor([1.0])
-sigma = torch.Tensor([1.0])
-# Cross covariance parameters.
-gamma0 = torch.Tensor([0.6])
-sigmas = torch.sqrt(torch.Tensor([0.25, 0.3, 0.4, 0.5]))
+# Spatial Covariance.
+matern_cov = Matern32(lmbda=0.1, sigma=1.0)
 
-def my_factor_cov(H, L1, L2):
-    cov_spatial = matern32(H, lmbda, sigma)
-    cross_cov = uniform_mixing_crosscov(L1, L2, gamma0, sigmas)
-    return cross_cov * cov_spatial
+# Cross covariance.
+cross_cov = UniformMixing(gamma0=0.0, sigmas=[np.sqrt(0.25), np.sqrt(0.3),
+        np.sqrt(0.4), np.sqrt(0.5)])
 
-my_covariance = Covariance(my_factor_cov)
+covariance = FactorCovariance(matern_cov, cross_cov, n_out=n_out)
 
 # Specify mean function
-# Constant mean of each component.
-means = torch.Tensor([1.0, -2.0, 4.0, 33.0])
-my_mean = ConstantMean(means)
+mean = ConstantMean([1.0, -2.0, 4.0, 33.0])
 
 # Create the GRF.
-myGRF = GRF(my_mean, my_covariance)
+myGRF = GRF(mean, covariance)
+
+
+
+
 
 # Array of locations.
 S1 = torch.Tensor([[0, 0], [0, 1], [0, 2], [3, 0]]).float()
