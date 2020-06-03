@@ -95,3 +95,9 @@ information is in **list** form
      Cov(Z^p_{s_n}, Y^1_{t_1}) & \dots & Cov(Z^p_{s_n}, Y^q_{t_1}) & \dots &
      Cov(Z^p_{s_n}, Y^1_{t_m}) & \dots & Cov(Z^p_{s_n}, Y^q_{t_m})
    \end{pmatrix}.
+
+But when considering, for example, pointwise excursion probability, it makes
+sense to have covariance matrices between couple of points. I.e., to organise
+covariance information into a :math:`n\times m \time p \time q` matrix, such
+that at index :math:`i,j` we have a :math:`p\times q` matrix of covariances
+between spatial locations :math:`s_i` and :math:`t_j`.
