@@ -8,7 +8,7 @@ from meslas.covariance.covariance_functions import Matern32
 from meslas.covariance.cross_covariances import UniformMixing
 from meslas.covariance.heterotopic import FactorCovariance
 from meslas.geometry.grid import TriangularGrid, SquareGrid
-from meslas.sampling import GRF
+from meslas.random_fields import GRF
 from meslas.excursion import coverage_fct_fixed_location
 
 # Dimension of the response.

@@ -1,4 +1,6 @@
-""" Test the Sensor class.
+""" Tests the coverage function capabilities.
+Here we only test if it works. For corectness checks, see test_mvnorm.py
+
 """
 import numpy as np
 import torch
@@ -9,7 +11,6 @@ from meslas.covariance.heterotopic import FactorCovariance
 from meslas.geometry.grid import TriangularGrid, SquareGrid
 from meslas.random_fields import GRF
 from meslas.excursion import coverage_fct_fixed_location
-from meslas.sensor import Sensor
 
 
 # Dimension of the response.
@@ -34,9 +35,6 @@ myGRF = GRF(mean, covariance)
 my_grid = TriangularGrid(40)
 print(my_grid.n_points)
 
-# Initialize a sensor.
-my_sensor = Sensor(my_grid, myGRF)
-
 # Observe some data.
 S_y = torch.tensor([[0.2, 0.1], [0.2, 0.2], [0.2, 0.3],
         [0.2, 0.4], [0.2, 0.5], [0.2, 0.6],
@@ -45,13 +43,17 @@ S_y = torch.tensor([[0.2, 0.1], [0.2, 0.2], [0.2, 0.3],
 L_y = torch.tensor([0, 0, 0, 0, 0, 1, 1, 0 ,0 ,0, 0])
 y = torch.tensor(11*[-6]).float()
 
-my_sensor.add_data(S_y, L_y, y)
+# Predict at some points.
+S2 = torch.Tensor([[0.2, 0.1], [0, 0], [3, 0], [5, 4]]).float()
+L2 = torch.Tensor([0, 0, 1, 0]).long()
 
-# Move to the middle of the image.
-location = [0.5, 0.5]
-my_sensor.set_location(location)
-
-# Compute the excursion probabilities of the neighbors of the midpoints.
-lower = torch.tensor([-1.0, -1.0]).float()
-neighbors_excu_proba = my_sensor.compute_neighbors_exursion_prob(lower)
-print(neighbors_excu_proba)
+mu_cond_list, var_cond_list = myGRF.krig(
+        S2, L2, S_y, L_y, y,
+        noise_std=0.05,
+        compute_post_var=True)
+"""
+# Plot.
+from meslas.plotting import plot_grid_values
+plot_grid_values(my_grid, mu_cond_iso, S_y, L_y)
+plot_grid_values(my_square_grid, mu_cond_iso_sq, S_y, L_y)
+"""
