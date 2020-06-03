@@ -483,6 +483,25 @@ class DiscreteGRF(GRF):
 
         return cls(grid, mean_vec, covariance_mat)
 
+    @property
+    def variance(self):
+        """ Returns variances.
+
+        Returns
+        -------
+        variances: Generalized vector
+            Variance of each component of the random field at each point.
+
+        """
+        # First extract the covariance matrices at each points
+        pointwise_cov = torch.diagonal(self.covariance_mat.isotopic, dim1=0, dim2=1).T
+
+        # Now extract their diagonal.
+        variances = torch.diagonal(pointwise_cov, dim1=1, dim2=2)
+
+        variances = GeneralizedVector.from_isotopic(variances)
+        return variances
+
     def update(self, S_y_inds, L_y, y, noise_std=None):
         """ Observe some data and update the field. This will compute the new
         values of the mean vector and covariance matrix.
@@ -517,11 +536,11 @@ class DiscreteGRF(GRF):
         # then silently convert it once it is used. This can (and will) produce
         # nasyt bugs.
         K_yy = self.covariance_mat.isotopic[S_y_inds, :, L_y, :]
-        K_yy = K_yy_alt[:, S_y_inds, L_y]
+        K_yy = K_yy[:, S_y_inds, L_y]
 
         noise = noise_std**2 * torch.eye(y.shape[0])
 
-        weights = K_pred_y @ torch.inverse(K_yy_alt + noise)
+        weights = K_pred_y @ torch.inverse(K_yy + noise)
 
         # Directly update the one dimensional list of values for the mean
         # vector.
