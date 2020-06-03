@@ -484,6 +484,19 @@ class DiscreteGRF(GRF):
         return cls(grid, mean_vec, covariance_mat)
 
     @property
+    def pointwise_cov(self):
+        """ Pointwise covariance matrix, i.e. covariance matrix of the field at
+        each points (i.e. no cross-location covariance.
+
+        Returns
+        -------
+        pointwise_cov: (n_points, n_out, n_out) Tensor
+
+        """
+        pointwise_cov = torch.diagonal(self.covariance_mat.isotopic, dim1=0, dim2=1).T
+        return pointwise_cov
+
+    @property
     def variance(self):
         """ Returns variances.
 
@@ -494,7 +507,7 @@ class DiscreteGRF(GRF):
 
         """
         # First extract the covariance matrices at each points
-        pointwise_cov = torch.diagonal(self.covariance_mat.isotopic, dim1=0, dim2=1).T
+        pointwise_cov = self.pointwise_cov
 
         # Now extract their diagonal.
         variances = torch.diagonal(pointwise_cov, dim1=1, dim2=2)
