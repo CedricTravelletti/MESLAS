@@ -91,7 +91,7 @@ class Sensor():
             raise ValueError("Shouldn't have Scalar tensor, wrap it inside [].")
         self.S_y_tot = torch.cat([self.S_y_tot, S_y], dim=0)
         self.L_y_tot = torch.cat([self.L_y_tot, L_y], dim=0)
-        self.y_tot = torch.cat([self.y_tot, y], dim=1)
+        self.y_tot = torch.cat([self.y_tot, y], dim=0)
         return
 
     def get_neighbors(self):
@@ -204,3 +204,54 @@ class Sensor():
         neighbors_excu_prob = self._compute_neighbors_exursion_prob(
                 self.current_node_ind, lower, upper)
         return neighbors_excu_prob
+
+class DiscreteSensor(Sensor):
+    """ Sensor on a fixed discretization.
+
+    """
+    def update_design(self, S_y_inds, L_y, y, noise_std=None):
+        """ Updates the full design grid by computing current conditional mean and covariance.
+
+        Returns
+        -------
+        mu_cond_iso: (self.grid.n_points, self.grf.n_out)
+            Conditional mean.
+        K_cond_iso: (self.grid.n_points, self.grid.n_points, self.grf.n_out, self.grf.n_out) Tensor
+
+            Conditional covariance matrix in isotopic ordered form.
+            It means that the covariance matrix at cell i can be otained by
+            subsetting K_cond_iso[i, i, :, :].
+
+        """
+        S_y = self.grid.points[S_y_inds]
+        self.add_data(S_y, L_y, y)
+        self.grf.update(S_y_inds, L_y, y, noise_std)
+
+    def compute_exursion_prob(self, lower, upper=None):
+        """ Compute the excursion probability on the whole grid, given the
+        currently available data.
+
+        Parameters
+        ----------
+        lower: (p) Tensor
+            List of lower threshold for each response. The excursion set is the set
+            where responses are above the specified threshold.
+            Note that np.inf is supported.
+        upper: (p) Tensor
+            List of upper threshold for each response. The excursion set is the set
+            where responses are above the specified threshold.
+            If not provided, defaults to + infinity.
+
+        Returns
+        -------
+        excursion_proba: (self.grid.n_points) Tensor
+            Excursion probability at each point.
+
+        """
+        # Extract covariance matrix at every point.
+        pointwise_cov = self.grf.pointwise_cov
+
+        excursion_proba = coverage_fct_fixed_location(
+                self.grf.mean_vec.isotopic, pointwise_cov, lower,
+                upper=None)
+        return excursion_proba
