@@ -1,4 +1,4 @@
-""" Sample from multivariate GRF.
+""" Implement multivariate random fields.
 
 Convention is that p is the number of responses.
 Tensors may be returned either in *heterotopic* or in *isotopic* form.
@@ -25,6 +25,7 @@ means vector has shape (n. p).
 import torch
 from torch.distributions.multivariate_normal import MultivariateNormal
 from meslas.geometry.grid import get_isotopic_generalized_location
+from meslas.geometry.grid import get_isotopic_generalized_location_inds
 from meslas.vectors import GeneralizedVector, GeneralizedMatrix
 from gpytorch.utils.cholesky import psd_safe_cholesky
 
@@ -429,3 +430,126 @@ class GRF():
         variance_reduction = GeneralizedVector.from_list(
                 variance_reduction_list, n_pts, self.n_out)
         return variance_reduction
+
+class DiscreteGRF(GRF):
+    """ Gaussian Random Field that is discretized over a static grid. This
+    means that values can only be computed at grid nodes and observations may
+    also only be performed at grid nodes.
+
+    Since it is not known a piori at which locations we will observe or
+    predict, the GRF computes and stores the mean vector and covariance matrix
+    for the whole design at each stage.
+
+    Parameters
+    ----------
+    grid: Grid
+    mean_vec: GeneralizedVector
+    covariance_mat: GeneralizedMatrix
+
+    """
+    def __init__(self, grid, mean_vec, covariance_mat):
+        self.grid = grid
+        self.mean_vec = mean_vec
+        self.covariance_mat = covariance_mat
+        self.n_points = self.grid.n_points
+        self.n_out = mean_vec.shape[1]
+
+    @classmethod
+    def from_model(cls, grf, grid):
+        """ Create a discrete GRF by discretizing a GRF model. One specifies
+        the mean and covariance funcions and the model is then discretized on a
+        grid.
+
+        Parameters
+        ----------
+        grf: GRF
+            Gaussian Random Field to discretize.
+        grid: Grid
+            Grid on which to discretize.
+
+        """
+        n_out = grf.covariance.n_out
+
+        # Generate the measurment vector that corresponds to all components.
+        S, L = get_isotopic_generalized_location(
+                grid.points, n_out)
+
+        mean_vec = grf.mean(S, L)
+        mean_vec = GeneralizedVector.from_list(mean_vec, grid.n_points, n_out)
+
+        covariance_mat = grf.covariance.K(S, S, L, L)
+        covariance_mat = GeneralizedMatrix.from_list(covariance_mat,
+                grid.n_points, n_out, grid.n_points, n_out)
+
+        return cls(grid, mean_vec, covariance_mat)
+
+    def update(self, S_y_inds, L_y, y, noise_std=None):
+        """ Observe some data and update the field. This will compute the new
+        values of the mean vector and covariance matrix.
+
+        Parameters
+        ----------
+        S_y_inds: (M) Tensor
+            Indices (in the grid) of the spatial locations of the measurements.
+        L_y: (M) Tensor
+            Response indices of the measurements.
+        y: (M) Tensor
+            Measured values.
+        noise_std: float
+            Noise standard deviation. Uniform across all measurments.
+
+        """
+        # We need y to be a single dimensional vector.
+        y = y.reshape(-1)
+
+        # Create the generalized measurement vector corresponding to prediction
+        # on the whole grid.
+        S_inds, L = get_isotopic_generalized_location_inds(self.grid.points, self.n_out)
+
+        mu_y = self.mean_vec.isotopic[S_y_inds, L_y]
+
+        # Subsetting of covariance matrices has to be done in two steps.
+        K_pred_y = self.covariance_mat.isotopic[S_inds, :, L, :]
+        K_pred_y = K_pred_y[:, S_y_inds, L_y]
+
+        # WARNING: It is very important to do the indexing in two steps.
+        # If not, then torch will return an object of the wrong dimension, but
+        # then silently convert it once it is used. This can (and will) produce
+        # nasyt bugs.
+        K_yy = self.covariance_mat.isotopic[S_y_inds, :, L_y, :]
+        K_yy = K_yy_alt[:, S_y_inds, L_y]
+
+        noise = noise_std**2 * torch.eye(y.shape[0])
+
+        weights = K_pred_y @ torch.inverse(K_yy_alt + noise)
+
+        # Directly update the one dimensional list of values for the mean
+        # vector.
+        self.mean_vec.set_vals(self.mean_vec.list + weights @ (y - mu_y))
+            
+        self.covariance_mat.set_vals(self.covariance_mat.list - weights @ K_pred_y.t())
+
+        return self.mean_vec, self.covariance_mat
+
+    def sample(self):
+        """ Sample the discretized GRF on the whole grid.
+
+
+        Returns
+        -------
+        Z: (M) Tensor
+            The sampled value of Z_{s_i} component l_i.
+
+        """
+        K = self.covariance_mat.list
+        mu = self.mean_vec.list
+
+        # Sample M independent N(0, 1) RVs.
+        # TODO: Determine if this is better than doing Cholesky ourselves.
+        lower_chol = psd_safe_cholesky(K, jitter=1e-3)
+        distr = MultivariateNormal(
+                loc=mu,
+                scale_tril=lower_chol)
+        sample = distr.sample()
+
+        return GeneralizedVector.from_list(sample.float(), self.n_points, self.n_out)
