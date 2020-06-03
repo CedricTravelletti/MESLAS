@@ -260,6 +260,30 @@ def get_isotopic_generalized_location(S, p):
 
     return S_iso, inds_iso
 
+def get_isotopic_generalized_location_inds(S, p):
+    """ Given a list of spatial location, create the generalized measurement
+    vector that corresponds to measuring ALL responses at those locations, but
+    returns the indices instead of spatial locations.
+
+    Parameters
+    ----------
+    S: (M, d) Tensor
+        List of spatial locations.
+    p: int
+        Number of responses.
+
+    Returns
+    -------
+    S_iso: (M) Tensor
+        Indices of the locations, repeated p times.
+    L_iso: (M * p) Tensor
+        Response index vector for isotopic measurement.
+
+    """
+    S_inds = torch.tensor(list(range(S.shape[0])))
+    S_inds_iso, L_iso = get_isotopic_generalized_location(S_inds, p)
+    return S_inds_iso.long(), L_iso
+
 class SquareGrid(IrregularGrid):
     """ Create a regular square grid of given dimension and size.
     The grid will contain size^dim points. We alway grid over the unit cube in
