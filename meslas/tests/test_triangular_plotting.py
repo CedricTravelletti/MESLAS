@@ -55,7 +55,7 @@ mu_cond_list_sq, mu_cond_iso_sq , K_cond_list_sq, K_cond_iso_sq = myGRF.krig_iso
         compute_post_cov=True)
 
 # Plot.
-from meslas.plotting import plot_grid_values
+from meslas.plotting import plot_grid_values, plot_grid_probas
 plot_grid_values(my_grid, mu_cond_iso, S_y, L_y)
 plot_grid_values(my_square_grid, mu_cond_iso_sq, S_y, L_y)
 
@@ -74,11 +74,8 @@ variance_reduction_iso = myGRF.variance_reduction_isotopic(
 
 plot_grid_values(my_grid, variance_reduction_iso, S_y, L_y, cmap="proba")
 
-"""
 K_cond_diag = torch.diagonal(K_cond_iso, dim1=0, dim2=1).T
 lower = torch.tensor([-1.0, -1.0]).double()
 
 coverage = coverage_fct_fixed_location(mu_cond_iso, K_cond_diag, lower, upper=None)
-plot_2d_slice(coverage.reshape(my_grid.shape), title="Excursion Probability",
-        cmin=0, cmax=1.0)
-"""
+plot_grid_probas(my_grid, coverage, title="Excursion Probability")

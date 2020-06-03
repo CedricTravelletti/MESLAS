@@ -300,7 +300,7 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
     
         plt.show()
 
-def plot_grid_probas(grid, probas, points, title=None):
+def plot_grid_probas(grid, probas, points=None, title=None):
     """ Plots excursion probability.
 
     Parameters
@@ -327,7 +327,7 @@ def plot_grid_probas(grid, probas, points, title=None):
                 vmin=0.0, vmax=1.0,
                 origin="lower",
                 extent=[0,1,0,1],
-                cmap=cmap_proba)
+                cmap=CMAP_PROBA)
     plt.colorbar(im)
 
     if points is not None:
