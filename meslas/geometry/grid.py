@@ -251,12 +251,12 @@ def get_isotopic_generalized_location(S, p):
 
     """
     # Generate index list
-    inds = torch.Tensor([list(range(p))]).long()
+    inds = torch.Tensor([list(range(p))]).long().reshape(-1)
     # Repeat it by the number of cells.
-    inds_iso = inds.repeat_interleave(S.shape[0]).long()
+    inds_iso = inds.repeat(S.shape[0]).long()
 
     # Repeat the cells.
-    S_iso = S.repeat((p, 1))
+    S_iso = S.repeat_interleave(p, dim=0)
 
     return S_iso, inds_iso
 

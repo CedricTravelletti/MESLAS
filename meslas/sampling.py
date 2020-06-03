@@ -121,7 +121,7 @@ class GRF():
         sample = self.sample(S_iso, L_iso)
 
         # Separate indices.
-        sample_list = sample.reshape((self.n_out, points.shape[0])).t()
+        sample_list = sample.reshape((points.shape[0], self.n_out))
         return sample_list
 
     # TODO: delegate stuff to grid to allow it to return regular only if square
@@ -145,7 +145,7 @@ class GRF():
         sample = self.sample_isotopic(grid.points)
 
         # Separate indices.
-        sample_list = sample.reshape((self.n_out, grid.n_points)).t()
+        sample_list = sample.reshape((grid.n_points, self.n_out))
         # Put back in grid form.
         sample_grid = sample_list.reshape((*grid.shape, self.n_out))
 
@@ -278,22 +278,20 @@ class GRF():
                     S, L, S_y, L_y, y, noise_std=noise_std)
         # Reshape to isotopic form. Begin by adding a dimension for the
         # response indices.
-        mu_cond_iso = mu_cond_list.reshape((self.n_out, n_pts)).t()
+        mu_cond_iso = mu_cond_list.reshape((n_pts, self.n_out))
 
         if compute_post_var: 
             # Reshape to isotopic form by adding dimensions for the response
             # indices.
             var_cond_iso = var_cond_list.reshape(
-                    (self.n_out,
-                            n_pts)).transpose(0,1)
+                    (n_pts, self.n_out))
             return mu_cond_list, mu_cond_iso, var_cond_list, var_cond_iso
 
         elif compute_post_cov: 
             # Reshape to isotopic form by adding dimensions for the response
             # indices.
             K_cond_iso = K_cond_list.reshape(
-                    (self.n_out, n_pts, self.n_out,
-                            n_pts)).transpose(0,1).transpose(2,3).transpose(1,2)
+                    (n_pts, self.n_out, n_pts, self.n_out))
             return mu_cond_list, mu_cond_iso, K_cond_list, K_cond_iso
 
         return mu_cond_list, mu_cond_iso
@@ -351,7 +349,7 @@ class GRF():
 
         # Reshape to regular grid form. Begin by adding a dimension for the
         # response indices.
-        mu_cond_iso = mu_cond_list.reshape((self.n_out, grid.n_points)).t()
+        mu_cond_iso = mu_cond_list.reshape((grid.n_points, self.n_out))
         # Put back in grid form.
         mu_cond_grid = mu_cond_iso.reshape((*grid.shape, self.n_out))
 
@@ -359,8 +357,7 @@ class GRF():
             # Reshape to isotopic form by adding dimensions for the response
             # indices.
             K_cond_iso = K_cond_list.reshape(
-                    (self.n_out, grid.n_points, self.n_out,
-                            grid.n_points)).transpose(0,1).transpose(2,3).transpose(1,2)
+                    (grid.n_points, self.n_out, grid.n_points, self.n_out))
             return mu_cond_grid, mu_cond_list, mu_cond_iso, K_cond_list, K_cond_iso
 
         return mu_cond_grid
@@ -431,6 +428,5 @@ class GRF():
 
         # Reshape to isotopic form by adding dimensions for the response
         # indices.
-        variance_reduction_iso = variance_reduction_list.reshape(
-                    (self.n_out, n_pts)).transpose(0,1)
+        variance_reduction_iso = variance_reduction_list.reshape((n_pts, self.n_out))
         return variance_reduction_iso
