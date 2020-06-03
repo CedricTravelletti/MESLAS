@@ -44,12 +44,12 @@ S_y = torch.tensor([[0.2, 0.1], [0.2, 0.2], [0.2, 0.3],
 L_y = torch.tensor([0, 0, 0, 0, 0, 1, 1, 0 ,0 ,0, 0])
 y = torch.tensor(11*[-6]).float()
 
-mu_cond, K_cond_list, K_cond_iso = myGRF.krig_isotopic(
+mu_cond, K_cond = myGRF.krig_isotopic(
         my_grid.points, S_y, L_y, y,
         noise_std=0.05,
         compute_post_cov=True)
 
-mu_cond_sq, K_cond_list_sq, K_cond_iso_sq = myGRF.krig_isotopic(
+mu_cond_sq, K_cond_sq = myGRF.krig_isotopic(
         my_square_grid.points, S_y, L_y, y,
         noise_std=0.05,
         compute_post_cov=True)
@@ -74,7 +74,7 @@ variance_reduction = myGRF.variance_reduction_isotopic(
 
 plot_grid_values(my_grid, variance_reduction.isotopic, S_y, L_y, cmap="proba")
 
-K_cond_diag = torch.diagonal(K_cond_iso, dim1=0, dim2=1).T
+K_cond_diag = torch.diagonal(K_cond.isotopic, dim1=0, dim2=1).T
 lower = torch.tensor([-1.0, -1.0]).double()
 
 coverage = coverage_fct_fixed_location(mu_cond.isotopic, K_cond_diag, lower, upper=None)

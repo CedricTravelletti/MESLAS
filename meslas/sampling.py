@@ -25,7 +25,7 @@ means vector has shape (n. p).
 import torch
 from torch.distributions.multivariate_normal import MultivariateNormal
 from meslas.geometry.grid import get_isotopic_generalized_location
-from meslas.vectors import GeneralizedVector
+from meslas.vectors import GeneralizedVector, GeneralizedMatrix
 from gpytorch.utils.cholesky import psd_safe_cholesky
 
 torch.set_default_dtype(torch.float32)
@@ -282,17 +282,14 @@ class GRF():
         mu_cond = GeneralizedVector.from_list(mu_cond_list, n_pts, self.n_out)
 
         if compute_post_var: 
-            # Reshape to isotopic form by adding dimensions for the response
-            # indices.
             var_cond = GeneralizedVector.from_list(var_cond_list, n_pts, self.n_out)
             return mu_cond, var_cond
 
         elif compute_post_cov: 
-            # Reshape to isotopic form by adding dimensions for the response
-            # indices.
-            K_cond_iso = K_cond_list.reshape(
-                    (n_pts, self.n_out, n_pts, self.n_out)).transpose(1, 2)
-            return mu_cond, K_cond_list, K_cond_iso
+            K_cond = GeneralizedMatrix(
+                    K_cond_list,
+                    n_pts, self.n_out, n_pts, self.n_out)
+            return mu_cond, K_cond
 
         return mu_cond
 
