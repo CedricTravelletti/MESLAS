@@ -291,7 +291,7 @@ class GRF():
             # Reshape to isotopic form by adding dimensions for the response
             # indices.
             K_cond_iso = K_cond_list.reshape(
-                    (n_pts, self.n_out, n_pts, self.n_out))
+                    (n_pts, self.n_out, n_pts, self.n_out)).transpose(1, 2)
             return mu_cond_list, mu_cond_iso, K_cond_list, K_cond_iso
 
         return mu_cond_list, mu_cond_iso
@@ -357,7 +357,8 @@ class GRF():
             # Reshape to isotopic form by adding dimensions for the response
             # indices.
             K_cond_iso = K_cond_list.reshape(
-                    (grid.n_points, self.n_out, grid.n_points, self.n_out))
+                    (grid.n_points, self.n_out, grid.n_points,
+                            self.n_out)).transpose(1,2)
             return mu_cond_grid, mu_cond_list, mu_cond_iso, K_cond_list, K_cond_iso
 
         return mu_cond_grid
