@@ -300,7 +300,8 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
     
         plt.show()
 
-def plot_grid_probas(grid, probas, points=None, title=None):
+def plot_grid_probas(grid, probas, points=None, title=None,
+        output_filename=None):
     """ Plots excursion probability.
 
     Parameters
@@ -315,6 +316,7 @@ def plot_grid_probas(grid, probas, points=None, title=None):
     title: string
 
     """
+    plt.figure()
     if title is None:
         title = r"$Excursion Probability$"
     plt.title(title)
@@ -340,5 +342,9 @@ def plot_grid_probas(grid, probas, points=None, title=None):
     plt.ylim([0, 1])
     plt.xticks([0.2, 0.4, 0.6, 0.8])
     plt.yticks([0.2, 0.4, 0.6, 0.8])
-    plt.show()
+    
+    # If output filename provided, then save, else show.
+    if output_filename is not None:
+        plt.savefig(output_filename)
+    else: plt.show()
     return
