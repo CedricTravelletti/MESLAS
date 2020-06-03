@@ -101,3 +101,13 @@ sense to have covariance matrices between couple of points. I.e., to organise
 covariance information into a :math:`n\times m \time p \time q` matrix, such
 that at index :math:`i,j` we have a :math:`p\times q` matrix of covariances
 between spatial locations :math:`s_i` and :math:`t_j`.
+
+What is Natural?
+----------------
+The isotopic form is the natural one when we want to emphasize spatiality.
+Please note the way this sentence is formulated: spatiality has no prefered
+role, we might want to emphasize it, but it is not any more fundamental than
+the other *dimensions.*. Indeed, a multidimensional random field correlates
+different responses at different locations, so there is no difference between
+correlations at the same location :math:`Cov(Z^1_x, Z^2_x)` or at different
+locations :math:`Cov(Z_x^1, Z_y^2)`.
