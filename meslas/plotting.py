@@ -246,10 +246,9 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
 
         plt.xlim([0, 1])
         plt.ylim([0, 1])
-        plot_grid[i].set_ylim([0, 1])
         cbar = plt.colorbar(im)
         cbar.ax.tick_params(labelsize=6)
-        ptl.xticks([0.2, 0.4, 0.6, 0.8])
+        plt.xticks([0.2, 0.4, 0.6, 0.8])
         plt.yticks([0.2, 0.4, 0.6, 0.8])
         plt.show()
         return
