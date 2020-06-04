@@ -25,7 +25,8 @@ def coverage_fct_fixed_location(mean_vec, cov_mat, lower, upper=None):
     lower: (p) Tensor
         List of lower threshold for each response. The excursion set is the set
         where responses are above the specified threshold.
-        Note that np.inf is supported.
+        Note that np.inf is supported. WARNING: wrong shapes can cause
+        unexpected results.
     upper: (p) Tensor
         List of upper threshold for each response. The excursion set is the set
         where responses are above the specified threshold.
