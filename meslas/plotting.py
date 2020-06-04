@@ -165,7 +165,7 @@ def plot_proba(coverage_image, title=None):
                 vmin=0.0, vmax=1.0,
                 origin="lower",
                 extent=[0,1,0,1],
-                cmap=cmap_proba)
+                cmap=CMAP_PROBA)
     plt.colorbar(im)
     # plt.toggle_label(True)
     plt.xticks([0.2, 0.4, 0.6, 0.8])
