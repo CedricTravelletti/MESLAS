@@ -230,6 +230,8 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
         # Interpolate to regular grid
         reshaped_vals = grid.interpolate_to_image(vals)
 
+        # Generate the plot array
+        fig = plt.figure()
         plt.title(r"$Z^1$")
         im = plt.imshow(
                 reshaped_vals[:, :].numpy(),
