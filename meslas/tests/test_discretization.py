@@ -64,7 +64,9 @@ S_y_inds = my_grid.get_closest(S_y)
 my_discrete_grf.update(S_y_inds, L_y, y, noise_std=0.05)
 plot_grid_values(my_grid, my_discrete_grf.mean_vec.isotopic, S_y, L_y)
 
+# -----------------------------------------
 # Now compare with the non-discrete version.
+# -----------------------------------------
 mu_cond, K_cond = myGRF.krig_isotopic(
         my_grid.points, S_y, L_y, y,
         noise_std=0.05,
@@ -72,26 +74,6 @@ mu_cond, K_cond = myGRF.krig_isotopic(
 
 plot_grid_values(my_grid, mu_cond.isotopic, S_y, L_y)
 
-"""
-
+# -----------------------------------------
 # Try the variance part.
-mu_cond, var_cond = myGRF.krig_isotopic(
-        my_grid.points, S_y, L_y, y,
-        noise_std=0.05,
-        compute_post_var=True)
-
-plot_grid_values(my_grid, var_cond.isotopic, S_y, L_y, cmap="proba")
-
-
-variance_reduction = myGRF.variance_reduction_isotopic(
-        my_grid.points, S_y, L_y,
-        noise_std=0.05)
-
-plot_grid_values(my_grid, variance_reduction.isotopic, S_y, L_y, cmap="proba")
-
-K_cond_diag = torch.diagonal(K_cond.isotopic, dim1=0, dim2=1).T
-lower = torch.tensor([-1.0, -1.0]).double()
-
-coverage = coverage_fct_fixed_location(mu_cond.isotopic, K_cond_diag, lower, upper=None)
-plot_grid_probas(my_grid, coverage, title="Excursion Probability")
-"""
+plot_grid_values(my_grid, my_discrete_grf.variance.isotopic, S_y, L_y, cmap="proba")

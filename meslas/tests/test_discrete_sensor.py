@@ -54,9 +54,11 @@ y = torch.tensor(11*[-6]).float()
 S_y_inds = my_grid.get_closest(S_y)
 
 my_sensor = DiscreteSensor(my_grid, my_discrete_grf)
+
+# Excursion threshold.
+lower = torch.tensor([2.5, 20.0]).float()
 my_sensor.update_design(S_y_inds, L_y, y, noise_std=0.05)
 
-lower = torch.tensor([2.5, 20.0]).float()
 excursion_probas = my_sensor.compute_exursion_prob(lower)
 
 plot_grid_probas(my_grid, excursion_probas,
