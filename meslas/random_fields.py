@@ -55,7 +55,7 @@ class GRF():
         self.n_out = covariance.n_out
 
     def variance(self, S, L):
-        """ Compute the variances at generalized location (S, L).
+        """ Compute the (pointwise) variances at generalized location (S, L).
 
         Parameters
         ----------
@@ -486,7 +486,7 @@ class DiscreteGRF(GRF):
     @property
     def pointwise_cov(self):
         """ Pointwise covariance matrix, i.e. covariance matrix of the field at
-        each points (i.e. no cross-location covariance.
+        each points (i.e. no cross-location covariance).
 
         Returns
         -------
@@ -498,7 +498,7 @@ class DiscreteGRF(GRF):
 
     @property
     def variance(self):
-        """ Returns variances.
+        """ Returns the (pointwise) variances.
 
         Returns
         -------
@@ -562,6 +562,50 @@ class DiscreteGRF(GRF):
         self.covariance_mat.set_vals(self.covariance_mat.list - weights @ K_pred_y.t())
 
         return self.mean_vec, self.covariance_mat
+
+    def compute_cov_reduction(self, S_y_inds, L_y, noise_std=None):
+        """ Compute the covariance reduction that would result from observing
+        some hypothetic data.
+
+        Parameters
+        ----------
+        S_y_inds: (M) Tensor
+            Indices (in the grid) of the spatial locations of the measurements.
+        L_y: (M) Tensor
+            Response indices of the measurements.
+        noise_std: float
+            Noise standard deviation. Uniform across all measurments.
+
+        Returns
+        -------
+        cov_reduction: (n_points, n_out) GeneralizedMatrix
+
+        """
+        # Create the generalized measurement vector corresponding to prediction
+        # on the whole grid.
+        S_inds, L = get_isotopic_generalized_location_inds(self.grid.points, self.n_out)
+
+        # Subsetting of covariance matrices has to be done in two steps.
+        K_pred_y = self.covariance_mat.isotopic[S_inds, :, L, :]
+        K_pred_y = K_pred_y[:, S_y_inds, L_y]
+
+        # WARNING: It is very important to do the indexing in two steps.
+        # If not, then torch will return an object of the wrong dimension, but
+        # then silently convert it once it is used. This can (and will) produce
+        # nasyt bugs.
+        K_yy = self.covariance_mat.isotopic[S_y_inds, :, L_y, :]
+        K_yy = K_yy[:, S_y_inds, L_y]
+
+        noise = noise_std**2 * torch.eye(K_yy.shape[0])
+
+        weights = K_pred_y @ torch.inverse(K_yy + noise)
+        cov_reduction = weights @ K_pred_y.t()
+
+        # Wrap in GeneralizedMatrix for convenience.
+        cov_reduction = GeneralizedMatrix(cov_reduction,
+                    self.n_points, self.n_out, self.n_points, self.n_out)
+
+        return cov_reduction
 
     def sample(self):
         """ Sample the discretized GRF on the whole grid.
