@@ -25,7 +25,6 @@ means vector has shape (n. p).
 import torch
 from torch.distributions.multivariate_normal import MultivariateNormal
 from meslas.geometry.grid import get_isotopic_generalized_location
-from meslas.geometry.grid import get_isotopic_generalized_location_inds
 from meslas.vectors import GeneralizedVector, GeneralizedMatrix
 from meslas.excursion import coverage_fct_fixed_location
 from meslas.external_dependencies.numpytorch import kron as kronecker
@@ -538,7 +537,8 @@ class DiscreteGRF(GRF):
 
         # Create the generalized measurement vector corresponding to prediction
         # on the whole grid.
-        S_inds, L = get_isotopic_generalized_location_inds(self.grid.points, self.n_out)
+        S_inds, L = self.grid.get_isotopic_generalized_location_inds(
+                self.grid.points, self.n_out)
 
         mu_y = self.mean_vec.isotopic[S_y_inds, L_y]
 
@@ -585,7 +585,8 @@ class DiscreteGRF(GRF):
         """
         # Create the generalized measurement vector corresponding to prediction
         # on the whole grid.
-        S_inds, L = get_isotopic_generalized_location_inds(self.grid.points, self.n_out)
+        S_inds, L = self.grid.get_isotopic_generalized_location_inds(
+                self.grid.points, self.n_out)
 
         # Subsetting of covariance matrices has to be done in two steps.
         K_pred_y = self.covariance_mat.isotopic[S_inds, :, L, :]

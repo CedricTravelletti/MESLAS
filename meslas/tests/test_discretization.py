@@ -7,7 +7,7 @@ from meslas.means import ConstantMean
 from meslas.covariance.covariance_functions import Matern32
 from meslas.covariance.cross_covariances import UniformMixing
 from meslas.covariance.heterotopic import FactorCovariance
-from meslas.geometry.grid import TriangularGrid, SquareGrid, get_isotopic_generalized_location_inds
+from meslas.geometry.grid import TriangularGrid, SquareGrid
 from meslas.random_fields import GRF, DiscreteGRF
 from meslas.excursion import coverage_fct_fixed_location
 from meslas.plotting import plot_grid_values, plot_grid_probas
@@ -20,7 +20,7 @@ n_out = 2
 matern_cov = Matern32(lmbda=0.1, sigma=1.0)
 
 # Cross covariance.
-cross_cov = UniformMixing(gamma0=0.0, sigmas=[np.sqrt(1.0), np.sqrt(5.5)])
+cross_cov = UniformMixing(gamma0=0.4, sigmas=[np.sqrt(1.0), np.sqrt(5.5)])
 
 covariance = FactorCovariance(matern_cov, cross_cov, n_out=n_out)
 

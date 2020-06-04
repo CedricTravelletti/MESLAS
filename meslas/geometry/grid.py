@@ -207,6 +207,31 @@ class IrregularGrid():
                 vals, (xi[None,:], yi[:,None]), method=method)
         return torch.from_numpy(zi.reshape(xi.shape[0], yi.shape[0]))
             
+    def get_isotopic_generalized_location_inds(self, S, p):
+        """ Given a list of spatial location, create the generalized measurement
+        vector that corresponds to measuring ALL responses at those locations, but
+        returns the indices (in the grid) instead of spatial locations.
+    
+        Parameters
+        ----------
+        S: (M, d) Tensor
+            List of spatial locations.
+        p: int
+            Number of responses.
+    
+        Returns
+        -------
+        S_iso_inds: (M) Tensor
+            Indices of the locations, repeated p times.
+        L_iso: (M * p) Tensor
+            Response index vector for isotopic measurement.
+    
+        """
+        # First find the corresponding indices in the grid.
+        S_inds = self.get_closest(S)
+        S_inds_iso, L_iso = get_isotopic_generalized_location(S_inds, p)
+        return S_inds_iso.long(), L_iso
+
 
 class TriangularGrid(IrregularGrid):
     """ Create a grid of triangular cells. Only valid for two dimensions.
@@ -231,58 +256,7 @@ class TriangularGrid(IrregularGrid):
         # supposed to have.
         self.n_neighbors = 6
 
-def get_isotopic_generalized_location(S, p):
-    """ Given a list of spatial location, create the generalized measurement
-    vector that corresponds to measuring ALL responses at those locations.
 
-    Parameters
-    ----------
-    S: (M, d) Tensor
-        List of spatial locations.
-    p: int
-        Number of responses.
-
-    Returns
-    -------
-    S_iso: (M * p, d) Tensor
-        Location tensor repeated p times.
-    L_iso: (M * p) Tensor
-        Response index vector for isotopic measurement.
-
-    """
-    # Generate index list
-    inds = torch.Tensor([list(range(p))]).long().reshape(-1)
-    # Repeat it by the number of cells.
-    inds_iso = inds.repeat(S.shape[0]).long()
-
-    # Repeat the cells.
-    S_iso = S.repeat_interleave(p, dim=0)
-
-    return S_iso, inds_iso
-
-def get_isotopic_generalized_location_inds(S, p):
-    """ Given a list of spatial location, create the generalized measurement
-    vector that corresponds to measuring ALL responses at those locations, but
-    returns the indices instead of spatial locations.
-
-    Parameters
-    ----------
-    S: (M, d) Tensor
-        List of spatial locations.
-    p: int
-        Number of responses.
-
-    Returns
-    -------
-    S_iso: (M) Tensor
-        Indices of the locations, repeated p times.
-    L_iso: (M * p) Tensor
-        Response index vector for isotopic measurement.
-
-    """
-    S_inds = torch.tensor(list(range(S.shape[0])))
-    S_inds_iso, L_iso = get_isotopic_generalized_location(S_inds, p)
-    return S_inds_iso.long(), L_iso
 
 class SquareGrid(IrregularGrid):
     """ Create a regular square grid of given dimension and size.
@@ -373,3 +347,32 @@ class SquareGrid(IrregularGrid):
 
         """
         return vals.reshape(self.shape)
+
+def get_isotopic_generalized_location(S, p):
+    """ Given a list of spatial location, create the generalized measurement
+    vector that corresponds to measuring ALL responses at those locations.
+
+    Parameters
+    ----------
+    S: (M, d) Tensor
+        List of spatial locations.
+    p: int
+        Number of responses.
+
+    Returns
+    -------
+    S_iso: (M * p, d) Tensor
+        Location tensor repeated p times.
+    L_iso: (M * p) Tensor
+        Response index vector for isotopic measurement.
+
+    """
+    # Generate index list
+    inds = torch.Tensor([list(range(p))]).long().reshape(-1)
+    # Repeat it by the number of cells.
+    inds_iso = inds.repeat(S.shape[0]).long()
+
+    # Repeat the cells.
+    S_iso = S.repeat_interleave(p, dim=0)
+
+    return S_iso, inds_iso
