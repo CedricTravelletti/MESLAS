@@ -27,6 +27,8 @@ from torch.distributions.multivariate_normal import MultivariateNormal
 from meslas.geometry.grid import get_isotopic_generalized_location
 from meslas.geometry.grid import get_isotopic_generalized_location_inds
 from meslas.vectors import GeneralizedVector, GeneralizedMatrix
+from meslas.excursion import coverage_fct_fixed_location
+from meslas.external_dependencies.numpytorch import kron as kronecker
 from gpytorch.utils.cholesky import psd_safe_cholesky
 
 torch.set_default_dtype(torch.float32)
@@ -629,3 +631,59 @@ class DiscreteGRF(GRF):
         sample = distr.sample()
 
         return GeneralizedVector.from_list(sample.float(), self.n_points, self.n_out)
+
+    def _eibv_part_2(self, S_y_inds, L_y, lower, upper=None, noise_std=None):
+        h = 2 # In case we want to generalize later (see Proposition 2).
+
+        id_h = torch.eye(h, dtype=torch.float32)
+        full_h = torch.full((h, h), 1.0, dtype=torch.float32)
+
+        # Extract the covariance reduction at every point. This is pointwise,
+        # i.e. ignore correlations between different spatial locations.
+        pw_cov_reduction = torch.diagonal(
+                self.compute_cov_reduction(S_y_inds, L_y, noise_std).isotopic,
+                dim1=0, dim2=1).T
+
+        # Build the concatenated covariance matrix and mean vector
+        # WARNING: At each point, we want to multiply the dimension of the
+        # response by h. This means that we have to be careful to expand along
+        # the response dimension (the last one) and not along the batch
+        # dimension (the spatial one).
+        pw_covariance_cat = (
+                kronecker(id_h, self.pointwise_cov)
+                + kronecker(full_h - id_h, pw_cov_reduction))
+
+        one_vector = torch.full((h, 1), 1.0)
+        mean_cat = torch.cat(h * [self.mean_vec.isotopic], dim=1)
+
+        # Now concatenate the thresholds.
+        lower_cat = torch.cat(h * [lower])
+        if upper is not None:
+            upper_cat = torch.cat(h * [upper])
+        else: upper_cat = None
+
+        part2 = coverage_fct_fixed_location(
+                    mean_cat, pw_covariance_cat, lower_cat, upper_cat)
+        return part2
+
+    def eibv(self, S_y_inds, L_y, lower, upper=None, noise_std=None):
+        """ Computes the expected IBV if we were to make observations at the
+        generalized locations (S_y, L_y).
+        Since we are on a grid, we do not directly specify the spatial
+        locations S_y, but the corresponding grid indices S_y_inds instead.
+
+        Parameters
+        ----------
+        S_y_inds: (M) Tensor
+            Indices (in the grid) of the spatial locations of the measurements.
+        L_y: (M) Tensor
+            Response indices of the measurements.
+        noise_std: float
+            Noise standard deviation. Uniform across all measurments.
+
+        """
+        part1 = coverage_fct_fixed_location(
+                    self.mean_vec.isotopic, self.pointwise_cov, lower, upper)
+        part2 = self._eibv_part_2(S_y_inds, L_y, lower, upper, noise_std)
+
+        return torch.sum(part1) - torch.sum(part2)
