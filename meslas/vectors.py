@@ -12,17 +12,24 @@ class GeneralizedVector():
     operations (like sampling) it makes sense to expand this as a one
     dimensional vector of lenght (n_points, n_out). This is what this class is
     used for.
+
     The two dimensional form is called the *isotopic* form, by analogy with the
     process of measuring all components of a random field, whereas the
     one-dimensional form is called the list form.
 
     The underlying data structure is always a one-dimensional list of values.
+    The class is indexable as GeneralizedVector[...], and the indexing will be
+    performed on the isotopic from. What will be returned is a subset of the
+    isotopic tensor.
 
     """
     def __init__(self, vals, n_points, n_out):
         self.vals = vals
         self.n_points = n_points
         self.n_out = n_out
+
+    def __getitem__(self, inds):
+        return self.isotopic.__getitem__(inds)
 
     def set_vals(self, vals):
         self.vals = vals
@@ -70,6 +77,9 @@ class GeneralizedMatrix():
         self.n_points2 = n_points2
         self.n_out1 = n_out2
         self.n_out2 = n_out2
+
+    def __getitem__(self, inds):
+        return self.isotopic.__getitem__(inds)
 
     def set_vals(self, vals):
         self.vals = vals

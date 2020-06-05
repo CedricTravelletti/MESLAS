@@ -4,7 +4,7 @@ from meslas.means import LinearMean
 from meslas.covariance.covariance_functions import Matern32
 from meslas.covariance.cross_covariances import UniformMixing
 from meslas.covariance.heterotopic import FactorCovariance
-from meslas.geometry.grid import TriangularGrid, SquareGrid, get_isotopic_generalized_location_inds
+from meslas.geometry.grid import TriangularGrid, SquareGrid
 from meslas.random_fields import GRF, DiscreteGRF
 from meslas.excursion import coverage_fct_fixed_location
 from meslas.plotting import plot_grid_values, plot_grid_probas

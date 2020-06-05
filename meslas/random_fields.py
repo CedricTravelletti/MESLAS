@@ -540,17 +540,17 @@ class DiscreteGRF(GRF):
         S_inds, L = self.grid.get_isotopic_generalized_location_inds(
                 self.grid.points, self.n_out)
 
-        mu_y = self.mean_vec.isotopic[S_y_inds, L_y]
+        mu_y = self.mean_vec[S_y_inds, L_y]
 
         # Subsetting of covariance matrices has to be done in two steps.
-        K_pred_y = self.covariance_mat.isotopic[S_inds, :, L, :]
+        K_pred_y = self.covariance_mat[S_inds, :, L, :]
         K_pred_y = K_pred_y[:, S_y_inds, L_y]
 
         # WARNING: It is very important to do the indexing in two steps.
         # If not, then torch will return an object of the wrong dimension, but
         # then silently convert it once it is used. This can (and will) produce
         # nasyt bugs.
-        K_yy = self.covariance_mat.isotopic[S_y_inds, :, L_y, :]
+        K_yy = self.covariance_mat[S_y_inds, :, L_y, :]
         K_yy = K_yy[:, S_y_inds, L_y]
 
         noise = noise_std**2 * torch.eye(y.shape[0])
@@ -589,14 +589,14 @@ class DiscreteGRF(GRF):
                 self.grid.points, self.n_out)
 
         # Subsetting of covariance matrices has to be done in two steps.
-        K_pred_y = self.covariance_mat.isotopic[S_inds, :, L, :]
+        K_pred_y = self.covariance_mat[S_inds, :, L, :]
         K_pred_y = K_pred_y[:, S_y_inds, L_y]
 
         # WARNING: It is very important to do the indexing in two steps.
         # If not, then torch will return an object of the wrong dimension, but
         # then silently convert it once it is used. This can (and will) produce
         # nasyt bugs.
-        K_yy = self.covariance_mat.isotopic[S_y_inds, :, L_y, :]
+        K_yy = self.covariance_mat[S_y_inds, :, L_y, :]
         K_yy = K_yy[:, S_y_inds, L_y]
 
         noise = noise_std**2 * torch.eye(K_yy.shape[0])
