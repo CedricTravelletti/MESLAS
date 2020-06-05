@@ -39,11 +39,11 @@ my_discrete_grf = DiscreteGRF.from_model(myGRF, my_grid)
 
 # Sample and plot.
 sample = my_discrete_grf.sample()
-plot_grid_values(my_grid, sample.isotopic)
+plot_grid_values(my_grid, sample)
 
 # Sample and plot.
 sample = my_discrete_grf.sample()
-plot_grid_values(my_grid, sample.isotopic)
+plot_grid_values(my_grid, sample)
 
 # Sample the continuous version and compare.
 sample_cont = myGRF.sample_isotopic(my_grid.points)
@@ -62,7 +62,7 @@ y = torch.tensor(11*[-6]).float()
 S_y_inds = my_grid.get_closest(S_y)
 
 my_discrete_grf.update(S_y_inds, L_y, y, noise_std=0.05)
-plot_grid_values(my_grid, my_discrete_grf.mean_vec.isotopic, S_y, L_y)
+plot_grid_values(my_grid, my_discrete_grf.mean_vec, S_y, L_y)
 
 # -----------------------------------------
 # Now compare with the non-discrete version.
@@ -72,8 +72,8 @@ mu_cond, K_cond = myGRF.krig_isotopic(
         noise_std=0.05,
         compute_post_cov=True)
 
-plot_grid_values(my_grid, mu_cond.isotopic, S_y, L_y)
+plot_grid_values(my_grid, mu_cond, S_y, L_y)
 
 # -----------------------------------------
 # Try the variance part.
-plot_grid_values(my_grid, my_discrete_grf.variance.isotopic, S_y, L_y, cmap="proba")
+plot_grid_values(my_grid, my_discrete_grf.variance, S_y, L_y, cmap="proba")

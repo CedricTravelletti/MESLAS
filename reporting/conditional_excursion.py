@@ -30,8 +30,8 @@ covariance = FactorCovariance(matern_cov, cross_cov, n_out=n_out)
 # horizontal coordinate.
 beta0s = np.array([5.8, 24.0])
 beta1s = np.array([
-        [0, -7.0],
-        [0, -5.0]])
+        [0, -5.0],
+        [0, -3.8]])
 mean = LinearMean(beta0s, beta1s)
 
 # Create the GRF.
@@ -40,7 +40,7 @@ myGRF = GRF(mean, covariance)
 # Create a regular square grid in 2 dims.
 # Number of repsones.
 dim = 2
-my_grid = SquareGrid(100, dim)
+my_grid = SquareGrid(70, dim)
 
 # Sample all components at all locations.
 sample, sample_list = myGRF.sample_grid(my_grid)
@@ -80,7 +80,7 @@ plot_krig_slice(mu_cond_grid, S_y, L_y)
 # Now compute and plot coverage function.
 # Need only cross-covariances at fixed locations.
 K_cond_diag = torch.diagonal(K_cond_iso, dim1=0, dim2=1).T
-lower = torch.tensor([3.5, 24.0]).double()
+lower = torch.tensor([3.5, 22.0]).double()
 
 coverage = coverage_fct_fixed_location(mu_cond_iso, K_cond_diag, lower, upper=None)
 plot_proba(coverage.reshape(my_grid.shape), title="Joint Excursion Probability")

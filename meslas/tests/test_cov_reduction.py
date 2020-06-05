@@ -26,7 +26,7 @@ covariance = FactorCovariance(matern_cov, cross_cov, n_out=n_out)
 beta0s = np.array([7.8, 24.0])
 beta1s = np.array([
         [0, -7.0],
-        [0, -5.0]])
+        [0, -4.0]])
 mean = LinearMean(beta0s, beta1s)
 
 covariance = FactorCovariance(matern_cov, cross_cov, n_out=n_out)

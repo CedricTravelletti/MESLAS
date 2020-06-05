@@ -46,7 +46,7 @@ sample = my_discrete_grf.sample()
 
 # Plot.
 from meslas.plotting import plot_grid_values
-plot_grid_values(my_grid, sample.isotopic)
+plot_grid_values(my_grid, sample)
 np.save("./ground_truth.npy", sample.isotopic.numpy())
 
 # Measure some data on the middle of the grid.
@@ -65,7 +65,7 @@ y = sample.isotopic[S_y_inds, L_y]
 my_discrete_grf.update(S_y_inds, L_y, y, noise_std=0.05)
 
 # Plot kriging predictor.
-plot_grid_values(my_grid, my_discrete_grf.mean_vec.isotopic,
+plot_grid_values(my_grid, my_discrete_grf.mean_vec,
         my_grid.points[S_y_inds], L_y )
 
 # Excursion threshold.

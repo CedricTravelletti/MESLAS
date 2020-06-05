@@ -56,8 +56,8 @@ mu_cond_sq, K_cond_sq = myGRF.krig_isotopic(
 
 # Plot.
 from meslas.plotting import plot_grid_values, plot_grid_probas
-plot_grid_values(my_grid, mu_cond.isotopic, S_y, L_y)
-plot_grid_values(my_square_grid, mu_cond_sq.isotopic, S_y, L_y)
+plot_grid_values(my_grid, mu_cond, S_y, L_y)
+plot_grid_values(my_square_grid, mu_cond_sq, S_y, L_y)
 
 # Try the variance part.
 mu_cond, var_cond = myGRF.krig_isotopic(
@@ -65,14 +65,14 @@ mu_cond, var_cond = myGRF.krig_isotopic(
         noise_std=0.05,
         compute_post_var=True)
 
-plot_grid_values(my_grid, var_cond.isotopic, S_y, L_y, cmap="proba")
+plot_grid_values(my_grid, var_cond, S_y, L_y, cmap="proba")
 
 
 variance_reduction = myGRF.variance_reduction_isotopic(
         my_grid.points, S_y, L_y,
         noise_std=0.05)
 
-plot_grid_values(my_grid, variance_reduction.isotopic, S_y, L_y, cmap="proba")
+plot_grid_values(my_grid, variance_reduction, S_y, L_y, cmap="proba")
 
 K_cond_diag = torch.diagonal(K_cond.isotopic, dim1=0, dim2=1).T
 lower = torch.tensor([-1.0, -1.0]).double()

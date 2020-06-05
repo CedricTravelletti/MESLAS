@@ -7,6 +7,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from mpl_toolkits.axes_grid1 import ImageGrid
+from meslas.vectors import GeneralizedVector
 
 
 sns.set()
@@ -209,9 +210,10 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
     ----------
     grid: IrregularGrid
         Grid on which the values are defined.
-    vals: (grid.n_points, p)
+    vals: (grid.n_points, p) or GeneralizedVector
         Values to plot, defined at the grid nodes. The number of response p can
         be arbitrary.
+        If GeneralizedVector, then the reshaping is handled automatically.
     S_y: (n, grid.dim) Tensor (optional)
         Vector of spatial locations to plot as points.
     L_y: (n) Tensor (optional)
@@ -221,6 +223,8 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
         If set to "proba", will use red-blue.
 
     """
+    if isinstance(vals, GeneralizedVector):
+        vals = vals.isotopic
     if cmap == "proba":
         cmap = CMAP_PROBA
     else: cmap = CMAP
