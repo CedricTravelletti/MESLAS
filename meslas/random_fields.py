@@ -55,6 +55,13 @@ class GRF():
         self.covariance = covariance
         self.n_out = covariance.n_out
 
+    def __repr__(self):
+        out_string = ("Gaussian Random Field model with {} output "
+                "dimensions.\n").format(self.n_out)
+        sep_string = "------------------------------------------------------\n"
+        mean_string = self.mean.__repr__()
+        return out_string + sep_string + mean_string + sep_string + cov_string
+
     def variance(self, S, L):
         """ Compute the (pointwise) variances at generalized location (S, L).
 

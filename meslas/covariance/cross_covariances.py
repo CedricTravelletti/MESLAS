@@ -5,7 +5,7 @@ import torch
 torch.set_default_dtype(torch.float32)
 
 
-def UniformMixing(gamma0, sigmas):
+class UniformMixing():
     """ Create a uniform mixing cross-covariance. 
 
     Parameters
@@ -20,11 +20,21 @@ def UniformMixing(gamma0, sigmas):
     function(L1, L2)
 
     """
-    # Convert to tensor if not.
-    if not torch.is_tensor(gamma0): gamma0 = torch.tensor(gamma0).float()
-    if not torch.is_tensor(sigmas): sigmas = torch.tensor(sigmas).float()
+    def __init__(self, gamma0, sigmas):
+        # Convert to tensor if not.
+        if not torch.is_tensor(gamma0): gamma0 = torch.tensor(gamma0).float()
+        if not torch.is_tensor(sigmas): sigmas = torch.tensor(sigmas).float()
+        self.gamma0 = gamma0
+        self.sigmas = sigmas
 
-    return lambda L1, L2: _uniform_mixing_crosscov(L1, L2, gamma0, sigmas)
+    def __call__(self, L1, L2):
+        return _uniform_mixing_crosscov(L1, L2, self.gamma0, self.sigmas)
+
+    def __repr__(self):
+        out_string = ("Uniform mixing covariance:\n"
+                "\t cross-corellation parameter gamma0: {}\n"
+                "\t individual variances sigma0s: {}\n").format(self.gamma0, self.sigmas)
+        return out_string
 
 def _uniform_mixing_crosscov(L1, L2, gamma0, sigmas):
     """ Given two vectors of response indices,

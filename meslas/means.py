@@ -36,6 +36,10 @@ class ConstantMean():
         """
         return self.means[L]
 
+    def __repr__(self):
+        out_string = "Constant mean module: mean {}\n".format(self.means)
+        return out_string
+
 class LinearMean():
     """ Linear trend mean function.
     The mean at location x will be given by
@@ -73,3 +77,8 @@ class LinearMean():
         # The code is a bit convoluted since we need to perform dot products
         # for each row.
         return self.beta0s[L] + (self.beta1s[L, :] * S).sum(1)
+
+    def __repr__(self):
+        out_string = ("Linear trend module: m(x) = b0 + b1*x.\n"
+                "\t b0: {}\n \t b1: {}\n").format(self.beta0s, self.beta1s)
+        return out_string

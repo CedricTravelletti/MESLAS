@@ -95,3 +95,11 @@ class FactorCovariance(Covariance):
     def __init__(self, spatial_cov, cross_cov, n_out):
         self.factor_stationary_cov = lambda H, L1, L2: spatial_cov(H) * cross_cov(L1, L2)
         self.n_out = n_out
+
+    def __repr__(self):
+        out_string = ("Factor Covariance Module:\n"
+                "------------------\n"
+                "Spatial part: \n"
+                "\t cross-corellation parameter gamma0:\n"
+                "\t individual variances sigma0s:\n")
+        return out_string
