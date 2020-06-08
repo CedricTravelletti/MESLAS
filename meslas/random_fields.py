@@ -60,7 +60,14 @@ class GRF():
                 "dimensions.\n").format(self.n_out)
         sep_string = "------------------------------------------------------\n"
         mean_string = self.mean.__repr__()
-        return out_string + sep_string + mean_string + sep_string + cov_string
+
+        # TODO: Not implemented yet.
+        cov_string = ("Factor Covariance module:\n"
+                "-------------------------\n"
+                "... printing not implemented yet ...\n")
+        return (out_string + sep_string
+                + mean_string + sep_string
+                + cov_string + sep_string)
 
     def variance(self, S, L):
         """ Compute the (pointwise) variances at generalized location (S, L).
