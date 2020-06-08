@@ -87,7 +87,7 @@ class GRF():
         """
         raise NotImplementedError
 
-    def sample(self, S, L):
+    def sample(self, S, L, jitter=1e-5):
         """ Sample the GRF at generalized location (S, L).
 
         Parameters
@@ -96,6 +96,8 @@ class GRF():
             List of spatial locations.
         L: (M) Tensor
             List of response indices.
+        jitter: float
+            Jitter to add if covariance matrix is not diagonalisable.
 
         Returns
         -------
@@ -109,7 +111,7 @@ class GRF():
 
         # Sample M independent N(0, 1) RVs.
         # TODO: Determine if this is better than doing Cholesky ourselves.
-        lower_chol = psd_safe_cholesky(K, jitter=1e-3)
+        lower_chol = psd_safe_cholesky(K, jitter=jitter)
         distr = MultivariateNormal(
                 loc=mu,
                 scale_tril=lower_chol)
@@ -633,7 +635,7 @@ class DiscreteGRF(GRF):
 
         return cov_reduction
 
-    def sample(self):
+    def sample(self, jitter=1e-5)):
         """ Sample the discretized GRF on the whole grid.
 
 
@@ -641,6 +643,8 @@ class DiscreteGRF(GRF):
         -------
         Z: (M) Tensor
             The sampled value of Z_{s_i} component l_i.
+        jitter: float
+            Jitter to add if covariance matrix is not diagonalisable.
 
         """
         K = self.covariance_mat.list
@@ -648,7 +652,7 @@ class DiscreteGRF(GRF):
 
         # Sample M independent N(0, 1) RVs.
         # TODO: Determine if this is better than doing Cholesky ourselves.
-        lower_chol = psd_safe_cholesky(K, jitter=1e-3)
+        lower_chol = psd_safe_cholesky(K, jitter=jitter)
         distr = MultivariateNormal(
                 loc=mu,
                 scale_tril=lower_chol)
