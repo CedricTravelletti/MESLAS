@@ -227,6 +227,11 @@ class IrregularGrid():
             Response index vector for isotopic measurement.
     
         """
+        # If we have a single location, expand to a vector of size one for
+        # compatibility purposes.
+        if len(S.shape) <= 1:
+            S = S.unsqueeze(0)
+
         # First find the corresponding indices in the grid.
         S_inds = self.get_closest(S)
         S_inds_iso, L_iso = get_isotopic_generalized_location(S_inds, p)
