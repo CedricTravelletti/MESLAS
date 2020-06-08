@@ -635,7 +635,7 @@ class DiscreteGRF(GRF):
 
         return cov_reduction
 
-    def sample(self, jitter=1e-5)):
+    def sample(self, jitter=1e-5):
         """ Sample the discretized GRF on the whole grid.
 
 
