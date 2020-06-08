@@ -248,6 +248,12 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
             locs = S_y[L_y == 0].numpy()
             plt.scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color="red")
 
+        # If only one dim, then can also allow L_y to be unspecified.
+        elif (S_y is not None):
+            # Add the location of the measurement points on top.
+            locs = S_y.numpy()
+            plt.scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color="red")
+
         plt.xlim([0, 1])
         plt.ylim([0, 1])
         cbar = plt.colorbar(im)
