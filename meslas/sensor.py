@@ -94,7 +94,7 @@ class Sensor():
         self.y_tot = torch.cat([self.y_tot, y], dim=0)
         return
 
-    def get_neighbors(self):
+    def get_current_neighbors(self):
         """ Get the neighbouring grid nodes of the current sensor location.
 
         This is done by first finding the node closes to the sensor location,
@@ -209,8 +209,12 @@ class DiscreteSensor(Sensor):
     """ Sensor on a fixed discretization.
 
     """
+    def __init__(self, discrete_grf):
+        super(DiscreteSensor, self).__init__(discrete_grf.grid, discrete_grf)
+
     def update_design(self, S_y_inds, L_y, y, noise_std=None):
         """ Updates the full design grid by computing current conditional mean and covariance.
+        Note that this updates the internal of the discrete GRF.
 
         Returns
         -------
@@ -255,3 +259,106 @@ class DiscreteSensor(Sensor):
                 self.grf.mean_vec.isotopic, pointwise_cov, lower,
                 upper=None)
         return excursion_proba
+
+    def get_neighbors_isotopic_eibv(self, noise_std, lower, upper=None):
+        """ For each neighbouring node of the current sensor location, compute
+        the eibv if we were to measure every response (isotopic) at that node.
+        Returns a list containing the EIBV for each neighbor.
+
+        Parameters
+        ----------
+        noise_std: float
+            Standar deviation of measurement noise.
+        lower: (p) Tensor
+            List of lower threshold for each response. The excursion set is the set
+            where responses are above the specified threshold.
+            Note that np.inf is supported.
+        upper: (p) Tensor
+            If not provided, defaults to +infty (excursion set above
+            threshold).
+
+        Returns
+        -------
+        neighbors_eibv: (n_neighbors) Tensor
+            EIBV for each neighbouring cell.
+        neighbors_inds: (n_neighbors) Tensor
+            Grid indices of the neighbouring cells.
+
+        """
+        neighbors_inds = self.get_current_neighbors()
+        neighbors_coords = self.grid.points[neighbors_inds]
+
+        neighbors_eibv = torch.Tensor()
+        for S_y_ind in neighbors_inds:
+            S_inds, L = self.grid.get_isotopic_generalized_location_inds(
+                    self.grid.points[S_y_ind], self.grf.n_out)
+            eibv = self.grf.eibv(S_inds, L, lower, upper, noise_std)
+            neighbors_eibv = torch.cat([neighbors_eibv, eibv.unsqueeze(0)])
+
+        return neighbors_eibv, neighbors_inds
+
+    def choose_next_point_myopic(self, noise_std, lower, upper=None):
+        """ Choose the next observation location (given the current one)
+        using the myopic strategy.
+
+        Parameters
+        ----------
+        noise_std: float
+            Standar deviation of measurement noise.
+        lower: (p) Tensor
+            List of lower threshold for each response. The excursion set is the set
+            where responses are above the specified threshold.
+            Note that np.inf is supported.
+        upper: (p) Tensor
+            If not provided, defaults to +infty (excursion set above
+            threshold).
+
+        Returns
+        -------
+        next_point_ind: (1) Tensor
+            Grid index of next observation location chosen according to the
+            myopic strategy.
+        next_point_eibv: (1) Tensor
+            EIBV corresponding to the next chosen point.
+
+        """
+        neighbors_eibv, neighbors_inds = self.get_neighbors_isotopic_eibv(
+                noise_std, lower, upper)
+        min_ind = torch.argmin(neighbors_eibv)
+
+        return neighbors_inds[min_ind], neighbors_eibv[min_ind]
+
+    def run_myopic_stragegy(self, n_steps, data_feed, noise_std, lower,
+            upper=None):
+        """ Run the myopic strategy for n_steps, starting from the current
+        location. That is, at each point, pick the neighbors with the smallest
+        EIBV, move there, observe, update model, repeat.
+
+        Parameters
+        ----------
+        n_steps: int
+            Number of steps (observations) to run the strategy for.
+        data_feed: function(int)
+            Function that, given a node index, returns the measured data
+            (isotopic) at that node.
+
+        """
+        for i in range(n_steps):
+            # Choose next point.
+            next_point_ind, next_point_eibv = self.choose_next_point_myopic(
+                    noise_std, lower, upper)
+
+            # Move there.
+            print("Moving to next best point {}".format(
+                    self.grid.points[next_point_ind]))
+            self.set_location(self.grid.points[next_point_ind])
+
+            # Get the measurement vector corresponding to isotopic data
+            S_ind, L = self.grid.get_isotopic_generalized_location_inds(
+                    self.grid.points[next_point_ind], self.grf.n_out)
+
+            # Acquire data.
+            y = data_feed(next_point_ind)
+            
+            # Update model.
+            self.update_design(S_ind, L, y, noise_std)
