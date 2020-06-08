@@ -168,7 +168,7 @@ class GRF():
 
         return sample_grid, sample_list
 
-    def krig(self, S, L, S_y, L_y, y, noise_std=0.0,
+    def krig(self, S, L, S_y, L_y, y, noise_std=None,
             compute_post_var = False, compute_post_cov=False):
         """ Predict field at some generalized locations, based on some measured data at other
         generalized locations.
@@ -189,8 +189,8 @@ class GRF():
             Response indices of the measurements.
         y: (M) Tensor
             Measured values.
-        noise_std: float
-            Noise standard deviation. Uniform across all measurments.
+        noise_std: (n_out) Tensor
+            Noise standard deviation for each response.
         compute_post_var: bool
             If true, compute and return posterior variance (matrix) at each
             point.
@@ -218,7 +218,9 @@ class GRF():
         K_pred_y = self.covariance.K(S, S_y, L, L_y)
         K_yy = self.covariance.K(S_y, S_y, L_y, L_y)
 
-        noise = noise_std**2 * torch.eye(y.shape[0])
+        # Create the noise matrix.
+        if noise_std is None: noise_std = torch.zeros(self.n_out)
+        noise = torch.diag(noise_std[L_y]**2)
 
         weights = K_pred_y @ torch.inverse(K_yy + noise)
         mu_cond = mu_pred + weights @ (y - mu_y)
@@ -234,7 +236,7 @@ class GRF():
 
         return mu_cond
 
-    def krig_isotopic(self, points, S_y, L_y, y, noise_std=0.0,
+    def krig_isotopic(self, points, S_y, L_y, y, noise_std=None,
             compute_post_var=False, compute_post_cov=False):
         """ Predict field at some points, based on some measured data at other
         points. Predicts all repsonses (isotopic).
@@ -249,8 +251,8 @@ class GRF():
             Response indices of the measurements.
         y: (M) Tensor
             Measured values.
-        noise_std: float
-            Noise standard deviation. Uniform across all measurments.
+        noise_std: (n_out) Tensor
+            Noise standard deviation for each response. Defaults to 0.
         compute_post_var: bool
             If true, compute and return posterior variance (matrix) at each
             point.
@@ -312,7 +314,7 @@ class GRF():
     # TODO: See if we can deprecate this.
     # It was mainly used for plotting, but since now reordering has been
     # defered to grid class, we might want to get rid of this.
-    def krig_grid(self, grid, S_y, L_y, y, noise_std=0.0, compute_post_cov=False):
+    def krig_grid(self, grid, S_y, L_y, y, noise_std=None, compute_post_cov=False):
         """ Predict field at some points, based on some measured data at other
         points.
     
@@ -326,8 +328,8 @@ class GRF():
             Response indices of the measurements.
         y: (M) Tensor
             Measured values.
-        noise_std: float
-            Noise standard deviation. Uniform across all measurments.
+        noise_std: (n_out) Tensor
+            Noise standard deviation for each response. Defaults to 0.
         compute_post_cov: bool
             If true, compute and return posterior covariance.
     
@@ -376,7 +378,7 @@ class GRF():
 
         return mu_cond_grid
 
-    def variance_reduction(self, S, L, S_y, L_y, noise_std=0.0):
+    def variance_reduction(self, S, L, S_y, L_y, noise_std=None):
         """ Computes the reduction in variance at generalized
         locations (S, L) that would be caused by observing data at generalized
         locations (S_y, L_y).
@@ -392,8 +394,8 @@ class GRF():
             Spatial locations of the measurements.
         L_y: (M) Tensor
             Response indices of the measurements.
-        noise_std: float
-            Noise standard deviation. Uniform across all measurments.
+        noise_std: (n_out) Tensor
+            Noise standard deviation for each response. Defaults to 0.
 
         Returns
         -------
@@ -404,13 +406,16 @@ class GRF():
         K_pred_y = self.covariance.K(S, S_y, L, L_y)
         K_yy = self.covariance.K(S_y, S_y, L_y, L_y)
 
-        noise = noise_std**2 * torch.eye(L_y.shape[0])
+        # Create the noise matrix.
+        if noise_std is None: noise_std = torch.zeros(self.n_out)
+        noise = torch.diag(noise_std[L_y]**2)
+
         weights = K_pred_y @ torch.inverse(K_yy + noise)
         variance_reduction = torch.einsum('ik,ik->i', weights, K_pred_y)
 
         return variance_reduction
 
-    def variance_reduction_isotopic(self, points, S_y, L_y, noise_std=0.0):
+    def variance_reduction_isotopic(self, points, S_y, L_y, noise_std=None):
         """ Computes the reduction in variance (all components) at location S
         that would be caused by observing data at generalized locations (S_y, L_y).
         Note that this doesn't depend on the measured data.
@@ -423,8 +428,8 @@ class GRF():
             Spatial locations of the measurements.
         L_y: (M) Tensor
             Response indices of the measurements.
-        noise_std: float
-            Noise standard deviation. Uniform across all measurments.
+        noise_std: (n_out) Tensor
+            Noise standard deviation for each response. Defaults to 0.
 
         Returns
         -------
@@ -542,8 +547,8 @@ class DiscreteGRF(GRF):
             Response indices of the measurements.
         y: (M) Tensor
             Measured values.
-        noise_std: float
-            Noise standard deviation. Uniform across all measurments.
+        noise_std: (n_out) Tensor
+            Noise standard deviation for each response. Defaults to 0.
 
         """
         # We need y to be a single dimensional vector.
@@ -567,7 +572,9 @@ class DiscreteGRF(GRF):
         K_yy = self.covariance_mat[S_y_inds, :, L_y, :]
         K_yy = K_yy[:, S_y_inds, L_y]
 
-        noise = noise_std**2 * torch.eye(y.shape[0])
+        # Create the noise matrix.
+        if noise_std is None: noise_std = torch.zeros(self.n_out)
+        noise = torch.diag(noise_std[L_y]**2)
 
         weights = K_pred_y @ torch.inverse(K_yy + noise)
 
@@ -589,8 +596,8 @@ class DiscreteGRF(GRF):
             Indices (in the grid) of the spatial locations of the measurements.
         L_y: (M) Tensor
             Response indices of the measurements.
-        noise_std: float
-            Noise standard deviation. Uniform across all measurments.
+        noise_std: (n_out) Tensor
+            Noise standard deviation for each response. Defaults to 0.
 
         Returns
         -------
@@ -613,7 +620,9 @@ class DiscreteGRF(GRF):
         K_yy = self.covariance_mat[S_y_inds, :, L_y, :]
         K_yy = K_yy[:, S_y_inds, L_y]
 
-        noise = noise_std**2 * torch.eye(K_yy.shape[0])
+        # Create the noise matrix.
+        if noise_std is None: noise_std = torch.zeros(self.n_out)
+        noise = torch.diag(noise_std[L_y]**2)
 
         weights = K_pred_y @ torch.inverse(K_yy + noise)
         cov_reduction = weights @ K_pred_y.t()
@@ -695,6 +704,7 @@ class DiscreteGRF(GRF):
             Response indices of the measurements.
         noise_std: float
             Noise standard deviation. Uniform across all measurments.
+            Defaults to 0.
 
         """
         part1 = coverage_fct_fixed_location(
