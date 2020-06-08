@@ -48,6 +48,11 @@ def coverage_fct_fixed_location(mean_vec, cov_mat, lower, upper=None):
     lower = torch.stack(cov_mat.shape[0] * [lower], dim=0)
     if upper is not None: upper = torch.stack(cov_mat.shape[0] * [upper], dim=0)
 
+    """
+    id = torch.eye(cov_mat.shape[2])
+    jitter = 1e-1 * id.repeat(cov_mat.shape[0], *(id.dim() * [1]))
+    """
+    # print(jitter)
     cdf = multivariate_normal_cdf(
             lower=lower, upper=upper,
             loc=mean_vec, covariance_matrix=cov_mat)
