@@ -227,7 +227,10 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
         vals = vals.isotopic
     if cmap == "proba":
         cmap = CMAP_PROBA
-    else: cmap = CMAP
+        color="lightgreen"
+    else:
+        cmap = CMAP
+        color = "red"
 
     # Special case if only one, since do not need grid of plots.
     if len(vals.shape) <= 1:
@@ -246,13 +249,13 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
         if (S_y is not None) and (L_y is not None):
             # Add the location of the measurement points on top.
             locs = S_y[L_y == 0].numpy()
-            plt.scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color="red")
+            plt.scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color=color)
 
         # If only one dim, then can also allow L_y to be unspecified.
         elif (S_y is not None):
             # Add the location of the measurement points on top.
             locs = S_y.numpy()
-            plt.scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color="red")
+            plt.scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color=color)
 
         plt.xlim([0, 1])
         plt.ylim([0, 1])
@@ -291,7 +294,8 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
             if (S_y is not None) and (L_y is not None):
                 # Add the location of the measurement points on top.
                 locs = S_y[L_y == i].numpy()
-                plot_grid[i].scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color="red")
+                plot_grid[i].scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5,
+                color=color)
 
             # Restore plot borders, which might be deformed by the scatter.
             plot_grid[i].set_xlim([0, 1])
