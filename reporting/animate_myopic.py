@@ -97,10 +97,10 @@ print(my_sensor.grf.mean_vec.isotopic.shape)
 my_sensor.set_location([0.0, 0.5])
 
 # Run the myopic strategy one step at a time.
-n_steps = 35
+n_steps = 60
 for i in range(n_steps):
     my_sensor.run_myopic_stragegy(n_steps=1, data_feed=data_feed, lower=lower,
             noise_std=noise_std)
 
     # Plot progress.
-    plot_myopic(my_sensor, lower, excursion_ground_truth)
+    plot_myopic(my_sensor, lower, excursion_ground_truth, output_filename="gif{}.png".format(i))

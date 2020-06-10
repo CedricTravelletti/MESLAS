@@ -18,9 +18,9 @@ CMAP_PROBA = ListedColormap(sns.color_palette("RdBu_r", 30))
 CMAP = ListedColormap(sns.color_palette("BrBG", 100))
 
 
-def plot_myopic(sensor, lower, excursion_ground_truth):
+def plot_myopic(sensor, lower, excursion_ground_truth, output_filename=None):
     # Generate the plot array.
-    n_row = 2
+    n_row = 1
     n_col = 2
     fig = plt.figure()
     plot_grid = ImageGrid(fig, 111, nrows_ncols=(n_row, n_col),
@@ -51,16 +51,20 @@ def plot_myopic(sensor, lower, excursion_ground_truth):
             S_y=sensor.grid.points[sensor.visited_node_inds],
             cmap="proba")
 
+    """
     # 4) Plot pointwise variance.
     pw_var = sensor.grf.variance
     _plot_helper(plot_grid, 2, "Excursion probability.", sensor.grid,
             pw_var[:, 0])
     _plot_helper(plot_grid, 3, "Excursion probability.", sensor.grid,
             pw_var[:, 1])
+    """
 
     # 5) Plot neigbors EIBV.
 
-    plt.show()
+    if output_filename is not None:
+        plt.savefig(output_filename)
+    else: plt.show()
 
     return
 
@@ -108,5 +112,5 @@ def _plot_helper(plot_grid, i, title, grid, vals, S_y=None, L_y=None, cmap=None)
     ax = plot_grid[i]
     ax.cax.colorbar(im)
     ax.cax.toggle_label(True)
-    
+
     return
