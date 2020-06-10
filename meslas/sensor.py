@@ -229,7 +229,8 @@ class DiscreteSensor(Sensor):
         """
         S_y = self.grid.points[S_y_inds]
         self.add_data(S_y, L_y, y)
-        self.grf.update(S_y_inds, L_y, y, noise_std)
+        # self.grf.update(S_y_inds, L_y, y, noise_std)
+        self.grf.update_from_scratch(S_y_inds, L_y, y, noise_std)
 
     def compute_exursion_prob(self, lower, upper=None):
         """ Compute the excursion probability on the whole grid, given the
