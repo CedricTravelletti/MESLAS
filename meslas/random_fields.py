@@ -490,6 +490,29 @@ class DiscreteGRF(GRF):
             Grid on which to discretize.
 
         """
+        mean_vec, covariance_mat = DiscreteGRF.discretize_prior(grf, grid)
+        my_grf =  cls(grid, mean_vec, covariance_mat)
+        my_grf.prior_grf = grf
+        return my_grf
+
+    @staticmethod
+    def discretize_prior(grf, grid):
+        """ Discretize a grf prior on a grid and return the mean vector on the
+        grid and covariance matrix between grid nodes.
+
+        Parameters
+        ----------
+        grf: GRF
+            Gaussian Random Field to discretize.
+        grid: Grid
+            Grid on which to discretize.
+
+        Returns
+        -------
+        mean_vec: GeneralizedVector
+        covariance_mat: GeneralizedMatrix
+
+        """
         n_out = grf.covariance.n_out
 
         # Generate the measurment vector that corresponds to all components.
@@ -503,7 +526,7 @@ class DiscreteGRF(GRF):
         covariance_mat = GeneralizedMatrix.from_list(covariance_mat,
                 grid.n_points, n_out, grid.n_points, n_out)
 
-        return cls(grid, mean_vec, covariance_mat)
+        return mean_vec, covariance_mat
 
     @property
     def pointwise_cov(self):
@@ -537,7 +560,8 @@ class DiscreteGRF(GRF):
         variances = GeneralizedVector.from_isotopic(variances)
         return variances
 
-    def update(self, S_y_inds, L_y, y, noise_std=None):
+    def update(self, S_y_inds, L_y, y, noise_std=None,
+            mean_vec=None, covariance_mat=None):
         """ Observe some data and update the field. This will compute the new
         values of the mean vector and covariance matrix.
 
@@ -551,8 +575,18 @@ class DiscreteGRF(GRF):
             Measured values.
         noise_std: (n_out) Tensor
             Noise standard deviation for each response. Defaults to 0.
+        mean_vec: GeneralizedVector, optional
+            Can specify a mean vector to start from if do not want to use the
+            current mean.
+        covariance_mat: GeneralizedMatrix, optional
+            Can specify another covariance matrix if do not want to use the
+            current one.
 
         """
+        # If not provide, use the current model to update.
+        if mean_vec is None: mean_vec = self.mean_vec
+        if covariance_mat is None: covariance_mat = self.covariance_mat
+
         # We need y to be a single dimensional vector.
         y = y.reshape(-1)
 
@@ -561,17 +595,17 @@ class DiscreteGRF(GRF):
         S_inds, L = self.grid.get_isotopic_generalized_location_inds(
                 self.grid.points, self.n_out)
 
-        mu_y = self.mean_vec[S_y_inds, L_y]
+        mu_y = mean_vec[S_y_inds, L_y]
 
         # Subsetting of covariance matrices has to be done in two steps.
-        K_pred_y = self.covariance_mat[S_inds, :, L, :]
+        K_pred_y = covariance_mat[S_inds, :, L, :]
         K_pred_y = K_pred_y[:, S_y_inds, L_y]
 
         # WARNING: It is very important to do the indexing in two steps.
         # If not, then torch will return an object of the wrong dimension, but
         # then silently convert it once it is used. This can (and will) produce
         # nasyt bugs.
-        K_yy = self.covariance_mat[S_y_inds, :, L_y, :]
+        K_yy = covariance_mat[S_y_inds, :, L_y, :]
         K_yy = K_yy[:, S_y_inds, L_y]
 
         # Create the noise matrix.
@@ -582,11 +616,39 @@ class DiscreteGRF(GRF):
 
         # Directly update the one dimensional list of values for the mean
         # vector.
-        self.mean_vec.set_vals(self.mean_vec.list + weights @ (y - mu_y))
+        self.mean_vec.set_vals(mean_vec.list + weights @ (y - mu_y))
             
-        self.covariance_mat.set_vals(self.covariance_mat.list - weights @ K_pred_y.t())
+        self.covariance_mat.set_vals(covariance_mat.list - weights @ K_pred_y.t())
 
         return self.mean_vec, self.covariance_mat
+
+    def update_from_scratch(self, S_y_inds, L_y, y, noise_std=None):
+        """ Same as the update function, but starts from the prior.
+        The purpose of this method is to recover from numerical instabilities
+        that may have accumulated when one has sequentially collected a big dataset.
+        There, one might instead start from the prior and condition on the
+        whole concatenated dataset in one go.
+
+        Parameters
+        ----------
+        grf: GRF
+            The prior random field model (continuous) to use to generate the
+            prior mean and covariance.
+        S_y_inds: (M) Tensor
+            Indices (in the grid) of the spatial locations of the measurements.
+        L_y: (M) Tensor
+            Response indices of the measurements.
+        y: (M) Tensor
+            Measured values.
+        noise_std: (n_out) Tensor
+            Noise standard deviation for each response. Defaults to 0.
+
+        """
+        # Re-generate the prior.
+        mean_vec, covariance_mat = self.discretize_prior(self.prior_grf, self.grid)
+        
+        return self.update(S_y_inds, L_y, y, noise_std,
+            mean_vec, covariance_mat)
 
     def compute_cov_reduction(self, S_y_inds, L_y, noise_std=None):
         """ Compute the covariance reduction that would result from observing
