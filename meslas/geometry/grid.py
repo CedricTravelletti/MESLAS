@@ -89,6 +89,9 @@ class IrregularGrid():
         """
         return self.points.shape
 
+    def __getitem__(self, ind):
+        return self.points[ind]
+
     # TODO: Currently only used to plot posterior, but should be delegated to
     # the GRF posterior sampling procedure.
     def isotopic_vector_to_grid(self, vector, n_out):
