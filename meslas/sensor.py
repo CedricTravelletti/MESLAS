@@ -38,6 +38,7 @@ class Sensor():
     """
     def __init__(self, grid, grf):
         # Empty tensors to hold the already collected information.
+        self.S_y_inds_tot = torch.Tensor().long()
         self.S_y_tot = torch.Tensor()
         self.L_y_tot = torch.Tensor().long()
         self.y_tot = torch.Tensor()
@@ -71,24 +72,29 @@ class Sensor():
         self.visited_node_inds = torch.cat(
                 [self.visited_node_inds, self.current_node_ind])
 
-    def add_data(self, S_y, L_y, y):
+    def add_data(self, S_y_inds, L_y, y):
         """ Add new data to the already collected one.
         Can also handle batches.
         This will just concatenate the new data vectors with the current ones.
 
         Parameters
         ----------
-        S_y: (n, d) Tensor
-            Spatial locations of the new measurements.
+        S_y_inds: (n) Tensor
+            Grind index of spatial locations of the new measurements.
         L_y :(n) Tensor
             Corresponding response indices.
         y :(n, p) Tensor
             Measured data.
 
         """
+        # Get spatial location.
+        S_y = self.grid.points[S_y_inds]
+
         # 0-dim tensor cannot be concatenated. So throw if happens.
         if L_y.dim() == 0:
             raise ValueError("Shouldn't have Scalar tensor, wrap it inside [].")
+        
+        self.S_y_inds_tot = torch.cat([self.S_y_inds_tot, S_y_inds.long()], dim=0)
         self.S_y_tot = torch.cat([self.S_y_tot, S_y], dim=0)
         self.L_y_tot = torch.cat([self.L_y_tot, L_y], dim=0)
         self.y_tot = torch.cat([self.y_tot, y], dim=0)
@@ -227,10 +233,9 @@ class DiscreteSensor(Sensor):
             subsetting K_cond_iso[i, i, :, :].
 
         """
-        S_y = self.grid.points[S_y_inds]
-        self.add_data(S_y, L_y, y)
+        self.add_data(S_y_inds, L_y, y)
         # self.grf.update(S_y_inds, L_y, y, noise_std)
-        self.grf.update_from_scratch(S_y_inds, L_y, y, noise_std)
+        self.grf.update_from_scratch(self.S_y_inds_tot, self.L_y_tot, self.y_tot, noise_std)
 
     def compute_exursion_prob(self, lower, upper=None):
         """ Compute the excursion probability on the whole grid, given the
