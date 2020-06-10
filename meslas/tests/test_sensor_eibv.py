@@ -45,7 +45,7 @@ myGRF = GRF(mean, covariance)
 # DISCRETIZE EVERYTHING
 # ------------------------------------------------------
 # Create a regular square grid in 2 dims.
-my_grid = TriangularGrid(40)
+my_grid = TriangularGrid(31)
 print("Working on an equilateral triangular grid with {} nodes.".format(my_grid.n_points))
 
 # Discretize the GRF on a grid and be done with it.
@@ -100,11 +100,10 @@ plot_grid_values(my_grid, excursion_ground_truth.sum(dim=1),
         cmap="proba")
 
 # Also plot plug_in estimate of excursion.
-plot_grid_values(my_grid, my_discrete_grf.mean_vec.isotopic > lower,
+plot_grid_values(my_grid, (my_discrete_grf.mean_vec.isotopic > lower).sum(1),
         my_grid.points[my_sensor.visited_node_inds],
         cmap="proba")
 
 # Plot the excursion probability in the end.
 excu_probas = my_sensor.compute_exursion_prob(lower)
 plot_grid_probas(my_grid, excu_probas)
-print(my_sensor.grf.mean_vec.isotopic.shape)
