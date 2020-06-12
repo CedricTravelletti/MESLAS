@@ -756,8 +756,9 @@ class DiscreteGRF(GRF):
                     mean_cat, pw_covariance_cat, lower_cat, upper_cat)
         return part2
 
-    def eibv(self, S_y_inds, L_y, lower, upper=None, noise_std=None):
-        """ Computes the expected IBV if we were to make observations at the
+    def ebv(self, S_y_inds, L_y, lower, upper=None, noise_std=None):
+        """ Computes the expected Bernoulli Variance (i.e. not integrated)
+        if we were to make observations at the
         generalized locations (S_y, L_y).
         Since we are on a grid, we do not directly specify the spatial
         locations S_y, but the corresponding grid indices S_y_inds instead.
@@ -772,9 +773,39 @@ class DiscreteGRF(GRF):
             Noise standard deviation. Uniform across all measurments.
             Defaults to 0.
 
+        Returns
+        -------
+        ebv: (n_points) Tensor
+            Expected Bernoulli Variance at each point of the grid, conditional
+            on observing at the new data point.
+
         """
         part1 = coverage_fct_fixed_location(
                     self.mean_vec.isotopic, self.pointwise_cov, lower, upper)
         part2 = self._eibv_part_2(S_y_inds, L_y, lower, upper, noise_std)
 
-        return torch.sum(part1) - torch.sum(part2)
+        return part1 - part2
+
+    def eibv(self, S_y_inds, L_y, lower, upper=None, noise_std=None):
+        """ Computes the expected Integrated Bernoulli Variance 8integrated
+        version of the above), if we were to make observations at the
+        generalized locations (S_y, L_y).
+        Since we are on a grid, we do not directly specify the spatial
+        locations S_y, but the corresponding grid indices S_y_inds instead.
+
+        Parameters
+        ----------
+        S_y_inds: (M) Tensor
+            Indices (in the grid) of the spatial locations of the measurements.
+        L_y: (M) Tensor
+            Response indices of the measurements.
+        noise_std: float
+            Noise standard deviation. Uniform across all measurments.
+            Defaults to 0.
+
+        Returns
+        -------
+        ebiv: float
+
+        """
+        return torch.sum(self.ebv(S_y_inds, L_y, lower, upper, noise_std))
