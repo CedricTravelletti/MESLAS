@@ -9,6 +9,10 @@ import matplotlib as mpl
 from mpl_toolkits.axes_grid1 import ImageGrid
 from meslas.vectors import GeneralizedVector
 
+# Trygve's plot parameters.
+plt.rcParams["font.family"] = "Times New Roman"
+plt.rcParams.update({'font.size': 27})
+plt.rcParams.update({'font.style': 'oblique'}) 
 
 sns.set()
 sns.set_style("whitegrid", {'axes.grid' : False})
