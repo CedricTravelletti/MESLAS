@@ -68,6 +68,13 @@ class GeneralizedVector():
         """
         return self.vals.reshape((self.n_points, self.n_out))
 
+    def numpy(self):
+        """ Returns a numpy array containing the isotopic form of the vector.
+        Used for interfacing with others libraries and for saving.
+
+        """
+        return self.isotopic.numpy()
+
 class GeneralizedMatrix():
     """ Same as GeneralizedVector, but for matrices.
     """
@@ -122,3 +129,10 @@ class GeneralizedMatrix():
         """
         return self.vals.reshape(
                 (self.n_points1, self.n_out1, self.n_points2, self.n_out2)).transpose(1, 2)
+
+    def numpy(self):
+        """ Returns a numpy array containing the isotopic form of the matrix.
+        Used for interfacing with others libraries and for saving.
+
+        """
+        return self.isotopic.numpy()
