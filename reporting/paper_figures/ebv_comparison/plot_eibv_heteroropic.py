@@ -217,6 +217,8 @@ plot_grid_values(my_grid, sample)
 # From now on, we will consider the drawn sample as ground truth.
 # ---------------------------------------------------------------
 ground_truth = sample
+# Save for reproducibility.
+np.save("ground_truth.npy", ground_truth.numpy())
 
 # Use it to declare the data feed.
 noise_std = torch.tensor([0.1, 0.1])

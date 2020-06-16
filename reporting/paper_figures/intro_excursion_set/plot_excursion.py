@@ -1,5 +1,4 @@
-""" Plots the EIBV at each point if we were to measure S, T, or both
-simultaneously.
+""" Run the myopic startegy and plot progress each time.
 
 """
 import numpy as np
@@ -19,13 +18,10 @@ from meslas.sensor_plotting import DiscreteSensor
 from torch.distributions.multivariate_normal import MultivariateNormal
 from gpytorch.utils.cholesky import psd_safe_cholesky
 
-
-
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from mpl_toolkits.axes_grid1 import ImageGrid, make_axes_locatable
-from matplotlib.colors import Normalize
 
 from meslas.vectors import GeneralizedVector
 
@@ -36,59 +32,31 @@ sns.set_style("whitegrid", {'axes.grid' : False})
 # Color palettes
 # cmap = sns.cubehelix_palette(light=1, as_cmap=True)
 from matplotlib.colors import ListedColormap
-CMAP_PROBA = ListedColormap(sns.color_palette("RdBu_r", 400))
+CMAP_PROBA = ListedColormap(sns.color_palette("RdBu_r", 30))
 CMAP = ListedColormap(sns.color_palette("BrBG", 100))
 
-CMAP_EXCU = ListedColormap(sns.color_palette("RdBu_r", 3))
-
-plt.rcParams["font.family"] = "Times New Roman"
-plt.rcParams.update({'font.size': 27})
-plt.rcParams.update({'font.style': 'oblique'}) 
-
-# Scientific notation in colorbars
-import matplotlib.ticker
-
-class OOMFormatter(matplotlib.ticker.ScalarFormatter):
-    def __init__(self, order=0, fformat="%1.1f", offset=True, mathText=True):
-        self.oom = order
-        self.fformat = fformat
-        matplotlib.ticker.ScalarFormatter.__init__(self,useOffset=offset,useMathText=mathText)
-    def _set_order_of_magnitude(self):
-        self.orderOfMagnitude = self.oom
-    def _set_format(self, vmin=None, vmax=None):
-        self.format = self.fformat
-        if self._useMathText:
-             self.format = r'$\mathdefault{%s}$' % self.format
-
-
-def plot(sensor, ebv_north, ebv_east,
-        current_proba,
-        S_inds_north, S_inds_east,
-        output_filename=None):
+def plot(sensor, lower, excursion_ground_truth, output_filename=None):
     # Generate the plot array.
     fig = plt.figure(figsize=(15, 10))
-    # gs = fig.add_gridspec(1, 2)
+    gs = fig.add_gridspec(1, 2)
 
     ax1 = fig.add_subplot(131)
     ax2 = fig.add_subplot(132)
     ax3 = fig.add_subplot(133)
 
-    # Normalize EBV color range.
-    norm = Normalize(vmin=0.0, vmax=0.005, clip=False)
     # 1) Get the real excursion set and plot it.
-    plot_grid_values_ax(fig, ax1, "Excursion probability", sensor.grid,
-            current_proba,
-            cmap="proba")
-    plot_grid_values_ax(fig, ax2, "Static north", sensor.grid,
-            ebv_north, cmap="proba",
-            S_y = sensor.grid[S_inds_north],
-            cbar_format=OOMFormatter(-2, mathText=False))
-    plot_grid_values_ax(fig, ax3, "Static east", sensor.grid,
-            ebv_east, cmap="proba",
-            S_y = sensor.grid[S_inds_east],
-            cbar_format=OOMFormatter(-2, mathText=False))
+    plot_grid_values_ax(fig, ax1, r"$Z^1$", sensor.grid,
+            sample.isotopic[:, 0])
+    plot_grid_values_ax(fig, ax2, r"$Z^2$", sensor.grid,
+            sample.isotopic[:, 1])
+    plot_grid_values_ax(fig, ax3, "Excursion set", sensor.grid,
+            excursion_ground_truth,
+            cmap="proba",
+            disable_cbar=True)
 
-    # 2) Plot excursion.
+    # Disable yticks for all but first.
+    ax2.set_yticks([])
+    ax3.set_yticks([])
 
     if output_filename is not None:
         plt.savefig(output_filename)
@@ -170,41 +138,7 @@ lower = torch.tensor([2.3, 22.0]).float()
 excursion_ground_truth = (sample.isotopic > lower).float()
 plot_grid_values(my_grid, excursion_ground_truth.sum(dim=1), cmap="proba")
 
-# Plot the prior excursion probability.
+# Plot the prior excursion probability and realization.
 excu_probas = my_sensor.compute_exursion_prob(lower)
-plot_grid_probas(my_grid, excu_probas)
-print(my_sensor.grf.mean_vec.isotopic.shape)
+plot(my_sensor, lower, excursion_ground_truth.sum(1))
 
-
-# -------------------------------------------------------------
-# Compare two designs: Static North and Static East (a priori).
-# -------------------------------------------------------------
-
-# First get the static north line.
-y_north = torch.linspace(0.5, 0.5, 100)
-x_north = torch.linspace(0, 1, 100)
-design_inds_north = torch.unique(my_grid.get_closest(torch.stack([x_north, y_north], dim=1)))
-S_inds_north, L_north = my_grid.get_isotopic_generalized_location_inds(
-        my_grid[design_inds_north], p=2)
-
-y_east = torch.linspace(0.0, 1.0, 100)
-x_east = torch.linspace(0.515, 0.515, 100)
-design_inds_east = torch.unique(my_grid.get_closest(torch.stack([x_east, y_east], dim=1)))
-S_inds_east, L_east = my_grid.get_isotopic_generalized_location_inds(
-        my_grid[design_inds_east], p=2)
-
-# Get the current Bernoulli variance.
-p = my_sensor.compute_exursion_prob(lower)
-current_bernoulli_variance = p * (1 - p)
-
-ebv_north = my_sensor.grf.ebv(
-        S_inds_north, L_north, lower, noise_std=noise_std)
-
-# Second component.
-ebv_east = my_sensor.grf.ebv(
-        S_inds_east, L_east, lower, noise_std=noise_std)
-
-plot(my_sensor, current_bernoulli_variance - ebv_north,
-        current_bernoulli_variance - ebv_east,
-        p,
-        S_inds_north, S_inds_east, output_filename=None)
