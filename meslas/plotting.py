@@ -7,201 +7,32 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from mpl_toolkits.axes_grid1 import ImageGrid
+from mpl_toolkits.axes_grid1 import ImageGrid, make_axes_locatable
 from meslas.vectors import GeneralizedVector
 
 # Trygve's plot parameters.
 plt.rcParams["font.family"] = "Times New Roman"
-plt.rcParams.update({'font.size': 27})
-plt.rcParams.update({'font.style': 'oblique'}) 
+plot_params = {
+        'font.size': 27, 'font.style': 'oblique',
+        # 'xtick.labelsize': 'x-small',
+        'axes.labelsize': 'xx-small',
+        'axes.titlesize':'xx-small',
+        'xtick.major.pad': '1',
+        'xtick.minor.pad': '1',
+        'ytick.major.pad': '1'}
+plt.rcParams.update(plot_params)
 
 sns.set()
 sns.set_style("whitegrid", {'axes.grid' : False})
 
 # Color palettes
-# cmap = sns.cubehelix_palette(light=1, as_cmap=True)
 from matplotlib.colors import ListedColormap
 CMAP_PROBA = ListedColormap(sns.color_palette("RdBu_r", 30))
+CMAP_EXCU = ListedColormap(sns.color_palette("RdBu_r", 6))
+CMAP_RADAR = ListedColormap(sns.color_palette("cool", 30))
+
 CMAP = ListedColormap(sns.color_palette("BrBG", 100))
 
-
-def plot_2d_slice(sliced_sample, title=None, cmin=None, cmax=None):
-    """ Plots 2 dimensional slice.
-
-    For each of the n_out responses, plot a two dimensional image.
-
-    Parameters
-    ----------
-    sliced_sample: (n1, n2, n_out) Tensor
-        Two dimensional slice of a sample or prediction.
-
-    """
-
-    # Number of responses.
-    # Special case if only one, since do not need grid of plots.
-    if len(sliced_sample.shape) <= 2:
-        if title is None:
-            title = r"$Z^1$"
-        plt.title(title)
-        im = plt.imshow(
-                sliced_sample[:, :].numpy(),
-                vmin=cmin, vmax=cmax,
-                origin="lower",
-                extent=[0,1,0,1],
-                cmap=CMAP)
-        plt.colorbar(im)
-        # plt.toggle_label(True)
-        plt.xticks([0.2, 0.4, 0.6, 0.8])
-        plt.yticks([0.2, 0.4, 0.6, 0.8])
-        plt.show()
-        return
-
-    n_out = sliced_sample.shape[-1]
-    # Dimensions of the plotting area.
-    n_col = int(np.ceil(np.sqrt(n_out)))
-    n_row = int(n_out/n_col)
-
-    fig = plt.figure()
-    plot_grid = ImageGrid(fig, 111, nrows_ncols=(n_row, n_col),
-            axes_pad=0.45, share_all=True,
-            cbar_location="right", cbar_mode="each", cbar_size="7%", cbar_pad=0.15,)
-
-    for i in range(n_out):
-        # fig.axes[i].set_title(r"$Z^" + str(i+1) + "$")
-        plot_grid[i].set_title(r"$Z^" + str(i+1) + "$")
-        im = plot_grid[i].imshow(
-                sliced_sample[:, :, i].numpy(),
-                # vmin=0.8*sample_min, vmax=0.8*sample_max,
-                origin="lower",
-                extent=[0,1,0,1],
-                cmap=CMAP)
-        cax = plot_grid.cbar_axes[i]
-        cax.colorbar(im)
-    # Hide the unused plots.
-    for i in range(n_out, len(plot_grid)):
-        plot_grid[i].axis("off")
-
-    plot_grid.axes_llc.set_xticks([0.2, 0.4, 0.6, 0.8])
-    plot_grid.axes_llc.set_yticks([0.2, 0.4, 0.6, 0.8])
-
-    plt.show()
-
-def plot_krig_slice(sliced_sample, S_y, L_y):
-    """ TEMP: plot kriging mean with observations.
-    
-    """
-    sample_min = torch.min(sliced_sample).item()
-    sample_max = torch.max(sliced_sample).item()
-
-    # Number of responses.
-    # Special case if only one, since do not need grid of plots.
-    if len(sliced_sample.shape) <= 2:
-        plt.title(r"$Z^1$")
-        im = plt.imshow(
-                sliced_sample[:, :].numpy(),
-                # vmin=0.8*sample_min, vmax=0.8*sample_max,
-                origin="lower",
-                extent=[0,1,0,1],
-                cmap=CMAP)
-        # Add the location of the measurement points on top.
-        locs = S_y[L_y == 0].numpy()
-        plt.scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color="red")
-        plt.colorbar(im)
-        ptl.xticks([0.2, 0.4, 0.6, 0.8])
-        plt.yticks([0.2, 0.4, 0.6, 0.8])
-        plt.show()
-        return
-
-    n_out = sliced_sample.shape[-1]
-
-    # Dimensions of the plotting area.
-    n_col = int(np.ceil(np.sqrt(n_out)))
-    
-    n_row = int(n_out/n_col)
-
-    fig = plt.figure()
-    plot_grid = ImageGrid(fig, 111, nrows_ncols=(n_row, n_col),
-            axes_pad=0.45, share_all=True,
-            cbar_location="right", cbar_mode="each", cbar_size="7%", cbar_pad=0.15,)
-
-    for i in range(n_out):
-        # fig.axes[i].set_title(r"$Z^" + str(i+1) + "$")
-        plot_grid[i].set_title(r"$Z^" + str(i+1) + "$")
-        im = plot_grid[i].imshow(
-                sliced_sample[:, :, i].numpy(),
-                # vmin=0.8*sample_min, vmax=0.8*sample_max,
-                origin="lower",
-                extent=[0,1,0,1],
-                cmap=CMAP)
-        cax = plot_grid.cbar_axes[i]
-        cax.colorbar(im)
-
-        # Add the location of the measurement points on top.
-        locs = S_y[L_y == i].numpy()
-        plot_grid[i].scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color="red")
-
-    # Hide the unused plots.
-    for i in range(n_out, len(plot_grid)):
-        plot_grid[i].axis("off")
-
-    # Colorbar
-    ax = plot_grid[i]
-    ax.cax.colorbar(im)
-    ax.cax.toggle_label(True)
-
-    plot_grid.axes_llc.set_xticks([0.2, 0.4, 0.6, 0.8])
-    plot_grid.axes_llc.set_yticks([0.2, 0.4, 0.6, 0.8])
-
-    plt.show()
-
-def plot_proba(coverage_image, title=None):
-    """ Plots excursion probability.
-
-    Parameters
-    ----------
-    coverage_image: (n1, n2) Tensor
-    title: string
-
-    """
-    if title is None:
-        title = r"$Excursion Probability$"
-    plt.title(title)
-    im = plt.imshow(
-                coverage_image[:, :].numpy(),
-                vmin=0.0, vmax=1.0,
-                origin="lower",
-                extent=[0,1,0,1],
-                cmap=CMAP_PROBA)
-    plt.colorbar(im)
-    # plt.toggle_label(True)
-    plt.xticks([0.2, 0.4, 0.6, 0.8])
-    plt.yticks([0.2, 0.4, 0.6, 0.8])
-    plt.show()
-    return
-
-def plot_2D_triangular_grid(grid_coords, grid_vals, S_y=None, L_y=None):
-    # Special case if only one, since do not need grid of plots.
-    if len(grid_vals.shape) <= 1:
-        plt.title(r"$Z^1$")
-        """
-        im = plt.scatter(
-                grid_coords[:, 0].numpy(), grid_coords[:, 1].numpy(),
-                c=grid_vals.numpy(),
-                cmap=cmap)
-        """
-        im = plt.tricontourf(
-                grid_coords[:, 0].numpy(), grid_coords[:, 1].numpy(),
-                grid_vals.numpy(),
-                cmap=CMAP)
-        # Add the location of the measurement points on top.
-        if S_y is not None and L_y is not None:
-            locs = S_y[L_y == 0].numpy()
-            plt.scatter(locs[:, 1], locs[:, 0], marker="x", s=1.5, color="red")
-
-        plt.colorbar(im)
-        plt.xticks([0.2, 0.4, 0.6, 0.8])
-        plt.yticks([0.2, 0.4, 0.6, 0.8])
-        plt.show()
-        return
 
 def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
     """ Plot values defined on a grid. Values can me multidimensional
@@ -366,4 +197,86 @@ def plot_grid_probas(grid, probas, points=None, title=None,
     if output_filename is not None:
         plt.savefig(output_filename)
     else: plt.show()
+    return
+
+def plot_grid_values_ax(fig, axis, title, grid, vals, S_y=None, cmap=None,
+        vmin=None, vmax=None, norm=None,
+        disable_cbar=False, cbar_format=None):
+    """ Plots an image corresponding to values at points of a grid.
+    This function takes an axis as input, so can be used to produce subplots.
+
+    Parameters
+    ----------
+    axis: matplotlib.axis
+        The axis instance on which to draw.
+    title: string
+        Title for the plot.
+    grid: meslas.Geometry.Grid
+        Grid on which to plot.
+    vals: (n_points) Tensor
+        The values at the grid nodes.
+    S_y: (n_points, n_dim) Tensor, optional
+        Allows to add points on the plot.
+    cmap: string
+        Either "proba" of "excu". The second one is used to plot excursion sets
+        (i.e. discrete).
+    vmin: float
+        Minimal value for the color range.
+        Defaults to minimal data value.
+    vmax: float
+        Maximal value for the color range.
+        Defaults to maximal data value.
+    disable_cbar: bool
+        If set to True, disables the colorbar next to the plot.
+    norm: Normalizer
+        Can be used to normalize colors once and for all.
+    cbar_format: matplotlib.ticker.ScalarFormatter
+        Allows one to format colorbar ticks in scientific notation.
+
+    """
+    if isinstance(vals, GeneralizedVector):
+        vals = vals.isotopic
+    if cmap == "proba":
+        cmap = CMAP_PROBA
+        color="lightgreen"
+    elif cmap == "excu":
+        cmap = CMAP_EXCU
+        color="lime"
+    else:
+        cmap = CMAP
+        color = "red"
+    reshaped_vals = grid.interpolate_to_image(vals[:])
+    axis.set_title(title)
+    im = axis.imshow(
+            reshaped_vals[:, :].numpy(),
+            origin="lower",
+            extent=[0,1,0,1],
+            vmin=vmin, vmax=vmax,
+            norm=norm,
+            cmap=cmap)
+
+    # Colorbar
+    # Even if disabled, add the divider so all plots have the same size.
+    divider = make_axes_locatable(axis)
+    cax = divider.append_axes('right', size='5%', pad=0.05)
+    cax.set_visible(False)
+    if not disable_cbar:
+        cbar = fig.colorbar(im, cax=cax, orientation='vertical',
+                format=cbar_format)
+        cbar.ax.tick_params(labelsize=5)
+        cbar.ax.yaxis.get_offset_text().set(size=5)
+        cax.set_visible(True)
+
+    if (S_y is not None):
+        # Add the location of the measurement points on top.
+        locs = S_y.numpy()
+        axis.scatter(locs[:, 1], locs[:, 0], marker="^", s=6.5, color=color)
+
+    # Restore plot borders, which might be deformed by the scatter.
+    axis.set_xlim([0, 1])
+    axis.set_ylim([0, 1])
+
+    axis.tick_params(axis='both', which='major', labelsize=8)
+    axis.tick_params(axis='both', which='minor', labelsize=8)
+
     return

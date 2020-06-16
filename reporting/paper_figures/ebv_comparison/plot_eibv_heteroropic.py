@@ -11,7 +11,7 @@ from meslas.covariance.heterotopic import FactorCovariance
 from meslas.geometry.grid import TriangularGrid
 from meslas.random_fields import GRF, DiscreteGRF
 from meslas.excursion import coverage_fct_fixed_location
-from meslas.plotting import plot_grid_values, plot_grid_probas
+from meslas.plotting import plot_grid_values, plot_grid_probas, plot_grid_values_ax
 
 #from meslas.sensor import DiscreteSensor
 from meslas.sensor_plotting import DiscreteSensor
@@ -64,40 +64,41 @@ class OOMFormatter(matplotlib.ticker.ScalarFormatter):
 def plot(sensor, ebv_1, ebv_2, ebv_full, excursion_ground_truth, output_filename=None):
     # Generate the plot array.
     fig = plt.figure(figsize=(15, 10))
-    gs = fig.add_gridspec(1, 2)
+    gs = fig.add_gridspec(1, 2, wspace=0.2)
 
     ax1 = fig.add_subplot(141)
     ax2 = fig.add_subplot(142)
     ax3 = fig.add_subplot(143)
     ax4 = fig.add_subplot(144)
-    """
-    ax3 = fig.add_subplot(223, projection="polar")
-    """
-
-    # Set the ticks for all.
-    """
-    plot_grid.axes_llc.set_xticks([0.2, 0.4, 0.6, 0.8])
-    plot_grid.axes_llc.set_yticks([0.2, 0.4, 0.6, 0.8])
-    """
 
     # Normalize EBV color range.
     norm = Normalize(vmin=0.0, vmax=0.005, clip=False)
     # 1) Get the real excursion set and plot it.
-    _plot_helper2(fig, ax1, "Excursion set", sensor.grid,
+    plot_grid_values_ax(fig, ax1, "Excursion set", sensor.grid,
             excursion_ground_truth,
             S_y = sensor.grid[sensor.current_node_ind], cmap="excu",
             disable_cbar=True)
-    _plot_helper2(fig, ax2, "Temperature", sensor.grid,
+    plot_grid_values_ax(fig, ax2, "Temperature", sensor.grid,
             ebv_1, cmap="proba", norm=norm,
             cbar_format=OOMFormatter(-2, mathText=False))
-    _plot_helper2(fig, ax3, "Salinity", sensor.grid,
+    plot_grid_values_ax(fig, ax3, "Salinity", sensor.grid,
             ebv_2, cmap="proba", norm=norm,
             cbar_format=OOMFormatter(-2, mathText=False))
-    _plot_helper2(fig, ax4, "Both", sensor.grid,
+    plot_grid_values_ax(fig, ax4, "Both", sensor.grid,
             ebv_full, cmap="proba", norm=norm,
             cbar_format=OOMFormatter(-2, mathText=False))
 
-    # 2) Plot excursion.
+    # Disable yticks for all but first.
+    ax2.set_yticks([])
+    ax3.set_yticks([])
+    ax4.set_yticks([])
+
+    ax1.set_yticks([0.2, 0.4, 0.6, 0.8])
+
+    ax1.set_xticks([0.2, 0.4, 0.6, 0.8])
+    ax2.set_xticks([0.2, 0.4, 0.6, 0.8])
+    ax3.set_xticks([0.2, 0.4, 0.6, 0.8])
+    ax4.set_xticks([0.2, 0.4, 0.6, 0.8])
 
     if output_filename is not None:
         plt.savefig(output_filename)
