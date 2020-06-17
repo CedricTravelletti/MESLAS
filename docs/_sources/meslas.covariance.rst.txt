@@ -1,0 +1,46 @@
+meslas.covariance package
+=========================
+
+Submodules
+----------
+
+meslas.covariance.covariance\_functions module
+----------------------------------------------
+
+.. automodule:: meslas.covariance.covariance_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+meslas.covariance.cross\_covariances module
+-------------------------------------------
+
+.. automodule:: meslas.covariance.cross_covariances
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+meslas.covariance.heterotopic module
+------------------------------------
+
+.. automodule:: meslas.covariance.heterotopic
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+meslas.covariance.old module
+----------------------------
+
+.. automodule:: meslas.covariance.old
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: meslas.covariance
+   :members:
+   :undoc-members:
+   :show-inheritance:

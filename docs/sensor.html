@@ -1,0 +1,559 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sensor Module &mdash; MESLAS 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="means module" href="means.html" />
+    <link rel="prev" title="Gaussian Random Field Module" href="random_fields.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MESLAS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Main Modules:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sensor Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="means.html">means module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy of the MESLAS package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MESLAS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Sensor Module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sensor.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-meslas.sensor">
+<span id="sensor-module"></span><span id="sensor-label"></span><h1>Sensor Module<a class="headerlink" href="#module-meslas.sensor" title="Permalink to this headline">¶</a></h1>
+<p>TODO: Maybe add grid, grf, n_ouptuts to the sensor class.</p>
+<dl class="py class">
+<dt id="meslas.sensor.DiscreteSensor">
+<em class="property">class </em><code class="sig-prename descclassname">meslas.sensor.</code><code class="sig-name descname">DiscreteSensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">discrete_grf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#meslas.sensor.Sensor" title="meslas.sensor.Sensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">meslas.sensor.Sensor</span></code></a></p>
+<p>Sensor on a fixed discretization.</p>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.choose_next_point_myopic" title="meslas.sensor.DiscreteSensor.choose_next_point_myopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">choose_next_point_myopic</span></code></a>(self, noise_std, lower)</p></td>
+<td><p>Choose the next observation location (given the current one) using the myopic strategy.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.compute_exursion_prob" title="meslas.sensor.DiscreteSensor.compute_exursion_prob"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_exursion_prob</span></code></a>(self, lower[, upper])</p></td>
+<td><p>Compute the excursion probability on the whole grid, given the currently available data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv" title="meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_neighbors_isotopic_eibv</span></code></a>(self, noise_std, …)</p></td>
+<td><p>For each neighbouring node of the current sensor location, compute the eibv if we were to measure every response (isotopic) at that node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.run_lookahead_stragegy" title="meslas.sensor.DiscreteSensor.run_lookahead_stragegy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_lookahead_stragegy</span></code></a>(self, n_steps, …[, …])</p></td>
+<td><p>Run the myopic strategy for n_steps, starting from the current location.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.run_myopic_stragegy" title="meslas.sensor.DiscreteSensor.run_myopic_stragegy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_myopic_stragegy</span></code></a>(self, n_steps, …[, upper])</p></td>
+<td><p>Run the myopic strategy for n_steps, starting from the current location.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.update_design" title="meslas.sensor.DiscreteSensor.update_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_design</span></code></a>(self, S_y_inds, L_y, y[, …])</p></td>
+<td><p>Updates the full design grid by computing current conditional mean and covariance.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="meslas.sensor.DiscreteSensor.choose_next_point_myopic">
+<code class="sig-name descname">choose_next_point_myopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.choose_next_point_myopic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Choose the next observation location (given the current one)
+using the myopic strategy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>noise_std: float</strong></dt><dd><p>Standar deviation of measurement noise.</p>
+</dd>
+<dt><strong>lower: (p) Tensor</strong></dt><dd><p>List of lower threshold for each response. The excursion set is the set
+where responses are above the specified threshold.
+Note that np.inf is supported.</p>
+</dd>
+<dt><strong>upper: (p) Tensor</strong></dt><dd><p>If not provided, defaults to +infty (excursion set above
+threshold).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>next_point_ind: (1) Tensor</dt><dd><p>Grid index of next observation location chosen according to the
+myopic strategy.</p>
+</dd>
+<dt>next_point_eibv: (1) Tensor</dt><dd><p>EIBV corresponding to the next chosen point.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.sensor.DiscreteSensor.compute_exursion_prob">
+<code class="sig-name descname">compute_exursion_prob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the excursion probability on the whole grid, given the
+currently available data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>lower: (p) Tensor</strong></dt><dd><p>List of lower threshold for each response. The excursion set is the set
+where responses are above the specified threshold.
+Note that np.inf is supported.</p>
+</dd>
+<dt><strong>upper: (p) Tensor</strong></dt><dd><p>List of upper threshold for each response. The excursion set is the set
+where responses are above the specified threshold.
+If not provided, defaults to + infinity.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>excursion_proba: (self.grid.n_points) Tensor</dt><dd><p>Excursion probability at each point.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv">
+<code class="sig-name descname">get_neighbors_isotopic_eibv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv" title="Permalink to this definition">¶</a></dt>
+<dd><p>For each neighbouring node of the current sensor location, compute
+the eibv if we were to measure every response (isotopic) at that node.
+Returns a list containing the EIBV for each neighbor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>noise_std: float</strong></dt><dd><p>Standar deviation of measurement noise.</p>
+</dd>
+<dt><strong>lower: (p) Tensor</strong></dt><dd><p>List of lower threshold for each response. The excursion set is the set
+where responses are above the specified threshold.
+Note that np.inf is supported.</p>
+</dd>
+<dt><strong>upper: (p) Tensor</strong></dt><dd><p>If not provided, defaults to +infty (excursion set above
+threshold).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>neighbors_eibv: (n_neighbors) Tensor</dt><dd><p>EIBV for each neighbouring cell.</p>
+</dd>
+<dt>neighbors_inds: (n_neighbors) Tensor</dt><dd><p>Grid indices of the neighbouring cells.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.sensor.DiscreteSensor.run_lookahead_stragegy">
+<code class="sig-name descname">run_lookahead_stragegy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">n_steps</span></em>, <em class="sig-param"><span class="n">data_feed</span></em>, <em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_prune</span><span class="o">=</span><span class="default_value">3</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.run_lookahead_stragegy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the myopic strategy for n_steps, starting from the current
+location. That is, at each point, pick the neighbors with the smallest
+EIBV, move there, observe, update model, repeat.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_steps: int</strong></dt><dd><p>Number of steps (observations) to run the strategy for.</p>
+</dd>
+<dt><strong>data_feed: function(int)</strong></dt><dd><p>Function that, given a node index, returns the measured data
+(isotopic) at that node.</p>
+</dd>
+<dt><strong>noise_std</strong></dt><dd></dd>
+<dt><strong>lower</strong></dt><dd></dd>
+<dt><strong>upper</strong></dt><dd></dd>
+<dt><strong>n_prune: int</strong></dt><dd><p>Number of paths to consider at the first step. From the starting
+node, we will only consider the best n_prune nodes, ranked using
+the myopic strategy.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.sensor.DiscreteSensor.run_myopic_stragegy">
+<code class="sig-name descname">run_myopic_stragegy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">n_steps</span></em>, <em class="sig-param"><span class="n">data_feed</span></em>, <em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.run_myopic_stragegy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the myopic strategy for n_steps, starting from the current
+location. That is, at each point, pick the neighbors with the smallest
+EIBV, move there, observe, update model, repeat.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_steps: int</strong></dt><dd><p>Number of steps (observations) to run the strategy for.</p>
+</dd>
+<dt><strong>data_feed: function(int)</strong></dt><dd><p>Function that, given a node index, returns the measured data
+(isotopic) at that node.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.sensor.DiscreteSensor.update_design">
+<code class="sig-name descname">update_design</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.update_design" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the full design grid by computing current conditional mean and covariance.
+Note that this updates the internal of the discrete GRF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>mu_cond_iso: (self.grid.n_points, self.grf.n_out)</dt><dd><p>Conditional mean.</p>
+</dd>
+<dt>K_cond_iso: (self.grid.n_points, self.grid.n_points, self.grf.n_out, self.grf.n_out) Tensor</dt><dd><p>Conditional covariance matrix in isotopic ordered form.
+It means that the covariance matrix at cell i can be otained by
+subsetting K_cond_iso[i, i, :, :].</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="meslas.sensor.Sensor">
+<em class="property">class </em><code class="sig-prename descclassname">meslas.sensor.</code><code class="sig-name descname">Sensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">grf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Implements the data collection process.
+Will be responsible for querying the GP for mean and variances conditional
+on the already collected data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>S_y_tot: (N, d) Tensor</strong></dt><dd><p>Spatial locations of the already collected data.</p>
+</dd>
+<dt><strong>L_y_tot: (N) Tensor</strong></dt><dd><p>Corresponding response indices.</p>
+</dd>
+<dt><strong>location: (d) Tensor</strong></dt><dd><p>Current position of the sensor.</p>
+</dd>
+<dt><strong>grid: IrregularGrid</strong></dt><dd><p>A discretization of space that defines the locations the sensor can
+move to.</p>
+</dd>
+<dt><strong>grf: GRF</strong></dt><dd><p>Gaussian Random Field used to model the unknown phenomenon of interest.</p>
+</dd>
+<dt><strong>current_node_ind: int</strong></dt><dd><p>Index of the point in the grid that is closest to the sensor location.</p>
+</dd>
+<dt><strong>visited_nodes_inds: Tensor</strong></dt><dd><p>Grid indices of the visited locations.</p>
+</dd>
+<dt><strong>noise_std: float</strong></dt><dd><p>Standard deviation of the sensor noise.
+TODO: allow different noises for each component.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor.Sensor.add_data" title="meslas.sensor.Sensor.add_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_data</span></code></a>(self, S_y_inds, L_y, y)</p></td>
+<td><p>Add new data to the already collected one.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.sensor.Sensor.compute_exursion_prob" title="meslas.sensor.Sensor.compute_exursion_prob"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_exursion_prob</span></code></a>(self, points, lower[, …])</p></td>
+<td><p>Compute the excursion probability at a set of points given the currently available data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor.Sensor.compute_neighbors_exursion_prob" title="meslas.sensor.Sensor.compute_neighbors_exursion_prob"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_neighbors_exursion_prob</span></code></a>(self, lower)</p></td>
+<td><p>Compute the excursion probability of the neighbors of the current location.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.sensor.Sensor.get_current_neighbors" title="meslas.sensor.Sensor.get_current_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_current_neighbors</span></code></a>(self)</p></td>
+<td><p>Get the neighbouring grid nodes of the current sensor location.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor.Sensor.set_location" title="meslas.sensor.Sensor.set_location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_location</span></code></a>(self, location)</p></td>
+<td><p>Setter for the location.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="meslas.sensor.Sensor.add_data">
+<code class="sig-name descname">add_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.add_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add new data to the already collected one.
+Can also handle batches.
+This will just concatenate the new data vectors with the current ones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>S_y_inds: (n) Tensor</strong></dt><dd><p>Grind index of spatial locations of the new measurements.</p>
+</dd>
+<dt><strong>L_y :(n) Tensor</strong></dt><dd><p>Corresponding response indices.</p>
+</dd>
+<dt><strong>y :(n, p) Tensor</strong></dt><dd><p>Measured data.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.sensor.Sensor.compute_exursion_prob">
+<code class="sig-name descname">compute_exursion_prob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the excursion probability at a set of points given the
+currently available data.</p>
+<p>Note this is a helper function that take an index in the grid as input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>points: (N, d) Tensor</strong></dt><dd><p>List of points (coordinates) at which to compute the excursion probability.</p>
+</dd>
+<dt><strong>lower: (p) Tensor</strong></dt><dd><p>List of lower threshold for each response. The excursion set is the set
+where responses are above the specified threshold.
+Note that np.inf is supported.</p>
+</dd>
+<dt><strong>upper: (p) Tensor</strong></dt><dd><p>List of upper threshold for each response. The excursion set is the set
+where responses are above the specified threshold.
+If not provided, defaults to + infinity.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>excursion_proba: (N) Tensor</dt><dd><p>Excursion probability at each point.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.sensor.Sensor.compute_neighbors_exursion_prob">
+<code class="sig-name descname">compute_neighbors_exursion_prob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.compute_neighbors_exursion_prob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the excursion probability of the neighbors of the current
+location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>lower: (p) Tensor</strong></dt><dd><p>List of lower threshold for each response. The excursion set is the set
+where responses are above the specified threshold.
+Note that np.inf is supported.</p>
+</dd>
+<dt><strong>upper: (p) Tensor</strong></dt><dd><p>List of upper threshold for each response. The excursion set is the set
+where responses are above the specified threshold.
+If not provided, defaults to + infinity.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.sensor.Sensor.get_current_neighbors">
+<code class="sig-name descname">get_current_neighbors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.get_current_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the neighbouring grid nodes of the current sensor location.</p>
+<p>This is done by first finding the node closes to the sensor location,
+and then returning its neighbors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>neighbors_inds: (n_neighbors)</dt><dd><p>Grid indices of the neighbors.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.sensor.Sensor.set_location">
+<code class="sig-name descname">set_location</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">location</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.set_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setter for the location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>location: (d) array_like</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="means.html" class="btn btn-neutral float-right" title="means module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="random_fields.html" class="btn btn-neutral float-left" title="Gaussian Random Field Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Trygve Olav Fossum, Jo Eidsvik, David Ginsbourger, Kanna Rajan, Cedric Travelletti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

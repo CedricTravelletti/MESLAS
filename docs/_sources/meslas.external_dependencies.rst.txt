@@ -1,0 +1,22 @@
+meslas.external\_dependencies package
+=====================================
+
+Submodules
+----------
+
+meslas.external\_dependencies.numpytorch module
+-----------------------------------------------
+
+.. automodule:: meslas.external_dependencies.numpytorch
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: meslas.external_dependencies
+   :members:
+   :undoc-members:
+   :show-inheritance:

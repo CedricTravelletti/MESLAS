@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MESLAS: Multivariate Excurions Set Learning by Adaptive Sampling &mdash; MESLAS 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Gridding Module" href="grid.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> MESLAS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Main Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensor.html">Sensor Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="means.html">means module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy of the MESLAS package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">MESLAS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>MESLAS: Multivariate Excurions Set Learning by Adaptive Sampling</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/CedricTravelletti/MESLAS" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="meslas-multivariate-excurions-set-learning-by-adaptive-sampling">
+<h1>MESLAS: Multivariate Excurions Set Learning by Adaptive Sampling<a class="headerlink" href="#meslas-multivariate-excurions-set-learning-by-adaptive-sampling" title="Permalink to this headline">¶</a></h1>
+<p>The goal of the MESLAS package is to provide functionalities for simulation and
+estimation of physical phenomenon using multivariate random fields.</p>
+<p>As an example, consider the Temperature and Salinity in the ocean. These two
+variables can be modelled as a bivariate Gaussian random field (GRF) with some
+correlation between the outputs.
+One can the draw realizations of the GRF to get plausible spatial distributions
+of oceanographic properties (see Figure).</p>
+<div class="figure align-center" id="id2">
+<img alt="_images/uncond_real_cropped.png" src="_images/uncond_real_cropped.png" />
+<p class="caption"><span class="caption-text">Simulated realization of Temperature and Salinity field drawn from a GRF
+model.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>Having a probabilistic model of the physical phenomenon of interest allows one
+to exxtract more information than a purely deterministic model would allow. For
+example, the question that trigered the development of MESALS was the
+indentification of river plumes in coastal regions (<a class="bibtex reference internal" href="#fossum" id="id1">[FTE+]</a>).</p>
+<div class="section" id="excursion-sets">
+<h2>Excursion Sets<a class="headerlink" href="#excursion-sets" title="Permalink to this headline">¶</a></h2>
+<p>One of the main functionality of MESLAS is the estimation of excursion sets of
+Gaussian random field. Given an <span class="math notranslate nohighlight">\(n\)</span>-dimensional multivariate GRF <span class="math notranslate nohighlight">\(\boldsymbol{Z}\)</span>,
+an excursion set is defined as</p>
+<div class="math notranslate nohighlight">
+\[\Gamma = \lbrace x \in X: t_i \leq \boldsymbol{Z}_x^{i} \leq t'_i,~i=1,...,n \rbrace\]</div>
+<p>where the thresholds are allowed to be infinite.</p>
+<p>In the context of river plume indentification, the river can be modelled as an
+excursion set where the salinity and temperature are below a certain threshold.</p>
+</div>
+<div class="section" id="data-collection-and-conditional-distribution">
+<h2>Data Collection and Conditional Distribution<a class="headerlink" href="#data-collection-and-conditional-distribution" title="Permalink to this headline">¶</a></h2>
+<p>Data is integrated to the GRF model by considering the <em>conditional
+ditribution</em> of the GRF, conditional on the data. Excursion sets may then be
+estimated by looking at the <em>pointwise excursion probability</em>, i.e. the
+probability (under the conditional distribution) that a point lies in the excursion set.</p>
+<div class="figure align-center" id="id3">
+<img alt="_images/excu_proba_cropped.png" src="_images/excu_proba_cropped.png" />
+<p class="caption"><span class="caption-text">Conditional pointwise excursion probability. Data collection loactions in
+green.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>MESLAS aims at providing Gaussian Random Field functionalities that are easy to
+use, fully modular and reusable.</p>
+<p>For example, the GRF <span class="math notranslate nohighlight">\(\boldsymbol{Z}\)</span> used inf Fig.1 with linear trend</p>
+<div class="math notranslate nohighlight" id="equation-important">
+\begin{align}
+ \boldsymbol{\mu}(\boldsymbol{x}) &amp;= \boldsymbol{\beta}_i + \boldsymbol{\beta}_1^t \boldsymbol{x}
+\end{align}</div><p>and factor-covariance model</p>
+<div class="math notranslate nohighlight" id="equation-important">
+\begin{align}
+Cov\left[\boldsymbol{Z}_x^i, \boldsymbol{Z}_y^j\right] &amp;= k(x, y) \gamma(i, j)\\
+\end{align}</div><p>with Martern 3/2 spatial covariance, and <em>uniform mixing</em> covariance defined by</p>
+<div class="math notranslate nohighlight" id="equation-important">
+\begin{align}
+\gamma(i, j) &amp;= \begin{cases} \sigma_l^2,~ i=j\\
+γ_0σ_iσ_j,~i≠ j
+     \end{cases}
+\end{align}</div><p>is straightforward to define in MESLAS and to sample from</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spatial Covariance.</span>
+<span class="n">matern_cov</span> <span class="o">=</span> <span class="n">Matern32</span><span class="p">(</span><span class="n">lmbda</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># Cross covariance.</span>
+<span class="n">cross_cov</span> <span class="o">=</span> <span class="n">UniformMixing</span><span class="p">(</span><span class="n">gamma0</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">sigmas</span><span class="o">=</span><span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">])</span>
+<span class="n">covariance</span> <span class="o">=</span> <span class="n">FactorCovariance</span><span class="p">(</span><span class="n">matern_cov</span><span class="p">,</span> <span class="n">cross_cov</span><span class="p">,</span> <span class="n">n_out</span><span class="o">=</span><span class="n">n_out</span><span class="p">)</span>
+
+<span class="c1"># Specify mean function, here it is a linear trend that decreases with the</span>
+<span class="c1"># horizontal coordinate.</span>
+<span class="n">beta0s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">7.8</span><span class="p">,</span> <span class="mf">24.0</span><span class="p">])</span>
+<span class="n">beta1s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">7.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0</span><span class="p">]])</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">LinearMean</span><span class="p">(</span><span class="n">beta0s</span><span class="p">,</span> <span class="n">beta1s</span><span class="p">)</span>
+
+<span class="c1"># Create the GRF.</span>
+<span class="n">myGRF</span> <span class="o">=</span> <span class="n">GRF</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">covariance</span><span class="p">)</span>
+
+<span class="c1"># Create an equilateral tringular grid, with 80 nodes per line.</span>
+<span class="n">my_grid</span> <span class="o">=</span> <span class="n">TriangularGrid</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="c1"># Sample all components (isotopic) at all locations of the grid.</span>
+<span class="n">ground_truth</span> <span class="o">=</span> <span class="n">myGRF</span><span class="o">.</span><span class="n">sample_isotopic</span><span class="p">(</span><span class="n">my_grid</span><span class="o">.</span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>More information about the special concepts and notation which are used in MESLAS
+to handle multivariate random fields may be found at <a class="reference internal" href="philosophy.html#philosophy-label"><span class="std std-ref">Philosophy of the MESLAS package</span></a>.</p>
+</div>
+<div class="section" id="autonomous-adaptive-sampling">
+<h2>Autonomous Adaptive Sampling<a class="headerlink" href="#autonomous-adaptive-sampling" title="Permalink to this headline">¶</a></h2>
+<p>The ultimate goal of the package is for a sensor to automatically choose
+measurement locations learn an excursion set.
+(UNFINISHED).</p>
+<p>Note that since we are working on a fiexed discretization, there are two
+possible way to implement the updating:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>Pointwise</em>: The collected data is stored, and each time we want to predict
+at a point, we do one step of krigging with the whole current dataset
+concatenated.</p></li>
+<li><p><em>Global</em> At each data collection step, we compute the krigging mean an
+covariance on the whole desgin. Then we update at each data step.</p></li>
+</ul>
+</div></blockquote>
+<p><em>Comments</em>: The pointwise approach become expansive once we have lots of data.
+If the desgin is small enough so that the full-design covariance matrix can be
+stored, then the global approach might be interessting, since it (kind of)
+allows multi-steps planning.</p>
+<p>Currently, we follow the pointwise approach.</p>
+<p>For implementation, see <a class="reference internal" href="sensor.html#sensor-label"><span class="std std-ref">Sensor Module</span></a>.</p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Main Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="grid.html#module-meslas.geometry.grid">Module Implementation Details</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensor.html">Sensor Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="means.html">means module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy of the MESLAS package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
+</ul>
+</div>
+<p id="bibtex-bibliography-index-0"><dl class="citation">
+<dt class="bibtex label" id="fossum"><span class="brackets"><a class="fn-backref" href="#id1">FTE+</a></span></dt>
+<dd><p>Trygve O. Fossum, Cedric Travelletti, Jo Eidsvik, David Ginsbourger, and Kanna Rajan. Autonomous oceanographic sampling designs using excursion sets for multivariate gaussian random fields. <em>Annals of Applied Statistics</em>.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="grid.html" class="btn btn-neutral float-right" title="Gridding Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Trygve Olav Fossum, Jo Eidsvik, David Ginsbourger, Kanna Rajan, Cedric Travelletti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

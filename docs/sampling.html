@@ -1,0 +1,854 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Gaussian Random Field Module &mdash; MESLAS 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="sampling module" href="sensor.html" />
+    <link rel="prev" title="Gridding Module" href="grid.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MESLAS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Main Modules:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Gaussian Random Field Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensor.html">sampling module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="means.html">means module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="excursion.html">excursion module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy of the MESLAS package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MESLAS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Gaussian Random Field Module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sampling.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-meslas.random_fields">
+<span id="gaussian-random-field-module"></span><h1>Gaussian Random Field Module<a class="headerlink" href="#module-meslas.random_fields" title="Permalink to this headline">¶</a></h1>
+<p>Implement multivariate random fields.</p>
+<p>Convention is that p is the number of responses.
+Tensors may be returned either in <em>heterotopic</em> or in <em>isotopic</em> form.</p>
+<p>Heterotopic form means that a response index must be specified for each
+element. For example, given a vector of locations S and a vector of response indices
+L, both of size M, the heteretopic form of the mean vector at these (generalized) locations is
+a vector of size M such that its i-th element is the mean of component L[i] at
+spatial location S[i].</p>
+<p>When <em>all</em> responsed indices are considered, we use the word isotopic.
+Since under the hood, a response index vector always has to be specified, in
+the isotopic case we use L = (1, …, p, 1, …, p, 1, …, p, ….) and
+S = (s1, …, s1, s2, …, s2, …). That is, for each spatial location s_i, we
+repeat it p-times, and the response index vector is just made of the list 1,
+…, p, repeated n times, n being the number of spatial locations.</p>
+<p>Now, in this situation, it makes sense to reshape the resulting mean vector
+such that the repsonse dimensions have their own axis.
+This is what is meant by <em>isotopic form</em>. In isotopic form , the corresponding
+means vector has shape (n. p).</p>
+<dl class="py class">
+<dt id="meslas.random_fields.DiscreteGRF">
+<em class="property">class </em><code class="sig-prename descclassname">meslas.random_fields.</code><code class="sig-name descname">DiscreteGRF</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">mean_vec</span></em>, <em class="sig-param"><span class="n">covariance_mat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#meslas.random_fields.GRF" title="meslas.random_fields.GRF"><code class="xref py py-class docutils literal notranslate"><span class="pre">meslas.random_fields.GRF</span></code></a></p>
+<p>Gaussian Random Field that is discretized over a static grid. This
+means that values can only be computed at grid nodes and observations may
+also only be performed at grid nodes.</p>
+<p>Since it is not known a piori at which locations we will observe or
+predict, the GRF computes and stores the mean vector and covariance matrix
+for the whole design at each stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>grid: Grid</strong></dt><dd></dd>
+<dt><strong>mean_vec: GeneralizedVector</strong></dt><dd></dd>
+<dt><strong>covariance_mat: GeneralizedMatrix</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.pointwise_cov" title="meslas.random_fields.DiscreteGRF.pointwise_cov"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointwise_cov</span></code></a></dt><dd><p>Pointwise covariance matrix, i.e.</p>
+</dd>
+<dt><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.variance" title="meslas.random_fields.DiscreteGRF.variance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance</span></code></a></dt><dd><p>Returns the (pointwise) variances.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.compute_cov_reduction" title="meslas.random_fields.DiscreteGRF.compute_cov_reduction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_cov_reduction</span></code></a>(self, S_y_inds, L_y[, …])</p></td>
+<td><p>Compute the covariance reduction that would result from observing some hypothetic data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.discretize_prior" title="meslas.random_fields.DiscreteGRF.discretize_prior"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discretize_prior</span></code></a>(grf, grid)</p></td>
+<td><p>Discretize a grf prior on a grid and return the mean vector on the grid and covariance matrix between grid nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.ebv" title="meslas.random_fields.DiscreteGRF.ebv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ebv</span></code></a>(self, S_y_inds, L_y, lower[, upper, …])</p></td>
+<td><p>Computes the expected Bernoulli Variance (i.e.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.eibv" title="meslas.random_fields.DiscreteGRF.eibv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eibv</span></code></a>(self, S_y_inds, L_y, lower[, upper, …])</p></td>
+<td><p>Computes the expected Integrated Bernoulli Variance 8integrated version of the above), if we were to make observations at the generalized locations (S_y, L_y).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.from_model" title="meslas.random_fields.DiscreteGRF.from_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_model</span></code></a>(grf, grid)</p></td>
+<td><p>Create a discrete GRF by discretizing a GRF model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.sample" title="meslas.random_fields.DiscreteGRF.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample</span></code></a>(self[, jitter])</p></td>
+<td><p>Sample the discretized GRF on the whole grid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.update" title="meslas.random_fields.DiscreteGRF.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(self, S_y_inds, L_y, y[, noise_std, …])</p></td>
+<td><p>Observe some data and update the field.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.update_from_scratch" title="meslas.random_fields.DiscreteGRF.update_from_scratch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_from_scratch</span></code></a>(self, S_y_inds, L_y, y)</p></td>
+<td><p>Same as the update function, but starts from the prior.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="meslas.random_fields.DiscreteGRF.compute_cov_reduction">
+<code class="sig-name descname">compute_cov_reduction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.compute_cov_reduction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the covariance reduction that would result from observing
+some hypothetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>S_y_inds: (M) Tensor</strong></dt><dd><p>Indices (in the grid) of the spatial locations of the measurements.</p>
+</dd>
+<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
+</dd>
+<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>cov_reduction: (n_points, n_out) GeneralizedMatrix</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.DiscreteGRF.discretize_prior">
+<em class="property">static </em><code class="sig-name descname">discretize_prior</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grf</span></em>, <em class="sig-param"><span class="n">grid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.discretize_prior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Discretize a grf prior on a grid and return the mean vector on the
+grid and covariance matrix between grid nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>grf: GRF</strong></dt><dd><p>Gaussian Random Field to discretize.</p>
+</dd>
+<dt><strong>grid: Grid</strong></dt><dd><p>Grid on which to discretize.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>mean_vec: GeneralizedVector</dt><dd></dd>
+<dt>covariance_mat: GeneralizedMatrix</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.DiscreteGRF.ebv">
+<code class="sig-name descname">ebv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.ebv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the expected Bernoulli Variance (i.e. not integrated)
+if we were to make observations at the
+generalized locations (S_y, L_y).
+Since we are on a grid, we do not directly specify the spatial
+locations S_y, but the corresponding grid indices S_y_inds instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>S_y_inds: (M) Tensor</strong></dt><dd><p>Indices (in the grid) of the spatial locations of the measurements.</p>
+</dd>
+<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
+</dd>
+<dt><strong>noise_std: float</strong></dt><dd><p>Noise standard deviation. Uniform across all measurments.
+Defaults to 0.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>ebv: (n_points) Tensor</dt><dd><p>Expected Bernoulli Variance at each point of the grid, conditional
+on observing at the new data point.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.DiscreteGRF.eibv">
+<code class="sig-name descname">eibv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.eibv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the expected Integrated Bernoulli Variance 8integrated
+version of the above), if we were to make observations at the
+generalized locations (S_y, L_y).
+Since we are on a grid, we do not directly specify the spatial
+locations S_y, but the corresponding grid indices S_y_inds instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>S_y_inds: (M) Tensor</strong></dt><dd><p>Indices (in the grid) of the spatial locations of the measurements.</p>
+</dd>
+<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
+</dd>
+<dt><strong>noise_std: float</strong></dt><dd><p>Noise standard deviation. Uniform across all measurments.
+Defaults to 0.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>ebiv: float</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.DiscreteGRF.from_model">
+<em class="property">classmethod </em><code class="sig-name descname">from_model</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grf</span></em>, <em class="sig-param"><span class="n">grid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.from_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a discrete GRF by discretizing a GRF model. One specifies
+the mean and covariance funcions and the model is then discretized on a
+grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>grf: GRF</strong></dt><dd><p>Gaussian Random Field to discretize.</p>
+</dd>
+<dt><strong>grid: Grid</strong></dt><dd><p>Grid on which to discretize.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.DiscreteGRF.pointwise_cov">
+<em class="property">property </em><code class="sig-name descname">pointwise_cov</code><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.pointwise_cov" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pointwise covariance matrix, i.e. covariance matrix of the field at
+each points (i.e. no cross-location covariance).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>pointwise_cov: (n_points, n_out, n_out) Tensor</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.DiscreteGRF.sample">
+<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">jitter</span><span class="o">=</span><span class="default_value">1e-05</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample the discretized GRF on the whole grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Z: (M) Tensor</dt><dd><p>The sampled value of Z_{s_i} component l_i.</p>
+</dd>
+<dt>jitter: float</dt><dd><p>Jitter to add if covariance matrix is not diagonalisable.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.DiscreteGRF.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mean_vec</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">covariance_mat</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Observe some data and update the field. This will compute the new
+values of the mean vector and covariance matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>S_y_inds: (M) Tensor</strong></dt><dd><p>Indices (in the grid) of the spatial locations of the measurements.</p>
+</dd>
+<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
+</dd>
+<dt><strong>y: (M) Tensor</strong></dt><dd><p>Measured values.</p>
+</dd>
+<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
+</dd>
+<dt><strong>mean_vec: GeneralizedVector, optional</strong></dt><dd><p>Can specify a mean vector to start from if do not want to use the
+current mean.</p>
+</dd>
+<dt><strong>covariance_mat: GeneralizedMatrix, optional</strong></dt><dd><p>Can specify another covariance matrix if do not want to use the
+current one.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.DiscreteGRF.update_from_scratch">
+<code class="sig-name descname">update_from_scratch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.update_from_scratch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as the update function, but starts from the prior.
+The purpose of this method is to recover from numerical instabilities
+that may have accumulated when one has sequentially collected a big dataset.
+There, one might instead start from the prior and condition on the
+whole concatenated dataset in one go.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>grf: GRF</strong></dt><dd><p>The prior random field model (continuous) to use to generate the
+prior mean and covariance.</p>
+</dd>
+<dt><strong>S_y_inds: (M) Tensor</strong></dt><dd><p>Indices (in the grid) of the spatial locations of the measurements.</p>
+</dd>
+<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
+</dd>
+<dt><strong>y: (M) Tensor</strong></dt><dd><p>Measured values.</p>
+</dd>
+<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.DiscreteGRF.variance">
+<em class="property">property </em><code class="sig-name descname">variance</code><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the (pointwise) variances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>variances: Generalized vector</dt><dd><p>Variance of each component of the random field at each point.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="meslas.random_fields.GRF">
+<em class="property">class </em><code class="sig-prename descclassname">meslas.random_fields.</code><code class="sig-name descname">GRF</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mean</span></em>, <em class="sig-param"><span class="n">covariance</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Gaussian Random Field with specified mean function and covariance function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mean: function(s, l)</strong></dt><dd><p>Function returning l-th component of  mean at location s.
+Should be vectorized.</p>
+</dd>
+<dt><strong>covariance: function(s1, s2, l1, l2)</strong></dt><dd><p>Function returning the covariance matrix between the l1-th component at
+s1 and the l2-th component at l2.
+Should be vectorized.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.krig" title="meslas.random_fields.GRF.krig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">krig</span></code></a>(self, S, L, S_y, L_y, y[, noise_std, …])</p></td>
+<td><p>Predict field at some generalized locations, based on some measured data at other generalized locations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.krig_grid" title="meslas.random_fields.GRF.krig_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">krig_grid</span></code></a>(self, grid, S_y, L_y, y[, …])</p></td>
+<td><p>Predict field at some points, based on some measured data at other points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.krig_isotopic" title="meslas.random_fields.GRF.krig_isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">krig_isotopic</span></code></a>(self, points, S_y, L_y, y[, …])</p></td>
+<td><p>Predict field at some points, based on some measured data at other points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.sample" title="meslas.random_fields.GRF.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample</span></code></a>(self, S, L[, jitter])</p></td>
+<td><p>Sample the GRF at generalized location (S, L).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.sample_grid" title="meslas.random_fields.GRF.sample_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample_grid</span></code></a>(self, grid)</p></td>
+<td><p>Sample the GRF (all components) on a grid.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.sample_isotopic" title="meslas.random_fields.GRF.sample_isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample_isotopic</span></code></a>(self, points)</p></td>
+<td><p>Sample the GRF (all components) on a list of points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.variance" title="meslas.random_fields.GRF.variance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance</span></code></a>(self, S, L)</p></td>
+<td><p>Compute the (pointwise) variances at generalized location (S, L).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.variance_reduction" title="meslas.random_fields.GRF.variance_reduction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance_reduction</span></code></a>(self, S, L, S_y, L_y[, …])</p></td>
+<td><p>Computes the reduction in variance at generalized locations (S, L) that would be caused by observing data at generalized locations (S_y, L_y).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.variance_reduction_isotopic" title="meslas.random_fields.GRF.variance_reduction_isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance_reduction_isotopic</span></code></a>(self, points, …)</p></td>
+<td><p>Computes the reduction in variance (all components) at location S that would be caused by observing data at generalized locations (S_y, L_y).</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="meslas.random_fields.GRF.krig">
+<code class="sig-name descname">krig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">compute_post_var</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">compute_post_cov</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.krig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict field at some generalized locations, based on some measured data at other
+generalized locations.</p>
+<p>This is the most general possible form of kriging, since it takes
+measurements at generalized locations and predicts at generalized
+locations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>S: (N, d)</strong></dt><dd><p>Spatial locations at which to predict</p>
+</dd>
+<dt><strong>L: (N) Tensor</strong></dt><dd><p>Response indices to predict.</p>
+</dd>
+<dt><strong>S_y: (M, d) Tensor</strong></dt><dd><p>Spatial locations of the measurements.</p>
+</dd>
+<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
+</dd>
+<dt><strong>y: (M) Tensor</strong></dt><dd><p>Measured values.</p>
+</dd>
+<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response.</p>
+</dd>
+<dt><strong>compute_post_var: bool</strong></dt><dd><p>If true, compute and return posterior variance (matrix) at each
+point.</p>
+</dd>
+<dt><strong>compute_post_cov: bool</strong></dt><dd><p>If true, compute and return posterior covariance. Only one of
+compute_post_var or compute_post_var may be avtivated.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>mu_cond: (N) Tensor</dt><dd><p>Kriging means at each generalized location.</p>
+</dd>
+<dt>var_cond: (N)</dt><dd><p>Conditional varance at each generalized location.
+Only returned if specified.</p>
+</dd>
+<dt>K_cond: (N, N) Tensor</dt><dd><p>Conditional covariance matrix between the generalized locations.    
+Only returned if specified.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.GRF.krig_grid">
+<code class="sig-name descname">krig_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">compute_post_cov</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.krig_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict field at some points, based on some measured data at other
+points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>grid: Grid</strong></dt><dd><p>Regular grid of size (n1, …, nd).</p>
+</dd>
+<dt><strong>S_y: (M, d) Tensor</strong></dt><dd><p>Spatial locations of the measurements.</p>
+</dd>
+<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
+</dd>
+<dt><strong>y: (M) Tensor</strong></dt><dd><p>Measured values.</p>
+</dd>
+<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
+</dd>
+<dt><strong>compute_post_cov: bool</strong></dt><dd><p>If true, compute and return posterior covariance.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>mu_cond_grid: (grid.shape, p) Tensor</dt><dd><p>Kriging means at each grid node.</p>
+</dd>
+<dt>mu_cond_list: (grid.n_points*p) Tensor</dt><dd><p>Kriging mean, but in list form.</p>
+</dd>
+<dt>mu_cond_iso: (grid.n_points, p) Tensor</dt><dd><p>Kriging means in isotopic list form.</p>
+</dd>
+<dt>K_cond_list: (grid.n_points * p, grid.n_points * p) Tensor</dt><dd><p>Conditional covariance matrix in heterotopic form.</p>
+</dd>
+<dt>K_cond_iso: (grid.n_points, grid.n_points, p, p) Tensor</dt><dd><p>Conditional covariance matrix in isotopic ordered form.
+It means that the covariance matrix at cell i can be otained by
+subsetting K_cond_iso[i, i, :, :].</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.GRF.krig_isotopic">
+<code class="sig-name descname">krig_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">compute_post_var</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">compute_post_cov</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.krig_isotopic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict field at some points, based on some measured data at other
+points. Predicts all repsonses (isotopic).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>points: (N, d) Tensor</strong></dt><dd><p>List of points at which to predict.</p>
+</dd>
+<dt><strong>S_y: (M, d) Tensor</strong></dt><dd><p>Spatial locations of the measurements.</p>
+</dd>
+<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
+</dd>
+<dt><strong>y: (M) Tensor</strong></dt><dd><p>Measured values.</p>
+</dd>
+<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
+</dd>
+<dt><strong>compute_post_var: bool</strong></dt><dd><p>If true, compute and return posterior variance (matrix) at each
+point.</p>
+</dd>
+<dt><strong>compute_post_cov: bool</strong></dt><dd><p>If true, compute and return posterior covariance. Only one of
+compute_post_var or compute_post_var may be avtivated.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>mu_cond_list: (N*p) Tensor</dt><dd><p>Kriging mean, but in list form.</p>
+</dd>
+<dt>mu_cond_iso: (N, p) Tensor</dt><dd><p>Kriging means in isotopic list form.</p>
+</dd>
+<dt>K_cond_list: (N * p, N * p) Tensor</dt><dd><p>Conditional covariance matrix in heterotopic form.</p>
+</dd>
+<dt>K_cond_iso: (N, N, p, p) Tensor</dt><dd><p>Conditional covariance matrix in isotopic ordered form.
+It means that the covariance matrix at cell i can be otained by
+subsetting K_cond_iso[i, i, :, :].</p>
+</dd>
+<dt>var_cond_list: (N*p) Tensor</dt><dd><p>Conditional varance at each generalized location.
+Only returned if specified.</p>
+</dd>
+<dt>var_cond_iso: (N, p) Tensor</dt><dd><p>Same as above, but in list form.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.GRF.sample">
+<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">jitter</span><span class="o">=</span><span class="default_value">1e-05</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample the GRF at generalized location (S, L).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>S: (M, d) Tensor</strong></dt><dd><p>List of spatial locations.</p>
+</dd>
+<dt><strong>L: (M) Tensor</strong></dt><dd><p>List of response indices.</p>
+</dd>
+<dt><strong>jitter: float</strong></dt><dd><p>Jitter to add if covariance matrix is not diagonalisable.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Z: (M) Tensor</dt><dd><p>The sampled value of Z_{s_i} component l_i.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.GRF.sample_grid">
+<code class="sig-name descname">sample_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">grid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.sample_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample the GRF (all components) on a grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>grid: Grid</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>sample_grid: (n1, …, n_d, ,p) Tensor</dt><dd><p>The sampled field on the grid. Here p is the number of output
+components and n1, …, nd are the number of cells along each axis.</p>
+</dd>
+<dt>sample_list: (n_points, p) Tensor</dt><dd><p>Same as above, but in list form.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.GRF.sample_isotopic">
+<code class="sig-name descname">sample_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">points</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.sample_isotopic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample the GRF (all components) on a list of points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>points: (N, d) Tensor</strong></dt><dd><p>Spatial locations where to sample.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>sample_list: (N, p) Tensor</dt><dd><p>The sampled values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.GRF.variance">
+<code class="sig-name descname">variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the (pointwise) variances at generalized location (S, L).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>S: (M, d) Tensor</strong></dt><dd><p>List of spatial locations.</p>
+</dd>
+<dt><strong>L: (M) Tensor</strong></dt><dd><p>List of response indices.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>vars: (M) Tensor</dt><dd><p>The variances Z_{s_i} component l_i.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.GRF.variance_reduction">
+<code class="sig-name descname">variance_reduction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.variance_reduction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the reduction in variance at generalized
+locations (S, L) that would be caused by observing data at generalized
+locations (S_y, L_y).
+Note that this doesn’t depend on the measured data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>S: (N, d)</strong></dt><dd><p>Spatial locations at which to predict</p>
+</dd>
+<dt><strong>L: (N) Tensor</strong></dt><dd><p>Response indices to predict.</p>
+</dd>
+<dt><strong>S_y: (M, d) Tensor</strong></dt><dd><p>Spatial locations of the measurements.</p>
+</dd>
+<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
+</dd>
+<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>variance_reduction: (N) Tensor</dt><dd><p>Reduction in variance at each generalized location.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meslas.random_fields.GRF.variance_reduction_isotopic">
+<code class="sig-name descname">variance_reduction_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.variance_reduction_isotopic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the reduction in variance (all components) at location S
+that would be caused by observing data at generalized locations (S_y, L_y).
+Note that this doesn’t depend on the measured data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>points: (N, d) Tensor</strong></dt><dd><p>List of points at which to predict.</p>
+</dd>
+<dt><strong>S_y: (M, d) Tensor</strong></dt><dd><p>Spatial locations of the measurements.</p>
+</dd>
+<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
+</dd>
+<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>variance_reduction: (N) Tensor</dt><dd><p>Reduction in variance at each generalized location.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sensor.html" class="btn btn-neutral float-right" title="sampling module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="grid.html" class="btn btn-neutral float-left" title="Gridding Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Trygve Olav Fossum, Jo Eidsvik, David Ginsbourger, Kanna Rajan, Cedric Travelletti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

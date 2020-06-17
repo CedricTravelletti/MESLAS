@@ -1,0 +1,79 @@
+meslas package
+==============
+
+Subpackages
+-----------
+
+.. toctree::
+
+   meslas.covariance
+   meslas.external_dependencies
+   meslas.geometry
+
+Submodules
+----------
+
+meslas.excursion module
+-----------------------
+
+.. automodule:: meslas.excursion
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+meslas.means module
+-------------------
+
+.. automodule:: meslas.means
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+meslas.plotting module
+----------------------
+
+.. automodule:: meslas.plotting
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+meslas.plotting\_physical module
+--------------------------------
+
+.. automodule:: meslas.plotting_physical
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+meslas.random\_fields module
+----------------------------
+
+.. automodule:: meslas.random_fields
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+meslas.sensor module
+--------------------
+
+.. automodule:: meslas.sensor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+meslas.vectors module
+---------------------
+
+.. automodule:: meslas.vectors
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: meslas
+   :members:
+   :undoc-members:
+   :show-inheritance:

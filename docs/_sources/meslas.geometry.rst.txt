@@ -1,0 +1,30 @@
+meslas.geometry package
+=======================
+
+Submodules
+----------
+
+meslas.geometry.grid module
+---------------------------
+
+.. automodule:: meslas.geometry.grid
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+meslas.geometry.tilings module
+------------------------------
+
+.. automodule:: meslas.geometry.tilings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: meslas.geometry
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>meslas.covariance package &mdash; MESLAS 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MESLAS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Main Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sampling.html">Gaussian Random Field Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensor.html">sampling module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="means.html">means module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="excursion.html">excursion module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy of the MESLAS package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MESLAS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>meslas.covariance package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/meslas.covariance.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="meslas-covariance-package">
+<h1>meslas.covariance package<a class="headerlink" href="#meslas-covariance-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-meslas.covariance.covariance_functions">
+<span id="meslas-covariance-covariance-functions-module"></span><h2>meslas.covariance.covariance_functions module<a class="headerlink" href="#module-meslas.covariance.covariance_functions" title="Permalink to this headline">¶</a></h2>
+<p>Basic covariance functions.</p>
+<dl class="py function">
+<dt id="meslas.covariance.covariance_functions.Matern32">
+<code class="sig-prename descclassname">meslas.covariance.covariance_functions.</code><code class="sig-name descname">Matern32</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lmbda</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.covariance.covariance_functions.Matern32" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Matern32 covariance function.</p>
+<p>Note that in the multivariate case, we usually set sigma to 1 and define
+the variances in the cross-covariance function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>lmbda: Tensor</strong></dt><dd><p>Lengthscale parameter.</p>
+</dd>
+<dt><strong>sigma: Tensor</strong></dt><dd><p>Standard deviation.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>function(H)</dt><dd><p>Matern32 covariance function.Take matrix of euclidean distances as
+input.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-meslas.covariance.cross_covariances">
+<span id="meslas-covariance-cross-covariances-module"></span><h2>meslas.covariance.cross_covariances module<a class="headerlink" href="#module-meslas.covariance.cross_covariances" title="Permalink to this headline">¶</a></h2>
+<p>Cross-covariance models.</p>
+<dl class="py class">
+<dt id="meslas.covariance.cross_covariances.UniformMixing">
+<em class="property">class </em><code class="sig-prename descclassname">meslas.covariance.cross_covariances.</code><code class="sig-name descname">UniformMixing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gamma0</span></em>, <em class="sig-param"><span class="n">sigmas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.covariance.cross_covariances.UniformMixing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Create a uniform mixing cross-covariance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>gamma0: Tensor</strong></dt><dd><p>Coupling parameter.</p>
+</dd>
+<dt><strong>sigmas: (p) Tensor</strong></dt><dd><p>Vector on individual standar deviation for each to the p components.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>function(L1, L2)</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code>(self, L1, L2)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-meslas.covariance.heterotopic">
+<span id="meslas-covariance-heterotopic-module"></span><h2>meslas.covariance.heterotopic module<a class="headerlink" href="#module-meslas.covariance.heterotopic" title="Permalink to this headline">¶</a></h2>
+<p>Code for multidimensional sampling.
+We will be considering multivariate random fields Z=(Z^1, …, Z^p).
+The term <em>response index</em> denotes the index of the component of the field we
+ate considering.</p>
+<p>We will sometime use the word measurement point to denote a
+(location, response index) pair.</p>
+<p>We will be using the notation conventions from the papers.</p>
+<blockquote>
+<div><p>x’s will denote a location
+j’s will denote reponse a index</p>
+</div></blockquote>
+<p>Uppercase for concatenated quantities, i.e. a big X is a vector of x’s.</p>
+<p>First dimension of tensors represent the different samples/locations (batch
+dimension).
+Other dimensions are for the “dimensions” of the repsonse (or input domain).</p>
+<p>THIS IS FOR HETEROTOPIC SAMPLING (most general form).</p>
+<p># TODO: Inmplement convenience methods for full sampling (all indices).</p>
+<div class="section" id="conventions">
+<h3>Conventions<a class="headerlink" href="#conventions" title="Permalink to this headline">¶</a></h3>
+<p>Spatial locations will be denoted by s, capital letters for bunches.
+Response indices denoted by l.
+Couple of (locations, response indices) denoted by x.</p>
+<dl class="py class">
+<dt id="meslas.covariance.heterotopic.Covariance">
+<em class="property">class </em><code class="sig-prename descclassname">meslas.covariance.heterotopic.</code><code class="sig-name descname">Covariance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">factor_stationary_cov</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.covariance.heterotopic.Covariance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Covariance module</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>factor_stationary_cov: function(H, L1, L2)</strong></dt><dd><p>Covariance function. Only allow covariances that factor into a
+stationary spatial part that only depends on the euclidean distance
+matrix H and a purely response index component. L1 and L2 are the
+index matrix.</p>
+</dd>
+<dt><strong>n_out: int</strong></dt><dd><p>Number of output dimensions.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.covariance.heterotopic.Covariance.K" title="meslas.covariance.heterotopic.Covariance.K"><code class="xref py py-obj docutils literal notranslate"><span class="pre">K</span></code></a>(self, S1, S2, L1, L2)</p></td>
+<td><p>Same as above, but for vector of measurements.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="meslas.covariance.heterotopic.Covariance.K">
+<code class="sig-name descname">K</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S1</span></em>, <em class="sig-param"><span class="n">S2</span></em>, <em class="sig-param"><span class="n">L1</span></em>, <em class="sig-param"><span class="n">L2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.covariance.heterotopic.Covariance.K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as above, but for vector of measurements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>S1: (M, d) Tensor</strong></dt><dd><p>Spatial location vector. Note if d=1, should still have two
+dimensions.</p>
+</dd>
+<dt><strong>S2: (N, d) Tensor</strong></dt><dd><p>Spatial location vector.</p>
+</dd>
+<dt><strong>L1: (M) Tensor</strong></dt><dd><p>Response indices vector.</p>
+</dd>
+<dt><strong>L2: (N) Tensor</strong></dt><dd><p>Response indices vector.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>K: (M, N) Tensor</dt><dd><p>Covariane matrix between the two sets of measurements.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="meslas.covariance.heterotopic.FactorCovariance">
+<em class="property">class </em><code class="sig-prename descclassname">meslas.covariance.heterotopic.</code><code class="sig-name descname">FactorCovariance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spatial_cov</span></em>, <em class="sig-param"><span class="n">cross_cov</span></em>, <em class="sig-param"><span class="n">n_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.covariance.heterotopic.FactorCovariance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#meslas.covariance.heterotopic.Covariance" title="meslas.covariance.heterotopic.Covariance"><code class="xref py py-class docutils literal notranslate"><span class="pre">meslas.covariance.heterotopic.Covariance</span></code></a></p>
+<p>Convenience class for specifiying a factor model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>spatial_cov: function(H)</strong></dt><dd><p>Spatial covariance function.</p>
+</dd>
+<dt><strong>cross_cov: function(L1, L2)</strong></dt><dd><p>Cross-covariance function.</p>
+</dd>
+<dt><strong>n_out: int</strong></dt><dd><p>Number of output dimensions.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-meslas.covariance.old">
+<span id="meslas-covariance-old-module"></span><h2>meslas.covariance.old module<a class="headerlink" href="#module-meslas.covariance.old" title="Permalink to this headline">¶</a></h2>
+<p>Saving ideas from the first reflections about implementation.</p>
+<dl class="py function">
+<dt id="meslas.covariance.old.K_isotopic">
+<code class="sig-prename descclassname">meslas.covariance.old.</code><code class="sig-name descname">K_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X1</span></em>, <em class="sig-param"><span class="n">X2</span></em>, <em class="sig-param"><span class="n">J_full</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.covariance.old.K_isotopic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the covariance matrices between all components of X1 and X2.
+Saves time since distance between each point are only computed once (would
+need to compute once for each response index otherwise.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="meslas.covariance.old.k">
+<code class="sig-prename descclassname">meslas.covariance.old.</code><code class="sig-name descname">k</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x1</span></em>, <em class="sig-param"><span class="n">x2</span></em>, <em class="sig-param"><span class="n">j1</span></em>, <em class="sig-param"><span class="n">j2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.covariance.old.k" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes (cross)-covariance between a set of measures.</p>
+<p>TODO: We only consider stationary, so maybe get rid of x1, x2 and just
+consider h.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x1: Tensor</strong></dt><dd><p>Locations of first measurement.</p>
+</dd>
+<dt><strong>j1: Tensor</strong></dt><dd><p>Response index of first measurement.</p>
+</dd>
+<dt><strong>x2: Tensor</strong></dt><dd><p>Locations of second measurement.</p>
+</dd>
+<dt><strong>j2: Tensor</strong></dt><dd><p>Response index of second measurement.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Scalar Tensor</dt><dd><p>Cross-covariance between Z^j1(x1) and Z^j2(x2).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="meslas.covariance.old.mu">
+<code class="sig-prename descclassname">meslas.covariance.old.</code><code class="sig-name descname">mu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">J</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.covariance.old.mu" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes mean vector for given set of locations/response indices.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="meslas.covariance.old.sample">
+<code class="sig-prename descclassname">meslas.covariance.old.</code><code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">J</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.covariance.old.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a multivariate random field at measurement points (X,J).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Tensor</dt><dd><p>Shape (X.shape[0]), sampled values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="meslas.covariance.old.sample_isotopic">
+<code class="sig-prename descclassname">meslas.covariance.old.</code><code class="sig-name descname">sample_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.covariance.old.sample_isotopic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample all response components at given locations.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-meslas.covariance">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-meslas.covariance" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Trygve Olav Fossum, Jo Eidsvik, David Ginsbourger, Kanna Rajan, Cedric Travelletti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

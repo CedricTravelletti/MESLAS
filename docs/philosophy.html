@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Philosophy of the MESLAS package &mdash; MESLAS 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Plotting module" href="plotting.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MESLAS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Main Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensor.html">Sensor Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="means.html">means module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Philosophy of the MESLAS package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#generalized-vectors">Generalized Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-natural">What is Natural?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MESLAS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Philosophy of the MESLAS package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/philosophy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="philosophy-of-the-meslas-package">
+<span id="philosophy-label"></span><h1>Philosophy of the MESLAS package<a class="headerlink" href="#philosophy-of-the-meslas-package" title="Permalink to this headline">¶</a></h1>
+<p>The MESLAS package (<strong>M</strong>ulti-variate <strong>E</strong>xcursion <strong>S</strong>et <strong>L</strong>earning by <strong>A</strong>daptive <strong>S</strong>ampling) is a toolbox for simulation and prediction of mulitivariate Gaussian random fields.</p>
+<p>The setup of the package is the following: <span class="math notranslate nohighlight">\(Z\)</span> is a <span class="math notranslate nohighlight">\(p\)</span>-dimensional random
+field on a domain <span class="math notranslate nohighlight">\(d\)</span>-dimensional
+domain <span class="math notranslate nohighlight">\(D\)</span>.</p>
+<p>Our philosophy is to always specify spatial location and response indices
+together. That is, one should always specify textbf{where} and textbf{what}.</p>
+<p>Spatial locations are denoted by <span class="math notranslate nohighlight">\(s\)</span> and response indices by <span class="math notranslate nohighlight">\(\ell\)</span>. We will
+use boldface (or, in the code, alternatively uppercase or plurals) to denote
+vectors of such objects.</p>
+<p>A generalized sampling location is thus entirely defined by specifying two vectors</p>
+<div class="math notranslate nohighlight" id="equation-important">
+\begin{align}
+ \boldsymbol{s} &amp;= \left(s_1, ..., s_n\right)\in D^n\\
+ \boldsymbol{\ell} &amp;= \left(\ell_1, ..., \ell_n\right) \in \lbrace 1, ..., p
+ \rbrace^n
+\end{align}</div><p>We will refer to <span class="math notranslate nohighlight">\(n\)</span> as the textit{dimension} of the generalized sampling
+location and usually just talk of location, using the word textit{spatial
+location} when we want to specifically refer to points in <span class="math notranslate nohighlight">\(D\)</span>. Also, we will
+use boldface <span class="math notranslate nohighlight">\(x\)</span> as a shortcut to refer to the couple <span class="math notranslate nohighlight">\(\left(\boldsymbol{s},
+\boldsymbol{\ell}\right)\)</span> of spatial location vector and response index vector.
+The shortcut notation <span class="math notranslate nohighlight">\(Z_{\boldsymbol{x}}\)</span> thus refers to the
+vector</p>
+<div class="math notranslate nohighlight">
+\[Z_{\boldsymbol{x}}:=\left(Z_{s_1}^{\ell_1}, ..., Z_{s_n}^{\ell_n}\right) \in \mathbb{R}^n.\]</div>
+<div class="section" id="generalized-vectors">
+<h2>Generalized Vectors<a class="headerlink" href="#generalized-vectors" title="Permalink to this headline">¶</a></h2>
+<p>Say we have a <span class="math notranslate nohighlight">\(p\)</span>-dimensional random field <span class="math notranslate nohighlight">\(Z\)</span>, which we observe at
+<span class="math notranslate nohighlight">\(n\)</span> different spatial locations <span class="math notranslate nohighlight">\(s_1,...,s_n\)</span>. Then the most
+natural way to organize the observation in a single object is to bundle them
+into a <span class="math notranslate nohighlight">\(n\times p\)</span> dimensional vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+  Z^1_{s_1} &amp; \dots &amp; Z^p_{s_1}\\
+  \vdots &amp; &amp; \vdots\\
+  Z^1_{s_n} &amp; \dots &amp; Z^p_{s_n}
+\end{pmatrix}.\end{split}\]</div>
+<p>We will refer to such a (generalized) vector as a vector in <strong>isotopic</strong> form.
+This form might seem the most natural one, but it is not always the most
+appropriate. For example, when sampling such a field <span class="math notranslate nohighlight">\(Z\)</span> at the different
+locations <span class="math notranslate nohighlight">\(s_1,...,s_n\)</span>, correlations between all loations and all
+response indices have to be considered. It is thus easier to organise the
+responses in a one dimensional vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{pmatrix}
+  Z^1_{s_1}&amp; \dots &amp; Z^p_{s_1}
+  &amp; \dots &amp; Z^1_{s_n} &amp; \dots &amp; Z^p_{s_n}
+\end{pmatrix}\]</div>
+<p>which can then be multiplied by the appropriate covariance matrix. We call this
+the <strong>list</strong> form.</p>
+<p>One should note the that the way in which the reordering is performed does not
+matter, as long as it is consistent throughout. We thus won’t ever mention it
+again.</p>
+<p>In the same fashion, say we want to consider the correlations between a
+<span class="math notranslate nohighlight">\(p\)</span> dimensional field <span class="math notranslate nohighlight">\(Z\)</span> at locations <span class="math notranslate nohighlight">\(s_1,...,s_n\)</span> and a
+<span class="math notranslate nohighlight">\(q\)</span> dimensional field <span class="math notranslate nohighlight">\(Y\)</span> at locations <span class="math notranslate nohighlight">\(t_1,...,t_m\)</span>.</p>
+<p>Then, for sampling purposes, the most natural way to arrange the covariance
+information is in <strong>list</strong> form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+  Cov(Z^1_{s_1}, Y^1_{t_1}) &amp; \dots &amp; Cov(Z^1_{s_1}, Y^q_{t_1}) &amp; \dots &amp;
+  Cov(Z^1_{s_1}, Y^1_{t_m}) &amp; \dots &amp; Cov(Z^1_{s_1}, Y^q_{t_m})\\
+  \vdots &amp; &amp; &amp; &amp; &amp; &amp; \vdots \\
+  Cov(Z^p_{s_1}, Y^1_{t_1}) &amp; \dots &amp; Cov(Z^p_{s_1}, Y^q_{t_1}) &amp; \dots &amp;
+  Cov(Z^p_{s_1}, Y^1_{t_m}) &amp; \dots &amp; Cov(Z^p_{s_1}, Y^q_{t_m})\\
+  \vdots &amp; &amp; &amp; &amp; &amp; &amp; \vdots \\
+  Cov(Z^1_{s_n}, Y^1_{t_1}) &amp; \dots &amp; Cov(Z^1_{s_n}, Y^q_{t_1}) &amp; \dots &amp;
+  Cov(Z^1_{s_n}, Y^1_{t_m}) &amp; \dots &amp; Cov(Z^1_{s_n}, Y^q_{t_m})\\
+  \vdots &amp; &amp; &amp; &amp; &amp; &amp; \vdots \\
+  Cov(Z^p_{s_n}, Y^1_{t_1}) &amp; \dots &amp; Cov(Z^p_{s_n}, Y^q_{t_1}) &amp; \dots &amp;
+  Cov(Z^p_{s_n}, Y^1_{t_m}) &amp; \dots &amp; Cov(Z^p_{s_n}, Y^q_{t_m})
+\end{pmatrix}.\end{split}\]</div>
+<p>But when considering, for example, pointwise excursion probability, it makes
+sense to have covariance matrices between couple of points. I.e., to organise
+covariance information into a <span class="math notranslate nohighlight">\(n\times m \times p \times q\)</span> matrix, such
+that at index <span class="math notranslate nohighlight">\(i,j\)</span> we have a <span class="math notranslate nohighlight">\(p\times q\)</span> matrix of covariances
+between spatial locations <span class="math notranslate nohighlight">\(s_i\)</span> and <span class="math notranslate nohighlight">\(t_j\)</span>.</p>
+</div>
+<div class="section" id="what-is-natural">
+<h2>What is Natural?<a class="headerlink" href="#what-is-natural" title="Permalink to this headline">¶</a></h2>
+<p>The isotopic form is the natural one when we want to emphasize spatiality.
+Please note the way this sentence is formulated: spatiality has no prefered
+role, we might want to emphasize it, but it is not any more fundamental than
+the other <em>dimensions.</em>. Indeed, a multidimensional random field correlates
+different responses at different locations, so there is no difference between
+correlations at the same location <span class="math notranslate nohighlight">\(Cov(Z^1_x, Z^2_x)\)</span> or at different
+locations <span class="math notranslate nohighlight">\(Cov(Z_x^1, Z_y^2)\)</span>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="plotting.html" class="btn btn-neutral float-left" title="Plotting module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Trygve Olav Fossum, Jo Eidsvik, David Ginsbourger, Kanna Rajan, Cedric Travelletti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
