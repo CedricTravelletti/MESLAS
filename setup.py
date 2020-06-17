@@ -7,6 +7,12 @@ import sys
 import io
 import subprocess
 import platform
+
+# Make sure numpy and Cython get installed first.
+from setuptools import dist
+dist.Distribution().fetch_build_eggs(['Cython>=0.29.15', 'numpy>=1.18.0'])
+
+
 import numpy as np
 from Cython.Build import cythonize
 import Cython.Compiler.Options
@@ -71,7 +77,10 @@ setup(
     url=URL,
     packages=find_packages(),
     include_package_data=False,
-    install_requires=io.open(requirements, encoding='utf8').read(),
+    install_requires=[io.open(requirements, encoding='utf8').read(),
+            # Github Private Repository
+            'mvnorm @ git+ssh://git@github.com/CedricTravelletti/torch-mvnorm.git#egg=mvnorm'
+            ],
     classifiers=[],
     ext_modules=ext_modules_settings,
     include_dirs=[np.get_include()],
