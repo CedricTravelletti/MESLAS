@@ -1,7 +1,7 @@
 .. _sensor-label:
 
-sampling module
-===============
+Sensor Module
+=============
 
 .. automodule:: meslas.sensor
    :members:

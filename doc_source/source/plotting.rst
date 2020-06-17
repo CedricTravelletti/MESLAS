@@ -1,7 +1,10 @@
-plotting module
+.. role:: hidden
+   :class: hidden-section
+
+Plotting module
 ===============
 
-.. automodule:: plotting
+.. automodule:: meslas.plotting
    :members:
    :undoc-members:
    :show-inheritance:

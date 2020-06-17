@@ -1,5 +1,5 @@
 .. Copied from gpytorch.
-:github_url: https://github.com/CedricTravelletti/Submarine
+:github_url: https://github.com/CedricTravelletti/MESLAS
 
 MESLAS: Multivariate Excurions Set Learning by Adaptive Sampling
 =========================================================================================
@@ -117,6 +117,11 @@ is straightforward to define in MESLAS and to sample from
    # Sample all components (isotopic) at all locations of the grid.
    ground_truth = myGRF.sample_isotopic(my_grid.points)
 
+
+
+More information about the special concepts and notation which are used in MESLAS 
+to handle multivariate random fields may be found at :ref:`philosophy-label`.
+
 Autonomous Adaptive Sampling
 ----------------------------
 The ultimate goal of the package is for a sensor to automatically choose
@@ -158,10 +163,9 @@ For implementation, see :ref:`sensor-label`.
    :caption: Main Modules:
 
    grid
-   sampling
+   random_fields
    sensor
    means
-   excursion
    plotting
 
 

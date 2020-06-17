@@ -23,5 +23,3 @@ Module Implementation Details
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. automodule:: meslas.geometry.grid
    :members:
-   :undoc-members:
-   :show-inheritance:
