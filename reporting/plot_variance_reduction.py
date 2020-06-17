@@ -2,6 +2,7 @@
 Really good to see implementation is correct. We see that variance decreases
 not only where we measure, but also where other components have been measured,
 due to the correlations.
+
 """
 import numpy as np
 import torch
