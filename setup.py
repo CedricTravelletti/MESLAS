@@ -78,8 +78,8 @@ setup(
     packages=find_packages(),
     include_package_data=False,
     install_requires=[io.open(requirements, encoding='utf8').read(),
-            # Github Private Repository
-            'mvnorm @ git+ssh://git@github.com/CedricTravelletti/torch-mvnorm.git#egg=mvnorm'
+            # Github Repo containing dependency.
+            'mvnorm @ git+https://github.com/CedricTravelletti/torch-mvnorm.git#egg=mvnorm'
             ],
     classifiers=[],
     ext_modules=ext_modules_settings,
