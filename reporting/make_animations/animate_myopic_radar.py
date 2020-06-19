@@ -48,7 +48,7 @@ myGRF = GRF(mean, covariance)
 # DISCRETIZE EVERYTHING
 # ------------------------------------------------------
 # Create a regular square grid in 2 dims.
-my_grid = TriangularGrid(31)
+my_grid = TriangularGrid(51)
 print("Working on an equilateral triangular grid with {} nodes.".format(my_grid.n_points))
 
 # Discretize the GRF on a grid and be done with it.
@@ -96,12 +96,8 @@ lower = torch.tensor([2.3, 22.0]).float()
 
 # Get the real excursion set and plot it.
 excursion_ground_truth = (sample.isotopic > lower).float()
-plot_grid_values(my_grid, excursion_ground_truth.sum(dim=1), cmap="proba")
+plot_grid_values(my_grid, excursion_ground_truth.sum(dim=1), cmap="excu")
 
-# Plot the prior excursion probability.
-excu_probas = my_sensor.compute_exursion_prob(lower)
-plot_grid_probas(my_grid, excu_probas)
-print(my_sensor.grf.mean_vec.isotopic.shape)
 
 # Start from lower middle corner.
 my_sensor.set_location([0.0, 0.5])
