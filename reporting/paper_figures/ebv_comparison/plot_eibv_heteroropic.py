@@ -20,7 +20,6 @@ from torch.distributions.multivariate_normal import MultivariateNormal
 from gpytorch.utils.cholesky import psd_safe_cholesky
 
 
-
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib as mpl
@@ -33,17 +32,6 @@ from meslas.vectors import GeneralizedVector
 sns.set()
 sns.set_style("whitegrid", {'axes.grid' : False})
 
-# Color palettes
-# cmap = sns.cubehelix_palette(light=1, as_cmap=True)
-from matplotlib.colors import ListedColormap
-CMAP_PROBA = ListedColormap(sns.color_palette("RdBu_r", 400))
-CMAP = ListedColormap(sns.color_palette("BrBG", 100))
-
-CMAP_EXCU = ListedColormap(sns.color_palette("RdBu_r", 3))
-
-plt.rcParams["font.family"] = "Times New Roman"
-plt.rcParams.update({'font.size': 27})
-plt.rcParams.update({'font.style': 'oblique'}) 
 
 # Scientific notation in colorbars
 import matplotlib.ticker
@@ -64,20 +52,33 @@ class OOMFormatter(matplotlib.ticker.ScalarFormatter):
 def plot(sensor, ebv_1, ebv_2, ebv_full, excursion_ground_truth, output_filename=None):
     # Generate the plot array.
     fig = plt.figure(figsize=(15, 10))
-    gs = fig.add_gridspec(1, 2, wspace=0.2)
 
     ax1 = fig.add_subplot(141)
     ax2 = fig.add_subplot(142)
     ax3 = fig.add_subplot(143)
     ax4 = fig.add_subplot(144)
 
+    # Fix spacings between plots.
+    plt.subplots_adjust(wspace=0.12)
+
     # Normalize EBV color range.
     norm = Normalize(vmin=0.0, vmax=0.005, clip=False)
     # 1) Get the real excursion set and plot it.
-    plot_grid_values_ax(fig, ax1, "Excursion set", sensor.grid,
+    plot_grid_values_ax(fig, ax1, "Regions of interest", sensor.grid,
             excursion_ground_truth,
             S_y = sensor.grid[sensor.current_node_ind], cmap="excu",
             disable_cbar=True)
+    # Plot previously visited locations.
+    ax1.scatter(
+            sensor.grid[sensor.visited_node_inds][:, 1],
+            sensor.grid[sensor.visited_node_inds][:, 0],
+            marker="^", s=6.5, color="darkgray")
+    # Add current location on top.
+    ax1.scatter(
+            sensor.grid[sensor.current_node_ind][:, 1],
+            sensor.grid[sensor.current_node_ind][:, 0],
+            marker="^", s=18.5, color="lime")
+
     plot_grid_values_ax(fig, ax2, "Temperature", sensor.grid,
             ebv_1, cmap="proba", norm=norm,
             cbar_format=OOMFormatter(-2, mathText=False))
@@ -100,71 +101,18 @@ def plot(sensor, ebv_1, ebv_2, ebv_full, excursion_ground_truth, output_filename
     ax3.set_xticks([0.2, 0.4, 0.6, 0.8])
     ax4.set_xticks([0.2, 0.4, 0.6, 0.8])
 
+    # Cut the part that doesn't get interpolated.
+    ax1.set_xlim([0.0, 0.98])
+    ax2.set_xlim([0.0, 0.98])
+    ax3.set_xlim([0.0, 0.98])
+    ax4.set_xlim([0.0, 0.98])
+
     if output_filename is not None:
-        plt.savefig(output_filename)
+        plt.savefig(output_filename, bbox_inches='tight', pad_inches=0, dpi=400)
         plt.close(fig)
-    else: plt.show()
-
-    return
-
-def _plot_helper2(fig, axis, title, grid, vals, S_y=None, L_y=None, cmap=None,
-        norm=None,
-        disable_cbar=False,
-        cbar_format=None):
-    """ Helper for the neighbors EIBV version of the plotting function.
-
-    Parameters
-    ----------
-    axis
-
-    """
-    if isinstance(vals, GeneralizedVector):
-        vals = vals.isotopic
-    if cmap == "proba":
-        cmap = CMAP_PROBA
-        color="lime"
-    elif cmap == "excu":
-        cmap = CMAP_EXCU
-        color="lime"
     else:
-        cmap = CMAP
-        color = "red"
-    reshaped_vals = grid.interpolate_to_image(vals[:])
-    axis.set_title(title)
-    im = axis.imshow(
-            reshaped_vals[:, :].numpy(),
-            origin="lower",
-            extent=[0,1,0,1],
-            norm=norm,
-            cmap=cmap)
-
-    if not disable_cbar:
-        # Colorbar.
-        divider = make_axes_locatable(axis)
-        cax = divider.append_axes('right', size='5%', pad=0.05)
-        cbar = fig.colorbar(im, cax=cax, orientation='vertical',
-                format=cbar_format)
-        # cax = plot_grid.cbar_axes[i]
-        cbar.ax.tick_params(labelsize=7)
-
-    if (S_y is not None):
-        # Add the location of the measurement points on top.
-        locs = S_y.numpy()
-        axis.scatter(locs[:, 1], locs[:, 0], marker="^", s=9.5, color=color)
-
-    # Restore plot borders, which might be deformed by the scatter.
-    axis.set_xlim([0, 0.95])
-    axis.set_ylim([0, 0.95])
-    axis.set_xticks([])
-    axis.set_yticks([])
-    axis.yaxis.set_label_position("left")
-    
-    """
-    # Colorbar
-    ax = plot_grid[i]
-    ax.cax.colorbar(im)
-    ax.cax.toggle_label(True)
-    """
+        plt.savefig("out.png", bbox_inches='tight', pad_inches=0, dpi=400)
+        plt.show()
 
     return
 
@@ -179,7 +127,7 @@ n_out = 2
 matern_cov = Matern32(lmbda=0.5, sigma=1.0)
 
 # Cross covariance.
-cross_cov = UniformMixing(gamma0=0.2, sigmas=[2.25, 2.25])
+cross_cov = UniformMixing(gamma0=0.2, sigmas=[2.5, 2.25])
 covariance = FactorCovariance(
         spatial_cov=matern_cov,
         cross_cov=cross_cov,
@@ -187,7 +135,7 @@ covariance = FactorCovariance(
 
 # Specify mean function, here it is a linear trend that decreases with the
 # horizontal coordinate.
-beta0s = np.array([5.8, 24.0])
+beta0s = np.array([5.0, 24.0])
 beta1s = np.array([
         [0, -4.0],
         [0, -3.8]])
@@ -200,7 +148,7 @@ myGRF = GRF(mean, covariance)
 # DISCRETIZE EVERYTHING
 # ------------------------------------------------------
 # Create a regular square grid in 2 dims.
-my_grid = TriangularGrid(31)
+my_grid = TriangularGrid(61)
 print("Working on an equilateral triangular grid with {} nodes.".format(my_grid.n_points))
 
 # Discretize the GRF on a grid and be done with it.
@@ -235,11 +183,11 @@ def data_feed(node_ind):
 my_sensor = DiscreteSensor(my_discrete_grf)
 
 # Excursion threshold.
-lower = torch.tensor([2.3, 22.0]).float()
+lower = torch.tensor([2.15, 22.0]).float()
 
 # Get the real excursion set and plot it.
 excursion_ground_truth = (sample.isotopic > lower).float()
-plot_grid_values(my_grid, excursion_ground_truth.sum(dim=1), cmap="proba")
+plot_grid_values(my_grid, excursion_ground_truth.sum(dim=1), cmap="excu")
 
 # Plot the prior excursion probability.
 excu_probas = my_sensor.compute_exursion_prob(lower)
@@ -254,7 +202,7 @@ my_sensor.neighbors_eibv, my_sensor.neighbors_inds = my_sensor.get_neighbors_iso
         noise_std, lower)
 
 # Run the myopic strategy for a while
-n_steps = 4
+n_steps = 10
 for i in range(n_steps):
     my_sensor.run_myopic_stragegy(n_steps=1, data_feed=data_feed, lower=lower,
             noise_std=noise_std)
@@ -277,11 +225,11 @@ p = my_sensor.compute_exursion_prob(lower)
 current_bernoulli_variance = p * (1 - p)
 
 # Get EBVs for the next points.
-# First component.
-ebv_1 = my_sensor.grf.ebv(next_point_ind, torch.tensor([0]).long(), lower, noise_std=noise_std)
-
 # Second component.
 ebv_2 = my_sensor.grf.ebv(next_point_ind, torch.tensor([1]).long(), lower, noise_std=noise_std)
+
+# First component.
+ebv_1 = my_sensor.grf.ebv(next_point_ind, torch.tensor([0]).long(), lower, noise_std=noise_std)
 
 # Both.
 ebv_full = my_sensor.grf.ebv(next_point_ind.repeat(2,1).reshape(2), torch.tensor([0, 1]).long(),

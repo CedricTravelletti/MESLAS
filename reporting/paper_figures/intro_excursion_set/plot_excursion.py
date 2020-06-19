@@ -29,39 +29,49 @@ from meslas.vectors import GeneralizedVector
 sns.set()
 sns.set_style("whitegrid", {'axes.grid' : False})
 
-# Color palettes
-# cmap = sns.cubehelix_palette(light=1, as_cmap=True)
-from matplotlib.colors import ListedColormap
-CMAP_PROBA = ListedColormap(sns.color_palette("RdBu_r", 30))
-CMAP = ListedColormap(sns.color_palette("BrBG", 100))
 
 def plot(sensor, lower, excursion_ground_truth, output_filename=None):
     # Generate the plot array.
     fig = plt.figure(figsize=(15, 10))
-    gs = fig.add_gridspec(1, 2)
 
     ax1 = fig.add_subplot(131)
     ax2 = fig.add_subplot(132)
     ax3 = fig.add_subplot(133)
 
+    # Fix spacings between plots.
+    plt.subplots_adjust(wspace=0.12)
+
     # 1) Get the real excursion set and plot it.
-    plot_grid_values_ax(fig, ax1, r"$Z^1$", sensor.grid,
+    plot_grid_values_ax(fig, ax1, "Temperature", sensor.grid,
             sample.isotopic[:, 0])
-    plot_grid_values_ax(fig, ax2, r"$Z^2$", sensor.grid,
+    plot_grid_values_ax(fig, ax2, "Salinity", sensor.grid,
             sample.isotopic[:, 1])
-    plot_grid_values_ax(fig, ax3, "Excursion set", sensor.grid,
+    plot_grid_values_ax(fig, ax3, "Regions of interest", sensor.grid,
             excursion_ground_truth,
-            cmap="proba",
+            cmap="excu",
             disable_cbar=True)
 
     # Disable yticks for all but first.
     ax2.set_yticks([])
     ax3.set_yticks([])
 
+    ax1.set_yticks([0.2, 0.4, 0.6, 0.8])
+
+    ax1.set_xticks([0.2, 0.4, 0.6, 0.8])
+    ax2.set_xticks([0.2, 0.4, 0.6, 0.8])
+    ax3.set_xticks([0.2, 0.4, 0.6, 0.8])
+
+    # Cut the part that doesn't get interpolated.
+    ax1.set_xlim([0.0, 0.98])
+    ax2.set_xlim([0.0, 0.98])
+    ax3.set_xlim([0.0, 0.98])
+
     if output_filename is not None:
-        plt.savefig(output_filename)
+        plt.savefig(output_filename, bbox_inches='tight', pad_inches=0, dpi=400)
         plt.close(fig)
-    else: plt.show()
+    else:
+        plt.savefig("out.png", bbox_inches='tight', pad_inches=0, dpi=400)
+        plt.show()
 
     return
 
@@ -97,7 +107,7 @@ myGRF = GRF(mean, covariance)
 # DISCRETIZE EVERYTHING
 # ------------------------------------------------------
 # Create a regular square grid in 2 dims.
-my_grid = TriangularGrid(31)
+my_grid = TriangularGrid(61)
 print("Working on an equilateral triangular grid with {} nodes.".format(my_grid.n_points))
 
 # Discretize the GRF on a grid and be done with it.
@@ -141,4 +151,3 @@ plot_grid_values(my_grid, excursion_ground_truth.sum(dim=1), cmap="proba")
 # Plot the prior excursion probability and realization.
 excu_probas = my_sensor.compute_exursion_prob(lower)
 plot(my_sensor, lower, excursion_ground_truth.sum(1))
-

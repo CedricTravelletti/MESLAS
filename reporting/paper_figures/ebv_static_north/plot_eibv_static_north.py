@@ -33,18 +33,6 @@ from meslas.vectors import GeneralizedVector
 sns.set()
 sns.set_style("whitegrid", {'axes.grid' : False})
 
-# Color palettes
-# cmap = sns.cubehelix_palette(light=1, as_cmap=True)
-from matplotlib.colors import ListedColormap
-CMAP_PROBA = ListedColormap(sns.color_palette("RdBu_r", 400))
-CMAP = ListedColormap(sns.color_palette("BrBG", 100))
-
-CMAP_EXCU = ListedColormap(sns.color_palette("RdBu_r", 3))
-
-plt.rcParams["font.family"] = "Times New Roman"
-plt.rcParams.update({'font.size': 27})
-plt.rcParams.update({'font.style': 'oblique'}) 
-
 # Scientific notation in colorbars
 import matplotlib.ticker
 
@@ -65,13 +53,15 @@ def plot(sensor, ebv_north, ebv_east,
         current_proba,
         S_inds_north, S_inds_east,
         output_filename=None):
-    # Generate the plot array.
+
     fig = plt.figure(figsize=(15, 10))
-    # gs = fig.add_gridspec(1, 2)
 
     ax1 = fig.add_subplot(131)
     ax2 = fig.add_subplot(132)
     ax3 = fig.add_subplot(133)
+
+    # Fix spacings between plots.
+    plt.subplots_adjust(wspace=0.12)
 
     # Normalize EBV color range.
     norm = Normalize(vmin=0.0, vmax=0.005, clip=False)
@@ -88,12 +78,27 @@ def plot(sensor, ebv_north, ebv_east,
             S_y = sensor.grid[S_inds_east],
             cbar_format=OOMFormatter(-2, mathText=False))
 
-    # 2) Plot excursion.
+    # Disable yticks for all but first.
+    ax2.set_yticks([])
+    ax3.set_yticks([])
+
+    ax1.set_yticks([0.2, 0.4, 0.6, 0.8])
+
+    ax1.set_xticks([0.2, 0.4, 0.6, 0.8])
+    ax2.set_xticks([0.2, 0.4, 0.6, 0.8])
+    ax3.set_xticks([0.2, 0.4, 0.6, 0.8])
+
+    # Cut the part that doesn't get interpolated.
+    ax1.set_xlim([0.0, 0.98])
+    ax2.set_xlim([0.0, 0.98])
+    ax3.set_xlim([0.0, 0.98])
 
     if output_filename is not None:
-        plt.savefig(output_filename)
+        plt.savefig(output_filename, bbox_inches='tight', pad_inches=0, dpi=400)
         plt.close(fig)
-    else: plt.show()
+    else:
+        plt.savefig("out.png", bbox_inches='tight', pad_inches=0, dpi=400)
+        plt.show()
 
     return
 
@@ -129,7 +134,7 @@ myGRF = GRF(mean, covariance)
 # DISCRETIZE EVERYTHING
 # ------------------------------------------------------
 # Create a regular square grid in 2 dims.
-my_grid = TriangularGrid(31)
+my_grid = TriangularGrid(61)
 print("Working on an equilateral triangular grid with {} nodes.".format(my_grid.n_points))
 
 # Discretize the GRF on a grid and be done with it.
