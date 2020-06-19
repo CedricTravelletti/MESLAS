@@ -29,7 +29,7 @@ def plot_myopic_radar(sensor, lower, excursion_ground_truth, output_filename=Non
 
 
     # 1) Get the real excursion set and plot it.
-    plot_grid_values_ax(fig, ax1, "Excursion set: Ground truth", sensor.grid,
+    plot_grid_values_ax(fig, ax1, "Regions of interest", sensor.grid,
             excursion_ground_truth.sum(dim=1),
             cmap="excu",
             disable_cbar=True)
