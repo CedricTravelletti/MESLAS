@@ -15,8 +15,8 @@ plt.rcParams["font.family"] = "Times New Roman"
 plot_params = {
         'font.size': 27, 'font.style': 'oblique',
         # 'xtick.labelsize': 'x-small',
-        'axes.labelsize': 'xx-small',
-        'axes.titlesize':'xx-small',
+        'axes.labelsize': 'x-small',
+        'axes.titlesize':'x-small',
         'xtick.major.pad': '1',
         'xtick.minor.pad': '1',
         'ytick.major.pad': '1'}
@@ -27,8 +27,12 @@ sns.set_style("whitegrid", {'axes.grid' : False})
 
 # Color palettes
 from matplotlib.colors import ListedColormap
-CMAP_PROBA = ListedColormap(sns.color_palette("RdBu_r", 30))
-CMAP_EXCU = ListedColormap(sns.color_palette("RdBu_r", 6))
+CMAP_PROBA = ListedColormap(sns.cubehelix_palette(n_colors=500))
+# CMAP_PROBA = ListedColormap(sns.color_palette("RdBu_r", 30))
+# CMAP_EXCU = ListedColormap(sns.color_palette("Set1", 3))
+# CMAP_EXCU = ListedColormap(sns.color_palette("RdGy", 3))
+CMAP_EXCU = ListedColormap(sns.color_palette("Reds", 300))
+
 CMAP_RADAR = ListedColormap(sns.color_palette("cool", 30))
 
 CMAP = ListedColormap(sns.color_palette("BrBG", 100))
@@ -62,7 +66,13 @@ def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
         vals = vals.isotopic
     if cmap == "proba":
         cmap = CMAP_PROBA
-        color="lightgreen"
+        color="lime"
+    elif cmap == "excu":
+        cmap = CMAP_EXCU
+        color="lime"
+        # When we plot excursions, we want to increase the range so that it
+        # looks better with the colormap. Thats why we square the values.
+        vals = vals**(2.2)
     else:
         cmap = CMAP
         color = "red"
@@ -238,10 +248,13 @@ def plot_grid_values_ax(fig, axis, title, grid, vals, S_y=None, cmap=None,
         vals = vals.isotopic
     if cmap == "proba":
         cmap = CMAP_PROBA
-        color="lightgreen"
+        color="lime"
     elif cmap == "excu":
         cmap = CMAP_EXCU
         color="lime"
+        # When we plot excursions, we want to increase the range so that it
+        # looks better with the colormap. Thats why we square the values.
+        vals = vals**(2.2)
     else:
         cmap = CMAP
         color = "red"
@@ -264,7 +277,7 @@ def plot_grid_values_ax(fig, axis, title, grid, vals, S_y=None, cmap=None,
         cbar = fig.colorbar(im, cax=cax, orientation='vertical',
                 format=cbar_format)
         cbar.ax.tick_params(labelsize=5)
-        cbar.ax.yaxis.get_offset_text().set(size=5)
+        cbar.ax.yaxis.get_offset_text().set(size=7)
         cax.set_visible(True)
 
     if (S_y is not None):
