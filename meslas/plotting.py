@@ -35,7 +35,8 @@ CMAP_EXCU = ListedColormap(sns.color_palette("Reds", 300))
 
 CMAP_RADAR = ListedColormap(sns.color_palette("cool", 30))
 
-CMAP = ListedColormap(sns.color_palette("BrBG", 100))
+# CMAP = ListedColormap(sns.color_palette("BrBG", 100))
+CMAP = ListedColormap(sns.color_palette("GnBu_d", 100))
 
 
 def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
@@ -211,7 +212,7 @@ def plot_grid_probas(grid, probas, points=None, title=None,
 
 def plot_grid_values_ax(fig, axis, title, grid, vals, S_y=None, cmap=None,
         vmin=None, vmax=None, norm=None,
-        disable_cbar=False, cbar_format=None):
+        disable_cbar=False, cbar_format=None, cbar_label=None):
     """ Plots an image corresponding to values at points of a grid.
     This function takes an axis as input, so can be used to produce subplots.
 
@@ -242,6 +243,8 @@ def plot_grid_values_ax(fig, axis, title, grid, vals, S_y=None, cmap=None,
         Can be used to normalize colors once and for all.
     cbar_format: matplotlib.ticker.ScalarFormatter
         Allows one to format colorbar ticks in scientific notation.
+    cbar_label: string, optional
+        Text to display near the colorbar.
 
     """
     if isinstance(vals, GeneralizedVector):
@@ -275,9 +278,9 @@ def plot_grid_values_ax(fig, axis, title, grid, vals, S_y=None, cmap=None,
     cax.set_visible(False)
     if not disable_cbar:
         cbar = fig.colorbar(im, cax=cax, orientation='vertical',
-                format=cbar_format)
-        cbar.ax.tick_params(labelsize=5)
-        cbar.ax.yaxis.get_offset_text().set(size=7)
+                format=cbar_format, label=cbar_label)
+        cbar.ax.tick_params(labelsize=9)
+        cbar.ax.yaxis.get_offset_text().set(size=8)
         cax.set_visible(True)
 
     if (S_y is not None):
@@ -289,7 +292,7 @@ def plot_grid_values_ax(fig, axis, title, grid, vals, S_y=None, cmap=None,
     axis.set_xlim([0, 1])
     axis.set_ylim([0, 1])
 
-    axis.tick_params(axis='both', which='major', labelsize=8)
-    axis.tick_params(axis='both', which='minor', labelsize=8)
+    axis.tick_params(axis='both', which='major', labelsize=9)
+    axis.tick_params(axis='both', which='minor', labelsize=9)
 
     return
