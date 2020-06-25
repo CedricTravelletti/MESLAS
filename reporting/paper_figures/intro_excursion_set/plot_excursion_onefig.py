@@ -32,41 +32,49 @@ sns.set_style("whitegrid", {'axes.grid' : False})
 
 def plot(sensor, lower, excursion_ground_truth, output_filename=None):
     # Generate the plot array.
-    fig = plt.figure(figsize=(15, 10))
+    fig = plt.figure(figsize=(3, 3))
+    ax1 = fig.add_subplot(111)
 
-    ax1 = fig.add_subplot(131)
-    ax2 = fig.add_subplot(132)
-    ax3 = fig.add_subplot(133)
-
-    # Fix spacings between plots.
-    plt.subplots_adjust(wspace=0.16)
 
     # 1) Get the real excursion set and plot it.
-    plot_grid_values_ax(fig, ax1, "Temperature", sensor.grid,
+    plot_grid_values_ax(fig, ax1,
+            # "Temperature",
+            sensor.grid,
             sample.isotopic[:, 0],
             cbar_label=r"$[^{\circ}\mathrm{C}]$")
-    plot_grid_values_ax(fig, ax2, "Salinity", sensor.grid,
+    ax1.set_xticks([0.2, 0.4, 0.6, 0.8])
+    ax1.set_yticks([0.2, 0.4, 0.6, 0.8])
+    ax1.set_xlim([0.0, 0.98])
+
+    plt.savefig("intro_temp.png", bbox_inches='tight', pad_inches=0, dpi=400)
+    plt.show()
+
+    fig = plt.figure(figsize=(3, 3))
+    ax2 = fig.add_subplot(111)
+    plot_grid_values_ax(fig, ax2,
+            # "Salinity",
+            sensor.grid,
             sample.isotopic[:, 1],
             cbar_label=r"$[g/kg]$")
-    plot_grid_values_ax(fig, ax3, "Regions of interest", sensor.grid,
+    ax2.set_xticks([0.2, 0.4, 0.6, 0.8])
+    ax2.set_yticks([0.2, 0.4, 0.6, 0.8])
+    ax2.set_xlim([0.0, 0.98])
+
+    plt.savefig("intro_sal.png", bbox_inches='tight', pad_inches=0, dpi=400)
+    plt.show()
+
+    fig = plt.figure(figsize=(3, 3))
+    ax3 = fig.add_subplot(111)
+    plot_grid_values_ax(fig, ax3,
+            # "Regions of interest",
+            sensor.grid,
             excursion_ground_truth,
             cmap="excu",
             disable_cbar=True)
-
-    # Disable yticks for all but first.
-    ax2.set_yticks([])
-    ax3.set_yticks([])
-
-    ax1.set_yticks([0.2, 0.4, 0.6, 0.8])
-
-    ax1.set_xticks([0.2, 0.4, 0.6, 0.8])
-    ax2.set_xticks([0.2, 0.4, 0.6, 0.8])
     ax3.set_xticks([0.2, 0.4, 0.6, 0.8])
-
-    # Cut the part that doesn't get interpolated.
-    ax1.set_xlim([0.0, 0.98])
-    ax2.set_xlim([0.0, 0.98])
+    ax3.set_yticks([0.2, 0.4, 0.6, 0.8])
     ax3.set_xlim([0.0, 0.98])
+
 
     # Legend for the patches.
     # Get cmap.
@@ -88,12 +96,8 @@ def plot(sensor, lower, excursion_ground_truth, output_filename=None):
 
     ax3.legend(handles=legend_elements, loc='upper right')
 
-    if output_filename is not None:
-        plt.savefig(output_filename, bbox_inches='tight', pad_inches=0, dpi=400)
-        plt.close(fig)
-    else:
-        plt.savefig("out.png", bbox_inches='tight', pad_inches=0, dpi=400)
-        plt.show()
+    plt.savefig("intro_excu.png", bbox_inches='tight', pad_inches=0, dpi=400)
+    plt.show()
 
     return
 

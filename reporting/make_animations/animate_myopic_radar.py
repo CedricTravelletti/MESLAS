@@ -4,7 +4,7 @@
 import numpy as np
 import torch
 from meslas.means import LinearMean
-from meslas.covariance.covariance_functions import Matern32
+from meslas.covariance.spatial_covariance_functions import Matern32
 from meslas.covariance.cross_covariances import UniformMixing
 from meslas.covariance.heterotopic import FactorCovariance
 from meslas.geometry.grid import TriangularGrid
@@ -107,7 +107,7 @@ my_sensor.neighbors_eibv, my_sensor.neighbors_inds = my_sensor.get_neighbors_iso
         noise_std, lower)
 
 # Run the myopic strategy one step at a time.
-n_steps = 160
+n_steps = 240
 for i in range(n_steps):
     my_sensor.run_myopic_stragegy(n_steps=1, data_feed=data_feed, lower=lower,
             noise_std=noise_std)

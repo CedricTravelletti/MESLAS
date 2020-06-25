@@ -5,7 +5,7 @@ Here we only test if it works. For corectness checks, see test_mvnorm.py
 import numpy as np
 import torch
 from meslas.means import ConstantMean
-from meslas.covariance.covariance_functions import Matern32
+from meslas.covariance.spatial_covariance_functions import Matern32
 from meslas.covariance.cross_covariances import UniformMixing
 from meslas.covariance.heterotopic import FactorCovariance
 from meslas.geometry.grid import SquareGrid

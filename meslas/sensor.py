@@ -368,3 +368,70 @@ class DiscreteSensor(Sensor):
             
             # Update model.
             self.update_design(S_ind, L, y, noise_std)
+
+    def run_lookahead_stragegy(self, n_steps, data_feed, noise_std, lower,
+            upper=None, n_prune=3):
+        """ Run the myopic strategy for n_steps, starting from the current
+        location. That is, at each point, pick the neighbors with the smallest
+        EIBV, move there, observe, update model, repeat.
+
+        Parameters
+        ----------
+        n_steps: int
+            Number of steps (observations) to run the strategy for.
+        data_feed: function(int)
+            Function that, given a node index, returns the measured data
+            (isotopic) at that node.
+        noise_std
+        lower
+        upper
+        n_prune: int
+            Number of paths to consider at the first step. From the starting
+            node, we will only consider the best n_prune nodes, ranked using
+            the myopic strategy.
+
+        """
+        for i in range(n_steps):
+            # First get the EIVS of the neighbors for a preliminary assesment
+            # of the paths worth considering.
+            neighbors_eibv, neighbors_inds = self.get_neighbors_isotopic_eibv(
+                    noise_std, lower, upper)
+
+            # Get which neighbors have smallest eibv and only consider those
+            # paths.
+            _, min_inds = torch.topk(neighbors_eibv, k=n_prune, largest=False)
+            pruned_neighbors_inds = neighbors_inds[min_inds]
+
+            for ind in pruned_neighbors_inds:
+                # Sample data there.
+                y = self.grf.sample_isotopic(self.grid[ind])
+
+                # Condition.
+                S_inds, L = self.grid.get_isotopic_generalized_location_inds(
+                    self.grid.points[ind], self.grf.n_out)
+                self.update_design(S_inds, L, y, noise_std=noise_std)
+
+                # Virtually move there and sample data.
+
+            
+
+            """
+            # Choose next point.
+            next_point_ind, next_point_eibv = self.choose_next_point_myopic(
+                    noise_std, lower, upper)
+
+            # Move there.
+            print("Moving to next best point {}".format(
+                    self.grid.points[next_point_ind]))
+            self.set_location(self.grid.points[next_point_ind])
+
+            # Get the measurement vector corresponding to isotopic data
+            S_ind, L = self.grid.get_isotopic_generalized_location_inds(
+                    self.grid.points[next_point_ind], self.grf.n_out)
+
+            # Acquire data.
+            y = data_feed(next_point_ind)
+            
+            # Update model.
+            self.update_design(S_ind, L, y, noise_std)
+            """

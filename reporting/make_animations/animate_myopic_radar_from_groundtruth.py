@@ -1,3 +1,6 @@
+""" Run the myopic startegy and plot progress each time.
+
+"""
 import numpy as np
 import torch
 from meslas.means import LinearMean
@@ -6,12 +9,12 @@ from meslas.covariance.cross_covariances import UniformMixing
 from meslas.covariance.heterotopic import FactorCovariance
 from meslas.geometry.grid import TriangularGrid
 from meslas.random_fields import GRF, DiscreteGRF
-from meslas.excursion import coverage_fct_fixed_location
+from meslas.sensor_plotting import DiscreteSensor
 from meslas.plotting import plot_grid_values, plot_grid_probas
-from meslas.sensor import DiscreteSensor
+from plotting_functions import plot_myopic_radar
+
 from torch.distributions.multivariate_normal import MultivariateNormal
 from gpytorch.utils.cholesky import psd_safe_cholesky
-import matplotlib.pyplot as plt
 
 
 # ------------------------------------------------------
@@ -45,7 +48,7 @@ myGRF = GRF(mean, covariance)
 # DISCRETIZE EVERYTHING
 # ------------------------------------------------------
 # Create a regular square grid in 2 dims.
-my_grid = TriangularGrid(31)
+my_grid = TriangularGrid(51)
 print("Working on an equilateral triangular grid with {} nodes.".format(my_grid.n_points))
 
 # Discretize the GRF on a grid and be done with it.
@@ -53,16 +56,21 @@ print("Working on an equilateral triangular grid with {} nodes.".format(my_grid.
 my_discrete_grf = DiscreteGRF.from_model(myGRF, my_grid)
 
 # ------------------------------------------------------
-# Sample and plot
+# Load sample and plot
 # ------------------------------------------------------
-# Sample all components at all locations.
-sample = my_discrete_grf.sample()
+sample = torch.from_numpy(np.load("./ground_truth.npy")).float()
 plot_grid_values(my_grid, sample)
 
 # From now on, we will consider the drawn sample as ground truth.
 # ---------------------------------------------------------------
 ground_truth = sample
 
+
+# -------------------------------------------
+# TODO: To make things more reproducible,
+# this should be implemented in a module. 
+# Manual specification is not nice.
+# -------------------------------------------
 # Use it to declare the data feed.
 noise_std = torch.tensor([0.1, 0.1])
 # Noise distribution
@@ -74,6 +82,8 @@ noise_distr = MultivariateNormal(
 def data_feed(node_ind):
     noise_realization = noise_distr.sample()
     return ground_truth[node_ind] + noise_realization
+# -------------------------------------------
+# -------------------------------------------
 
 my_sensor = DiscreteSensor(my_discrete_grf)
 
@@ -82,28 +92,22 @@ lower = torch.tensor([2.3, 22.0]).float()
 
 # Get the real excursion set and plot it.
 excursion_ground_truth = (sample.isotopic > lower).float()
-plot_grid_values(my_grid, excursion_ground_truth.sum(dim=1), cmap="proba")
+plot_grid_values(my_grid, excursion_ground_truth.sum(dim=1), cmap="excu")
 
-# Plot the prior excursion probability.
-excu_probas = my_sensor.compute_exursion_prob(lower)
-plot_grid_probas(my_grid, excu_probas)
-print(my_sensor.grf.mean_vec.isotopic.shape)
 
-# Start from lower left corner.
-my_sensor.set_location([0.0, 0.0])
-my_sensor.run_myopic_stragegy(n_steps=35, data_feed=data_feed, lower=lower,
-        noise_std=noise_std)
+# Start from lower middle corner.
+my_sensor.set_location([0.0, 0.5])
 
-# At the end, print true excursion, with visited points overlaid.
-plot_grid_values(my_grid, excursion_ground_truth.sum(dim=1),
-        my_grid.points[my_sensor.visited_node_inds],
-        cmap="proba")
+# First initialize the myopic strategy.
+my_sensor.neighbors_eibv, my_sensor.neighbors_inds = my_sensor.get_neighbors_isotopic_eibv(
+        noise_std, lower)
 
-# Also plot plug_in estimate of excursion.
-plot_grid_values(my_grid, (my_discrete_grf.mean_vec.isotopic > lower).sum(1),
-        my_grid.points[my_sensor.visited_node_inds],
-        cmap="proba")
+# Run the myopic strategy one step at a time.
+n_steps = 600
+for i in range(n_steps):
+    my_sensor.run_myopic_stragegy(n_steps=1, data_feed=data_feed, lower=lower,
+            noise_std=noise_std)
 
-# Plot the excursion probability in the end.
-excu_probas = my_sensor.compute_exursion_prob(lower)
-plot_grid_probas(my_grid, excu_probas)
+    # Plot progress.
+    plot_myopic_radar(
+            my_sensor, lower, excursion_ground_truth, output_filename="gif{}.png".format(i))

@@ -51,21 +51,17 @@ class OOMFormatter(matplotlib.ticker.ScalarFormatter):
 
 def plot(sensor, ebv_1, ebv_2, ebv_full, excursion_ground_truth, output_filename=None):
     # Generate the plot array.
-    fig = plt.figure(figsize=(15, 10))
+    fig = plt.figure(figsize=(3, 3))
 
-    ax1 = fig.add_subplot(141)
-    ax2 = fig.add_subplot(142)
-    ax3 = fig.add_subplot(143)
-    ax4 = fig.add_subplot(144)
-
-    # Fix spacings between plots.
-    plt.subplots_adjust(wspace=0.12)
+    ax1 = fig.add_subplot(111)
 
     # Normalize EBV color range.
     norm = Normalize(vmin=0.0, vmax=0.005, clip=False)
     # 1) Get the real excursion set and plot it.
-    plot_grid_values_ax(fig, ax1, sensor.grid, excursion_ground_truth,
-            title="Regions of interest",
+    plot_grid_values_ax(fig, ax1,
+            # "Regions of interest",
+            sensor.grid,
+            excursion_ground_truth,
             S_y = sensor.grid[sensor.current_node_ind], cmap="excu",
             disable_cbar=True)
     # Plot previously visited locations.
@@ -79,36 +75,9 @@ def plot(sensor, ebv_1, ebv_2, ebv_full, excursion_ground_truth, output_filename
             sensor.grid[sensor.current_node_ind][:, 0],
             marker="^", s=18.5, color="lime")
 
-    plot_grid_values_ax(fig, ax2, sensor.grid, ebv_1,
-            title="Temperature",
-            cmap="proba", norm=norm,
-            cbar_format=OOMFormatter(-2, mathText=False))
-    plot_grid_values_ax(fig, ax3, sensor.grid, ebv_2,
-            title="Salinity",
-            cmap="proba", norm=norm,
-            cbar_format=OOMFormatter(-2, mathText=False))
-    plot_grid_values_ax(fig, ax4, sensor.grid, ebv_full,
-            title="Both",
-            cmap="proba", norm=norm,
-            cbar_format=OOMFormatter(-2, mathText=False))
-
-    # Disable yticks for all but first.
-    ax2.set_yticks([])
-    ax3.set_yticks([])
-    ax4.set_yticks([])
-
-    ax1.set_yticks([0.2, 0.4, 0.6, 0.8])
-
     ax1.set_xticks([0.2, 0.4, 0.6, 0.8])
-    ax2.set_xticks([0.2, 0.4, 0.6, 0.8])
-    ax3.set_xticks([0.2, 0.4, 0.6, 0.8])
-    ax4.set_xticks([0.2, 0.4, 0.6, 0.8])
-
-    # Cut the part that doesn't get interpolated.
+    ax1.set_yticks([0.2, 0.4, 0.6, 0.8])
     ax1.set_xlim([0.0, 0.98])
-    ax2.set_xlim([0.0, 0.98])
-    ax3.set_xlim([0.0, 0.98])
-    ax4.set_xlim([0.0, 0.98])
 
     # Legend for the patches.
     # Get cmap.
@@ -130,12 +99,50 @@ def plot(sensor, ebv_1, ebv_2, ebv_full, excursion_ground_truth, output_filename
 
     ax1.legend(handles=legend_elements, loc='upper right')
 
-    if output_filename is not None:
-        plt.savefig(output_filename, bbox_inches='tight', pad_inches=0, dpi=400)
-        plt.close(fig)
-    else:
-        plt.savefig("out.png", bbox_inches='tight', pad_inches=0, dpi=400)
-        plt.show()
+    plt.savefig("ebv_comp_excu.png", bbox_inches='tight', pad_inches=0, dpi=400)
+    plt.show()
+
+    fig = plt.figure(figsize=(3, 3))
+    ax2 = fig.add_subplot(111)
+    plot_grid_values_ax(fig, ax2,
+            # "Temperature",
+            sensor.grid,
+            ebv_1, cmap="proba", norm=norm,
+            cbar_format=OOMFormatter(-2, mathText=False))
+    ax2.set_xticks([0.2, 0.4, 0.6, 0.8])
+    ax2.set_yticks([0.2, 0.4, 0.6, 0.8])
+    ax2.set_xlim([0.0, 0.98])
+
+    plt.savefig("ebv_comp_temp.png", bbox_inches='tight', pad_inches=0, dpi=400)
+    plt.show()
+
+    fig = plt.figure(figsize=(3, 3))
+    ax3 = fig.add_subplot(111)
+    plot_grid_values_ax(fig, ax3,
+            # "Salinity",
+            sensor.grid,
+            ebv_2, cmap="proba", norm=norm,
+            cbar_format=OOMFormatter(-2, mathText=False))
+    ax3.set_xticks([0.2, 0.4, 0.6, 0.8])
+    ax3.set_yticks([0.2, 0.4, 0.6, 0.8])
+    ax3.set_xlim([0.0, 0.98])
+
+    plt.savefig("ebv_comp_sal.png", bbox_inches='tight', pad_inches=0, dpi=400)
+    plt.show()
+
+    fig = plt.figure(figsize=(3, 3))
+    ax4 = fig.add_subplot(111)
+    plot_grid_values_ax(fig, ax4,
+            # "Both",
+            sensor.grid,
+            ebv_full, cmap="proba", norm=norm,
+            cbar_format=OOMFormatter(-2, mathText=False))
+    ax4.set_xticks([0.2, 0.4, 0.6, 0.8])
+    ax4.set_yticks([0.2, 0.4, 0.6, 0.8])
+    ax4.set_xlim([0.0, 0.98])
+
+    plt.savefig("ebv_comp_both.png", bbox_inches='tight', pad_inches=0, dpi=400)
+    plt.show()
 
     return
 

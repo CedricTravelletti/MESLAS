@@ -66,6 +66,18 @@ def plot_myopic_radar(sensor, lower, excursion_ground_truth, output_filename=Non
     ax3.scatter([0.0], [0.0], c=[0.0], s=1400, cmap="gist_gray")
     ax3.set_yticks([])
 
+    # Disable yticks for all but first.
+    ax2.set_yticks([])
+
+    ax1.set_yticks([0.2, 0.4, 0.6, 0.8])
+
+    ax1.set_xticks([0.2, 0.4, 0.6, 0.8])
+    ax2.set_xticks([0.2, 0.4, 0.6, 0.8])
+
+    # Cut the part that doesn't get interpolated.
+    ax1.set_xlim([0.0, 0.98])
+    ax2.set_xlim([0.0, 0.98])
+
     if output_filename is not None:
         plt.savefig(output_filename)
         plt.close(fig)

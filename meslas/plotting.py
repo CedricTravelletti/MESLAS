@@ -210,7 +210,9 @@ def plot_grid_probas(grid, probas, points=None, title=None,
     else: plt.show()
     return
 
-def plot_grid_values_ax(fig, axis, title, grid, vals, S_y=None, cmap=None,
+def plot_grid_values_ax(fig, axis, grid, vals,
+        title=None,
+        S_y=None, cmap=None,
         vmin=None, vmax=None, norm=None,
         disable_cbar=False, cbar_format=None, cbar_label=None):
     """ Plots an image corresponding to values at points of a grid.
@@ -220,12 +222,12 @@ def plot_grid_values_ax(fig, axis, title, grid, vals, S_y=None, cmap=None,
     ----------
     axis: matplotlib.axis
         The axis instance on which to draw.
-    title: string
-        Title for the plot.
     grid: meslas.Geometry.Grid
         Grid on which to plot.
     vals: (n_points) Tensor
         The values at the grid nodes.
+    title: string
+        Title for the plot.
     S_y: (n_points, n_dim) Tensor, optional
         Allows to add points on the plot.
     cmap: string

@@ -1,4 +1,5 @@
-""" Run the myopic startegy and plot progress each time.
+""" Generate plot of excursion set (Figure 2), but loads ground truth instead
+of generating it.
 
 """
 import numpy as np
@@ -10,6 +11,7 @@ from meslas.covariance.heterotopic import FactorCovariance
 from meslas.geometry.grid import TriangularGrid
 from meslas.random_fields import GRF, DiscreteGRF
 from meslas.excursion import coverage_fct_fixed_location
+from meslas.vectors import GeneralizedVector
 from meslas.plotting import plot_grid_values, plot_grid_probas, plot_grid_values_ax
 
 #from meslas.sensor import DiscreteSensor
@@ -88,6 +90,7 @@ def plot(sensor, lower, excursion_ground_truth, output_filename=None):
 
     ax3.legend(handles=legend_elements, loc='upper right')
 
+
     if output_filename is not None:
         plt.savefig(output_filename, bbox_inches='tight', pad_inches=0, dpi=400)
         plt.close(fig)
@@ -116,7 +119,7 @@ covariance = FactorCovariance(
 
 # Specify mean function, here it is a linear trend that decreases with the
 # horizontal coordinate.
-beta0s = np.array([6.8, 24.0])
+beta0s = np.array([5.8, 24.0])
 beta1s = np.array([
         [0, -4.0],
         [0, -3.8]])
@@ -137,17 +140,9 @@ print("Working on an equilateral triangular grid with {} nodes.".format(my_grid.
 my_discrete_grf = DiscreteGRF.from_model(myGRF, my_grid)
 
 # ------------------------------------------------------
-# Sample and plot
-# ------------------------------------------------------
-# Sample all components at all locations.
-sample = my_discrete_grf.sample()
-plot_grid_values(my_grid, sample)
-
-# From now on, we will consider the drawn sample as ground truth.
-# ---------------------------------------------------------------
-ground_truth = sample
-# Save for reproducibility.
-np.save("ground_truth.npy", ground_truth.numpy())
+# Load ground truth from file.
+sample = torch.from_numpy(np.load("./ground_truth.npy")).float()
+sample = GeneralizedVector.from_isotopic(sample)
 
 # Use it to declare the data feed.
 noise_std = torch.tensor([0.1, 0.1])
@@ -164,7 +159,7 @@ def data_feed(node_ind):
 my_sensor = DiscreteSensor(my_discrete_grf)
 
 # Excursion threshold.
-lower = torch.tensor([3.3, 22.0]).float()
+lower = torch.tensor([2.3, 22.0]).float()
 
 # Get the real excursion set and plot it.
 excursion_ground_truth = (sample.isotopic > lower).float()

@@ -7,7 +7,7 @@ due to the correlations.
 import numpy as np
 import torch
 from meslas.means import LinearMean
-from meslas.covariance.covariance_functions import Matern32
+from meslas.covariance.spatial_covariance_functions import Matern32
 from meslas.covariance.cross_covariances import UniformMixing
 from meslas.covariance.heterotopic import FactorCovariance
 from meslas.geometry.grid import TriangularGrid, SquareGrid, get_isotopic_generalized_location_inds
