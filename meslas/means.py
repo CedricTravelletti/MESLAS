@@ -76,6 +76,7 @@ class LinearMean():
         """
         # The code is a bit convoluted since we need to perform dot products
         # for each row.
+        # TODO: See if can be replaced by tensordot.
         return self.beta0s[L] + (self.beta1s[L, :] * S).sum(1)
 
     def __repr__(self):
