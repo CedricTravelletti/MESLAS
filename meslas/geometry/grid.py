@@ -77,8 +77,9 @@ class IrregularGrid():
         Number of points in the grid.
 
     """
-    def __init__(self, size):
-        raise NotImplementedError
+    def __init__(self, points):
+        self.points = points
+        self.n_points = points.shape[0]
 
     # TODO: Inspect these methods. Ther are used by sampling for some
     # reshaping. Should be delegated to the grid.
