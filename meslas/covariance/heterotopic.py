@@ -32,11 +32,9 @@ import torch
 from torch.distributions import multivariate_normal
 
 
-class Covariance():
-    """
-    Covariance(factor_stationary_cov)
+class StationaryCovariance():
+    """ Stationary covariance function.
 
-    Covariance module
 
     Parameters
     ----------
@@ -75,11 +73,12 @@ class Covariance():
     
         """
         # Distance matrix.
-        H = torch.cdist(S1, S2, p=2)
+        H = torch.cdist(S1, S2, p=2,
+                compute_mode='donot_use_mm_for_euclid_dist')
     
         return self.factor_stationary_cov(H, L1, L2)
 
-class FactorCovariance(Covariance):
+class FactorStationaryCovariance(StationaryCovariance):
     """ Convenience class for specifiying a factor model.
 
     Parameters
@@ -103,3 +102,48 @@ class FactorCovariance(Covariance):
                 "\t cross-corellation parameter gamma0:\n"
                 "\t individual variances sigma0s:\n")
         return out_string
+
+class FactorCovariance():
+    """ General (not necessarily stationary) separable covariance function.
+
+    Parameters
+    ----------
+    spatial_cov: function(H)
+        Spatial covariance function.
+    cross_cov: function(L1, L2)
+        Cross-covariance function.
+    n_out: int
+        Number of output dimensions.
+
+    """
+    def __init__(self, spatial_cov, cross_cov, n_out):
+        self.spatial_cov = spatial_cov
+        self.cross_cov = cross_cov
+        self.n_out = n_out
+
+    def K(self, S1, S2, L1, L2):
+        """ Same as above, but for vector of measurements.
+
+        Parameters
+        ----------
+        S1: (M, d) Tensor
+            Spatial location vector. Note if d=1, should still have two
+            dimensions.
+        S2: (N, d) Tensor
+            Spatial location vector.
+        L1: (M) Tensor
+            Response indices vector.
+        L2: (N) Tensor
+            Response indices vector.
+    
+        Returns
+        -------
+        K: (M, N) Tensor
+            Covariane matrix between the two sets of measurements.
+    
+        """
+        # Distance matrix.
+        H = torch.cdist(S1, S2, p=2,
+                compute_mode='donot_use_mm_for_euclid_dist')
+    
+        return self.spatial_cov(H) * self.cross_cov(S1, L1, S2, L2)
