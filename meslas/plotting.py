@@ -10,20 +10,22 @@ from mpl_toolkits.axes_grid1 import ImageGrid
 from mpl_toolkits.axes_grid1 import ImageGrid, make_axes_locatable
 from meslas.vectors import GeneralizedVector
 
+
+sns.set()
+sns.set_style("whitegrid", {'axes.grid' : False})
+
 # Trygve's plot parameters.
 plt.rcParams["font.family"] = "Times New Roman"
 plot_params = {
         'font.size': 27, 'font.style': 'oblique',
         # 'xtick.labelsize': 'x-small',
-        'axes.labelsize': 'x-small',
-        'axes.titlesize':'x-small',
+        'axes.labelsize': 'small',
+        'axes.titlesize':'small',
         'xtick.major.pad': '1',
         'xtick.minor.pad': '1',
         'ytick.major.pad': '1'}
 plt.rcParams.update(plot_params)
 
-sns.set()
-sns.set_style("whitegrid", {'axes.grid' : False})
 
 # Color palettes
 from matplotlib.colors import ListedColormap
@@ -37,6 +39,7 @@ CMAP_RADAR = ListedColormap(sns.color_palette("cool", 30))
 
 # CMAP = ListedColormap(sns.color_palette("BrBG", 100))
 CMAP = ListedColormap(sns.color_palette("GnBu_d", 100))
+# CMAP = ListedColormap(sns.color_palette("RdBu_r", 20)
 
 
 def plot_grid_values(grid, vals, S_y=None, L_y=None, cmap=None):
@@ -281,7 +284,7 @@ def plot_grid_values_ax(fig, axis, grid, vals,
     if not disable_cbar:
         cbar = fig.colorbar(im, cax=cax, orientation='vertical',
                 format=cbar_format, label=cbar_label)
-        cbar.ax.tick_params(labelsize=9)
+        cbar.ax.tick_params(labelsize=12)
         cbar.ax.yaxis.get_offset_text().set(size=8)
         cax.set_visible(True)
 
@@ -294,7 +297,7 @@ def plot_grid_values_ax(fig, axis, grid, vals,
     axis.set_xlim([0, 1])
     axis.set_ylim([0, 1])
 
-    axis.tick_params(axis='both', which='major', labelsize=9)
-    axis.tick_params(axis='both', which='minor', labelsize=9)
+    axis.tick_params(axis='both', which='major', labelsize=12)
+    axis.tick_params(axis='both', which='minor', labelsize=12)
 
     return
