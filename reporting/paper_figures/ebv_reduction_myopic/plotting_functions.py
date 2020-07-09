@@ -6,19 +6,18 @@ import torch
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-from plotting_for_radar import plot_grid_values_ax
+from meslas.plotting import plot_grid_values_ax
 from meslas.vectors import GeneralizedVector
 
 # Colormap for the radar.
 from matplotlib.colors import ListedColormap
 # CMAP_RADAR = ListedColormap(sns.color_palette("inferno_r", 30))
-# CMAP_RADAR = ListedColormap(sns.cubehelix_palette(n_colors=500))
-CMAP_RADAR = ListedColormap(sns.color_palette("Reds_r", 300))
+CMAP_RADAR = ListedColormap(sns.cubehelix_palette(n_colors=500))
 
 
-def plot_myopic_radar(sensor, lower, excursion_ground_truth, output_filename=None):
+def plot_myopic_radar(sensor, lower, excursion_ground_truth, bv_reduction, output_filename=None):
     # Generate the plot array.
-    fig = plt.figure(figsize=(9, 6))
+    fig = plt.figure(figsize=(15, 10))
     widths = [3, 3, 1]
     heights = [3, 3, 3]
     gs = fig.add_gridspec(
@@ -33,7 +32,6 @@ def plot_myopic_radar(sensor, lower, excursion_ground_truth, output_filename=Non
     # 1) Get the real excursion set and plot it.
     plot_grid_values_ax(fig, ax1, sensor.grid,
             excursion_ground_truth.sum(dim=1),
-            title="Regions of interest",
             cmap="excu",
             disable_cbar=True)
 
@@ -57,14 +55,11 @@ def plot_myopic_radar(sensor, lower, excursion_ground_truth, output_filename=Non
 
     ax1.legend(handles=legend_elements, loc='upper right')
 
-    # 2) Plot coverage function.
-    excu_probas = sensor.compute_exursion_prob(lower)
+    # 2) Plot Bernoulli variance reduction.
     plot_grid_values_ax(fig, ax2, sensor.grid,
-            excu_probas,
-            title="Excursion probability.",
+            bv_reduction,
             S_y=sensor.grid.points[sensor.visited_node_inds],
             cmap="proba", vmin=0, vmax=1)
-
     ax2.scatter(sensor.grid[sensor.current_node_ind][0, 1],
             sensor.grid[sensor.current_node_ind][0, 0],
             marker="^", s=8.0, color="cyan")
@@ -79,7 +74,7 @@ def plot_myopic_radar(sensor, lower, excursion_ground_truth, output_filename=Non
     rS = rS.repeat(phi.shape[0])
     cs = np.repeat(sensor.neighbors_eibv.numpy(), 100)
 
-    im = ax3.scatter(phiS, rS, c=cs, s=50, alpha=0.1, cmap=CMAP_RADAR)
+    im = ax3.scatter(phiS, rS, c=cs, s=50, alpha=0.02, cmap=CMAP_RADAR)
 
     # Plot the best direction with a thicker line.
     min_ind = np.argmin(sensor.neighbors_eibv.numpy())
@@ -91,7 +86,7 @@ def plot_myopic_radar(sensor, lower, excursion_ground_truth, output_filename=Non
     im = ax3.scatter(phiS_min, rS_min, c=cs_min, s=250, alpha=0.9, cmap=CMAP_RADAR)
 
     # Add a big black one at the middle.
-    ax3.scatter([0.0], [0.0], c=[0.0], s=700, cmap="gist_gray")
+    ax3.scatter([0.0], [0.0], c=[0.0], s=1400, cmap="gist_gray")
     ax3.set_yticks([])
 
     # Disable yticks for all but first.
@@ -107,7 +102,7 @@ def plot_myopic_radar(sensor, lower, excursion_ground_truth, output_filename=Non
     ax2.set_xlim([0.0, 0.98])
 
     if output_filename is not None:
-        plt.savefig(output_filename, bbox_inches='tight', pad_inches=0, dpi=400)
+        plt.savefig(output_filename, bbox_inches="tight", pad_inches=0, dpi=400)
         plt.close(fig)
     else: plt.show()
 

@@ -63,6 +63,8 @@ plot_grid_values(my_grid, sample)
 
 # From now on, we will consider the drawn sample as ground truth.
 # ---------------------------------------------------------------
+from meslas.vectors import GeneralizedVector
+sample = GeneralizedVector.from_isotopic(sample)
 ground_truth = sample
 
 
