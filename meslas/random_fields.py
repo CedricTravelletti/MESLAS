@@ -697,7 +697,7 @@ class DiscreteGRF(GRF):
 
         return cov_reduction
 
-    def sample(self, jitter=1e-5):
+    def sample(self, jitter=1e-6, max_tries=100):
         """ Sample the discretized GRF on the whole grid.
 
 
@@ -714,7 +714,23 @@ class DiscreteGRF(GRF):
 
         # Sample M independent N(0, 1) RVs.
         # TODO: Determine if this is better than doing Cholesky ourselves.
-        lower_chol = psd_safe_cholesky(K, jitter=jitter)
+        def cholesky_safe(K, jitter=1e-6, max_tries=100):
+            try:
+                lower_chol = psd_safe_cholesky(K, jitter=jitter, max_tries=1)
+                return lower_chol
+            except RuntimeError:
+                print("Not Choleskizable with jitter {}".format(jitter))
+            for i in range(max_tries):
+                inc_jitter = 5**i * jitter
+                print("Increasing jitter to {} and retrying.".format(inc_jitter))
+                try:
+                    lower_chol = psd_safe_cholesky(K, jitter=inc_jitter, max_tries=1)
+                    return lower_chol
+                except RuntimeError: continue
+            raise RuntimeError("Not Choleskizable at all.")
+
+        lower_chol = cholesky_safe(K)
+
         distr = MultivariateNormal(
                 loc=mu,
                 scale_tril=lower_chol)
