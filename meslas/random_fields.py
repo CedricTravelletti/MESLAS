@@ -697,7 +697,7 @@ class DiscreteGRF(GRF):
 
         return cov_reduction
 
-    def sample(self, jitter=1e-6, max_tries=100):
+    def sample(self, jitter=1e-6, max_tries=100, from_prior=False):
         """ Sample the discretized GRF on the whole grid.
 
 
@@ -709,8 +709,13 @@ class DiscreteGRF(GRF):
             Jitter to add if covariance matrix is not diagonalisable.
 
         """
-        K = self.covariance_mat.list
-        mu = self.mean_vec.list
+        if from_prior:
+            mu, K = self.discretize_prior(self.prior_grf, self.grid)
+            mu = mu.list
+            K = K.list
+        else:
+            K = self.covariance_mat.list
+            mu = self.mean_vec.list
 
         # Sample M independent N(0, 1) RVs.
         # TODO: Determine if this is better than doing Cholesky ourselves.
