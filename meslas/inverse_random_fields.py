@@ -19,6 +19,7 @@ specify locations and measurement indices, we replace the location vectors by a
 vector specifying to compute for ALL locations in the grid.
 
 """
+import torch
 from meslas.random_fields import DiscreteGRF
 
 
@@ -78,17 +79,39 @@ class InverseDiscreteGRF(DiscreteGRF):
         mean_vec = mean_vec.list
         covariance_mat = covariance_mat.list
 
+        K_pred_y = covariance_mat @ G.T
+        K_yy = G @ K_pred_y
+        mu_y = G @ mean_vec
 
         # Create the noise matrix.
         if noise_std is None: noise_std = torch.zeros(self.n_out)
-        noise = torch.diag(noise_std[L_y]**2)
+        noise = torch.diag(noise_std**2)
 
         weights = K_pred_y @ torch.inverse(K_yy + noise)
 
         # Directly update the one dimensional list of values for the mean
         # vector.
-        self.mean_vec.set_vals(mean_vec.list + weights @ (y - mu_y))
+        self.mean_vec.set_vals(mean_vec + weights @ (y - mu_y))
             
-        self.covariance_mat.set_vals(covariance_mat.list - weights @ K_pred_y.t())
+        self.covariance_mat.set_vals(covariance_mat - weights @ K_pred_y.t())
 
         return self.mean_vec, self.covariance_mat
+
+    def sample_foxy(self, G, y, noise_std):
+        # TODO: Inefficiency here, we re-discretize the prior two times.
+        # For sampling and for conditioning from scratch.
+        uncond_sample = self.sample(from_prior=True)
+
+        prior_mean_vec, prior_covariance_mat = self.discretize_prior(
+                self.prior_grf, self.grid)
+
+        # Realized data.
+        y_real = G @ uncond_sample.list
+
+        krigged_real, _  = self.inverse_update(G, y_real, noise_std,
+            mean_vec=prior_mean_vec, covariance_mat=prior_covariance_mat)
+
+        cond_mean, _ = self.inverse_update(G, y, noise_std,
+                mean_vec=prior_mean_vec, covariance_mat=prior_covariance_mat)
+
+        return cond_mean.list + uncond_sample.list - krigged_real.list
