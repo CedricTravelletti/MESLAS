@@ -18,8 +18,10 @@ sys.path.insert(0, os.path.abspath('../'))
 # -- Project information -----------------------------------------------------
 
 project = 'MESLAS'
-copyright = '2020, Trygve Olav Fossum, Jo Eidsvik, David Ginsbourger, Kanna Rajan, Cedric Travelletti'
-author = 'Trygve Olav Fossum, Jo Eidsvik, David Ginsbourger, Kanna Rajan, Cedric Travelletti'
+# copyright = '2020, Trygve Olav Fossum, Jo Eidsvik, David Ginsbourger, Kanna Rajan, Cedric Travelletti'
+copyright = '2020, Cedric Travelletti, David Ginsbourger'
+# author = 'Trygve Olav Fossum, Jo Eidsvik, David Ginsbourger, Kanna Rajan, Cedric Travelletti'
+author = 'Cedric Travelletti, David Ginsbourger'
 
 # The full version, including alpha/beta/rc tags
 release = '0.1'
@@ -35,6 +37,7 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.githubpages',
     'sphinxcontrib.bibtex',
+    'sphinxcontrib.video',
 ]
 
 # Disable docstring inheritance

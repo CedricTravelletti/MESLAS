@@ -38,7 +38,9 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Sensor Module" href="sensor.html" />
-    <link rel="prev" title="Gridding Module" href="grid.html" /> 
+    <link rel="prev" title="Gridding Module" href="grid.html" />
+    <link href="_static/style.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -230,7 +232,7 @@ for the whole design at each stage.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.from_model" title="meslas.random_fields.DiscreteGRF.from_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_model</span></code></a>(grf, grid)</p></td>
 <td><p>Create a discrete GRF by discretizing a GRF model.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.sample" title="meslas.random_fields.DiscreteGRF.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample</span></code></a>(self[, jitter])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.sample" title="meslas.random_fields.DiscreteGRF.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample</span></code></a>(self[, jitter, max_tries, from_prior])</p></td>
 <td><p>Sample the discretized GRF on the whole grid.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.update" title="meslas.random_fields.DiscreteGRF.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(self, S_y_inds, L_y, y[, noise_std, …])</p></td>
@@ -380,7 +382,7 @@ each points (i.e. no cross-location covariance).</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.DiscreteGRF.sample">
-<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">jitter</span><span class="o">=</span><span class="default_value">1e-05</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.sample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">jitter</span><span class="o">=</span><span class="default_value">1e-06</span></em>, <em class="sig-param"><span class="n">max_tries</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">from_prior</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample the discretized GRF on the whole grid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>

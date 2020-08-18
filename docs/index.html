@@ -37,7 +37,9 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Gridding Module" href="grid.html" /> 
+    <link rel="next" title="Gridding Module" href="grid.html" />
+    <link href="_static/style.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -182,7 +184,7 @@ model.</span><a class="headerlink" href="#id2" title="Permalink to this image">�
 <p>Having a probabilistic model of the physical phenomenon of interest allows one
 to exxtract more information than a purely deterministic model would allow. For
 example, the question that trigered the development of MESALS was the
-indentification of river plumes in coastal regions (<a class="bibtex reference internal" href="#fossum" id="id1">[FTE+]</a>).</p>
+indentification of river plumes in coastal regions (<a class="bibtex reference internal" href="#fossum" id="id1">[FTE+20]</a>).</p>
 <div class="section" id="excursion-sets">
 <h2>Excursion Sets<a class="headerlink" href="#excursion-sets" title="Permalink to this headline">¶</a></h2>
 <p>One of the main functionality of MESLAS is the estimation of excursion sets of
@@ -256,25 +258,13 @@ to handle multivariate random fields may be found at <a class="reference interna
 <div class="section" id="autonomous-adaptive-sampling">
 <h2>Autonomous Adaptive Sampling<a class="headerlink" href="#autonomous-adaptive-sampling" title="Permalink to this headline">¶</a></h2>
 <p>The ultimate goal of the package is for a sensor to automatically choose
-measurement locations learn an excursion set.
-(UNFINISHED).</p>
-<p>Note that since we are working on a fiexed discretization, there are two
-possible way to implement the updating:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><em>Pointwise</em>: The collected data is stored, and each time we want to predict
-at a point, we do one step of krigging with the whole current dataset
-concatenated.</p></li>
-<li><p><em>Global</em> At each data collection step, we compute the krigging mean an
-covariance on the whole desgin. Then we update at each data step.</p></li>
-</ul>
-</div></blockquote>
-<p><em>Comments</em>: The pointwise approach become expansive once we have lots of data.
-If the desgin is small enough so that the full-design covariance matrix can be
-stored, then the global approach might be interessting, since it (kind of)
-allows multi-steps planning.</p>
-<p>Currently, we follow the pointwise approach.</p>
-<p>For implementation, see <a class="reference internal" href="sensor.html#sensor-label"><span class="std std-ref">Sensor Module</span></a>.</p>
+measurement locations learn an excursion set.</p>
+
+    <video width="900" height="600"  autoplay>
+    <source src="video.mp4" type="video/mp4">
+    Video
+    </video>
+    <p>For implementation, see <a class="reference internal" href="sensor.html#sensor-label"><span class="std std-ref">Sensor Module</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -299,8 +289,8 @@ allows multi-steps planning.</p>
 </ul>
 </div>
 <p id="bibtex-bibliography-index-0"><dl class="citation">
-<dt class="bibtex label" id="fossum"><span class="brackets"><a class="fn-backref" href="#id1">FTE+</a></span></dt>
-<dd><p>Trygve O. Fossum, Cedric Travelletti, Jo Eidsvik, David Ginsbourger, and Kanna Rajan. Autonomous oceanographic sampling designs using excursion sets for multivariate gaussian random fields. <em>Annals of Applied Statistics</em>.</p>
+<dt class="bibtex label" id="fossum"><span class="brackets"><a class="fn-backref" href="#id1">FTE+20</a></span></dt>
+<dd><p>Trygve Olav Fossum, Cédric Travelletti, Jo Eidsvik, David Ginsbourger, and Kanna Rajan. Learning excursion sets of vector-valued gaussian random fields for autonomous ocean sampling. 2020. <a class="reference external" href="https://arxiv.org/abs/2007.03722">arXiv:2007.03722</a>.</p>
 </dd>
 </dl>
 </p>
