@@ -4,13 +4,20 @@ sample a realization and plot it.
 """
 import numpy as np
 import torch
-from meslas.means import ConstantMean
+
+from meslas.means import LinearMean
 from meslas.covariance.spatial_covariance_functions import Matern32
 from meslas.covariance.cross_covariances import UniformMixing
 from meslas.covariance.heterotopic import FactorCovariance
-from meslas.geometry.grid import SquareGrid
-from meslas.sampling import GRF
-from meslas.excursion import coverage_fct_fixed_location
+
+from meslas.geometry.grid import TriangularGrid
+from meslas.random_fields import GRF, DiscreteGRF
+from meslas.sensor_plotting import DiscreteSensor
+
+from meslas.plotting import plot_grid_values, plot_grid_probas
+
+from torch.distributions.multivariate_normal import MultivariateNormal
+from gpytorch.utils.cholesky import psd_safe_cholesky
 
 
 # Dimension of the response.
@@ -24,48 +31,87 @@ cross_cov = UniformMixing(gamma0=0.9, sigmas=[np.sqrt(0.25), np.sqrt(0.6)])
 
 covariance = FactorCovariance(matern_cov, cross_cov, n_out=n_out)
 
-# Specify mean function
-mean = ConstantMean([1.0, 0])
+# Specify mean function, here it is a linear trend that decreases with the
+# horizontal coordinate.
+beta0s = np.array([5.8, 24.0])
+beta1s = np.array([
+        [0, -4.0],
+        [0, -3.8]])
+mean = LinearMean(beta0s, beta1s)
 
 # Create the GRF.
 myGRF = GRF(mean, covariance)
 
-# Create a regular square grid in 2 dims.
-# Number of repsones.
-dim = 2
-my_grid = SquareGrid(100, dim)
+# ------------------------------------------------------
+# DISCRETIZE EVERYTHING
+# ------------------------------------------------------
+# Create a regular equilateral triangular grid in 2 dims.
+# The argument specified the number of cells along 1 dimension, hence total
+# size of the grid is roughly the square of this number.
+my_grid = TriangularGrid(21)
+print("Working on an equilateral triangular grid with {} nodes.".format(my_grid.n_points))
 
+# Discretize the GRF on a grid and be done with it.
+# From now on we only consider locations on the grid.
+my_discrete_grf = DiscreteGRF.from_model(myGRF, my_grid)
+
+# ------------------------------------------------------
+# Sample and plot
+# ------------------------------------------------------
+# Sample all components at all locations.
+sample = my_discrete_grf.sample()
+plot_grid_values(my_grid, sample)
+
+
+# ------------------------------------------------------
 # Observe some data.
+# ------------------------------------------------------
+
+# Data observations must be specified by a so-called generalized location.
+# A generalized location is a couple of vectors (S, L). The first vector
+# specifies WHERE the observations have been made, whereas the second vector
+# indicates WHICH component was measured at that location (remember we are
+# considering multivariate GRFs).
+#
+# Example consider S = [[0, 0], [-1, -1]] and L = [0, 8].
+# Then, the generalized location (S, L) describes a set of observations that
+# consists of one observation of the 0-th component of the field at the points
+# (0,0) and one observation of the 8-th component of the field at (-1, -1).
+# WARNING: python used 0-based indices, to 0-th component translates to first
+# component in math language.
+
 S_y = torch.tensor([[0.2, 0.1], [0.2, 0.2], [0.2, 0.3],
         [0.2, 0.4], [0.2, 0.5], [0.2, 0.6],
         [0.2, 0.7], [0.2, 0.8], [0.2, 0.9], [0.2, 1.0],
         [0.6, 0.5]])
-L_y = torch.tensor([0, 0, 0, 0, 0, 1, 1, 0 ,0 ,0, 0])
+L_y = torch.tensor([0, 0, 0, 0, 0, 1, 1, 0 ,0 ,0, 0]).long()
+
+# Now define which value were observed. Here we arbitrarily set all values to
+# -5.
 y = torch.tensor(11*[-6])
 
-mu_cond_grid, mu_cond_list, mu_cond_iso , K_cond_list, K_cond_iso = myGRF.krig_grid(
-        my_grid, S_y, L_y, y,
-        noise_std=0.05,
-        compute_post_cov=True)
+# Now integrate this data to the model (i.e. compute the conditional
+# distribution of the GRF.
+#
+# SUBTLETY: we are here working with a discrete GRF, i.e. a GRF on a grid, that
+# maintains a mean vector and covariance matrix for ALL grid points and only
+# understands data that is on the grid.
+# This means that this GP takes as spatial inputs integers that define the
+# index of the given point in the grid array.
+#
+# Hence, in this setting, coordinates should be projected back to the grid in
+# order for the GP to understand them.
+S_y_inds = my_grid.get_closest(S_y) # Get grid index of closest nodes.
 
-# Plot.
-from meslas.plotting import plot_2d_slice, plot_krig_slice
-plot_krig_slice(mu_cond_grid, S_y, L_y)
+# Note that working on a grid an never stepping outside of it is the usual
+# setting in adaptive designs.
+# One can work with the non-discretized GP class otherwise.
 
-# Sample from the posterior.
-from torch.distributions.multivariate_normal import MultivariateNormal
-distr = MultivariateNormal(loc=mu_cond_list, covariance_matrix=K_cond_list)
-sample = distr.sample()
+#
+noise_std = torch.tensor([0.1, 0.1])
 
-# Reshape to a regular grid.
-grid_sample = my_grid.isotopic_vector_to_grid(sample, n_out)
-plot_krig_slice(grid_sample, S_y, L_y)
+# Condition the model.
+my_discrete_grf.update(S_y_inds, L_y, y, noise_std=noise_std)
 
-# Now compute and plot coverage function.
-# Need only cross-covariances at fixed locations.
-K_cond_diag = torch.diagonal(K_cond_iso, dim1=0, dim2=1).T
-lower = torch.tensor([-1.0, -1.0]).double()
-
-coverage = coverage_fct_fixed_location(mu_cond_iso, K_cond_diag, lower, upper=None)
-plot_2d_slice(coverage.reshape(my_grid.shape), title="Excursion Probability",
-        cmin=0, cmax=1.0)
+# Plot conditional mean.
+plot_grid_values(my_grid, my_discrete_grf.mean_vec)
