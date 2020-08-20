@@ -115,3 +115,46 @@ class InverseDiscreteGRF(DiscreteGRF):
                 mean_vec=prior_mean_vec, covariance_mat=prior_covariance_mat)
 
         return cond_mean.list + uncond_sample.list - krigged_real.list
+
+    def inverse_conditional_cov(self, G, noise_std=None, covariance_mat=None):
+        """ Observe some linear operator data and compute the conditional
+        covariance.
+        Note that it doesnt depend on the value of the observed data.
+
+        Parameters
+        ----------
+        G: (M, self.grid.n_points, self.n_out) Tensor
+            Measurement matrix.
+            Response indices of the measurements.
+        noise_std: (M) Tensor
+            Noise standard deviation for each datapoints, defaults to zero.
+        covariance_mat: GeneralizedMatrix, optional
+            Can specify another covariance matrix if do not want to use the
+            current one.
+        
+        Returns
+        -------
+        cov_mat: (self.grid.n_points, self.grid.n_points) Tensor
+
+        """
+        # If not provided, use the current model to update.
+        if covariance_mat is None: covariance_mat = self.covariance_mat
+
+        # We always take the full coavariance matrix and mean vector.
+        # TODO: This is currently only compatible for n_dims = 1
+        if not self.n_out == 1:
+            raise NotImplementedError("Currently only implemented for univariate.")
+        covariance_mat = covariance_mat.list
+
+        K_pred_y = covariance_mat @ G.T
+        K_yy = G @ K_pred_y
+
+        # Create the noise matrix.
+        if noise_std is None: noise_std = torch.zeros(self.n_out)
+        noise = torch.diag(noise_std**2)
+
+        weights = K_pred_y @ torch.inverse(K_yy + noise)
+            
+        cond_covariance_mat = covariance_mat - weights @ K_pred_y.t()
+
+        return cond_covariance_mat
