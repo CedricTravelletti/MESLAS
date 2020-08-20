@@ -4,7 +4,6 @@ matplotlib
 seaborn
 torch
 torchvision
-gpytorch
 sphinx>=2.0
 pytest==3.10.0
 sphinxcontrib-bibtex

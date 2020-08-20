@@ -79,7 +79,8 @@ setup(
     include_package_data=False,
     install_requires=[io.open(requirements, encoding='utf8').read(),
             # Github Repo containing dependency.
-            'mvnorm @ git+https://github.com/CedricTravelletti/torch-mvnorm.git#egg=mvnorm'
+            'mvnorm @ git+https://github.com/CedricTravelletti/torch-mvnorm.git#egg=mvnorm',
+            'gpytorch @ git+https://github.com/cornellius-gp/gpytorch.git#egg=gpytorch'
             ],
     classifiers=[],
     ext_modules=ext_modules_settings,
