@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Gaussian Random Field Module &mdash; MESLAS 0.1 documentation</title>
   
@@ -16,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -29,7 +32,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -54,7 +56,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MESLAS
+            <a href="index.html" class="icon icon-home"> MESLAS
           
 
           
@@ -138,6 +140,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -149,7 +153,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/random_fields.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -217,35 +221,35 @@ for the whole design at each stage.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.compute_cov_reduction" title="meslas.random_fields.DiscreteGRF.compute_cov_reduction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_cov_reduction</span></code></a>(self, S_y_inds, L_y[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.compute_cov_reduction" title="meslas.random_fields.DiscreteGRF.compute_cov_reduction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_cov_reduction</span></code></a>(S_y_inds, L_y[, noise_std])</p></td>
 <td><p>Compute the covariance reduction that would result from observing some hypothetic data.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.discretize_prior" title="meslas.random_fields.DiscreteGRF.discretize_prior"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discretize_prior</span></code></a>(grf, grid)</p></td>
 <td><p>Discretize a grf prior on a grid and return the mean vector on the grid and covariance matrix between grid nodes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.ebv" title="meslas.random_fields.DiscreteGRF.ebv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ebv</span></code></a>(self, S_y_inds, L_y, lower[, upper, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.ebv" title="meslas.random_fields.DiscreteGRF.ebv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ebv</span></code></a>(S_y_inds, L_y, lower[, upper, noise_std])</p></td>
 <td><p>Computes the expected Bernoulli Variance (i.e.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.eibv" title="meslas.random_fields.DiscreteGRF.eibv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eibv</span></code></a>(self, S_y_inds, L_y, lower[, upper, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.eibv" title="meslas.random_fields.DiscreteGRF.eibv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eibv</span></code></a>(S_y_inds, L_y, lower[, upper, noise_std])</p></td>
 <td><p>Computes the expected Integrated Bernoulli Variance 8integrated version of the above), if we were to make observations at the generalized locations (S_y, L_y).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.from_model" title="meslas.random_fields.DiscreteGRF.from_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_model</span></code></a>(grf, grid)</p></td>
 <td><p>Create a discrete GRF by discretizing a GRF model.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.sample" title="meslas.random_fields.DiscreteGRF.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample</span></code></a>(self[, jitter, max_tries, from_prior])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.sample" title="meslas.random_fields.DiscreteGRF.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample</span></code></a>([jitter, max_tries, from_prior])</p></td>
 <td><p>Sample the discretized GRF on the whole grid.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.update" title="meslas.random_fields.DiscreteGRF.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(self, S_y_inds, L_y, y[, noise_std, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.update" title="meslas.random_fields.DiscreteGRF.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(S_y_inds, L_y, y[, noise_std, …])</p></td>
 <td><p>Observe some data and update the field.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.update_from_scratch" title="meslas.random_fields.DiscreteGRF.update_from_scratch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_from_scratch</span></code></a>(self, S_y_inds, L_y, y)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.update_from_scratch" title="meslas.random_fields.DiscreteGRF.update_from_scratch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_from_scratch</span></code></a>(S_y_inds, L_y, y[, …])</p></td>
 <td><p>Same as the update function, but starts from the prior.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt id="meslas.random_fields.DiscreteGRF.compute_cov_reduction">
-<code class="sig-name descname">compute_cov_reduction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.compute_cov_reduction" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">compute_cov_reduction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.compute_cov_reduction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the covariance reduction that would result from observing
 some hypothetic data.</p>
 <dl class="field-list simple">
@@ -292,7 +296,7 @@ grid and covariance matrix between grid nodes.</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.DiscreteGRF.ebv">
-<code class="sig-name descname">ebv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.ebv" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">ebv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.ebv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the expected Bernoulli Variance (i.e. not integrated)
 if we were to make observations at the
 generalized locations (S_y, L_y).
@@ -322,7 +326,7 @@ on observing at the new data point.</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.DiscreteGRF.eibv">
-<code class="sig-name descname">eibv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.eibv" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">eibv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.eibv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the expected Integrated Bernoulli Variance 8integrated
 version of the above), if we were to make observations at the
 generalized locations (S_y, L_y).
@@ -382,7 +386,7 @@ each points (i.e. no cross-location covariance).</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.DiscreteGRF.sample">
-<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">jitter</span><span class="o">=</span><span class="default_value">1e-06</span></em>, <em class="sig-param"><span class="n">max_tries</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">from_prior</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.sample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">jitter</span><span class="o">=</span><span class="default_value">1e-06</span></em>, <em class="sig-param"><span class="n">max_tries</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">from_prior</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample the discretized GRF on the whole grid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -398,7 +402,7 @@ each points (i.e. no cross-location covariance).</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.DiscreteGRF.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mean_vec</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">covariance_mat</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mean_vec</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">covariance_mat</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Observe some data and update the field. This will compute the new
 values of the mean vector and covariance matrix.</p>
 <dl class="field-list simple">
@@ -425,7 +429,7 @@ current one.</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.DiscreteGRF.update_from_scratch">
-<code class="sig-name descname">update_from_scratch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.update_from_scratch" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update_from_scratch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.update_from_scratch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Same as the update function, but starts from the prior.
 The purpose of this method is to recover from numerical instabilities
 that may have accumulated when one has sequentially collected a big dataset.
@@ -491,38 +495,38 @@ Should be vectorized.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.krig" title="meslas.random_fields.GRF.krig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">krig</span></code></a>(self, S, L, S_y, L_y, y[, noise_std, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.krig" title="meslas.random_fields.GRF.krig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">krig</span></code></a>(S, L, S_y, L_y, y[, noise_std, …])</p></td>
 <td><p>Predict field at some generalized locations, based on some measured data at other generalized locations.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.krig_grid" title="meslas.random_fields.GRF.krig_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">krig_grid</span></code></a>(self, grid, S_y, L_y, y[, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.krig_grid" title="meslas.random_fields.GRF.krig_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">krig_grid</span></code></a>(grid, S_y, L_y, y[, noise_std, …])</p></td>
 <td><p>Predict field at some points, based on some measured data at other points.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.krig_isotopic" title="meslas.random_fields.GRF.krig_isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">krig_isotopic</span></code></a>(self, points, S_y, L_y, y[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.krig_isotopic" title="meslas.random_fields.GRF.krig_isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">krig_isotopic</span></code></a>(points, S_y, L_y, y[, …])</p></td>
 <td><p>Predict field at some points, based on some measured data at other points.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.sample" title="meslas.random_fields.GRF.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample</span></code></a>(self, S, L[, jitter])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.sample" title="meslas.random_fields.GRF.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample</span></code></a>(S, L[, jitter])</p></td>
 <td><p>Sample the GRF at generalized location (S, L).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.sample_grid" title="meslas.random_fields.GRF.sample_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample_grid</span></code></a>(self, grid)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.sample_grid" title="meslas.random_fields.GRF.sample_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample_grid</span></code></a>(grid)</p></td>
 <td><p>Sample the GRF (all components) on a grid.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.sample_isotopic" title="meslas.random_fields.GRF.sample_isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample_isotopic</span></code></a>(self, points)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.sample_isotopic" title="meslas.random_fields.GRF.sample_isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample_isotopic</span></code></a>(points)</p></td>
 <td><p>Sample the GRF (all components) on a list of points.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.variance" title="meslas.random_fields.GRF.variance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance</span></code></a>(self, S, L)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.variance" title="meslas.random_fields.GRF.variance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance</span></code></a>(S, L)</p></td>
 <td><p>Compute the (pointwise) variances at generalized location (S, L).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.variance_reduction" title="meslas.random_fields.GRF.variance_reduction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance_reduction</span></code></a>(self, S, L, S_y, L_y[, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.variance_reduction" title="meslas.random_fields.GRF.variance_reduction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance_reduction</span></code></a>(S, L, S_y, L_y[, noise_std])</p></td>
 <td><p>Computes the reduction in variance at generalized locations (S, L) that would be caused by observing data at generalized locations (S_y, L_y).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.variance_reduction_isotopic" title="meslas.random_fields.GRF.variance_reduction_isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance_reduction_isotopic</span></code></a>(self, points, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.variance_reduction_isotopic" title="meslas.random_fields.GRF.variance_reduction_isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance_reduction_isotopic</span></code></a>(points, S_y, L_y)</p></td>
 <td><p>Computes the reduction in variance (all components) at location S that would be caused by observing data at generalized locations (S_y, L_y).</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt id="meslas.random_fields.GRF.krig">
-<code class="sig-name descname">krig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">compute_post_var</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">compute_post_cov</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.krig" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">krig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">compute_post_var</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">compute_post_cov</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.krig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict field at some generalized locations, based on some measured data at other
 generalized locations.</p>
 <p>This is the most general possible form of kriging, since it takes
@@ -568,7 +572,7 @@ Only returned if specified.</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.GRF.krig_grid">
-<code class="sig-name descname">krig_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">compute_post_cov</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.krig_grid" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">krig_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">compute_post_cov</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.krig_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict field at some points, based on some measured data at other
 points.</p>
 <dl class="field-list simple">
@@ -609,7 +613,7 @@ subsetting K_cond_iso[i, i, :, :].</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.GRF.krig_isotopic">
-<code class="sig-name descname">krig_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">compute_post_var</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">compute_post_cov</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.krig_isotopic" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">krig_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">compute_post_var</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">compute_post_cov</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.krig_isotopic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict field at some points, based on some measured data at other
 points. Predicts all repsonses (isotopic).</p>
 <dl class="field-list simple">
@@ -657,7 +661,7 @@ Only returned if specified.</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.GRF.sample">
-<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">jitter</span><span class="o">=</span><span class="default_value">1e-05</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.sample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">jitter</span><span class="o">=</span><span class="default_value">1e-05</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample the GRF at generalized location (S, L).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -681,7 +685,7 @@ Only returned if specified.</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.GRF.sample_grid">
-<code class="sig-name descname">sample_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">grid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.sample_grid" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sample_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.sample_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample the GRF (all components) on a grid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -703,7 +707,7 @@ components and n1, …, nd are the number of cells along each axis.</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.GRF.sample_isotopic">
-<code class="sig-name descname">sample_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">points</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.sample_isotopic" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sample_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">points</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.sample_isotopic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample the GRF (all components) on a list of points.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -723,7 +727,7 @@ components and n1, …, nd are the number of cells along each axis.</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.GRF.variance">
-<code class="sig-name descname">variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.variance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.variance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the (pointwise) variances at generalized location (S, L).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -745,7 +749,7 @@ components and n1, …, nd are the number of cells along each axis.</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.GRF.variance_reduction">
-<code class="sig-name descname">variance_reduction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.variance_reduction" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">variance_reduction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.variance_reduction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the reduction in variance at generalized
 locations (S, L) that would be caused by observing data at generalized
 locations (S_y, L_y).
@@ -776,7 +780,7 @@ Note that this doesn’t depend on the measured data.</p>
 
 <dl class="py method">
 <dt id="meslas.random_fields.GRF.variance_reduction_isotopic">
-<code class="sig-name descname">variance_reduction_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.variance_reduction_isotopic" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">variance_reduction_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.variance_reduction_isotopic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the reduction in variance (all components) at location S
 that would be caused by observing data at generalized locations (S_y, L_y).
 Note that this doesn’t depend on the measured data.</p>
@@ -811,37 +815,29 @@ Note that this doesn’t depend on the measured data.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="sensor.html" class="btn btn-neutral float-right" title="Sensor Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="grid.html" class="btn btn-neutral float-left" title="Gridding Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="sensor.html" class="btn btn-neutral float-right" title="Sensor Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="grid.html" class="btn btn-neutral float-left" title="Gridding Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Trygve Olav Fossum, Jo Eidsvik, David Ginsbourger, Cedric Travelletti
+        &#169; Copyright 2020, Trygve Olav Fossum, Jo Eidsvik, David Ginsbourger, Cedric Travelletti.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>MESLAS: Multivariate Excurions Set Learning by Adaptive Sampling &mdash; MESLAS 0.1 documentation</title>
   
@@ -16,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -29,7 +32,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -53,7 +55,7 @@
           
 
           
-            <a href="#" class="icon icon-home" alt="Documentation Home"> MESLAS
+            <a href="#" class="icon icon-home"> MESLAS
           
 
           
@@ -139,6 +141,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -150,7 +154,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             
               <!-- User defined GitHub URL -->
               <a href="https://github.com/CedricTravelletti/MESLAS" class="fa fa-github"> Edit on GitHub</a>
@@ -176,15 +180,15 @@ variables can be modelled as a bivariate Gaussian random field (GRF) with some
 correlation between the outputs.
 One can the draw realizations of the GRF to get plausible spatial distributions
 of oceanographic properties (see Figure).</p>
-<div class="figure align-center" id="id2">
+<div class="figure align-center" id="id11">
 <img alt="_images/uncond_real_cropped.png" src="_images/uncond_real_cropped.png" />
 <p class="caption"><span class="caption-text">Simulated realization of Temperature and Salinity field drawn from a GRF
-model.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+model.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 <p>Having a probabilistic model of the physical phenomenon of interest allows one
 to exxtract more information than a purely deterministic model would allow. For
 example, the question that trigered the development of MESALS was the
-indentification of river plumes in coastal regions (<a class="bibtex reference internal" href="#fossum" id="id1">[FTE+20]</a>).</p>
+indentification of river plumes in coastal regions (<span id="id1">[<a class="reference internal" href="#id10"><span>FTE+20</span></a>]</span>).</p>
 <div class="section" id="excursion-sets">
 <h2>Excursion Sets<a class="headerlink" href="#excursion-sets" title="Permalink to this headline">¶</a></h2>
 <p>One of the main functionality of MESLAS is the estimation of excursion sets of
@@ -202,10 +206,10 @@ excursion set where the salinity and temperature are below a certain threshold.<
 ditribution</em> of the GRF, conditional on the data. Excursion sets may then be
 estimated by looking at the <em>pointwise excursion probability</em>, i.e. the
 probability (under the conditional distribution) that a point lies in the excursion set.</p>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id12">
 <img alt="_images/excu_proba_cropped.png" src="_images/excu_proba_cropped.png" />
 <p class="caption"><span class="caption-text">Conditional pointwise excursion probability. Data collection loactions in
-green.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+green.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="implementation">
@@ -288,8 +292,8 @@ measurement locations learn an excursion set.</p>
 <li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 </ul>
 </div>
-<p id="bibtex-bibliography-index-0"><dl class="citation">
-<dt class="bibtex label" id="fossum"><span class="brackets"><a class="fn-backref" href="#id1">FTE+20</a></span></dt>
+<p id="id2"><dl class="citation">
+<dt class="label" id="id10"><span class="brackets">FTE+20</span></dt>
 <dd><p>Trygve Olav Fossum, Cédric Travelletti, Jo Eidsvik, David Ginsbourger, and Kanna Rajan. Learning excursion sets of vector-valued gaussian random fields for autonomous ocean sampling. 2020. <a class="reference external" href="https://arxiv.org/abs/2007.03722">arXiv:2007.03722</a>.</p>
 </dd>
 </dl>
@@ -310,35 +314,28 @@ measurement locations learn an excursion set.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="grid.html" class="btn btn-neutral float-right" title="Gridding Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
+        <a href="grid.html" class="btn btn-neutral float-right" title="Gridding Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Trygve Olav Fossum, Jo Eidsvik, David Ginsbourger, Cedric Travelletti
+        &#169; Copyright 2020, Trygve Olav Fossum, Jo Eidsvik, David Ginsbourger, Cedric Travelletti.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
