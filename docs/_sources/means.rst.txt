@@ -1,7 +1,9 @@
-means module
+.. _means-label:
+
+Means module
 ============
 
-.. automodule:: means
+.. automodule:: meslas.means
    :members:
    :undoc-members:
    :show-inheritance:

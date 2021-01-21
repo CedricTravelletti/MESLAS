@@ -5,6 +5,7 @@ Subpackages
 -----------
 
 .. toctree::
+   :maxdepth: 4
 
    meslas.covariance
    meslas.external_dependencies
@@ -17,6 +18,14 @@ meslas.excursion module
 -----------------------
 
 .. automodule:: meslas.excursion
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+meslas.inverse\_random\_fields module
+-------------------------------------
+
+.. automodule:: meslas.inverse_random_fields
    :members:
    :undoc-members:
    :show-inheritance:
@@ -61,6 +70,14 @@ meslas.sensor module
    :undoc-members:
    :show-inheritance:
 
+meslas.sensor\_plotting module
+------------------------------
+
+.. automodule:: meslas.sensor_plotting
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 meslas.vectors module
 ---------------------
 
@@ -68,7 +85,6 @@ meslas.vectors module
    :members:
    :undoc-members:
    :show-inheritance:
-
 
 Module contents
 ---------------

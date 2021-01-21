@@ -5,11 +5,11 @@ Philosophy of the MESLAS package
 The MESLAS package (**M**\ulti-variate **E**\xcursion **S**\et **L**\earning by **A**\daptive **S**\ampling) is a toolbox for simulation and prediction of mulitivariate Gaussian random fields.
 
 The setup of the package is the following: :math:`Z` is a :math:`p`-dimensional random
-field on a domain :math:`d`-dimensional
+field on a :math:`d`-dimensional
 domain :math:`D`.
 
 Our philosophy is to always specify spatial location and response indices
-together. That is, one should always specify \textbf{where} and \textbf{what}.
+together. That is, one should always specify **where** and **what**.
 
 Spatial locations are denoted by :math:`s` and response indices by :math:`\ell`. We will
 use boldface (or, in the code, alternatively uppercase or plurals) to denote
@@ -27,9 +27,9 @@ A generalized sampling location is thus entirely defined by specifying two vecto
     \rbrace^n
    \end{align}
 
-We will refer to :math:`n` as the \textit{dimension} of the generalized sampling
-location and usually just talk of location, using the word \textit{spatial
-location} when we want to specifically refer to points in :math:`D`. Also, we will
+We will refer to :math:`n` as the *dimension* of the generalized sampling
+location and usually just talk of location, using the word *spatial
+location* when we want to specifically refer to points in :math:`D`. Also, we will
 use boldface :math:`x` as a shortcut to refer to the couple :math:`\left(\boldsymbol{s},
 \boldsymbol{\ell}\right)` of spatial location vector and response index vector.
 The shortcut notation :math:`Z_{\boldsymbol{x}}` thus refers to the
@@ -100,13 +100,3 @@ sense to have covariance matrices between couple of points. I.e., to organise
 covariance information into a :math:`n\times m \times p \times q` matrix, such
 that at index :math:`i,j` we have a :math:`p\times q` matrix of covariances
 between spatial locations :math:`s_i` and :math:`t_j`.
-
-What is Natural?
-----------------
-The isotopic form is the natural one when we want to emphasize spatiality.
-Please note the way this sentence is formulated: spatiality has no prefered
-role, we might want to emphasize it, but it is not any more fundamental than
-the other *dimensions.*. Indeed, a multidimensional random field correlates
-different responses at different locations, so there is no difference between
-correlations at the same location :math:`Cov(Z^1_x, Z^2_x)` or at different
-locations :math:`Cov(Z_x^1, Z_y^2)`.

@@ -12,7 +12,6 @@ meslas.external\_dependencies.numpytorch module
    :undoc-members:
    :show-inheritance:
 
-
 Module contents
 ---------------
 

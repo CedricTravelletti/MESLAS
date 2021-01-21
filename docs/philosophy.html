@@ -39,7 +39,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Plotting module" href="plotting.html" />
+    <link rel="next" title="Gridding Module" href="grid.html" />
+    <link rel="prev" title="MESLAS: Multivariate Excurions Set Learning by Adaptive Sampling" href="index.html" />
     <link href="_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -86,23 +87,20 @@
               
             
             
-              <p class="caption"><span class="caption-text">Main Modules:</span></p>
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Philosophy of the MESLAS package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#generalized-vectors">Generalized Vectors</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Main Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensor.html">Sensor Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="means.html">means module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="means.html">Means module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Advanced Usage</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Philosophy of the MESLAS package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#generalized-vectors">Generalized Vectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#what-is-natural">What is Natural?</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 </ul>
 
             
@@ -174,10 +172,10 @@
 <span id="philosophy-label"></span><h1>Philosophy of the MESLAS package<a class="headerlink" href="#philosophy-of-the-meslas-package" title="Permalink to this headline">¶</a></h1>
 <p>The MESLAS package (<strong>M</strong>ulti-variate <strong>E</strong>xcursion <strong>S</strong>et <strong>L</strong>earning by <strong>A</strong>daptive <strong>S</strong>ampling) is a toolbox for simulation and prediction of mulitivariate Gaussian random fields.</p>
 <p>The setup of the package is the following: <span class="math notranslate nohighlight">\(Z\)</span> is a <span class="math notranslate nohighlight">\(p\)</span>-dimensional random
-field on a domain <span class="math notranslate nohighlight">\(d\)</span>-dimensional
+field on a <span class="math notranslate nohighlight">\(d\)</span>-dimensional
 domain <span class="math notranslate nohighlight">\(D\)</span>.</p>
 <p>Our philosophy is to always specify spatial location and response indices
-together. That is, one should always specify textbf{where} and textbf{what}.</p>
+together. That is, one should always specify <strong>where</strong> and <strong>what</strong>.</p>
 <p>Spatial locations are denoted by <span class="math notranslate nohighlight">\(s\)</span> and response indices by <span class="math notranslate nohighlight">\(\ell\)</span>. We will
 use boldface (or, in the code, alternatively uppercase or plurals) to denote
 vectors of such objects.</p>
@@ -187,9 +185,9 @@ vectors of such objects.</p>
  \boldsymbol{s} &amp;= \left(s_1, ..., s_n\right)\in D^n\\
  \boldsymbol{\ell} &amp;= \left(\ell_1, ..., \ell_n\right) \in \lbrace 1, ..., p
  \rbrace^n
-\end{align}</div><p>We will refer to <span class="math notranslate nohighlight">\(n\)</span> as the textit{dimension} of the generalized sampling
-location and usually just talk of location, using the word textit{spatial
-location} when we want to specifically refer to points in <span class="math notranslate nohighlight">\(D\)</span>. Also, we will
+\end{align}</div><p>We will refer to <span class="math notranslate nohighlight">\(n\)</span> as the <em>dimension</em> of the generalized sampling
+location and usually just talk of location, using the word <em>spatial
+location</em> when we want to specifically refer to points in <span class="math notranslate nohighlight">\(D\)</span>. Also, we will
 use boldface <span class="math notranslate nohighlight">\(x\)</span> as a shortcut to refer to the couple <span class="math notranslate nohighlight">\(\left(\boldsymbol{s},
 \boldsymbol{\ell}\right)\)</span> of spatial location vector and response index vector.
 The shortcut notation <span class="math notranslate nohighlight">\(Z_{\boldsymbol{x}}\)</span> thus refers to the
@@ -249,16 +247,6 @@ covariance information into a <span class="math notranslate nohighlight">\(n\tim
 that at index <span class="math notranslate nohighlight">\(i,j\)</span> we have a <span class="math notranslate nohighlight">\(p\times q\)</span> matrix of covariances
 between spatial locations <span class="math notranslate nohighlight">\(s_i\)</span> and <span class="math notranslate nohighlight">\(t_j\)</span>.</p>
 </div>
-<div class="section" id="what-is-natural">
-<h2>What is Natural?<a class="headerlink" href="#what-is-natural" title="Permalink to this headline">¶</a></h2>
-<p>The isotopic form is the natural one when we want to emphasize spatiality.
-Please note the way this sentence is formulated: spatiality has no prefered
-role, we might want to emphasize it, but it is not any more fundamental than
-the other <em>dimensions.</em>. Indeed, a multidimensional random field correlates
-different responses at different locations, so there is no difference between
-correlations at the same location <span class="math notranslate nohighlight">\(Cov(Z^1_x, Z^2_x)\)</span> or at different
-locations <span class="math notranslate nohighlight">\(Cov(Z_x^1, Z_y^2)\)</span>.</p>
-</div>
 </div>
 
 
@@ -267,7 +255,8 @@ locations <span class="math notranslate nohighlight">\(Cov(Z_x^1, Z_y^2)\)</span
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="plotting.html" class="btn btn-neutral float-left" title="Plotting module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="grid.html" class="btn btn-neutral float-right" title="Gridding Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="MESLAS: Multivariate Excurions Set Learning by Adaptive Sampling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

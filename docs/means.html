@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>means module &mdash; MESLAS 0.1 documentation</title>
+  <title>Means module &mdash; MESLAS 0.1 documentation</title>
   
 
   
@@ -92,7 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensor.html">Sensor Module</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">means module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Means module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Advanced Usage</span></p>
@@ -148,7 +148,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>means module</li>
+      <li>Means module</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -167,8 +167,75 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="means-module">
-<h1>means module<a class="headerlink" href="#means-module" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-meslas.means">
+<span id="means-module"></span><span id="means-label"></span><h1>Means module<a class="headerlink" href="#module-meslas.means" title="Permalink to this headline">¶</a></h1>
+<p>Mean functions for GRFs.</p>
+<dl class="py class">
+<dt id="meslas.means.ConstantMean">
+<em class="property">class </em><code class="sig-prename descclassname">meslas.means.</code><code class="sig-name descname">ConstantMean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">means</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.means.ConstantMean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constant mean function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>means: (p) array-like.</strong></dt><dd><p>Constant mean of each of the p-components.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code>(S, L)</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py class">
+<dt id="meslas.means.LinearMean">
+<em class="property">class </em><code class="sig-prename descclassname">meslas.means.</code><code class="sig-name descname">LinearMean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">beta0s</span></em>, <em class="sig-param"><span class="n">beta1s</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.means.LinearMean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Linear trend mean function.
+The mean at location x will be given by
+beta0 + beta1 x</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>betas0: (p) array-like.</strong></dt><dd><p>Constant mean mean term for of each of the p-components.</p>
+</dd>
+<dt><strong>betas1: (p, d) array-like.</strong></dt><dd><p>Linear trend matrix for each of the p-components.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code>(S, L)</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 
 

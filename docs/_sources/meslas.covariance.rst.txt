@@ -4,14 +4,6 @@ meslas.covariance package
 Submodules
 ----------
 
-meslas.covariance.covariance\_functions module
-----------------------------------------------
-
-.. automodule:: meslas.covariance.covariance_functions
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 meslas.covariance.cross\_covariances module
 -------------------------------------------
 
@@ -36,6 +28,13 @@ meslas.covariance.old module
    :undoc-members:
    :show-inheritance:
 
+meslas.covariance.spatial\_covariance\_functions module
+-------------------------------------------------------
+
+.. automodule:: meslas.covariance.spatial_covariance_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Module contents
 ---------------
