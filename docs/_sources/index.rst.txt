@@ -49,8 +49,41 @@ probability (under the conditional distribution) that a point lies in the excurs
 .. figure:: images/excu_proba_cropped.png
    :align: center
 
-   Conditional pointwise excursion probability. Data collection loactions in
+   Conditional pointwise excursion probability. Data collection locations in
    green.
+
+
+Autonomous Adaptive Sampling
+----------------------------
+The main application for the MESLAS package is adaptive sampling for
+(multivariate) excursion set recovery. Considering again the
+temperature/salinity river plume example, one can use an autonomous underwater
+vehicle (AUV) to collect temperature and salinity data in the coastal region. The
+data collection process may then be guided using a (multivariate) GRF model.
+
+
+.. video:: video.mp4
+   :width: 900
+   :height: 600
+   :autoplay:
+   :nocontrols:
+
+The above video shows a simulated autonomous data collection process for the
+river plume example computed
+using MESLAS. The data collection locations are chosen by myopic optimization
+of the integrated Bernoulli variance criterion (IBV) available in MESLAS (see :cite:`Fossum` for more details).
+
+The left-hand plot shows the (simulated) ground truth. One is interested in
+recovering the red regions. The right-hand plot shows the data collection path
+travelled by the AUV, computed by myopic optimization of the IBV criterion and
+the posterior excursion probability (the probability for each point to belong
+to the target excursion set under the posterior law of the GRF model after data
+collection). The radar shows how informative the potential next sampling
+locations are, ranked according to IBV.
+
+
+(For implementation, see :ref:`sensor-label`.)
+
 
 Implementation
 --------------
@@ -122,37 +155,6 @@ is straightforward to define in MESLAS and to sample from
 More information about the special concepts and notation which are used in MESLAS 
 to handle multivariate random fields may be found at :ref:`philosophy-label`.
 
-Autonomous Adaptive Sampling
-----------------------------
-The main application for the MESLAS package is adaptive sampling for
-(multivariate) excursion set recovery. Considering again the
-temperature/salinity river plume example, one can use an autonomous underwater
-vehicle (AUV) to collect temperature and salinity data in the coastal region. The
-data collection process may then be guided using a (multivariate) GRF model.
-
-
-.. video:: video.mp4
-   :width: 900
-   :height: 600
-   :autoplay:
-   :nocontrols:
-
-The above video shows a simulated autonomous data collection process for the
-river plume example computed
-using MESLAS. The data collection locations are chosen by myopic optimization
-of the integrated Bernoulli variance criterion (IBV) available in MESLAS (see :cite:`Fossum` for more details).
-
-The left-hand plot shows the (simulated) ground truth. One is interested in
-recovering the red regions. The right-hand plot shows the data collection path
-travelled by the AUV, computed by myopic optimization of the IBV criterion and
-the posterior excursion probability (the probability for each point to belong
-to the target excursion set under the posterior law of the GRF model after data
-collection). The radar shows how informative the potential next sampling
-locations are, ranked according to IBV.
-
-
-(For implementation, see :ref:`sensor-label`.)
-
 
 .. toctree::
    :glob:
@@ -165,7 +167,6 @@ locations are, ranked according to IBV.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Overview
 
    philosophy
 

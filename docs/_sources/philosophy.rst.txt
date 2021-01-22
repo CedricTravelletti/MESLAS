@@ -1,7 +1,7 @@
 .. _philosophy-label:
 
-Philosophy of the MESLAS package
-================================
+Notations and Conventions for the MESLAS package
+================================================
 The MESLAS package (**M**\ulti-variate **E**\xcursion **S**\et **L**\earning by **A**\daptive **S**\ampling) is a toolbox for simulation and prediction of mulitivariate Gaussian random fields.
 
 The setup of the package is the following: :math:`Z` is a :math:`p`-dimensional random

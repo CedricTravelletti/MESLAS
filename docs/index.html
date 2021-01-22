@@ -39,7 +39,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Philosophy of the MESLAS package" href="philosophy.html" />
+    <link rel="next" title="Notations and Conventions for the MESLAS package" href="philosophy.html" />
     <link href="_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -86,9 +86,8 @@
               
             
             
-              <p class="caption"><span class="caption-text">Overview</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy of the MESLAS package</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Notations and Conventions for the MESLAS package</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Main Modules:</span></p>
 <ul>
@@ -206,9 +205,34 @@ estimated by looking at the <em>pointwise excursion probability</em>, i.e. the
 probability (under the conditional distribution) that a point lies in the excursion set.</p>
 <div class="figure align-center" id="id13">
 <img alt="_images/excu_proba_cropped.png" src="_images/excu_proba_cropped.png" />
-<p class="caption"><span class="caption-text">Conditional pointwise excursion probability. Data collection loactions in
+<p class="caption"><span class="caption-text">Conditional pointwise excursion probability. Data collection locations in
 green.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
+</div>
+<div class="section" id="autonomous-adaptive-sampling">
+<h2>Autonomous Adaptive Sampling<a class="headerlink" href="#autonomous-adaptive-sampling" title="Permalink to this headline">¶</a></h2>
+<p>The main application for the MESLAS package is adaptive sampling for
+(multivariate) excursion set recovery. Considering again the
+temperature/salinity river plume example, one can use an autonomous underwater
+vehicle (AUV) to collect temperature and salinity data in the coastal region. The
+data collection process may then be guided using a (multivariate) GRF model.</p>
+
+    <video width="900" height="600"  autoplay>
+    <source src="video.mp4" type="video/mp4">
+    Video
+    </video>
+    <p>The above video shows a simulated autonomous data collection process for the
+river plume example computed
+using MESLAS. The data collection locations are chosen by myopic optimization
+of the integrated Bernoulli variance criterion (IBV) available in MESLAS (see <span id="id2">[<a class="reference internal" href="#id11"><span>FTE+20</span></a>]</span> for more details).</p>
+<p>The left-hand plot shows the (simulated) ground truth. One is interested in
+recovering the red regions. The right-hand plot shows the data collection path
+travelled by the AUV, computed by myopic optimization of the IBV criterion and
+the posterior excursion probability (the probability for each point to belong
+to the target excursion set under the posterior law of the GRF model after data
+collection). The radar shows how informative the potential next sampling
+locations are, ranked according to IBV.</p>
+<p>(For implementation, see <a class="reference internal" href="sensor.html#sensor-label"><span class="std std-ref">Sensor Module</span></a>.)</p>
 </div>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
@@ -255,38 +279,12 @@ Cov\left[\boldsymbol{Z}_x^i, \boldsymbol{Z}_y^j\right] &amp;= k(x, y) \gamma(i, 
 </pre></div>
 </div>
 <p>More information about the special concepts and notation which are used in MESLAS
-to handle multivariate random fields may be found at <a class="reference internal" href="philosophy.html#philosophy-label"><span class="std std-ref">Philosophy of the MESLAS package</span></a>.</p>
-</div>
-<div class="section" id="autonomous-adaptive-sampling">
-<h2>Autonomous Adaptive Sampling<a class="headerlink" href="#autonomous-adaptive-sampling" title="Permalink to this headline">¶</a></h2>
-<p>The main application for the MESLAS package is adaptive sampling for
-(multivariate) excursion set recovery. Considering again the
-temperature/salinity river plume example, one can use an autonomous underwater
-vehicle (AUV) to collect temperature and salinity data in the coastal region. The
-data collection process may then be guided using a (multivariate) GRF model.</p>
-
-    <video width="900" height="600"  autoplay>
-    <source src="video.mp4" type="video/mp4">
-    Video
-    </video>
-    <p>The above video shows a simulated autonomous data collection process for the
-river plume example computed
-using MESLAS. The data collection locations are chosen by myopic optimization
-of the integrated Bernoulli variance criterion (IBV) available in MESLAS (see <span id="id2">[<a class="reference internal" href="#id11"><span>FTE+20</span></a>]</span> for more details).</p>
-<p>The left-hand plot shows the (simulated) ground truth. One is interested in
-recovering the red regions. The right-hand plot shows the data collection path
-travelled by the AUV, computed by myopic optimization of the IBV criterion and
-the posterior excursion probability (the probability for each point to belong
-to the target excursion set under the posterior law of the GRF model after data
-collection). The radar shows how informative the potential next sampling
-locations are, ranked according to IBV.</p>
-<p>(For implementation, see <a class="reference internal" href="sensor.html#sensor-label"><span class="std std-ref">Sensor Module</span></a>.)</p>
+to handle multivariate random fields may be found at <a class="reference internal" href="philosophy.html#philosophy-label"><span class="std std-ref">Notations and Conventions for the MESLAS package</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Overview</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy of the MESLAS package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Notations and Conventions for the MESLAS package</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -325,7 +323,7 @@ locations are, ranked according to IBV.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="philosophy.html" class="btn btn-neutral float-right" title="Philosophy of the MESLAS package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="philosophy.html" class="btn btn-neutral float-right" title="Notations and Conventions for the MESLAS package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
