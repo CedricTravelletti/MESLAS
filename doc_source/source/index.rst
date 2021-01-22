@@ -10,7 +10,7 @@ estimation of physical phenomenon using multivariate random fields.
 As an example, consider the Temperature and Salinity in the ocean. These two
 variables can be modelled as a bivariate Gaussian random field (GRF) with some
 correlation between the outputs.
-One can the draw realizations of the GRF to get plausible spatial distributions
+One can then draw realizations of the GRF to get plausible spatial distributions
 of oceanographic properties (see Figure).
 
 .. figure:: images/uncond_real_cropped.png
@@ -20,14 +20,14 @@ of oceanographic properties (see Figure).
    model.
 
 Having a probabilistic model of the physical phenomenon of interest allows one
-to exxtract more information than a purely deterministic model would allow. For
-example, the question that trigered the development of MESALS was the
+to extract more information than a purely deterministic model would allow. For
+example, the question that triggered the development of MESLAS was the
 indentification of river plumes in coastal regions (:cite:`Fossum`).
 
 Excursion Sets
 --------------
 One of the main functionality of MESLAS is the estimation of excursion sets of
-Gaussian random field. Given an :math:`n`-dimensional multivariate GRF :math:`\boldsymbol{Z}`, 
+GRFs. Given an :math:`n`-dimensional multivariate GRF :math:`\boldsymbol{Z}`, 
 an excursion set is defined as
 
 .. math::
@@ -42,22 +42,55 @@ excursion set where the salinity and temperature are below a certain threshold.
 Data Collection and Conditional Distribution
 --------------------------------------------
 Data is integrated to the GRF model by considering the *conditional
-ditribution* of the GRF, conditional on the data. Excursion sets may then be
+distribution* of the GRF, conditional on the data. Excursion sets may then be
 estimated by looking at the *pointwise excursion probability*, i.e. the
 probability (under the conditional distribution) that a point lies in the excursion set.
 
 .. figure:: images/excu_proba_cropped.png
    :align: center
 
-   Conditional pointwise excursion probability. Data collection loactions in
+   Conditional pointwise excursion probability. Data collection locations in
    green.
+
+
+Autonomous Adaptive Sampling
+----------------------------
+The main application for the MESLAS package is adaptive sampling for
+(multivariate) excursion set recovery. Considering again the
+temperature/salinity river plume example, one can use an autonomous underwater
+vehicle (AUV) to collect temperature and salinity data in the coastal region. The
+data collection process may then be guided using a (multivariate) GRF model.
+
+
+.. video:: output_new.mp4
+   :width: 900
+   :height: 600
+   :autoplay:
+   :nocontrols:
+
+The above video shows a simulated autonomous data collection process for the
+river plume example computed
+using MESLAS. The data collection locations are chosen by myopic optimization
+of the integrated Bernoulli variance criterion (IBV) available in MESLAS (see :cite:`Fossum` for more details).
+
+The left-hand plot shows the (simulated) ground truth. One is interested in
+recovering the red regions. The right-hand plot shows the data collection path
+travelled by the AUV, computed by myopic optimization of the IBV criterion and
+the posterior excursion probability (the probability for each point to belong
+to the target excursion set under the posterior law of the GRF model after data
+collection). The radar shows how informative the potential next sampling
+locations are, ranked according to IBV.
+
+
+(For implementation, see :ref:`sensor-label`.)
+
 
 Implementation
 --------------
-MESLAS aims at providing Gaussian Random Field functionalities that are easy to
+MESLAS aims at providing GRF functionalities that are easy to
 use, fully modular and reusable.
 
-For example, the GRF :math:`\boldsymbol{Z}` used inf Fig.1 with linear trend
+For example, the GRF :math:`\boldsymbol{Z}` used in Fig.1 with linear trend
 
 .. math::
    :label: important
@@ -122,19 +155,6 @@ is straightforward to define in MESLAS and to sample from
 More information about the special concepts and notation which are used in MESLAS 
 to handle multivariate random fields may be found at :ref:`philosophy-label`.
 
-Autonomous Adaptive Sampling
-----------------------------
-The ultimate goal of the package is for a sensor to automatically choose
-measurement locations learn an excursion set.
-
-.. video:: video.mp4
-   :width: 900
-   :height: 600
-   :autoplay:
-   :nocontrols:
-
-For implementation, see :ref:`sensor-label`.
-
 
 .. toctree::
    :glob:
@@ -144,6 +164,12 @@ For implementation, see :ref:`sensor-label`.
    examples/full_example.py
    examples/kriging.py
    examples/sample_and_plot.py
+
+.. toctree::
+   :maxdepth: 1
+
+   philosophy
+
 
 .. toctree::
    :glob:
@@ -156,14 +182,6 @@ For implementation, see :ref:`sensor-label`.
    means
    plotting
 
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Advanced Usage
-
-   philosophy
-   plotting
-   grid
 
 
 .. bibliography:: bibliography.bib
