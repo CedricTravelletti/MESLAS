@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Plotting module &mdash; MESLAS 0.1 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,18 +32,16 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Philosophy of the MESLAS package" href="philosophy.html" />
-    <link rel="prev" title="means module" href="means.html" />
+    <link rel="prev" title="Means module" href="means.html" />
     <link href="_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -87,19 +88,16 @@
               
             
             
-              <p class="caption"><span class="caption-text">Main Modules:</span></p>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Notations and Conventions for the MESLAS package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Main Modules:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensor.html">Sensor Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="means.html">means module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="means.html">Means module</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Plotting module</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Advanced Usage</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy of the MESLAS package</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Plotting module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 </ul>
 
             
@@ -167,99 +165,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-meslas.plotting">
-<span id="plotting-module"></span><h1>Plotting module<a class="headerlink" href="#module-meslas.plotting" title="Permalink to this headline">¶</a></h1>
-<p>Plotting capabilities.</p>
-<dl class="py function">
-<dt id="meslas.plotting.plot_grid_probas">
-<code class="sig-prename descclassname">meslas.plotting.</code><code class="sig-name descname">plot_grid_probas</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">probas</span></em>, <em class="sig-param"><span class="n">points</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">output_filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.plotting.plot_grid_probas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plots excursion probability.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>grid: IrregularGrid</strong></dt><dd><p>Grid on which the values are defined.</p>
-</dd>
-<dt><strong>probas: (grid.n_points)</strong></dt><dd><p>Probalilities to plot, defined at the grid nodes.</p>
-</dd>
-<dt><strong>points: (N, d) Tensor</strong></dt><dd><p>Discrete points to overlay on top of the plot. Useful to plot positions
-where data has been collected.</p>
-</dd>
-<dt><strong>title: string</strong></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="meslas.plotting.plot_grid_values">
-<code class="sig-prename descclassname">meslas.plotting.</code><code class="sig-name descname">plot_grid_values</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">vals</span></em>, <em class="sig-param"><span class="n">S_y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">L_y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cmap</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.plotting.plot_grid_values" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot values defined on a grid. Values can me multidimensional
-responses. In this case, one plot per response will be produced.
-One can also provide a generalized location vector, those will be added as
-points on top of the corresponding plot (can be used to plot observation
-locations in kriging for example).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>grid: IrregularGrid</strong></dt><dd><p>Grid on which the values are defined.</p>
-</dd>
-<dt><strong>vals: (grid.n_points, p) or GeneralizedVector</strong></dt><dd><p>Values to plot, defined at the grid nodes. The number of response p can
-be arbitrary.
-If GeneralizedVector, then the reshaping is handled automatically.</p>
-</dd>
-<dt><strong>S_y: (n, grid.dim) Tensor (optional)</strong></dt><dd><p>Vector of spatial locations to plot as points.</p>
-</dd>
-<dt><strong>L_y: (n) Tensor (optional)</strong></dt><dd><p>Vector of response indices. Will specify on which plot the points will
-be added.</p>
-</dd>
-<dt><strong>cmap: string</strong></dt><dd><p>If set to “proba”, will use red-blue.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="meslas.plotting.plot_grid_values_ax">
-<code class="sig-prename descclassname">meslas.plotting.</code><code class="sig-name descname">plot_grid_values_ax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fig</span></em>, <em class="sig-param"><span class="n">axis</span></em>, <em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">vals</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">S_y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cmap</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">vmin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">vmax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">norm</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">disable_cbar</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">cbar_format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cbar_label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.plotting.plot_grid_values_ax" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plots an image corresponding to values at points of a grid.
-This function takes an axis as input, so can be used to produce subplots.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>axis: matplotlib.axis</strong></dt><dd><p>The axis instance on which to draw.</p>
-</dd>
-<dt><strong>grid: meslas.Geometry.Grid</strong></dt><dd><p>Grid on which to plot.</p>
-</dd>
-<dt><strong>vals: (n_points) Tensor</strong></dt><dd><p>The values at the grid nodes.</p>
-</dd>
-<dt><strong>title: string</strong></dt><dd><p>Title for the plot.</p>
-</dd>
-<dt><strong>S_y: (n_points, n_dim) Tensor, optional</strong></dt><dd><p>Allows to add points on the plot.</p>
-</dd>
-<dt><strong>cmap: string</strong></dt><dd><p>Either “proba” of “excu”. The second one is used to plot excursion sets
-(i.e. discrete).</p>
-</dd>
-<dt><strong>vmin: float</strong></dt><dd><p>Minimal value for the color range.
-Defaults to minimal data value.</p>
-</dd>
-<dt><strong>vmax: float</strong></dt><dd><p>Maximal value for the color range.
-Defaults to maximal data value.</p>
-</dd>
-<dt><strong>disable_cbar: bool</strong></dt><dd><p>If set to True, disables the colorbar next to the plot.</p>
-</dd>
-<dt><strong>norm: Normalizer</strong></dt><dd><p>Can be used to normalize colors once and for all.</p>
-</dd>
-<dt><strong>cbar_format: matplotlib.ticker.ScalarFormatter</strong></dt><dd><p>Allows one to format colorbar ticks in scientific notation.</p>
-</dd>
-<dt><strong>cbar_label: string, optional</strong></dt><dd><p>Text to display near the colorbar.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
+  <section id="plotting-module">
+<h1>Plotting module<a class="headerlink" href="#plotting-module" title="Permalink to this heading">¶</a></h1>
+</section>
 
 
            </div>
@@ -267,8 +175,7 @@ Defaults to maximal data value.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="philosophy.html" class="btn btn-neutral float-right" title="Philosophy of the MESLAS package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="means.html" class="btn btn-neutral float-left" title="means module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="means.html" class="btn btn-neutral float-left" title="Means module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,10 +31,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -88,7 +89,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="philosophy.html">Notations and Conventions for the MESLAS package</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Main Modules:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Main Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
@@ -250,8 +251,6 @@
       </ul></li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.circdiff">circdiff() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
-      <li><a href="meslas.html#meslas.random_fields.DiscreteGRF.compute_cov_reduction">compute_cov_reduction() (meslas.random_fields.DiscreteGRF method)</a>, <a href="random_fields.html#meslas.random_fields.DiscreteGRF.compute_cov_reduction">[1]</a>
-</li>
       <li><a href="meslas.html#meslas.sensor.DiscreteSensor.compute_exursion_prob">compute_exursion_prob() (meslas.sensor.DiscreteSensor method)</a>, <a href="sensor.html#meslas.sensor.DiscreteSensor.compute_exursion_prob">[1]</a>
 
       <ul>
@@ -276,10 +275,6 @@
 </li>
       <li><a href="meslas.html#meslas.excursion.coverage_fct_fixed_location">coverage_fct_fixed_location() (in module meslas.excursion)</a>
 </li>
-      <li><a href="grid.html#meslas.geometry.grid.create_square_grid">create_square_grid() (in module meslas.geometry.grid)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.create_square_grid">[1]</a>
-</li>
-      <li><a href="grid.html#meslas.geometry.grid.create_triangular_grid">create_triangular_grid() (in module meslas.geometry.grid)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.create_triangular_grid">[1]</a>
-</li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.crossvalincl">crossvalincl() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
   </ul></td>
@@ -292,8 +287,6 @@
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.delta">delta() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
-      <li><a href="meslas.html#meslas.random_fields.DiscreteGRF">DiscreteGRF (class in meslas.random_fields)</a>, <a href="random_fields.html#meslas.random_fields.DiscreteGRF">[1]</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="meslas.html#meslas.sensor.DiscreteSensor">DiscreteSensor (class in meslas.sensor)</a>, <a href="sensor.html#meslas.sensor.DiscreteSensor">[1]</a>
@@ -302,8 +295,6 @@
         <li><a href="meslas.html#meslas.sensor_plotting.DiscreteSensor">(class in meslas.sensor_plotting)</a>
 </li>
       </ul></li>
-      <li><a href="meslas.html#meslas.random_fields.DiscreteGRF.discretize_prior">discretize_prior() (meslas.random_fields.DiscreteGRF static method)</a>, <a href="random_fields.html#meslas.random_fields.DiscreteGRF.discretize_prior">[1]</a>
-</li>
       <li><a href="meslas.geometry.html#meslas.geometry.tilings.draw_tiling">draw_tiling() (in module meslas.geometry.tilings)</a>
 </li>
   </ul></td>
@@ -312,18 +303,14 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="meslas.html#meslas.random_fields.DiscreteGRF.ebv">ebv() (meslas.random_fields.DiscreteGRF method)</a>, <a href="random_fields.html#meslas.random_fields.DiscreteGRF.ebv">[1]</a>
-</li>
-      <li><a href="meslas.html#meslas.random_fields.DiscreteGRF.eibv">eibv() (meslas.random_fields.DiscreteGRF method)</a>, <a href="random_fields.html#meslas.random_fields.DiscreteGRF.eibv">[1]</a>
-</li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.enforce_tensor">enforce_tensor() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.entropy">entropy() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.exp">exp() (meslas.external_dependencies.numpytorch.WrapTorch method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.expand_all">expand_all() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.expand_batch">expand_batch() (in module meslas.external_dependencies.numpytorch)</a>
@@ -358,8 +345,6 @@
         <li><a href="meslas.html#meslas.vectors.GeneralizedVector.from_list">(meslas.vectors.GeneralizedVector class method)</a>
 </li>
       </ul></li>
-      <li><a href="meslas.html#meslas.random_fields.DiscreteGRF.from_model">from_model() (meslas.random_fields.DiscreteGRF class method)</a>, <a href="random_fields.html#meslas.random_fields.DiscreteGRF.from_model">[1]</a>
-</li>
   </ul></td>
 </tr></table>
 
@@ -378,11 +363,11 @@
 </li>
       <li><a href="meslas.geometry.html#meslas.geometry.tilings.generate_unit_hexagons">generate_unit_hexagons() (in module meslas.geometry.tilings)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="meslas.geometry.html#meslas.geometry.tilings.generate_unit_squares">generate_unit_squares() (in module meslas.geometry.tilings)</a>
 </li>
       <li><a href="meslas.geometry.html#meslas.geometry.tilings.generate_unit_triangles">generate_unit_triangles() (in module meslas.geometry.tilings)</a>
-</li>
-      <li><a href="grid.html#meslas.geometry.grid.IrregularGrid.get_closest">get_closest() (meslas.geometry.grid.IrregularGrid method)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.IrregularGrid.get_closest">[1]</a>
 </li>
       <li><a href="meslas.html#meslas.sensor.Sensor.get_current_neighbors">get_current_neighbors() (meslas.sensor.Sensor method)</a>, <a href="sensor.html#meslas.sensor.Sensor.get_current_neighbors">[1]</a>
 
@@ -390,17 +375,7 @@
         <li><a href="meslas.html#meslas.sensor_plotting.Sensor.get_current_neighbors">(meslas.sensor_plotting.Sensor method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="meslas.html#meslas.inverse_random_fields.InverseDiscreteGRF.get_full_measurement_inds">get_full_measurement_inds() (meslas.inverse_random_fields.InverseDiscreteGRF method)</a>
-</li>
-      <li><a href="grid.html#meslas.geometry.grid.get_isotopic_generalized_location">get_isotopic_generalized_location() (in module meslas.geometry.grid)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.get_isotopic_generalized_location">[1]</a>
-</li>
-      <li><a href="grid.html#meslas.geometry.grid.IrregularGrid.get_isotopic_generalized_location_inds">get_isotopic_generalized_location_inds() (meslas.geometry.grid.IrregularGrid method)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.IrregularGrid.get_isotopic_generalized_location_inds">[1]</a>
-</li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.get_jacobian">get_jacobian() (in module meslas.external_dependencies.numpytorch)</a>
-</li>
-      <li><a href="grid.html#meslas.geometry.grid.IrregularGrid.get_neighbors">get_neighbors() (meslas.geometry.grid.IrregularGrid method)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.IrregularGrid.get_neighbors">[1]</a>
 </li>
       <li><a href="meslas.html#meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv">get_neighbors_isotopic_eibv() (meslas.sensor.DiscreteSensor method)</a>, <a href="sensor.html#meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv">[1]</a>
 
@@ -408,10 +383,6 @@
         <li><a href="meslas.html#meslas.sensor_plotting.DiscreteSensor.get_neighbors_isotopic_eibv">(meslas.sensor_plotting.DiscreteSensor method)</a>
 </li>
       </ul></li>
-      <li><a href="meslas.html#meslas.random_fields.GRF">GRF (class in meslas.random_fields)</a>, <a href="random_fields.html#meslas.random_fields.GRF">[1]</a>
-</li>
-      <li><a href="grid.html#meslas.geometry.grid.SquareGrid.grid">grid() (meslas.geometry.grid.SquareGrid property)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.SquareGrid.grid">[1]</a>
-</li>
   </ul></td>
 </tr></table>
 
@@ -420,12 +391,6 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.interp1d">interp1d() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
-      <li><a href="grid.html#meslas.geometry.grid.IrregularGrid.interpolate_to_image">interpolate_to_image() (meslas.geometry.grid.IrregularGrid method)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.IrregularGrid.interpolate_to_image">[1]</a>
-
-      <ul>
-        <li><a href="grid.html#meslas.geometry.grid.SquareGrid.interpolate_to_image">(meslas.geometry.grid.SquareGrid method)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.SquareGrid.interpolate_to_image">[1]</a>
-</li>
-      </ul></li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.inv_gaussian_cdf">inv_gaussian_cdf() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.inv_gaussian_mean_std2params">inv_gaussian_mean_std2params() (in module meslas.external_dependencies.numpytorch)</a>
@@ -434,32 +399,18 @@
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.inv_gaussian_pmf_mean_stdev">inv_gaussian_pmf_mean_stdev() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.inv_gaussian_variance">inv_gaussian_variance() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.inv_gaussian_variance2lam">inv_gaussian_variance2lam() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="meslas.html#meslas.inverse_random_fields.InverseDiscreteGRF.inverse_conditional_cov">inverse_conditional_cov() (meslas.inverse_random_fields.InverseDiscreteGRF method)</a>
-</li>
-      <li><a href="meslas.html#meslas.inverse_random_fields.InverseDiscreteGRF.inverse_update">inverse_update() (meslas.inverse_random_fields.InverseDiscreteGRF method)</a>
-</li>
-      <li><a href="meslas.html#meslas.inverse_random_fields.InverseDiscreteGRF">InverseDiscreteGRF (class in meslas.inverse_random_fields)</a>
-</li>
-      <li><a href="grid.html#meslas.geometry.grid.IrregularGrid">IrregularGrid (class in meslas.geometry.grid)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.IrregularGrid">[1]</a>
-</li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.isnan">isnan() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
-      <li><a href="meslas.html#meslas.vectors.GeneralizedMatrix.isotopic">isotopic() (meslas.vectors.GeneralizedMatrix property)</a>
+      <li><a href="meslas.html#meslas.vectors.GeneralizedMatrix.isotopic">isotopic (meslas.vectors.GeneralizedMatrix property)</a>
 
       <ul>
         <li><a href="meslas.html#meslas.vectors.GeneralizedVector.isotopic">(meslas.vectors.GeneralizedVector property)</a>
-</li>
-      </ul></li>
-      <li><a href="grid.html#meslas.geometry.grid.IrregularGrid.isotopic_vector_to_grid">isotopic_vector_to_grid() (meslas.geometry.grid.IrregularGrid method)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.IrregularGrid.isotopic_vector_to_grid">[1]</a>
-
-      <ul>
-        <li><a href="grid.html#meslas.geometry.grid.SquareGrid.isotopic_vector_to_grid">(meslas.geometry.grid.SquareGrid method)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.SquareGrid.isotopic_vector_to_grid">[1]</a>
 </li>
       </ul></li>
   </ul></td>
@@ -476,15 +427,9 @@
         <li><a href="meslas.covariance.html#meslas.covariance.heterotopic.StationaryCovariance.K">(meslas.covariance.heterotopic.StationaryCovariance method)</a>
 </li>
       </ul></li>
-      <li><a href="meslas.covariance.html#meslas.covariance.old.K_isotopic">K_isotopic() (in module meslas.covariance.old)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="meslas.html#meslas.random_fields.GRF.krig">krig() (meslas.random_fields.GRF method)</a>, <a href="random_fields.html#meslas.random_fields.GRF.krig">[1]</a>
-</li>
-      <li><a href="meslas.html#meslas.random_fields.GRF.krig_grid">krig_grid() (meslas.random_fields.GRF method)</a>, <a href="random_fields.html#meslas.random_fields.GRF.krig_grid">[1]</a>
-</li>
-      <li><a href="meslas.html#meslas.random_fields.GRF.krig_isotopic">krig_isotopic() (meslas.random_fields.GRF method)</a>, <a href="random_fields.html#meslas.random_fields.GRF.krig_isotopic">[1]</a>
+      <li><a href="meslas.covariance.html#meslas.covariance.old.K_isotopic">K_isotopic() (in module meslas.covariance.old)</a>
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.kron">kron() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
@@ -500,7 +445,7 @@
 </li>
       <li><a href="meslas.covariance.html#meslas.covariance.cross_covariances.LinearTrendCrossCov">LinearTrendCrossCov (class in meslas.covariance.cross_covariances)</a>
 </li>
-      <li><a href="meslas.html#meslas.vectors.GeneralizedMatrix.list">list() (meslas.vectors.GeneralizedMatrix property)</a>
+      <li><a href="meslas.html#meslas.vectors.GeneralizedMatrix.list">list (meslas.vectors.GeneralizedMatrix property)</a>
 
       <ul>
         <li><a href="meslas.html#meslas.vectors.GeneralizedVector.list">(meslas.vectors.GeneralizedVector property)</a>
@@ -622,13 +567,8 @@
         <li><a href="meslas.geometry.html#module-meslas.geometry">module</a>
 </li>
       </ul></li>
-      <li>
-    meslas.geometry.grid
-
-      <ul>
-        <li><a href="grid.html#module-meslas.geometry.grid">module</a>, <a href="meslas.geometry.html#module-meslas.geometry.grid">[1]</a>
-</li>
-      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     meslas.geometry.tilings
 
@@ -637,40 +577,10 @@
 </li>
       </ul></li>
       <li>
-    meslas.inverse_random_fields
-
-      <ul>
-        <li><a href="meslas.html#module-meslas.inverse_random_fields">module</a>
-</li>
-      </ul></li>
-      <li>
     meslas.means
 
       <ul>
         <li><a href="means.html#module-meslas.means">module</a>, <a href="meslas.html#module-meslas.means">[1]</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    meslas.plotting
-
-      <ul>
-        <li><a href="meslas.html#module-meslas.plotting">module</a>, <a href="plotting.html#module-meslas.plotting">[1]</a>
-</li>
-      </ul></li>
-      <li>
-    meslas.plotting_physical
-
-      <ul>
-        <li><a href="meslas.html#module-meslas.plotting_physical">module</a>
-</li>
-      </ul></li>
-      <li>
-    meslas.random_fields
-
-      <ul>
-        <li><a href="meslas.html#module-meslas.random_fields">module</a>, <a href="random_fields.html#module-meslas.random_fields">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -724,19 +634,9 @@
 </li>
         <li><a href="meslas.geometry.html#module-meslas.geometry">meslas.geometry</a>
 </li>
-        <li><a href="grid.html#module-meslas.geometry.grid">meslas.geometry.grid</a>, <a href="meslas.geometry.html#module-meslas.geometry.grid">[1]</a>
-</li>
         <li><a href="meslas.geometry.html#module-meslas.geometry.tilings">meslas.geometry.tilings</a>
 </li>
-        <li><a href="meslas.html#module-meslas.inverse_random_fields">meslas.inverse_random_fields</a>
-</li>
         <li><a href="means.html#module-meslas.means">meslas.means</a>, <a href="meslas.html#module-meslas.means">[1]</a>
-</li>
-        <li><a href="meslas.html#module-meslas.plotting">meslas.plotting</a>, <a href="plotting.html#module-meslas.plotting">[1]</a>
-</li>
-        <li><a href="meslas.html#module-meslas.plotting_physical">meslas.plotting_physical</a>
-</li>
-        <li><a href="meslas.html#module-meslas.random_fields">meslas.random_fields</a>, <a href="random_fields.html#module-meslas.random_fields">[1]</a>
 </li>
         <li><a href="meslas.html#module-meslas.sensor">meslas.sensor</a>, <a href="sensor.html#module-meslas.sensor">[1]</a>
 </li>
@@ -809,35 +709,11 @@
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.pconc2conc">pconc2conc() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.permute2en">permute2en() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.permute2st">permute2st() (in module meslas.external_dependencies.numpytorch)</a>
-</li>
-      <li><a href="meslas.html#meslas.plotting_physical.plot_2d_slice">plot_2d_slice() (in module meslas.plotting_physical)</a>
-</li>
-      <li><a href="meslas.html#meslas.plotting_physical.plot_2D_triangular_grid">plot_2D_triangular_grid() (in module meslas.plotting_physical)</a>
-</li>
-      <li><a href="meslas.html#meslas.plotting.plot_grid_probas">plot_grid_probas() (in module meslas.plotting)</a>, <a href="plotting.html#meslas.plotting.plot_grid_probas">[1]</a>
-
-      <ul>
-        <li><a href="meslas.html#meslas.plotting_physical.plot_grid_probas">(in module meslas.plotting_physical)</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="meslas.html#meslas.plotting.plot_grid_values">plot_grid_values() (in module meslas.plotting)</a>, <a href="plotting.html#meslas.plotting.plot_grid_values">[1]</a>
-
-      <ul>
-        <li><a href="meslas.html#meslas.plotting_physical.plot_grid_values">(in module meslas.plotting_physical)</a>
-</li>
-      </ul></li>
-      <li><a href="meslas.html#meslas.plotting.plot_grid_values_ax">plot_grid_values_ax() (in module meslas.plotting)</a>, <a href="plotting.html#meslas.plotting.plot_grid_values_ax">[1]</a>
-</li>
-      <li><a href="meslas.html#meslas.plotting_physical.plot_krig_slice">plot_krig_slice() (in module meslas.plotting_physical)</a>
-</li>
-      <li><a href="meslas.html#meslas.plotting_physical.plot_proba">plot_proba() (in module meslas.plotting_physical)</a>
-</li>
-      <li><a href="meslas.html#meslas.random_fields.DiscreteGRF.pointwise_cov">pointwise_cov() (meslas.random_fields.DiscreteGRF property)</a>, <a href="random_fields.html#meslas.random_fields.DiscreteGRF.pointwise_cov">[1]</a>
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.prad2unitvec">prad2unitvec() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
@@ -882,23 +758,9 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="meslas.covariance.html#meslas.covariance.old.sample">sample() (in module meslas.covariance.old)</a>
-
-      <ul>
-        <li><a href="meslas.html#meslas.random_fields.DiscreteGRF.sample">(meslas.random_fields.DiscreteGRF method)</a>, <a href="random_fields.html#meslas.random_fields.DiscreteGRF.sample">[1]</a>
-</li>
-        <li><a href="meslas.html#meslas.random_fields.GRF.sample">(meslas.random_fields.GRF method)</a>, <a href="random_fields.html#meslas.random_fields.GRF.sample">[1]</a>
-</li>
-      </ul></li>
-      <li><a href="meslas.html#meslas.inverse_random_fields.InverseDiscreteGRF.sample_foxy">sample_foxy() (meslas.inverse_random_fields.InverseDiscreteGRF method)</a>
-</li>
-      <li><a href="meslas.html#meslas.random_fields.GRF.sample_grid">sample_grid() (meslas.random_fields.GRF method)</a>, <a href="random_fields.html#meslas.random_fields.GRF.sample_grid">[1]</a>
 </li>
       <li><a href="meslas.covariance.html#meslas.covariance.old.sample_isotopic">sample_isotopic() (in module meslas.covariance.old)</a>
-
-      <ul>
-        <li><a href="meslas.html#meslas.random_fields.GRF.sample_isotopic">(meslas.random_fields.GRF method)</a>, <a href="random_fields.html#meslas.random_fields.GRF.sample_isotopic">[1]</a>
 </li>
-      </ul></li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.scatter_add">scatter_add() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.sem">sem() (in module meslas.external_dependencies.numpytorch)</a>
@@ -917,21 +779,17 @@
         <li><a href="meslas.html#meslas.sensor_plotting.Sensor.set_location">(meslas.sensor_plotting.Sensor method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="meslas.html#meslas.vectors.GeneralizedMatrix.set_vals">set_vals() (meslas.vectors.GeneralizedMatrix method)</a>
 
       <ul>
         <li><a href="meslas.html#meslas.vectors.GeneralizedVector.set_vals">(meslas.vectors.GeneralizedVector method)</a>
 </li>
       </ul></li>
-      <li><a href="grid.html#meslas.geometry.grid.IrregularGrid.shape">shape() (meslas.geometry.grid.IrregularGrid property)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.IrregularGrid.shape">[1]</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="meslas.html#meslas.vectors.GeneralizedMatrix.shape">shape (meslas.vectors.GeneralizedMatrix property)</a>
 
       <ul>
-        <li><a href="meslas.geometry.html#meslas.geometry.grid.SquareGrid.shape">(meslas.geometry.grid.SquareGrid property)</a>
-</li>
-        <li><a href="meslas.html#meslas.vectors.GeneralizedMatrix.shape">(meslas.vectors.GeneralizedMatrix property)</a>
-</li>
         <li><a href="meslas.html#meslas.vectors.GeneralizedVector.shape">(meslas.vectors.GeneralizedVector property)</a>
 </li>
       </ul></li>
@@ -940,8 +798,6 @@
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.softmax_bias">softmax_bias() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.softmax_mask">softmax_mask() (in module meslas.external_dependencies.numpytorch)</a>
-</li>
-      <li><a href="grid.html#meslas.geometry.grid.SquareGrid">SquareGrid (class in meslas.geometry.grid)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.SquareGrid">[1]</a>
 </li>
       <li><a href="meslas.covariance.html#meslas.covariance.heterotopic.StationaryCovariance">StationaryCovariance (class in meslas.covariance.heterotopic)</a>
 </li>
@@ -971,8 +827,6 @@
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.test_softmax_bias">test_softmax_bias() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
-      <li><a href="grid.html#meslas.geometry.grid.TriangularGrid">TriangularGrid (class in meslas.geometry.grid)</a>, <a href="meslas.geometry.html#meslas.geometry.grid.TriangularGrid">[1]</a>
-</li>
   </ul></td>
 </tr></table>
 
@@ -983,11 +837,9 @@
 </li>
       <li><a href="meslas.covariance.html#meslas.covariance.cross_covariances.UniformMixing">UniformMixing (class in meslas.covariance.cross_covariances)</a>
 </li>
-      <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.unravel_index">unravel_index() (in module meslas.external_dependencies.numpytorch)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="meslas.html#meslas.random_fields.DiscreteGRF.update">update() (meslas.random_fields.DiscreteGRF method)</a>, <a href="random_fields.html#meslas.random_fields.DiscreteGRF.update">[1]</a>
+      <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.unravel_index">unravel_index() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
       <li><a href="meslas.html#meslas.sensor.DiscreteSensor.update_design">update_design() (meslas.sensor.DiscreteSensor method)</a>, <a href="sensor.html#meslas.sensor.DiscreteSensor.update_design">[1]</a>
 
@@ -995,8 +847,6 @@
         <li><a href="meslas.html#meslas.sensor_plotting.DiscreteSensor.update_design">(meslas.sensor_plotting.DiscreteSensor method)</a>
 </li>
       </ul></li>
-      <li><a href="meslas.html#meslas.random_fields.DiscreteGRF.update_from_scratch">update_from_scratch() (meslas.random_fields.DiscreteGRF method)</a>, <a href="random_fields.html#meslas.random_fields.DiscreteGRF.update_from_scratch">[1]</a>
-</li>
   </ul></td>
 </tr></table>
 
@@ -1009,22 +859,12 @@
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.var_distrib">var_distrib() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
-      <li><a href="meslas.html#meslas.random_fields.DiscreteGRF.variance">variance() (meslas.random_fields.DiscreteGRF property)</a>, <a href="random_fields.html#meslas.random_fields.DiscreteGRF.variance">[1]</a>
-
-      <ul>
-        <li><a href="meslas.html#meslas.random_fields.GRF.variance">(meslas.random_fields.GRF method)</a>, <a href="random_fields.html#meslas.random_fields.GRF.variance">[1]</a>
-</li>
-      </ul></li>
-      <li><a href="meslas.html#meslas.random_fields.GRF.variance_reduction">variance_reduction() (meslas.random_fields.GRF method)</a>, <a href="random_fields.html#meslas.random_fields.GRF.variance_reduction">[1]</a>
-</li>
-      <li><a href="meslas.html#meslas.random_fields.GRF.variance_reduction_isotopic">variance_reduction_isotopic() (meslas.random_fields.GRF method)</a>, <a href="random_fields.html#meslas.random_fields.GRF.variance_reduction_isotopic">[1]</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.vec2mat0">vec2mat0() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.vec2matmul">vec2matmul() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.vec_on">vec_on() (in module meslas.external_dependencies.numpytorch)</a>
 </li>
       <li><a href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.vec_on_dim">vec_on_dim() (in module meslas.external_dependencies.numpytorch)</a>

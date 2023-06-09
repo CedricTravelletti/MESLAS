@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>meslas package &mdash; MESLAS 0.1 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,10 +32,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -85,19 +87,16 @@
               
             
             
-              <p class="caption"><span class="caption-text">Main Modules:</span></p>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Notations and Conventions for the MESLAS package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Main Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensor.html">Sensor Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="means.html">Means module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Advanced Usage</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy of the MESLAS package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 </ul>
 
             
@@ -165,56 +164,209 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="meslas-package">
-<h1>meslas package<a class="headerlink" href="#meslas-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+  <section id="meslas-package">
+<h1>meslas package<a class="headerlink" href="#meslas-package" title="Permalink to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="meslas.covariance.html">meslas.covariance package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="meslas.covariance.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.covariance.html#module-meslas.covariance.cross_covariances">meslas.covariance.cross_covariances module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.covariance.html#module-meslas.covariance.heterotopic">meslas.covariance.heterotopic module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#conventions">Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.covariance.html#module-meslas.covariance.cross_covariances">meslas.covariance.cross_covariances module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.cross_covariances.LinearTrendCrossCov"><code class="docutils literal notranslate"><span class="pre">LinearTrendCrossCov</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.cross_covariances.ParabolicTrendCrossCov"><code class="docutils literal notranslate"><span class="pre">ParabolicTrendCrossCov</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.cross_covariances.UniformMixing"><code class="docutils literal notranslate"><span class="pre">UniformMixing</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.covariance.html#module-meslas.covariance.old">meslas.covariance.old module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.covariance.html#module-meslas.covariance.spatial_covariance_functions">meslas.covariance.spatial_covariance_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.covariance.html#module-meslas.covariance.heterotopic">meslas.covariance.heterotopic module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#conventions">Conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.heterotopic.FactorCovariance"><code class="docutils literal notranslate"><span class="pre">FactorCovariance</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.heterotopic.FactorCovariance.K"><code class="docutils literal notranslate"><span class="pre">FactorCovariance.K()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.heterotopic.FactorStationaryCovariance"><code class="docutils literal notranslate"><span class="pre">FactorStationaryCovariance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.heterotopic.StationaryCovariance"><code class="docutils literal notranslate"><span class="pre">StationaryCovariance</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.heterotopic.StationaryCovariance.K"><code class="docutils literal notranslate"><span class="pre">StationaryCovariance.K()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.covariance.html#module-meslas.covariance.old">meslas.covariance.old module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.old.K_isotopic"><code class="docutils literal notranslate"><span class="pre">K_isotopic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.old.k"><code class="docutils literal notranslate"><span class="pre">k()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.old.mu"><code class="docutils literal notranslate"><span class="pre">mu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.old.sample"><code class="docutils literal notranslate"><span class="pre">sample()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.old.sample_isotopic"><code class="docutils literal notranslate"><span class="pre">sample_isotopic()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.covariance.html#module-meslas.covariance.spatial_covariance_functions">meslas.covariance.spatial_covariance_functions module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="meslas.covariance.html#meslas.covariance.spatial_covariance_functions.Matern32"><code class="docutils literal notranslate"><span class="pre">Matern32()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="meslas.covariance.html#module-meslas.covariance">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="meslas.external_dependencies.html">meslas.external_dependencies package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="meslas.external_dependencies.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.external_dependencies.html#module-meslas.external_dependencies.numpytorch">meslas.external_dependencies.numpytorch module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.external_dependencies.html#module-meslas.external_dependencies.numpytorch">meslas.external_dependencies.numpytorch module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch"><code class="docutils literal notranslate"><span class="pre">WrapTorch</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.abs"><code class="docutils literal notranslate"><span class="pre">WrapTorch.abs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.arange"><code class="docutils literal notranslate"><span class="pre">WrapTorch.arange()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.argmax"><code class="docutils literal notranslate"><span class="pre">WrapTorch.argmax()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.argmin"><code class="docutils literal notranslate"><span class="pre">WrapTorch.argmin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.array"><code class="docutils literal notranslate"><span class="pre">WrapTorch.array()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.backend"><code class="docutils literal notranslate"><span class="pre">WrapTorch.backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.cat"><code class="docutils literal notranslate"><span class="pre">WrapTorch.cat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.exp"><code class="docutils literal notranslate"><span class="pre">WrapTorch.exp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.log"><code class="docutils literal notranslate"><span class="pre">WrapTorch.log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.max"><code class="docutils literal notranslate"><span class="pre">WrapTorch.max()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.min"><code class="docutils literal notranslate"><span class="pre">WrapTorch.min()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.newaxis"><code class="docutils literal notranslate"><span class="pre">WrapTorch.newaxis</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.ones"><code class="docutils literal notranslate"><span class="pre">WrapTorch.ones()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.sum"><code class="docutils literal notranslate"><span class="pre">WrapTorch.sum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.sumto1"><code class="docutils literal notranslate"><span class="pre">WrapTorch.sumto1()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.WrapTorch.zeros"><code class="docutils literal notranslate"><span class="pre">WrapTorch.zeros()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.aggregate"><code class="docutils literal notranslate"><span class="pre">aggregate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.append_dim"><code class="docutils literal notranslate"><span class="pre">append_dim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.append_to_ndim"><code class="docutils literal notranslate"><span class="pre">append_to_ndim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.attach_dim"><code class="docutils literal notranslate"><span class="pre">attach_dim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.block_diag"><code class="docutils literal notranslate"><span class="pre">block_diag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.block_diag_irregular"><code class="docutils literal notranslate"><span class="pre">block_diag_irregular()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.bootstrap"><code class="docutils literal notranslate"><span class="pre">bootstrap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.categrnd"><code class="docutils literal notranslate"><span class="pre">categrnd()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.circdiff"><code class="docutils literal notranslate"><span class="pre">circdiff()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.conv_t"><code class="docutils literal notranslate"><span class="pre">conv_t()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.crossvalincl"><code class="docutils literal notranslate"><span class="pre">crossvalincl()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.deg2rad"><code class="docutils literal notranslate"><span class="pre">deg2rad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.delta"><code class="docutils literal notranslate"><span class="pre">delta()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.enforce_tensor"><code class="docutils literal notranslate"><span class="pre">enforce_tensor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.entropy"><code class="docutils literal notranslate"><span class="pre">entropy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.expand_all"><code class="docutils literal notranslate"><span class="pre">expand_all()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.expand_batch"><code class="docutils literal notranslate"><span class="pre">expand_batch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.expand_upto_dim"><code class="docutils literal notranslate"><span class="pre">expand_upto_dim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.float"><code class="docutils literal notranslate"><span class="pre">float()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.freeze"><code class="docutils literal notranslate"><span class="pre">freeze()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.get_jacobian"><code class="docutils literal notranslate"><span class="pre">get_jacobian()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.interp1d"><code class="docutils literal notranslate"><span class="pre">interp1d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.inv_gaussian_cdf"><code class="docutils literal notranslate"><span class="pre">inv_gaussian_cdf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.inv_gaussian_mean_std2params"><code class="docutils literal notranslate"><span class="pre">inv_gaussian_mean_std2params()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.inv_gaussian_pdf"><code class="docutils literal notranslate"><span class="pre">inv_gaussian_pdf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.inv_gaussian_pmf_mean_stdev"><code class="docutils literal notranslate"><span class="pre">inv_gaussian_pmf_mean_stdev()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.inv_gaussian_variance"><code class="docutils literal notranslate"><span class="pre">inv_gaussian_variance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.inv_gaussian_variance2lam"><code class="docutils literal notranslate"><span class="pre">inv_gaussian_variance2lam()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.isnan"><code class="docutils literal notranslate"><span class="pre">isnan()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.kron"><code class="docutils literal notranslate"><span class="pre">kron()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.kw_np2torch"><code class="docutils literal notranslate"><span class="pre">kw_np2torch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.log_normpdf"><code class="docutils literal notranslate"><span class="pre">log_normpdf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.logistic"><code class="docutils literal notranslate"><span class="pre">logistic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.logit"><code class="docutils literal notranslate"><span class="pre">logit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.lognorm_params_given_mean_stdev"><code class="docutils literal notranslate"><span class="pre">lognorm_params_given_mean_stdev()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.lognorm_pmf"><code class="docutils literal notranslate"><span class="pre">lognorm_pmf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.lognormal_params2mean_stdev"><code class="docutils literal notranslate"><span class="pre">lognormal_params2mean_stdev()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.m2v"><code class="docutils literal notranslate"><span class="pre">m2v()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.m2v0"><code class="docutils literal notranslate"><span class="pre">m2v0()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.mat2vec0"><code class="docutils literal notranslate"><span class="pre">mat2vec0()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.matmul0"><code class="docutils literal notranslate"><span class="pre">matmul0()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.matmul2vec"><code class="docutils literal notranslate"><span class="pre">matmul2vec()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.matsum"><code class="docutils literal notranslate"><span class="pre">matsum()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.matvecmul0"><code class="docutils literal notranslate"><span class="pre">matvecmul0()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.max_distrib"><code class="docutils literal notranslate"><span class="pre">max_distrib()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.max_shape"><code class="docutils literal notranslate"><span class="pre">max_shape()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.mean_distrib"><code class="docutils literal notranslate"><span class="pre">mean_distrib()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.min_distrib"><code class="docutils literal notranslate"><span class="pre">min_distrib()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.mm0"><code class="docutils literal notranslate"><span class="pre">mm0()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.mvm0"><code class="docutils literal notranslate"><span class="pre">mvm0()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.mvnpdf_log"><code class="docutils literal notranslate"><span class="pre">mvnpdf_log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.mvnrnd"><code class="docutils literal notranslate"><span class="pre">mvnrnd()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.nan2v"><code class="docutils literal notranslate"><span class="pre">nan2v()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.nanmean"><code class="docutils literal notranslate"><span class="pre">nanmean()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.nansum"><code class="docutils literal notranslate"><span class="pre">nansum()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.normrnd"><code class="docutils literal notranslate"><span class="pre">normrnd()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.npy"><code class="docutils literal notranslate"><span class="pre">npy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.npys"><code class="docutils literal notranslate"><span class="pre">npys()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.numpy"><code class="docutils literal notranslate"><span class="pre">numpy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.onehotrnd"><code class="docutils literal notranslate"><span class="pre">onehotrnd()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.p2en"><code class="docutils literal notranslate"><span class="pre">p2en()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.p2st"><code class="docutils literal notranslate"><span class="pre">p2st()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.pconc2conc"><code class="docutils literal notranslate"><span class="pre">pconc2conc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.permute2en"><code class="docutils literal notranslate"><span class="pre">permute2en()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.permute2st"><code class="docutils literal notranslate"><span class="pre">permute2st()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.prad2unitvec"><code class="docutils literal notranslate"><span class="pre">prad2unitvec()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.prepend_dim"><code class="docutils literal notranslate"><span class="pre">prepend_dim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.prepend_to_ndim"><code class="docutils literal notranslate"><span class="pre">prepend_to_ndim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.rad2deg"><code class="docutils literal notranslate"><span class="pre">rad2deg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.rand"><code class="docutils literal notranslate"><span class="pre">rand()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.ravel_multi_index"><code class="docutils literal notranslate"><span class="pre">ravel_multi_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.repeat_all"><code class="docutils literal notranslate"><span class="pre">repeat_all()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.repeat_batch"><code class="docutils literal notranslate"><span class="pre">repeat_batch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.repeat_dim"><code class="docutils literal notranslate"><span class="pre">repeat_dim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.repeat_to_shape"><code class="docutils literal notranslate"><span class="pre">repeat_to_shape()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.scatter_add"><code class="docutils literal notranslate"><span class="pre">scatter_add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.sem"><code class="docutils literal notranslate"><span class="pre">sem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.sem_distrib"><code class="docutils literal notranslate"><span class="pre">sem_distrib()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.shiftdim"><code class="docutils literal notranslate"><span class="pre">shiftdim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.softmax_bias"><code class="docutils literal notranslate"><span class="pre">softmax_bias()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.softmax_mask"><code class="docutils literal notranslate"><span class="pre">softmax_mask()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.std_distrib"><code class="docutils literal notranslate"><span class="pre">std_distrib()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.sumto1"><code class="docutils literal notranslate"><span class="pre">sumto1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.t"><code class="docutils literal notranslate"><span class="pre">t()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.tensor"><code class="docutils literal notranslate"><span class="pre">tensor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.test_kron"><code class="docutils literal notranslate"><span class="pre">test_kron()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.test_softmax_bias"><code class="docutils literal notranslate"><span class="pre">test_softmax_bias()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.unblock_diag"><code class="docutils literal notranslate"><span class="pre">unblock_diag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.unravel_index"><code class="docutils literal notranslate"><span class="pre">unravel_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.v2m"><code class="docutils literal notranslate"><span class="pre">v2m()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.v2m0"><code class="docutils literal notranslate"><span class="pre">v2m0()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.var_distrib"><code class="docutils literal notranslate"><span class="pre">var_distrib()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.vec2mat0"><code class="docutils literal notranslate"><span class="pre">vec2mat0()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.vec2matmul"><code class="docutils literal notranslate"><span class="pre">vec2matmul()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.vec_on"><code class="docutils literal notranslate"><span class="pre">vec_on()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.vec_on_dim"><code class="docutils literal notranslate"><span class="pre">vec_on_dim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.vmpdf"><code class="docutils literal notranslate"><span class="pre">vmpdf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.vmpdf_a_given_b"><code class="docutils literal notranslate"><span class="pre">vmpdf_a_given_b()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.external_dependencies.html#meslas.external_dependencies.numpytorch.vmpdf_prad_pconc"><code class="docutils literal notranslate"><span class="pre">vmpdf_prad_pconc()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="meslas.external_dependencies.html#module-meslas.external_dependencies">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="meslas.geometry.html">meslas.geometry package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="meslas.geometry.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.geometry.html#module-meslas.geometry.grid">meslas.geometry.grid module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.geometry.html#module-meslas.geometry.tilings">meslas.geometry.tilings module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.geometry.html#meslas-geometry-grid-module">meslas.geometry.grid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.geometry.html#module-meslas.geometry.tilings">meslas.geometry.tilings module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="meslas.geometry.html#meslas.geometry.tilings.draw_tiling"><code class="docutils literal notranslate"><span class="pre">draw_tiling()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.geometry.html#meslas.geometry.tilings.generate_hexagons"><code class="docutils literal notranslate"><span class="pre">generate_hexagons()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.geometry.html#meslas.geometry.tilings.generate_squares"><code class="docutils literal notranslate"><span class="pre">generate_squares()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.geometry.html#meslas.geometry.tilings.generate_triangles"><code class="docutils literal notranslate"><span class="pre">generate_triangles()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.geometry.html#meslas.geometry.tilings.generate_unit_hexagons"><code class="docutils literal notranslate"><span class="pre">generate_unit_hexagons()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.geometry.html#meslas.geometry.tilings.generate_unit_squares"><code class="docutils literal notranslate"><span class="pre">generate_unit_squares()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.geometry.html#meslas.geometry.tilings.generate_unit_triangles"><code class="docutils literal notranslate"><span class="pre">generate_unit_triangles()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="meslas.geometry.html#module-meslas.geometry">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-meslas.excursion">
-<span id="meslas-excursion-module"></span><h2>meslas.excursion module<a class="headerlink" href="#module-meslas.excursion" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-meslas.excursion">
+<span id="meslas-excursion-module"></span><h2>meslas.excursion module<a class="headerlink" href="#module-meslas.excursion" title="Permalink to this heading">¶</a></h2>
 <p>Compute coverage function, excursion sets and related quantities.</p>
 <dl class="py function">
-<dt id="meslas.excursion.coverage_fct_fixed_location">
-<code class="sig-prename descclassname">meslas.excursion.</code><code class="sig-name descname">coverage_fct_fixed_location</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mean_vec</span></em>, <em class="sig-param"><span class="n">cov_mat</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.excursion.coverage_fct_fixed_location" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.excursion.coverage_fct_fixed_location">
+<span class="sig-prename descclassname"><span class="pre">meslas.excursion.</span></span><span class="sig-name descname"><span class="pre">coverage_fct_fixed_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean_vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cov_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.excursion.coverage_fct_fixed_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes coverage function at a fixed set of location.</p>
 <p>Ths function should be used when a mean vector and covariance matrix for a
 set of locations have been precomputed.</p>
 <p>Uses the torch implementation of the multivariate CDF by Sebastien Marmin,
 see torch-mvn.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>mean_vec: (M, p) Tensor</strong></dt><dd><p>Mean vector at each of the M locations. mean_vec[i, :] should give the
 mean vector at location nr i.</p>
@@ -233,7 +385,7 @@ If not provided, defaults to + infinity.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>excursion_prob: (M) Tensor</dt><dd><p>Probability to be in excursion at each location.</p>
 </dd>
@@ -242,146 +394,20 @@ If not provided, defaults to + infinity.</p>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="module-meslas.inverse_random_fields">
-<span id="meslas-inverse-random-fields-module"></span><h2>meslas.inverse_random_fields module<a class="headerlink" href="#module-meslas.inverse_random_fields" title="Permalink to this headline">¶</a></h2>
-<p>Random fields for inverse problems. This allows conditioning the field on
-with respect to linear operators.</p>
-<p>This is not fundamentally different from usual conditioning, and could be
-straightforwardly implemented if Pytorch allowd for tensors of variable
-dimensions.</p>
-<p>Indeed, if a measurement operator only involves field values and a few set of
-points, then the natural implementation would be a sparse one, computing only
-the covariances involved in the measurement.
-But this makes matmuls awkward to handle since the number of dimensions in each
-line might vary.</p>
-<p>Thats why we take another philosophy: a dense one, namely, we always comute all
-covariances between all elements of the design.</p>
-<p>Thus, we simply take the implementation of a DiscreteGRF, but each time one can
-specify locations and measurement indices, we replace the location vectors by a
-vector specifying to compute for ALL locations in the grid.</p>
-<dl class="py class">
-<dt id="meslas.inverse_random_fields.InverseDiscreteGRF">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.inverse_random_fields.</code><code class="sig-name descname">InverseDiscreteGRF</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">mean_vec</span></em>, <em class="sig-param"><span class="n">covariance_mat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.inverse_random_fields.InverseDiscreteGRF" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#meslas.random_fields.DiscreteGRF" title="meslas.random_fields.DiscreteGRF"><code class="xref py py-class docutils literal notranslate"><span class="pre">meslas.random_fields.DiscreteGRF</span></code></a></p>
-<p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.inverse_random_fields.InverseDiscreteGRF.get_full_measurement_inds" title="meslas.inverse_random_fields.InverseDiscreteGRF.get_full_measurement_inds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_full_measurement_inds</span></code></a>()</p></td>
-<td><p>Create the mesurement vectors that specifiy to compute things for the WHOLE grid.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.inverse_random_fields.InverseDiscreteGRF.inverse_conditional_cov" title="meslas.inverse_random_fields.InverseDiscreteGRF.inverse_conditional_cov"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inverse_conditional_cov</span></code></a>(G[, noise_std, …])</p></td>
-<td><p>Observe some linear operator data and compute the conditional covariance.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.inverse_random_fields.InverseDiscreteGRF.inverse_update" title="meslas.inverse_random_fields.InverseDiscreteGRF.inverse_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inverse_update</span></code></a>(G, y[, noise_std, mean_vec, …])</p></td>
-<td><p>Observe some linear operator data and update the field.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 60%" />
-<col style="width: 40%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>sample_foxy</strong></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt id="meslas.inverse_random_fields.InverseDiscreteGRF.get_full_measurement_inds">
-<code class="sig-name descname">get_full_measurement_inds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.inverse_random_fields.InverseDiscreteGRF.get_full_measurement_inds" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create the mesurement vectors that specifiy to compute things for
-the WHOLE grid.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>S_inds: (self.grid.n_points * self.n_out) Tensor</dt><dd><p>Vector containing ALL grid indices (and duplicated for isotopic
-measurement).</p>
-</dd>
-<dt>L: (self.grid.n_points * self.n_out) Tensor</dt><dd><p>Same, but for response indices.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.inverse_random_fields.InverseDiscreteGRF.inverse_conditional_cov">
-<code class="sig-name descname">inverse_conditional_cov</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">G</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">covariance_mat</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.inverse_random_fields.InverseDiscreteGRF.inverse_conditional_cov" title="Permalink to this definition">¶</a></dt>
-<dd><p>Observe some linear operator data and compute the conditional
-covariance.
-Note that it doesnt depend on the value of the observed data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>G: (M, self.grid.n_points, self.n_out) Tensor</strong></dt><dd><p>Measurement matrix.
-Response indices of the measurements.</p>
-</dd>
-<dt><strong>noise_std: (M) Tensor</strong></dt><dd><p>Noise standard deviation for each datapoints, defaults to zero.</p>
-</dd>
-<dt><strong>covariance_mat: GeneralizedMatrix, optional</strong></dt><dd><p>Can specify another covariance matrix if do not want to use the
-current one.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>cov_mat: (self.grid.n_points, self.grid.n_points) Tensor</dt><dd></dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.inverse_random_fields.InverseDiscreteGRF.inverse_update">
-<code class="sig-name descname">inverse_update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">G</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mean_vec</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">covariance_mat</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.inverse_random_fields.InverseDiscreteGRF.inverse_update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Observe some linear operator data and update the field. This will compute the new
-values of the mean vector and covariance matrix.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>G: (M, self.grid.n_points, self.n_out) Tensor</strong></dt><dd><p>Measurement matrix.
-Response indices of the measurements.</p>
-</dd>
-<dt><strong>y: (M) Tensor</strong></dt><dd><p>Measured values.</p>
-</dd>
-<dt><strong>noise_std: (M) Tensor</strong></dt><dd><p>Noise standard deviation for each datapoints, defaults to zero.</p>
-</dd>
-<dt><strong>mean_vec: GeneralizedVector, optional</strong></dt><dd><p>Can specify a mean vector to start from if do not want to use the
-current mean.</p>
-</dd>
-<dt><strong>covariance_mat: GeneralizedMatrix, optional</strong></dt><dd><p>Can specify another covariance matrix if do not want to use the
-current one.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.inverse_random_fields.InverseDiscreteGRF.sample_foxy">
-<code class="sig-name descname">sample_foxy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">G</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.inverse_random_fields.InverseDiscreteGRF.sample_foxy" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="module-meslas.means">
-<span id="meslas-means-module"></span><h2>meslas.means module<a class="headerlink" href="#module-meslas.means" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="meslas-inverse-random-fields-module">
+<h2>meslas.inverse_random_fields module<a class="headerlink" href="#meslas-inverse-random-fields-module" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-meslas.means">
+<span id="meslas-means-module"></span><h2>meslas.means module<a class="headerlink" href="#module-meslas.means" title="Permalink to this heading">¶</a></h2>
 <p>Mean functions for GRFs.</p>
 <dl class="py class">
-<dt id="meslas.means.ConstantMean">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.means.</code><code class="sig-name descname">ConstantMean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">means</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.means.ConstantMean" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.means.ConstantMean">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">meslas.means.</span></span><span class="sig-name descname"><span class="pre">ConstantMean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">means</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.means.ConstantMean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Constant mean function.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>means: (p) array-like.</strong></dt><dd><p>Constant mean of each of the p-components.</p>
 </dd>
@@ -389,15 +415,11 @@ current one.</p>
 </dd>
 </dl>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code>(S, L)</p></td>
 <td><p><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
@@ -407,14 +429,14 @@ current one.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="meslas.means.LinearMean">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.means.</code><code class="sig-name descname">LinearMean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">beta0s</span></em>, <em class="sig-param"><span class="n">beta1s</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.means.LinearMean" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.means.LinearMean">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">meslas.means.</span></span><span class="sig-name descname"><span class="pre">LinearMean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beta0s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta1s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.means.LinearMean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Linear trend mean function.
 The mean at location x will be given by
 beta0 + beta1 x</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>betas0: (p) array-like.</strong></dt><dd><p>Constant mean mean term for of each of the p-components.</p>
 </dd>
@@ -424,15 +446,11 @@ beta0 + beta1 x</p>
 </dd>
 </dl>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code>(S, L)</p></td>
 <td><p><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
@@ -441,849 +459,28 @@ beta0 + beta1 x</p>
 </table>
 </dd></dl>
 
-</div>
-<div class="section" id="module-meslas.plotting">
-<span id="meslas-plotting-module"></span><h2>meslas.plotting module<a class="headerlink" href="#module-meslas.plotting" title="Permalink to this headline">¶</a></h2>
-<p>Plotting capabilities.</p>
-<dl class="py function">
-<dt id="meslas.plotting.plot_grid_probas">
-<code class="sig-prename descclassname">meslas.plotting.</code><code class="sig-name descname">plot_grid_probas</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">probas</span></em>, <em class="sig-param"><span class="n">points</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">output_filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.plotting.plot_grid_probas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plots excursion probability.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>grid: IrregularGrid</strong></dt><dd><p>Grid on which the values are defined.</p>
-</dd>
-<dt><strong>probas: (grid.n_points)</strong></dt><dd><p>Probalilities to plot, defined at the grid nodes.</p>
-</dd>
-<dt><strong>points: (N, d) Tensor</strong></dt><dd><p>Discrete points to overlay on top of the plot. Useful to plot positions
-where data has been collected.</p>
-</dd>
-<dt><strong>title: string</strong></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="meslas.plotting.plot_grid_values">
-<code class="sig-prename descclassname">meslas.plotting.</code><code class="sig-name descname">plot_grid_values</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">vals</span></em>, <em class="sig-param"><span class="n">S_y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">L_y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cmap</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.plotting.plot_grid_values" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot values defined on a grid. Values can me multidimensional
-responses. In this case, one plot per response will be produced.
-One can also provide a generalized location vector, those will be added as
-points on top of the corresponding plot (can be used to plot observation
-locations in kriging for example).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>grid: IrregularGrid</strong></dt><dd><p>Grid on which the values are defined.</p>
-</dd>
-<dt><strong>vals: (grid.n_points, p) or GeneralizedVector</strong></dt><dd><p>Values to plot, defined at the grid nodes. The number of response p can
-be arbitrary.
-If GeneralizedVector, then the reshaping is handled automatically.</p>
-</dd>
-<dt><strong>S_y: (n, grid.dim) Tensor (optional)</strong></dt><dd><p>Vector of spatial locations to plot as points.</p>
-</dd>
-<dt><strong>L_y: (n) Tensor (optional)</strong></dt><dd><p>Vector of response indices. Will specify on which plot the points will
-be added.</p>
-</dd>
-<dt><strong>cmap: string</strong></dt><dd><p>If set to “proba”, will use red-blue.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="meslas.plotting.plot_grid_values_ax">
-<code class="sig-prename descclassname">meslas.plotting.</code><code class="sig-name descname">plot_grid_values_ax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fig</span></em>, <em class="sig-param"><span class="n">axis</span></em>, <em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">vals</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">S_y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cmap</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">vmin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">vmax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">norm</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">disable_cbar</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">cbar_format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cbar_label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.plotting.plot_grid_values_ax" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plots an image corresponding to values at points of a grid.
-This function takes an axis as input, so can be used to produce subplots.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>axis: matplotlib.axis</strong></dt><dd><p>The axis instance on which to draw.</p>
-</dd>
-<dt><strong>grid: meslas.Geometry.Grid</strong></dt><dd><p>Grid on which to plot.</p>
-</dd>
-<dt><strong>vals: (n_points) Tensor</strong></dt><dd><p>The values at the grid nodes.</p>
-</dd>
-<dt><strong>title: string</strong></dt><dd><p>Title for the plot.</p>
-</dd>
-<dt><strong>S_y: (n_points, n_dim) Tensor, optional</strong></dt><dd><p>Allows to add points on the plot.</p>
-</dd>
-<dt><strong>cmap: string</strong></dt><dd><p>Either “proba” of “excu”. The second one is used to plot excursion sets
-(i.e. discrete).</p>
-</dd>
-<dt><strong>vmin: float</strong></dt><dd><p>Minimal value for the color range.
-Defaults to minimal data value.</p>
-</dd>
-<dt><strong>vmax: float</strong></dt><dd><p>Maximal value for the color range.
-Defaults to maximal data value.</p>
-</dd>
-<dt><strong>disable_cbar: bool</strong></dt><dd><p>If set to True, disables the colorbar next to the plot.</p>
-</dd>
-<dt><strong>norm: Normalizer</strong></dt><dd><p>Can be used to normalize colors once and for all.</p>
-</dd>
-<dt><strong>cbar_format: matplotlib.ticker.ScalarFormatter</strong></dt><dd><p>Allows one to format colorbar ticks in scientific notation.</p>
-</dd>
-<dt><strong>cbar_label: string, optional</strong></dt><dd><p>Text to display near the colorbar.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-<div class="section" id="module-meslas.plotting_physical">
-<span id="meslas-plotting-physical-module"></span><h2>meslas.plotting_physical module<a class="headerlink" href="#module-meslas.plotting_physical" title="Permalink to this headline">¶</a></h2>
-<p>Plot physical variable, i.e. Temperature and Salinity.
-The only change compared to the plotting script is in the plot titles.</p>
-<dl class="py function">
-<dt id="meslas.plotting_physical.plot_2D_triangular_grid">
-<code class="sig-prename descclassname">meslas.plotting_physical.</code><code class="sig-name descname">plot_2D_triangular_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid_coords</span></em>, <em class="sig-param"><span class="n">grid_vals</span></em>, <em class="sig-param"><span class="n">S_y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">L_y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.plotting_physical.plot_2D_triangular_grid" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="meslas.plotting_physical.plot_2d_slice">
-<code class="sig-prename descclassname">meslas.plotting_physical.</code><code class="sig-name descname">plot_2d_slice</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sliced_sample</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cmin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cmax</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.plotting_physical.plot_2d_slice" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plots 2 dimensional slice.</p>
-<p>For each of the n_out responses, plot a two dimensional image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>sliced_sample: (n1, n2, n_out) Tensor</strong></dt><dd><p>Two dimensional slice of a sample or prediction.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="meslas.plotting_physical.plot_grid_probas">
-<code class="sig-prename descclassname">meslas.plotting_physical.</code><code class="sig-name descname">plot_grid_probas</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">probas</span></em>, <em class="sig-param"><span class="n">points</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.plotting_physical.plot_grid_probas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plots excursion probability.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>grid: IrregularGrid</strong></dt><dd><p>Grid on which the values are defined.</p>
-</dd>
-<dt><strong>probas: (grid.n_points)</strong></dt><dd><p>Probalilities to plot, defined at the grid nodes.</p>
-</dd>
-<dt><strong>points: (N, d) Tensor</strong></dt><dd><p>Discrete points to overlay on top of the plot. Useful to plot positions
-where data has been collected.</p>
-</dd>
-<dt><strong>title: string</strong></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="meslas.plotting_physical.plot_grid_values">
-<code class="sig-prename descclassname">meslas.plotting_physical.</code><code class="sig-name descname">plot_grid_values</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">vals</span></em>, <em class="sig-param"><span class="n">S_y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">L_y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.plotting_physical.plot_grid_values" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot values defined on a grid. Values can me multidimensional
-responses. In this case, one plot per response will be produced.
-One can also provide a generalized location vector, those will be added as
-points on top of the corresponding plot (can be used to plot observation
-locations in kriging for example).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>grid: IrregularGrid</strong></dt><dd><p>Grid on which the values are defined.</p>
-</dd>
-<dt><strong>vals: (grid.n_points, p)</strong></dt><dd><p>Values to plot, defined at the grid nodes. The number of response p can
-be arbitrary.</p>
-</dd>
-<dt><strong>S_y: (n, grid.dim) Tensor (optional)</strong></dt><dd><p>Vector of spatial locations to plot as points.</p>
-</dd>
-<dt><strong>L_y: (n) Tensor (optional)</strong></dt><dd><p>Vector of response indices. Will specify on which plot the points will
-be added.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="meslas.plotting_physical.plot_krig_slice">
-<code class="sig-prename descclassname">meslas.plotting_physical.</code><code class="sig-name descname">plot_krig_slice</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sliced_sample</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.plotting_physical.plot_krig_slice" title="Permalink to this definition">¶</a></dt>
-<dd><p>TEMP: plot kriging mean with observations.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="meslas.plotting_physical.plot_proba">
-<code class="sig-prename descclassname">meslas.plotting_physical.</code><code class="sig-name descname">plot_proba</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coverage_image</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.plotting_physical.plot_proba" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plots excursion probability.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>coverage_image: (n1, n2) Tensor</strong></dt><dd></dd>
-<dt><strong>title: string</strong></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-<div class="section" id="module-meslas.random_fields">
-<span id="meslas-random-fields-module"></span><h2>meslas.random_fields module<a class="headerlink" href="#module-meslas.random_fields" title="Permalink to this headline">¶</a></h2>
-<p>Implement multivariate random fields.</p>
-<p>Convention is that p is the number of responses.
-Tensors may be returned either in <em>heterotopic</em> or in <em>isotopic</em> form.</p>
-<p>Heterotopic form means that a response index must be specified for each
-element. For example, given a vector of locations S and a vector of response indices
-L, both of size M, the heteretopic form of the mean vector at these (generalized) locations is
-a vector of size M such that its i-th element is the mean of component L[i] at
-spatial location S[i].</p>
-<p>When <em>all</em> responsed indices are considered, we use the word isotopic.
-Since under the hood, a response index vector always has to be specified, in
-the isotopic case we use L = (1, …, p, 1, …, p, 1, …, p, ….) and
-S = (s1, …, s1, s2, …, s2, …). That is, for each spatial location s_i, we
-repeat it p-times, and the response index vector is just made of the list 1,
-…, p, repeated n times, n being the number of spatial locations.</p>
-<p>Now, in this situation, it makes sense to reshape the resulting mean vector
-such that the repsonse dimensions have their own axis.
-This is what is meant by <em>isotopic form</em>. In isotopic form , the corresponding
-means vector has shape (n. p).</p>
-<dl class="py class">
-<dt id="meslas.random_fields.DiscreteGRF">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.random_fields.</code><code class="sig-name descname">DiscreteGRF</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">mean_vec</span></em>, <em class="sig-param"><span class="n">covariance_mat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#meslas.random_fields.GRF" title="meslas.random_fields.GRF"><code class="xref py py-class docutils literal notranslate"><span class="pre">meslas.random_fields.GRF</span></code></a></p>
-<p>Gaussian Random Field that is discretized over a static grid. This
-means that values can only be computed at grid nodes and observations may
-also only be performed at grid nodes.</p>
-<p>Since it is not known a piori at which locations we will observe or
-predict, the GRF computes and stores the mean vector and covariance matrix
-for the whole design at each stage.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>grid: Grid</strong></dt><dd></dd>
-<dt><strong>mean_vec: GeneralizedVector</strong></dt><dd></dd>
-<dt><strong>covariance_mat: GeneralizedMatrix</strong></dt><dd></dd>
-</dl>
-</dd>
-<dt class="field-even">Attributes</dt>
-<dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.pointwise_cov" title="meslas.random_fields.DiscreteGRF.pointwise_cov"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointwise_cov</span></code></a></dt><dd><p>Pointwise covariance matrix, i.e.</p>
-</dd>
-<dt><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.variance" title="meslas.random_fields.DiscreteGRF.variance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance</span></code></a></dt><dd><p>Returns the (pointwise) variances.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.compute_cov_reduction" title="meslas.random_fields.DiscreteGRF.compute_cov_reduction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_cov_reduction</span></code></a>(S_y_inds, L_y[, noise_std])</p></td>
-<td><p>Compute the covariance reduction that would result from observing some hypothetic data.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.discretize_prior" title="meslas.random_fields.DiscreteGRF.discretize_prior"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discretize_prior</span></code></a>(grf, grid)</p></td>
-<td><p>Discretize a grf prior on a grid and return the mean vector on the grid and covariance matrix between grid nodes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.ebv" title="meslas.random_fields.DiscreteGRF.ebv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ebv</span></code></a>(S_y_inds, L_y, lower[, upper, noise_std])</p></td>
-<td><p>Computes the expected Bernoulli Variance (i.e.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.eibv" title="meslas.random_fields.DiscreteGRF.eibv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eibv</span></code></a>(S_y_inds, L_y, lower[, upper, noise_std])</p></td>
-<td><p>Computes the expected Integrated Bernoulli Variance 8integrated version of the above), if we were to make observations at the generalized locations (S_y, L_y).</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.from_model" title="meslas.random_fields.DiscreteGRF.from_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_model</span></code></a>(grf, grid)</p></td>
-<td><p>Create a discrete GRF by discretizing a GRF model.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.sample" title="meslas.random_fields.DiscreteGRF.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample</span></code></a>([jitter, max_tries, from_prior])</p></td>
-<td><p>Sample the discretized GRF on the whole grid.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.update" title="meslas.random_fields.DiscreteGRF.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(S_y_inds, L_y, y[, noise_std, …])</p></td>
-<td><p>Observe some data and update the field.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.DiscreteGRF.update_from_scratch" title="meslas.random_fields.DiscreteGRF.update_from_scratch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_from_scratch</span></code></a>(S_y_inds, L_y, y[, …])</p></td>
-<td><p>Same as the update function, but starts from the prior.</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt id="meslas.random_fields.DiscreteGRF.compute_cov_reduction">
-<code class="sig-name descname">compute_cov_reduction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.compute_cov_reduction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the covariance reduction that would result from observing
-some hypothetic data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>S_y_inds: (M) Tensor</strong></dt><dd><p>Indices (in the grid) of the spatial locations of the measurements.</p>
-</dd>
-<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
-</dd>
-<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>cov_reduction: (n_points, n_out) GeneralizedMatrix</dt><dd></dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.DiscreteGRF.discretize_prior">
-<em class="property">static </em><code class="sig-name descname">discretize_prior</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grf</span></em>, <em class="sig-param"><span class="n">grid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.discretize_prior" title="Permalink to this definition">¶</a></dt>
-<dd><p>Discretize a grf prior on a grid and return the mean vector on the
-grid and covariance matrix between grid nodes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>grf: GRF</strong></dt><dd><p>Gaussian Random Field to discretize.</p>
-</dd>
-<dt><strong>grid: Grid</strong></dt><dd><p>Grid on which to discretize.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>mean_vec: GeneralizedVector</dt><dd></dd>
-<dt>covariance_mat: GeneralizedMatrix</dt><dd></dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.DiscreteGRF.ebv">
-<code class="sig-name descname">ebv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.ebv" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the expected Bernoulli Variance (i.e. not integrated)
-if we were to make observations at the
-generalized locations (S_y, L_y).
-Since we are on a grid, we do not directly specify the spatial
-locations S_y, but the corresponding grid indices S_y_inds instead.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>S_y_inds: (M) Tensor</strong></dt><dd><p>Indices (in the grid) of the spatial locations of the measurements.</p>
-</dd>
-<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
-</dd>
-<dt><strong>noise_std: float</strong></dt><dd><p>Noise standard deviation. Uniform across all measurments.
-Defaults to 0.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>ebv: (n_points) Tensor</dt><dd><p>Expected Bernoulli Variance at each point of the grid, conditional
-on observing at the new data point.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.DiscreteGRF.eibv">
-<code class="sig-name descname">eibv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.eibv" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the expected Integrated Bernoulli Variance 8integrated
-version of the above), if we were to make observations at the
-generalized locations (S_y, L_y).
-Since we are on a grid, we do not directly specify the spatial
-locations S_y, but the corresponding grid indices S_y_inds instead.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>S_y_inds: (M) Tensor</strong></dt><dd><p>Indices (in the grid) of the spatial locations of the measurements.</p>
-</dd>
-<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
-</dd>
-<dt><strong>noise_std: float</strong></dt><dd><p>Noise standard deviation. Uniform across all measurments.
-Defaults to 0.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>ebiv: float</dt><dd></dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.DiscreteGRF.from_model">
-<em class="property">classmethod </em><code class="sig-name descname">from_model</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grf</span></em>, <em class="sig-param"><span class="n">grid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.from_model" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a discrete GRF by discretizing a GRF model. One specifies
-the mean and covariance funcions and the model is then discretized on a
-grid.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>grf: GRF</strong></dt><dd><p>Gaussian Random Field to discretize.</p>
-</dd>
-<dt><strong>grid: Grid</strong></dt><dd><p>Grid on which to discretize.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.DiscreteGRF.pointwise_cov">
-<em class="property">property </em><code class="sig-name descname">pointwise_cov</code><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.pointwise_cov" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pointwise covariance matrix, i.e. covariance matrix of the field at
-each points (i.e. no cross-location covariance).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>pointwise_cov: (n_points, n_out, n_out) Tensor</dt><dd></dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.DiscreteGRF.sample">
-<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">jitter</span><span class="o">=</span><span class="default_value">1e-06</span></em>, <em class="sig-param"><span class="n">max_tries</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">from_prior</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.sample" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sample the discretized GRF on the whole grid.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>Z: (M) Tensor</dt><dd><p>The sampled value of Z_{s_i} component l_i.</p>
-</dd>
-<dt>jitter: float</dt><dd><p>Jitter to add if covariance matrix is not diagonalisable.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.DiscreteGRF.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mean_vec</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">covariance_mat</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Observe some data and update the field. This will compute the new
-values of the mean vector and covariance matrix.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>S_y_inds: (M) Tensor</strong></dt><dd><p>Indices (in the grid) of the spatial locations of the measurements.</p>
-</dd>
-<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
-</dd>
-<dt><strong>y: (M) Tensor</strong></dt><dd><p>Measured values.</p>
-</dd>
-<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
-</dd>
-<dt><strong>mean_vec: GeneralizedVector, optional</strong></dt><dd><p>Can specify a mean vector to start from if do not want to use the
-current mean.</p>
-</dd>
-<dt><strong>covariance_mat: GeneralizedMatrix, optional</strong></dt><dd><p>Can specify another covariance matrix if do not want to use the
-current one.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.DiscreteGRF.update_from_scratch">
-<code class="sig-name descname">update_from_scratch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.update_from_scratch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Same as the update function, but starts from the prior.
-The purpose of this method is to recover from numerical instabilities
-that may have accumulated when one has sequentially collected a big dataset.
-There, one might instead start from the prior and condition on the
-whole concatenated dataset in one go.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>grf: GRF</strong></dt><dd><p>The prior random field model (continuous) to use to generate the
-prior mean and covariance.</p>
-</dd>
-<dt><strong>S_y_inds: (M) Tensor</strong></dt><dd><p>Indices (in the grid) of the spatial locations of the measurements.</p>
-</dd>
-<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
-</dd>
-<dt><strong>y: (M) Tensor</strong></dt><dd><p>Measured values.</p>
-</dd>
-<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.DiscreteGRF.variance">
-<em class="property">property </em><code class="sig-name descname">variance</code><a class="headerlink" href="#meslas.random_fields.DiscreteGRF.variance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the (pointwise) variances.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>variances: Generalized vector</dt><dd><p>Variance of each component of the random field at each point.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="meslas.random_fields.GRF">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.random_fields.</code><code class="sig-name descname">GRF</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mean</span></em>, <em class="sig-param"><span class="n">covariance</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Gaussian Random Field with specified mean function and covariance function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>mean: function(s, l)</strong></dt><dd><p>Function returning l-th component of  mean at location s.
-Should be vectorized.</p>
-</dd>
-<dt><strong>covariance: function(s1, s2, l1, l2)</strong></dt><dd><p>Function returning the covariance matrix between the l1-th component at
-s1 and the l2-th component at l2.
-Should be vectorized.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.krig" title="meslas.random_fields.GRF.krig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">krig</span></code></a>(S, L, S_y, L_y, y[, noise_std, …])</p></td>
-<td><p>Predict field at some generalized locations, based on some measured data at other generalized locations.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.krig_grid" title="meslas.random_fields.GRF.krig_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">krig_grid</span></code></a>(grid, S_y, L_y, y[, noise_std, …])</p></td>
-<td><p>Predict field at some points, based on some measured data at other points.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.krig_isotopic" title="meslas.random_fields.GRF.krig_isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">krig_isotopic</span></code></a>(points, S_y, L_y, y[, …])</p></td>
-<td><p>Predict field at some points, based on some measured data at other points.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.sample" title="meslas.random_fields.GRF.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample</span></code></a>(S, L[, jitter])</p></td>
-<td><p>Sample the GRF at generalized location (S, L).</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.sample_grid" title="meslas.random_fields.GRF.sample_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample_grid</span></code></a>(grid)</p></td>
-<td><p>Sample the GRF (all components) on a grid.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.sample_isotopic" title="meslas.random_fields.GRF.sample_isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample_isotopic</span></code></a>(points)</p></td>
-<td><p>Sample the GRF (all components) on a list of points.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.variance" title="meslas.random_fields.GRF.variance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance</span></code></a>(S, L)</p></td>
-<td><p>Compute the (pointwise) variances at generalized location (S, L).</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.variance_reduction" title="meslas.random_fields.GRF.variance_reduction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance_reduction</span></code></a>(S, L, S_y, L_y[, noise_std])</p></td>
-<td><p>Computes the reduction in variance at generalized locations (S, L) that would be caused by observing data at generalized locations (S_y, L_y).</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.random_fields.GRF.variance_reduction_isotopic" title="meslas.random_fields.GRF.variance_reduction_isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variance_reduction_isotopic</span></code></a>(points, S_y, L_y)</p></td>
-<td><p>Computes the reduction in variance (all components) at location S that would be caused by observing data at generalized locations (S_y, L_y).</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt id="meslas.random_fields.GRF.krig">
-<code class="sig-name descname">krig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">compute_post_var</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">compute_post_cov</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.krig" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict field at some generalized locations, based on some measured data at other
-generalized locations.</p>
-<p>This is the most general possible form of kriging, since it takes
-measurements at generalized locations and predicts at generalized
-locations.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>S: (N, d)</strong></dt><dd><p>Spatial locations at which to predict</p>
-</dd>
-<dt><strong>L: (N) Tensor</strong></dt><dd><p>Response indices to predict.</p>
-</dd>
-<dt><strong>S_y: (M, d) Tensor</strong></dt><dd><p>Spatial locations of the measurements.</p>
-</dd>
-<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
-</dd>
-<dt><strong>y: (M) Tensor</strong></dt><dd><p>Measured values.</p>
-</dd>
-<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response.</p>
-</dd>
-<dt><strong>compute_post_var: bool</strong></dt><dd><p>If true, compute and return posterior variance (matrix) at each
-point.</p>
-</dd>
-<dt><strong>compute_post_cov: bool</strong></dt><dd><p>If true, compute and return posterior covariance. Only one of
-compute_post_var or compute_post_var may be avtivated.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>mu_cond: (N) Tensor</dt><dd><p>Kriging means at each generalized location.</p>
-</dd>
-<dt>var_cond: (N)</dt><dd><p>Conditional varance at each generalized location.
-Only returned if specified.</p>
-</dd>
-<dt>K_cond: (N, N) Tensor</dt><dd><p>Conditional covariance matrix between the generalized locations.    
-Only returned if specified.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.GRF.krig_grid">
-<code class="sig-name descname">krig_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">compute_post_cov</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.krig_grid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict field at some points, based on some measured data at other
-points.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>grid: Grid</strong></dt><dd><p>Regular grid of size (n1, …, nd).</p>
-</dd>
-<dt><strong>S_y: (M, d) Tensor</strong></dt><dd><p>Spatial locations of the measurements.</p>
-</dd>
-<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
-</dd>
-<dt><strong>y: (M) Tensor</strong></dt><dd><p>Measured values.</p>
-</dd>
-<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
-</dd>
-<dt><strong>compute_post_cov: bool</strong></dt><dd><p>If true, compute and return posterior covariance.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>mu_cond_grid: (grid.shape, p) Tensor</dt><dd><p>Kriging means at each grid node.</p>
-</dd>
-<dt>mu_cond_list: (grid.n_points*p) Tensor</dt><dd><p>Kriging mean, but in list form.</p>
-</dd>
-<dt>mu_cond_iso: (grid.n_points, p) Tensor</dt><dd><p>Kriging means in isotopic list form.</p>
-</dd>
-<dt>K_cond_list: (grid.n_points * p, grid.n_points * p) Tensor</dt><dd><p>Conditional covariance matrix in heterotopic form.</p>
-</dd>
-<dt>K_cond_iso: (grid.n_points, grid.n_points, p, p) Tensor</dt><dd><p>Conditional covariance matrix in isotopic ordered form.
-It means that the covariance matrix at cell i can be otained by
-subsetting K_cond_iso[i, i, :, :].</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.GRF.krig_isotopic">
-<code class="sig-name descname">krig_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">compute_post_var</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">compute_post_cov</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.krig_isotopic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict field at some points, based on some measured data at other
-points. Predicts all repsonses (isotopic).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>points: (N, d) Tensor</strong></dt><dd><p>List of points at which to predict.</p>
-</dd>
-<dt><strong>S_y: (M, d) Tensor</strong></dt><dd><p>Spatial locations of the measurements.</p>
-</dd>
-<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
-</dd>
-<dt><strong>y: (M) Tensor</strong></dt><dd><p>Measured values.</p>
-</dd>
-<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
-</dd>
-<dt><strong>compute_post_var: bool</strong></dt><dd><p>If true, compute and return posterior variance (matrix) at each
-point.</p>
-</dd>
-<dt><strong>compute_post_cov: bool</strong></dt><dd><p>If true, compute and return posterior covariance. Only one of
-compute_post_var or compute_post_var may be avtivated.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>mu_cond_list: (N*p) Tensor</dt><dd><p>Kriging mean, but in list form.</p>
-</dd>
-<dt>mu_cond_iso: (N, p) Tensor</dt><dd><p>Kriging means in isotopic list form.</p>
-</dd>
-<dt>K_cond_list: (N * p, N * p) Tensor</dt><dd><p>Conditional covariance matrix in heterotopic form.</p>
-</dd>
-<dt>K_cond_iso: (N, N, p, p) Tensor</dt><dd><p>Conditional covariance matrix in isotopic ordered form.
-It means that the covariance matrix at cell i can be otained by
-subsetting K_cond_iso[i, i, :, :].</p>
-</dd>
-<dt>var_cond_list: (N*p) Tensor</dt><dd><p>Conditional varance at each generalized location.
-Only returned if specified.</p>
-</dd>
-<dt>var_cond_iso: (N, p) Tensor</dt><dd><p>Same as above, but in list form.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.GRF.sample">
-<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">jitter</span><span class="o">=</span><span class="default_value">1e-05</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.sample" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sample the GRF at generalized location (S, L).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>S: (M, d) Tensor</strong></dt><dd><p>List of spatial locations.</p>
-</dd>
-<dt><strong>L: (M) Tensor</strong></dt><dd><p>List of response indices.</p>
-</dd>
-<dt><strong>jitter: float</strong></dt><dd><p>Jitter to add if covariance matrix is not diagonalisable.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>Z: (M) Tensor</dt><dd><p>The sampled value of Z_{s_i} component l_i.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.GRF.sample_grid">
-<code class="sig-name descname">sample_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.sample_grid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sample the GRF (all components) on a grid.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>grid: Grid</strong></dt><dd></dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>sample_grid: (n1, …, n_d, ,p) Tensor</dt><dd><p>The sampled field on the grid. Here p is the number of output
-components and n1, …, nd are the number of cells along each axis.</p>
-</dd>
-<dt>sample_list: (n_points, p) Tensor</dt><dd><p>Same as above, but in list form.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.GRF.sample_isotopic">
-<code class="sig-name descname">sample_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">points</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.sample_isotopic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sample the GRF (all components) on a list of points.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>points: (N, d) Tensor</strong></dt><dd><p>Spatial locations where to sample.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>sample_list: (N, p) Tensor</dt><dd><p>The sampled values.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.GRF.variance">
-<code class="sig-name descname">variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.variance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the (pointwise) variances at generalized location (S, L).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>S: (M, d) Tensor</strong></dt><dd><p>List of spatial locations.</p>
-</dd>
-<dt><strong>L: (M) Tensor</strong></dt><dd><p>List of response indices.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>vars: (M) Tensor</dt><dd><p>The variances Z_{s_i} component l_i.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.GRF.variance_reduction">
-<code class="sig-name descname">variance_reduction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.variance_reduction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the reduction in variance at generalized
-locations (S, L) that would be caused by observing data at generalized
-locations (S_y, L_y).
-Note that this doesn’t depend on the measured data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>S: (N, d)</strong></dt><dd><p>Spatial locations at which to predict</p>
-</dd>
-<dt><strong>L: (N) Tensor</strong></dt><dd><p>Response indices to predict.</p>
-</dd>
-<dt><strong>S_y: (M, d) Tensor</strong></dt><dd><p>Spatial locations of the measurements.</p>
-</dd>
-<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
-</dd>
-<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>variance_reduction: (N) Tensor</dt><dd><p>Reduction in variance at each generalized location.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="meslas.random_fields.GRF.variance_reduction_isotopic">
-<code class="sig-name descname">variance_reduction_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">S_y</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.random_fields.GRF.variance_reduction_isotopic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the reduction in variance (all components) at location S
-that would be caused by observing data at generalized locations (S_y, L_y).
-Note that this doesn’t depend on the measured data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>points: (N, d) Tensor</strong></dt><dd><p>List of points at which to predict.</p>
-</dd>
-<dt><strong>S_y: (M, d) Tensor</strong></dt><dd><p>Spatial locations of the measurements.</p>
-</dd>
-<dt><strong>L_y: (M) Tensor</strong></dt><dd><p>Response indices of the measurements.</p>
-</dd>
-<dt><strong>noise_std: (n_out) Tensor</strong></dt><dd><p>Noise standard deviation for each response. Defaults to 0.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>variance_reduction: (N) Tensor</dt><dd><p>Reduction in variance at each generalized location.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="module-meslas.sensor">
-<span id="meslas-sensor-module"></span><h2>meslas.sensor module<a class="headerlink" href="#module-meslas.sensor" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="meslas-plotting-module">
+<h2>meslas.plotting module<a class="headerlink" href="#meslas-plotting-module" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="meslas-plotting-physical-module">
+<h2>meslas.plotting_physical module<a class="headerlink" href="#meslas-plotting-physical-module" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="meslas-random-fields-module">
+<h2>meslas.random_fields module<a class="headerlink" href="#meslas-random-fields-module" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-meslas.sensor">
+<span id="meslas-sensor-module"></span><h2>meslas.sensor module<a class="headerlink" href="#module-meslas.sensor" title="Permalink to this heading">¶</a></h2>
 <p>TODO: Maybe add grid, grf, n_ouptuts to the sensor class.</p>
 <dl class="py class">
-<dt id="meslas.sensor.DiscreteSensor">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.sensor.</code><code class="sig-name descname">DiscreteSensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">discrete_grf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="sensor.html#meslas.sensor.Sensor" title="meslas.sensor.Sensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">meslas.sensor.Sensor</span></code></a></p>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">meslas.sensor.</span></span><span class="sig-name descname"><span class="pre">DiscreteSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discrete_grf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sensor.html#meslas.sensor.Sensor" title="meslas.sensor.Sensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sensor</span></code></a></p>
 <p>Sensor on a fixed discretization.</p>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="sensor.html#meslas.sensor.DiscreteSensor.choose_next_point_myopic" title="meslas.sensor.DiscreteSensor.choose_next_point_myopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">choose_next_point_myopic</span></code></a>(noise_std, lower[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="sensor.html#meslas.sensor.DiscreteSensor.choose_next_point_myopic" title="meslas.sensor.DiscreteSensor.choose_next_point_myopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">choose_next_point_myopic</span></code></a>(noise_std, lower[, ...])</p></td>
 <td><p>Choose the next observation location (given the current one) using the myopic strategy.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="sensor.html#meslas.sensor.DiscreteSensor.compute_exursion_prob" title="meslas.sensor.DiscreteSensor.compute_exursion_prob"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_exursion_prob</span></code></a>(lower[, upper])</p></td>
@@ -1292,10 +489,10 @@ Note that this doesn’t depend on the measured data.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="sensor.html#meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv" title="meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_neighbors_isotopic_eibv</span></code></a>(noise_std, lower)</p></td>
 <td><p>For each neighbouring node of the current sensor location, compute the eibv if we were to measure every response (isotopic) at that node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="sensor.html#meslas.sensor.DiscreteSensor.run_lookahead_stragegy" title="meslas.sensor.DiscreteSensor.run_lookahead_stragegy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_lookahead_stragegy</span></code></a>(n_steps, data_feed, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="sensor.html#meslas.sensor.DiscreteSensor.run_lookahead_stragegy" title="meslas.sensor.DiscreteSensor.run_lookahead_stragegy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_lookahead_stragegy</span></code></a>(n_steps, data_feed, ...)</p></td>
 <td><p>Run the myopic strategy for n_steps, starting from the current location.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="sensor.html#meslas.sensor.DiscreteSensor.run_myopic_stragegy" title="meslas.sensor.DiscreteSensor.run_myopic_stragegy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_myopic_stragegy</span></code></a>(n_steps, data_feed, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="sensor.html#meslas.sensor.DiscreteSensor.run_myopic_stragegy" title="meslas.sensor.DiscreteSensor.run_myopic_stragegy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_myopic_stragegy</span></code></a>(n_steps, data_feed, ...)</p></td>
 <td><p>Run the myopic strategy for n_steps, starting from the current location.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="sensor.html#meslas.sensor.DiscreteSensor.update_design" title="meslas.sensor.DiscreteSensor.update_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_design</span></code></a>(S_y_inds, L_y, y[, noise_std])</p></td>
@@ -1304,12 +501,12 @@ Note that this doesn’t depend on the measured data.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="meslas.sensor.DiscreteSensor.choose_next_point_myopic">
-<code class="sig-name descname">choose_next_point_myopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.choose_next_point_myopic" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor.choose_next_point_myopic">
+<span class="sig-name descname"><span class="pre">choose_next_point_myopic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.choose_next_point_myopic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Choose the next observation location (given the current one)
 using the myopic strategy.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>noise_std: float</strong></dt><dd><p>Standar deviation of measurement noise.</p>
 </dd>
@@ -1322,7 +519,7 @@ threshold).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>next_point_ind: (1) Tensor</dt><dd><p>Grid index of next observation location chosen according to the
 myopic strategy.</p>
@@ -1335,12 +532,12 @@ myopic strategy.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.DiscreteSensor.compute_exursion_prob">
-<code class="sig-name descname">compute_exursion_prob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor.compute_exursion_prob">
+<span class="sig-name descname"><span class="pre">compute_exursion_prob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the excursion probability on the whole grid, given the
 currently available data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>lower: (p) Tensor</strong></dt><dd><p>List of lower threshold for each response. The excursion set is the set
 where responses are above the specified threshold.
@@ -1352,7 +549,7 @@ If not provided, defaults to + infinity.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>excursion_proba: (self.grid.n_points) Tensor</dt><dd><p>Excursion probability at each point.</p>
 </dd>
@@ -1362,13 +559,13 @@ If not provided, defaults to + infinity.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv">
-<code class="sig-name descname">get_neighbors_isotopic_eibv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv">
+<span class="sig-name descname"><span class="pre">get_neighbors_isotopic_eibv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv" title="Permalink to this definition">¶</a></dt>
 <dd><p>For each neighbouring node of the current sensor location, compute
 the eibv if we were to measure every response (isotopic) at that node.
 Returns a list containing the EIBV for each neighbor.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>noise_std: float</strong></dt><dd><p>Standar deviation of measurement noise.</p>
 </dd>
@@ -1381,7 +578,7 @@ threshold).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>neighbors_eibv: (n_neighbors) Tensor</dt><dd><p>EIBV for each neighbouring cell.</p>
 </dd>
@@ -1393,13 +590,13 @@ threshold).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.DiscreteSensor.run_lookahead_stragegy">
-<code class="sig-name descname">run_lookahead_stragegy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_steps</span></em>, <em class="sig-param"><span class="n">data_feed</span></em>, <em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_prune</span><span class="o">=</span><span class="default_value">3</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.run_lookahead_stragegy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor.run_lookahead_stragegy">
+<span class="sig-name descname"><span class="pre">run_lookahead_stragegy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_feed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_prune</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.run_lookahead_stragegy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the myopic strategy for n_steps, starting from the current
 location. That is, at each point, pick the neighbors with the smallest
 EIBV, move there, observe, update model, repeat.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>n_steps: int</strong></dt><dd><p>Number of steps (observations) to run the strategy for.</p>
 </dd>
@@ -1419,13 +616,13 @@ the myopic strategy.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.DiscreteSensor.run_myopic_stragegy">
-<code class="sig-name descname">run_myopic_stragegy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_steps</span></em>, <em class="sig-param"><span class="n">data_feed</span></em>, <em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.run_myopic_stragegy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor.run_myopic_stragegy">
+<span class="sig-name descname"><span class="pre">run_myopic_stragegy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_feed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.run_myopic_stragegy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the myopic strategy for n_steps, starting from the current
 location. That is, at each point, pick the neighbors with the smallest
 EIBV, move there, observe, update model, repeat.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>n_steps: int</strong></dt><dd><p>Number of steps (observations) to run the strategy for.</p>
 </dd>
@@ -1438,12 +635,12 @@ EIBV, move there, observe, update model, repeat.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.DiscreteSensor.update_design">
-<code class="sig-name descname">update_design</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.update_design" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor.update_design">
+<span class="sig-name descname"><span class="pre">update_design</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S_y_inds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.update_design" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates the full design grid by computing current conditional mean and covariance.
 Note that this updates the internal of the discrete GRF.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>mu_cond_iso: (self.grid.n_points, self.grf.n_out)</dt><dd><p>Conditional mean.</p>
 </dd>
@@ -1459,14 +656,14 @@ subsetting K_cond_iso[i, i, :, :].</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="meslas.sensor.Sensor">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.sensor.</code><code class="sig-name descname">Sensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">grf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.Sensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">meslas.sensor.</span></span><span class="sig-name descname"><span class="pre">Sensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Implements the data collection process.
 Will be responsible for querying the GP for mean and variances conditional
 on the already collected data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>S_y_tot: (N, d) Tensor</strong></dt><dd><p>Spatial locations of the already collected data.</p>
 </dd>
@@ -1490,11 +687,7 @@ TODO: allow different noises for each component.</p>
 </dd>
 </dl>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="sensor.html#meslas.sensor.Sensor.add_data" title="meslas.sensor.Sensor.add_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_data</span></code></a>(S_y_inds, L_y, y)</p></td>
 <td><p>Add new data to the already collected one.</p></td>
@@ -1514,13 +707,13 @@ TODO: allow different noises for each component.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="meslas.sensor.Sensor.add_data">
-<code class="sig-name descname">add_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.add_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.Sensor.add_data">
+<span class="sig-name descname"><span class="pre">add_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S_y_inds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.add_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add new data to the already collected one.
 Can also handle batches.
 This will just concatenate the new data vectors with the current ones.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>S_y_inds: (n) Tensor</strong></dt><dd><p>Grind index of spatial locations of the new measurements.</p>
 </dd>
@@ -1534,13 +727,13 @@ This will just concatenate the new data vectors with the current ones.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.Sensor.compute_exursion_prob">
-<code class="sig-name descname">compute_exursion_prob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.Sensor.compute_exursion_prob">
+<span class="sig-name descname"><span class="pre">compute_exursion_prob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the excursion probability at a set of points given the
 currently available data.</p>
 <p>Note this is a helper function that take an index in the grid as input.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>points: (N, d) Tensor</strong></dt><dd><p>List of points (coordinates) at which to compute the excursion probability.</p>
 </dd>
@@ -1554,7 +747,7 @@ If not provided, defaults to + infinity.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>excursion_proba: (N) Tensor</dt><dd><p>Excursion probability at each point.</p>
 </dd>
@@ -1564,12 +757,12 @@ If not provided, defaults to + infinity.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.Sensor.compute_neighbors_exursion_prob">
-<code class="sig-name descname">compute_neighbors_exursion_prob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.compute_neighbors_exursion_prob" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.Sensor.compute_neighbors_exursion_prob">
+<span class="sig-name descname"><span class="pre">compute_neighbors_exursion_prob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.compute_neighbors_exursion_prob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the excursion probability of the neighbors of the current
 location.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>lower: (p) Tensor</strong></dt><dd><p>List of lower threshold for each response. The excursion set is the set
 where responses are above the specified threshold.
@@ -1585,13 +778,13 @@ If not provided, defaults to + infinity.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.Sensor.get_current_neighbors">
-<code class="sig-name descname">get_current_neighbors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.get_current_neighbors" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.Sensor.get_current_neighbors">
+<span class="sig-name descname"><span class="pre">get_current_neighbors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.get_current_neighbors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the neighbouring grid nodes of the current sensor location.</p>
 <p>This is done by first finding the node closes to the sensor location,
 and then returning its neighbors.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>neighbors_inds: (n_neighbors)</dt><dd><p>Grid indices of the neighbors.</p>
 </dd>
@@ -1601,11 +794,11 @@ and then returning its neighbors.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.Sensor.set_location">
-<code class="sig-name descname">set_location</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">location</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.set_location" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.Sensor.set_location">
+<span class="sig-name descname"><span class="pre">set_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.set_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setter for the location.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>location: (d) array_like</strong></dt><dd></dd>
 </dl>
@@ -1615,9 +808,9 @@ and then returning its neighbors.</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-meslas.sensor_plotting">
-<span id="meslas-sensor-plotting-module"></span><h2>meslas.sensor_plotting module<a class="headerlink" href="#module-meslas.sensor_plotting" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-meslas.sensor_plotting">
+<span id="meslas-sensor-plotting-module"></span><h2>meslas.sensor_plotting module<a class="headerlink" href="#module-meslas.sensor_plotting" title="Permalink to this heading">¶</a></h2>
 <p>REPORTING VERSION OF THE SENSOR MODULE.</p>
 <p>The problem is that at stage n, we havent yet computed the ebiv of the
 neighbors and if we want a sensible plot, we have to provide the eibvs with the
@@ -1625,18 +818,14 @@ CURRENT status of the model.
 This doesn’t agree with the natural flow of the myopic search, so we choose to
 have a dedicated version of the module to produce the plots.</p>
 <dl class="py class">
-<dt id="meslas.sensor_plotting.DiscreteSensor">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.sensor_plotting.</code><code class="sig-name descname">DiscreteSensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">discrete_grf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.DiscreteSensor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#meslas.sensor_plotting.Sensor" title="meslas.sensor_plotting.Sensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">meslas.sensor_plotting.Sensor</span></code></a></p>
+<dt class="sig sig-object py" id="meslas.sensor_plotting.DiscreteSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">meslas.sensor_plotting.</span></span><span class="sig-name descname"><span class="pre">DiscreteSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discrete_grf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.DiscreteSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#meslas.sensor_plotting.Sensor" title="meslas.sensor_plotting.Sensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sensor</span></code></a></p>
 <p>Sensor on a fixed discretization.</p>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor_plotting.DiscreteSensor.choose_next_point_myopic" title="meslas.sensor_plotting.DiscreteSensor.choose_next_point_myopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">choose_next_point_myopic</span></code></a>(noise_std, lower[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor_plotting.DiscreteSensor.choose_next_point_myopic" title="meslas.sensor_plotting.DiscreteSensor.choose_next_point_myopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">choose_next_point_myopic</span></code></a>(noise_std, lower[, ...])</p></td>
 <td><p>Choose the next observation location (given the current one) using the myopic strategy.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#meslas.sensor_plotting.DiscreteSensor.compute_exursion_prob" title="meslas.sensor_plotting.DiscreteSensor.compute_exursion_prob"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_exursion_prob</span></code></a>(lower[, upper])</p></td>
@@ -1645,7 +834,7 @@ have a dedicated version of the module to produce the plots.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor_plotting.DiscreteSensor.get_neighbors_isotopic_eibv" title="meslas.sensor_plotting.DiscreteSensor.get_neighbors_isotopic_eibv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_neighbors_isotopic_eibv</span></code></a>(noise_std, lower)</p></td>
 <td><p>For each neighbouring node of the current sensor location, compute the eibv if we were to measure every response (isotopic) at that node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.sensor_plotting.DiscreteSensor.run_myopic_stragegy" title="meslas.sensor_plotting.DiscreteSensor.run_myopic_stragegy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_myopic_stragegy</span></code></a>(n_steps, data_feed, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.sensor_plotting.DiscreteSensor.run_myopic_stragegy" title="meslas.sensor_plotting.DiscreteSensor.run_myopic_stragegy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_myopic_stragegy</span></code></a>(n_steps, data_feed, ...)</p></td>
 <td><p>Run the myopic strategy for n_steps, starting from the current location.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor_plotting.DiscreteSensor.update_design" title="meslas.sensor_plotting.DiscreteSensor.update_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_design</span></code></a>(S_y_inds, L_y, y[, noise_std])</p></td>
@@ -1654,12 +843,12 @@ have a dedicated version of the module to produce the plots.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="meslas.sensor_plotting.DiscreteSensor.choose_next_point_myopic">
-<code class="sig-name descname">choose_next_point_myopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.DiscreteSensor.choose_next_point_myopic" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor_plotting.DiscreteSensor.choose_next_point_myopic">
+<span class="sig-name descname"><span class="pre">choose_next_point_myopic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.DiscreteSensor.choose_next_point_myopic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Choose the next observation location (given the current one)
 using the myopic strategy.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>noise_std: float</strong></dt><dd><p>Standar deviation of measurement noise.</p>
 </dd>
@@ -1672,7 +861,7 @@ threshold).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>next_point_ind: (1) Tensor</dt><dd><p>Grid index of next observation location chosen according to the
 myopic strategy.</p>
@@ -1685,12 +874,12 @@ myopic strategy.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor_plotting.DiscreteSensor.compute_exursion_prob">
-<code class="sig-name descname">compute_exursion_prob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.DiscreteSensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor_plotting.DiscreteSensor.compute_exursion_prob">
+<span class="sig-name descname"><span class="pre">compute_exursion_prob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.DiscreteSensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the excursion probability on the whole grid, given the
 currently available data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>lower: (p) Tensor</strong></dt><dd><p>List of lower threshold for each response. The excursion set is the set
 where responses are above the specified threshold.
@@ -1702,7 +891,7 @@ If not provided, defaults to + infinity.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>excursion_proba: (self.grid.n_points) Tensor</dt><dd><p>Excursion probability at each point.</p>
 </dd>
@@ -1712,13 +901,13 @@ If not provided, defaults to + infinity.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor_plotting.DiscreteSensor.get_neighbors_isotopic_eibv">
-<code class="sig-name descname">get_neighbors_isotopic_eibv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.DiscreteSensor.get_neighbors_isotopic_eibv" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor_plotting.DiscreteSensor.get_neighbors_isotopic_eibv">
+<span class="sig-name descname"><span class="pre">get_neighbors_isotopic_eibv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.DiscreteSensor.get_neighbors_isotopic_eibv" title="Permalink to this definition">¶</a></dt>
 <dd><p>For each neighbouring node of the current sensor location, compute
 the eibv if we were to measure every response (isotopic) at that node.
 Returns a list containing the EIBV for each neighbor.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>noise_std: float</strong></dt><dd><p>Standar deviation of measurement noise.</p>
 </dd>
@@ -1731,7 +920,7 @@ threshold).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>neighbors_eibv: (n_neighbors) Tensor</dt><dd><p>EIBV for each neighbouring cell.</p>
 </dd>
@@ -1743,13 +932,13 @@ threshold).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor_plotting.DiscreteSensor.run_myopic_stragegy">
-<code class="sig-name descname">run_myopic_stragegy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_steps</span></em>, <em class="sig-param"><span class="n">data_feed</span></em>, <em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.DiscreteSensor.run_myopic_stragegy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor_plotting.DiscreteSensor.run_myopic_stragegy">
+<span class="sig-name descname"><span class="pre">run_myopic_stragegy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_feed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.DiscreteSensor.run_myopic_stragegy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the myopic strategy for n_steps, starting from the current
 location. That is, at each point, pick the neighbors with the smallest
 EIBV, move there, observe, update model, repeat.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>n_steps: int</strong></dt><dd><p>Number of steps (observations) to run the strategy for.</p>
 </dd>
@@ -1762,12 +951,12 @@ EIBV, move there, observe, update model, repeat.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor_plotting.DiscreteSensor.update_design">
-<code class="sig-name descname">update_design</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.DiscreteSensor.update_design" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor_plotting.DiscreteSensor.update_design">
+<span class="sig-name descname"><span class="pre">update_design</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S_y_inds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.DiscreteSensor.update_design" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates the full design grid by computing current conditional mean and covariance.
 Note that this updates the internal of the discrete GRF.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>mu_cond_iso: (self.grid.n_points, self.grf.n_out)</dt><dd><p>Conditional mean.</p>
 </dd>
@@ -1783,14 +972,14 @@ subsetting K_cond_iso[i, i, :, :].</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="meslas.sensor_plotting.Sensor">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.sensor_plotting.</code><code class="sig-name descname">Sensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">grf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.Sensor" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor_plotting.Sensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">meslas.sensor_plotting.</span></span><span class="sig-name descname"><span class="pre">Sensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.Sensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Implements the data collection process.
 Will be responsible for querying the GP for mean and variances conditional
 on the already collected data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>S_y_tot: (N, d) Tensor</strong></dt><dd><p>Spatial locations of the already collected data.</p>
 </dd>
@@ -1814,11 +1003,7 @@ TODO: allow different noises for each component.</p>
 </dd>
 </dl>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor_plotting.Sensor.add_data" title="meslas.sensor_plotting.Sensor.add_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_data</span></code></a>(S_y_inds, L_y, y)</p></td>
 <td><p>Add new data to the already collected one.</p></td>
@@ -1838,13 +1023,13 @@ TODO: allow different noises for each component.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="meslas.sensor_plotting.Sensor.add_data">
-<code class="sig-name descname">add_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.Sensor.add_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor_plotting.Sensor.add_data">
+<span class="sig-name descname"><span class="pre">add_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S_y_inds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.Sensor.add_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add new data to the already collected one.
 Can also handle batches.
 This will just concatenate the new data vectors with the current ones.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>S_y_inds: (n) Tensor</strong></dt><dd><p>Grind index of spatial locations of the new measurements.</p>
 </dd>
@@ -1858,13 +1043,13 @@ This will just concatenate the new data vectors with the current ones.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor_plotting.Sensor.compute_exursion_prob">
-<code class="sig-name descname">compute_exursion_prob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.Sensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor_plotting.Sensor.compute_exursion_prob">
+<span class="sig-name descname"><span class="pre">compute_exursion_prob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.Sensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the excursion probability at a set of points given the
 currently available data.</p>
 <p>Note this is a helper function that take an index in the grid as input.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>points: (N, d) Tensor</strong></dt><dd><p>List of points (coordinates) at which to compute the excursion probability.</p>
 </dd>
@@ -1878,7 +1063,7 @@ If not provided, defaults to + infinity.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>excursion_proba: (N) Tensor</dt><dd><p>Excursion probability at each point.</p>
 </dd>
@@ -1888,12 +1073,12 @@ If not provided, defaults to + infinity.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor_plotting.Sensor.compute_neighbors_exursion_prob">
-<code class="sig-name descname">compute_neighbors_exursion_prob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.Sensor.compute_neighbors_exursion_prob" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor_plotting.Sensor.compute_neighbors_exursion_prob">
+<span class="sig-name descname"><span class="pre">compute_neighbors_exursion_prob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.Sensor.compute_neighbors_exursion_prob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the excursion probability of the neighbors of the current
 location.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>lower: (p) Tensor</strong></dt><dd><p>List of lower threshold for each response. The excursion set is the set
 where responses are above the specified threshold.
@@ -1909,13 +1094,13 @@ If not provided, defaults to + infinity.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor_plotting.Sensor.get_current_neighbors">
-<code class="sig-name descname">get_current_neighbors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.Sensor.get_current_neighbors" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor_plotting.Sensor.get_current_neighbors">
+<span class="sig-name descname"><span class="pre">get_current_neighbors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.Sensor.get_current_neighbors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the neighbouring grid nodes of the current sensor location.</p>
 <p>This is done by first finding the node closes to the sensor location,
 and then returning its neighbors.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>neighbors_inds: (n_neighbors)</dt><dd><p>Grid indices of the neighbors.</p>
 </dd>
@@ -1925,11 +1110,11 @@ and then returning its neighbors.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor_plotting.Sensor.set_location">
-<code class="sig-name descname">set_location</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">location</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.Sensor.set_location" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor_plotting.Sensor.set_location">
+<span class="sig-name descname"><span class="pre">set_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor_plotting.Sensor.set_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setter for the location.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>location: (d) array_like</strong></dt><dd></dd>
 </dl>
@@ -1939,17 +1124,17 @@ and then returning its neighbors.</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-meslas.vectors">
-<span id="meslas-vectors-module"></span><h2>meslas.vectors module<a class="headerlink" href="#module-meslas.vectors" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-meslas.vectors">
+<span id="meslas-vectors-module"></span><h2>meslas.vectors module<a class="headerlink" href="#module-meslas.vectors" title="Permalink to this heading">¶</a></h2>
 <p>Encapsulation of the reshaping between isotopic and non-isotopic form.</p>
 <dl class="py class">
-<dt id="meslas.vectors.GeneralizedMatrix">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.vectors.</code><code class="sig-name descname">GeneralizedMatrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vals</span></em>, <em class="sig-param"><span class="n">n_points1</span></em>, <em class="sig-param"><span class="n">n_out1</span></em>, <em class="sig-param"><span class="n">n_points2</span></em>, <em class="sig-param"><span class="n">n_out2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedMatrix">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">meslas.vectors.</span></span><span class="sig-name descname"><span class="pre">GeneralizedMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_out1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_out2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Same as GeneralizedVector, but for matrices.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><a class="reference internal" href="#meslas.vectors.GeneralizedMatrix.isotopic" title="meslas.vectors.GeneralizedMatrix.isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isotopic</span></code></a></dt><dd><p>Returns the 2D isotopic form of the generalized vector.</p>
 </dd>
@@ -1960,11 +1145,7 @@ and then returning its neighbors.</p>
 </dd>
 </dl>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#meslas.vectors.GeneralizedMatrix.numpy" title="meslas.vectors.GeneralizedMatrix.numpy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy</span></code></a>()</p></td>
 <td><p>Returns a numpy array containing the isotopic form of the matrix.</p></td>
@@ -1972,10 +1153,6 @@ and then returning its neighbors.</p>
 </tbody>
 </table>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 63%" />
-<col style="width: 37%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>from_isotopic</strong></p></td>
 <td></td>
@@ -1989,21 +1166,21 @@ and then returning its neighbors.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="meslas.vectors.GeneralizedMatrix.from_isotopic">
-<em class="property">classmethod </em><code class="sig-name descname">from_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vals_iso</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.from_isotopic" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedMatrix.from_isotopic">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_isotopic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals_iso</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.from_isotopic" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="meslas.vectors.GeneralizedMatrix.from_list">
-<em class="property">classmethod </em><code class="sig-name descname">from_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vals</span></em>, <em class="sig-param"><span class="n">n_points1</span></em>, <em class="sig-param"><span class="n">n_out1</span></em>, <em class="sig-param"><span class="n">n_points2</span></em>, <em class="sig-param"><span class="n">n_out2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.from_list" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedMatrix.from_list">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_out1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_out2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.from_list" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt id="meslas.vectors.GeneralizedMatrix.isotopic">
-<em class="property">property </em><code class="sig-name descname">isotopic</code><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.isotopic" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedMatrix.isotopic">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">isotopic</span></span><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.isotopic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 2D isotopic form of the generalized vector.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>vals_isotopic: (self.n_points, self.n_out) Tensor</dt><dd></dd>
 </dl>
@@ -2011,12 +1188,12 @@ and then returning its neighbors.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt id="meslas.vectors.GeneralizedMatrix.list">
-<em class="property">property </em><code class="sig-name descname">list</code><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.list" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedMatrix.list">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list</span></span><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 1D list form of the generalized vector.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>vals_list: (self.n_points * self.n_out) Tensor</dt><dd></dd>
 </dl>
@@ -2025,27 +1202,27 @@ and then returning its neighbors.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.vectors.GeneralizedMatrix.numpy">
-<code class="sig-name descname">numpy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.numpy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedMatrix.numpy">
+<span class="sig-name descname"><span class="pre">numpy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.numpy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a numpy array containing the isotopic form of the matrix.
 Used for interfacing with others libraries and for saving.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.vectors.GeneralizedMatrix.set_vals">
-<code class="sig-name descname">set_vals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vals</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.set_vals" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedMatrix.set_vals">
+<span class="sig-name descname"><span class="pre">set_vals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.set_vals" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt id="meslas.vectors.GeneralizedMatrix.shape">
-<em class="property">property </em><code class="sig-name descname">shape</code><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.shape" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedMatrix.shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#meslas.vectors.GeneralizedMatrix.shape" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="meslas.vectors.GeneralizedVector">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.vectors.</code><code class="sig-name descname">GeneralizedVector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vals</span></em>, <em class="sig-param"><span class="n">n_points</span></em>, <em class="sig-param"><span class="n">n_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedVector" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedVector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">meslas.vectors.</span></span><span class="sig-name descname"><span class="pre">GeneralizedVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_out</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedVector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A generalized vector is used to implement the types of vectors that
 appear when working with multivariate random fields. Given <em>n_points</em>
@@ -2062,7 +1239,7 @@ The class is indexable as GeneralizedVector[…], and the indexing will be
 performed on the isotopic from. What will be returned is a subset of the
 isotopic tensor.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><a class="reference internal" href="#meslas.vectors.GeneralizedVector.isotopic" title="meslas.vectors.GeneralizedVector.isotopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isotopic</span></code></a></dt><dd><p>Returns the 2D isotopic form of the generalized vector.</p>
 </dd>
@@ -2073,11 +1250,7 @@ isotopic tensor.</p>
 </dd>
 </dl>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#meslas.vectors.GeneralizedVector.numpy" title="meslas.vectors.GeneralizedVector.numpy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy</span></code></a>()</p></td>
 <td><p>Returns a numpy array containing the isotopic form of the vector.</p></td>
@@ -2085,10 +1258,6 @@ isotopic tensor.</p>
 </tbody>
 </table>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 63%" />
-<col style="width: 37%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>from_isotopic</strong></p></td>
 <td></td>
@@ -2102,21 +1271,21 @@ isotopic tensor.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="meslas.vectors.GeneralizedVector.from_isotopic">
-<em class="property">classmethod </em><code class="sig-name descname">from_isotopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vals_iso</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedVector.from_isotopic" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedVector.from_isotopic">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_isotopic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals_iso</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedVector.from_isotopic" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="meslas.vectors.GeneralizedVector.from_list">
-<em class="property">classmethod </em><code class="sig-name descname">from_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vals</span></em>, <em class="sig-param"><span class="n">n_points</span></em>, <em class="sig-param"><span class="n">n_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedVector.from_list" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedVector.from_list">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_out</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedVector.from_list" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt id="meslas.vectors.GeneralizedVector.isotopic">
-<em class="property">property </em><code class="sig-name descname">isotopic</code><a class="headerlink" href="#meslas.vectors.GeneralizedVector.isotopic" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedVector.isotopic">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">isotopic</span></span><a class="headerlink" href="#meslas.vectors.GeneralizedVector.isotopic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 2D isotopic form of the generalized vector.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>vals_isotopic: (self.n_points, self.n_out) Tensor</dt><dd></dd>
 </dl>
@@ -2124,12 +1293,12 @@ isotopic tensor.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt id="meslas.vectors.GeneralizedVector.list">
-<em class="property">property </em><code class="sig-name descname">list</code><a class="headerlink" href="#meslas.vectors.GeneralizedVector.list" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedVector.list">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list</span></span><a class="headerlink" href="#meslas.vectors.GeneralizedVector.list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 1D list form of the generalized vector.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>vals_list: (self.n_points * self.n_out) Tensor</dt><dd></dd>
 </dl>
@@ -2138,29 +1307,29 @@ isotopic tensor.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.vectors.GeneralizedVector.numpy">
-<code class="sig-name descname">numpy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedVector.numpy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedVector.numpy">
+<span class="sig-name descname"><span class="pre">numpy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedVector.numpy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a numpy array containing the isotopic form of the vector.
 Used for interfacing with others libraries and for saving.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.vectors.GeneralizedVector.set_vals">
-<code class="sig-name descname">set_vals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vals</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedVector.set_vals" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedVector.set_vals">
+<span class="sig-name descname"><span class="pre">set_vals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.vectors.GeneralizedVector.set_vals" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt id="meslas.vectors.GeneralizedVector.shape">
-<em class="property">property </em><code class="sig-name descname">shape</code><a class="headerlink" href="#meslas.vectors.GeneralizedVector.shape" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="meslas.vectors.GeneralizedVector.shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#meslas.vectors.GeneralizedVector.shape" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-meslas">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-meslas" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="module-meslas">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-meslas" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
 
 
            </div>

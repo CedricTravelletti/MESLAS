@@ -1,7 +1,7 @@
 .. Copied from gpytorch.
 :github_url: https://github.com/CedricTravelletti/MESLAS
 
-MESLAS: Multivariate Excurions Set Learning by Adaptive Sampling
+MESLAS: Multivariate Excursion Set Learning by Adaptive Sampling
 =========================================================================================
 
 The goal of the MESLAS package is to provide functionalities for simulation and

@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>meslas.external_dependencies package &mdash; MESLAS 0.1 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,10 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -85,19 +88,16 @@
               
             
             
-              <p class="caption"><span class="caption-text">Main Modules:</span></p>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Notations and Conventions for the MESLAS package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Main Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensor.html">Sensor Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="means.html">Means module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Advanced Usage</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy of the MESLAS package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 </ul>
 
             
@@ -165,33 +165,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="meslas-external-dependencies-package">
-<h1>meslas.external_dependencies package<a class="headerlink" href="#meslas-external-dependencies-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-meslas.external_dependencies.numpytorch">
-<span id="meslas-external-dependencies-numpytorch-module"></span><h2>meslas.external_dependencies.numpytorch module<a class="headerlink" href="#module-meslas.external_dependencies.numpytorch" title="Permalink to this headline">¶</a></h2>
+  <section id="meslas-external-dependencies-package">
+<h1>meslas.external_dependencies package<a class="headerlink" href="#meslas-external-dependencies-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-meslas.external_dependencies.numpytorch">
+<span id="meslas-external-dependencies-numpytorch-module"></span><h2>meslas.external_dependencies.numpytorch module<a class="headerlink" href="#module-meslas.external_dependencies.numpytorch" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">WrapTorch</code><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">WrapTorch</span></span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Uses torch as the backend; allows numpy-style sytax</p>
 <dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>newaxis</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.external_dependencies.numpytorch.WrapTorch.arange" title="meslas.external_dependencies.numpytorch.WrapTorch.arange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arange</span></code></a>([start, step, out, dtype, layout, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.external_dependencies.numpytorch.WrapTorch.arange" title="meslas.external_dependencies.numpytorch.WrapTorch.arange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arange</span></code></a>([start, step, out, dtype, layout, ...])</p></td>
 <td><p>Returns a 1-D tensor of size <span class="math notranslate nohighlight">\(\left\lceil \frac{\text{end} - \text{start}}{\text{step}} \right\rceil\)</span> with values from the interval <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">end)</span></code> taken with common difference <code class="xref py py-attr docutils literal notranslate"><span class="pre">step</span></code> beginning from <cite>start</cite>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#meslas.external_dependencies.numpytorch.WrapTorch.array" title="meslas.external_dependencies.numpytorch.WrapTorch.array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a></p></td>
@@ -209,10 +205,6 @@
 </tbody>
 </table>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>abs</strong></p></td>
 <td></td>
@@ -244,13 +236,13 @@
 </tbody>
 </table>
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.abs">
-<code class="sig-name descname">abs</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.abs" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.abs">
+<span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.abs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.arange">
-<code class="sig-name descname">arange</code><span class="sig-paren">(</span><em class="sig-param">start=0</em>, <em class="sig-param">end</em>, <em class="sig-param">step=1</em>, <em class="sig-param">*</em>, <em class="sig-param">out=None</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">layout=torch.strided</em>, <em class="sig-param">device=None</em>, <em class="sig-param">requires_grad=False</em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.arange" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.arange">
+<span class="sig-name descname"><span class="pre">arange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout=torch.strided</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad=False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.arange" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a 1-D tensor of size <span class="math notranslate nohighlight">\(\left\lceil \frac{\text{end} - \text{start}}{\text{step}} \right\rceil\)</span>
 with values from the interval <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">end)</span></code> taken with common difference
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">step</span></code> beginning from <cite>start</cite>.</p>
@@ -297,34 +289,32 @@ for CPU tensor types and the current CUDA device for CUDA tensor types.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.argmax">
-<code class="sig-name descname">argmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.argmax" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.argmax">
+<span class="sig-name descname"><span class="pre">argmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.argmax" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.argmin">
-<code class="sig-name descname">argmin</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.argmin" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.argmin">
+<span class="sig-name descname"><span class="pre">argmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.argmin" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.array">
-<code class="sig-name descname">array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.array" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.array">
+<span class="sig-name descname"><span class="pre">array</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.array" title="Permalink to this definition">¶</a></dt>
 <dd><p>tensor(data, <a href="#id3"><span class="problematic" id="id4">*</span></a>, dtype=None, device=None, requires_grad=False, pin_memory=False) -&gt; Tensor</p>
-<p>Constructs a tensor with <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<p>Constructs a tensor with no autograd history (also known as a “leaf tensor”, see <span class="xref std std-doc">/notes/autograd</span>) by copying <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.tensor()</span></code> always copies <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>. If you have a Tensor
-<code class="docutils literal notranslate"><span class="pre">data</span></code> and want to avoid a copy, use <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.Tensor.requires_grad_()</span></code>
-or <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.Tensor.detach()</span></code>.
-If you have a NumPy <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> and want to avoid a copy, use
-<code class="xref py py-func docutils literal notranslate"><span class="pre">torch.as_tensor()</span></code>.</p>
+<p>When working with tensors prefer using <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.Tensor.clone()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">torch.Tensor.detach()</span></code>, and <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.Tensor.requires_grad_()</span></code> for
+readability. Letting <cite>t</cite> be a tensor, <code class="docutils literal notranslate"><span class="pre">torch.tensor(t)</span></code> is equivalent to
+<code class="docutils literal notranslate"><span class="pre">t.clone().detach()</span></code>, and <code class="docutils literal notranslate"><span class="pre">torch.tensor(t,</span> <span class="pre">requires_grad=True)</span></code>
+is equivalent to <code class="docutils literal notranslate"><span class="pre">t.clone().detach().requires_grad_(True)</span></code>.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>When data is a tensor <cite>x</cite>, <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.tensor()</span></code> reads out ‘the data’ from whatever it is passed,
-and constructs a leaf variable. Therefore <code class="docutils literal notranslate"><span class="pre">torch.tensor(x)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">x.clone().detach()</span></code>
-and <code class="docutils literal notranslate"><span class="pre">torch.tensor(x,</span> <span class="pre">requires_grad=True)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">x.clone().detach().requires_grad_(True)</span></code>.
-The equivalents using <code class="docutils literal notranslate"><span class="pre">clone()</span></code> and <code class="docutils literal notranslate"><span class="pre">detach()</span></code> are recommended.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.as_tensor()</span></code> preserves autograd history and avoids copies where possible.
+<code class="xref py py-func docutils literal notranslate"><span class="pre">torch.from_numpy()</span></code> creates a tensor that shares storage with a NumPy array.</p>
 </div>
 <dl class="simple">
 <dt>Args:</dt><dd><dl class="simple">
@@ -335,9 +325,8 @@ The equivalents using <code class="docutils literal notranslate"><span class="pr
 <dt>Keyword args:</dt><dd><dl class="simple">
 <dt>dtype (<code class="xref py py-class docutils literal notranslate"><span class="pre">torch.dtype</span></code>, optional): the desired data type of returned tensor.</dt><dd><p>Default: if <code class="docutils literal notranslate"><span class="pre">None</span></code>, infers data type from <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>.</p>
 </dd>
-<dt>device (<code class="xref py py-class docutils literal notranslate"><span class="pre">torch.device</span></code>, optional): the desired device of returned tensor.</dt><dd><p>Default: if <code class="docutils literal notranslate"><span class="pre">None</span></code>, uses the current device for the default tensor type
-(see <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.set_default_tensor_type()</span></code>). <code class="xref py py-attr docutils literal notranslate"><span class="pre">device</span></code> will be the CPU
-for CPU tensor types and the current CUDA device for CUDA tensor types.</p>
+<dt>device (<code class="xref py py-class docutils literal notranslate"><span class="pre">torch.device</span></code>, optional): the device of the constructed tensor. If None and data is a tensor</dt><dd><p>then the device of data is used. If None and data is not a tensor then
+the result tensor is constructed on the CPU.</p>
 </dd>
 <dt>requires_grad (bool, optional): If autograd should record operations on the</dt><dd><p>returned tensor. Default: <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
@@ -356,11 +345,11 @@ for CPU tensor types and the current CUDA device for CUDA tensor types.</p>
 <span class="go">tensor([ 0,  1])</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">0.11111</span><span class="p">,</span> <span class="mf">0.222222</span><span class="p">,</span> <span class="mf">0.3333333</span><span class="p">]],</span>
-<span class="go">                 dtype=torch.float64,</span>
-<span class="go">                 device=torch.device(&#39;cuda:0&#39;))  # creates a torch.cuda.DoubleTensor</span>
+<span class="gp">... </span>             <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda:0&#39;</span><span class="p">))</span>  <span class="c1"># creates a double tensor on a CUDA device</span>
 <span class="go">tensor([[ 0.1111,  0.2222,  0.3333]], dtype=torch.float64, device=&#39;cuda:0&#39;)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span>  <span class="c1"># Create a scalar (zero-dimensional tensor)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span>  <span class="c1"># Create a zero-dimensional (scalar) tensor</span>
 <span class="go">tensor(3.1416)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([])</span>  <span class="c1"># Create an empty tensor (of size (0,))</span>
@@ -370,13 +359,13 @@ for CPU tensor types and the current CUDA device for CUDA tensor types.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.backend">
-<code class="sig-name descname">backend</code><em class="property"> = &lt;module 'torch' from '/home/cedric/miniconda3/envs/meslas/lib/python3.7/site-packages/torch/__init__.py'&gt;</em><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.backend" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.backend">
+<span class="sig-name descname"><span class="pre">backend</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;module</span> <span class="pre">'torch'</span> <span class="pre">from</span> <span class="pre">'/home/cedric/miniconda3/envs/submarine/lib/python3.8/site-packages/torch/__init__.py'&gt;</span></em><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.backend" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.cat">
-<code class="sig-name descname">cat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tensors</span></em>, <em class="sig-param"><span class="n">dim</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">out</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.cat" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.cat">
+<span class="sig-name descname"><span class="pre">cat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.cat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenates the given sequence of <code class="xref py py-attr docutils literal notranslate"><span class="pre">seq</span></code> tensors in the given dimension.
 All tensors must either have the same shape (except in the concatenating
 dimension) or be empty.</p>
@@ -416,8 +405,8 @@ cat dimension.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.exp">
-<code class="sig-name descname">exp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">out</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.exp" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.exp">
+<span class="sig-name descname"><span class="pre">exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.exp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a new tensor with the exponential of the elements
 of the input tensor <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code>.</p>
 <div class="math notranslate nohighlight">
@@ -436,8 +425,8 @@ of the input tensor <code class="xref py py-attr docutils literal notranslate"><
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.log">
-<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">out</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.log" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.log">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.log" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a new tensor with the natural logarithm of the elements
 of <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code>.</p>
 <div class="math notranslate nohighlight">
@@ -449,81 +438,84 @@ of <code class="xref py py-attr docutils literal notranslate"><span class="pre">
 </dd>
 </dl>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
-<span class="go">tensor([-0.7168, -0.5471, -0.8933, -1.4428, -0.1190])</span>
+<span class="go">tensor([4.7767, 4.3234, 1.2156, 0.2411, 4.5739])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="go">tensor([ nan,  nan,  nan,  nan,  nan])</span>
+<span class="go">tensor([ 1.5637,  1.4640,  0.1952, -1.4226,  1.5204])</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.max">
-<code class="sig-name descname">max</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.max" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.max">
+<span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.max" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.min">
-<code class="sig-name descname">min</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.min" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.min">
+<span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.min" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.newaxis">
-<code class="sig-name descname">newaxis</code><em class="property"> = None</em><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.newaxis" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.newaxis">
+<span class="sig-name descname"><span class="pre">newaxis</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.newaxis" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.ones">
-<code class="sig-name descname">ones</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.ones" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.ones">
+<span class="sig-name descname"><span class="pre">ones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.ones" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.sum">
-<code class="sig-name descname">sum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.sum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.sum">
+<span class="sig-name descname"><span class="pre">sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.sum" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.sumto1">
-<code class="sig-name descname">sumto1</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">dim</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.sumto1" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.sumto1">
+<span class="sig-name descname"><span class="pre">sumto1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.sumto1" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="meslas.external_dependencies.numpytorch.WrapTorch.zeros">
-<code class="sig-name descname">zeros</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.zeros" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.WrapTorch.zeros">
+<span class="sig-name descname"><span class="pre">zeros</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.WrapTorch.zeros" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.aggregate">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">aggregate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">subs</span></em>, <em class="sig-param"><span class="n">val</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.aggregate" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.aggregate">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.aggregate" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>subs</strong> (torch.LongTensor, (<a href="#id5"><span class="problematic" id="id6">*</span></a>torch.LongTensor)) – [dim, element]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.append_dim">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">append_dim</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">n_dim_to_append</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.append_dim" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.append_dim">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">append_dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_dim_to_append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.append_dim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.append_to_ndim">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">append_to_ndim</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">n_dim_desired</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.append_to_ndim" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.append_to_ndim">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">append_to_ndim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_dim_desired</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.append_to_ndim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.attach_dim">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">attach_dim</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">n_dim_to_prepend</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">n_dim_to_append</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.attach_dim" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.attach_dim">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">attach_dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_dim_to_prepend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_dim_to_append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.attach_dim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.block_diag">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">block_diag</code><span class="sig-paren">(</span><em class="sig-param">torch.ones(4</em>, <em class="sig-param">3</em>, <em class="sig-param">2)</em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.block_diag" title="Permalink to this definition">¶</a></dt>
-<dd><p>should give a 12 x 8 matrix with blocks of 3 x 2 ones.
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.block_diag">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">block_diag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.block_diag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a block diagonal matrix along dim=-3
+EXAMPLE:
+block_diag(torch.ones(4,3,2))
+should give a 12 x 8 matrix with blocks of 3 x 2 ones.
 Prepend batch dimensions if needed.
 You can also give a list of matrices.
 :type m: torch.Tensor, list
@@ -531,40 +523,40 @@ You can also give a list of matrices.
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.block_diag_irregular">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">block_diag_irregular</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrices</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.block_diag_irregular" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.block_diag_irregular">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">block_diag_irregular</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.block_diag_irregular" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.bootstrap">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">bootstrap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fun</span></em>, <em class="sig-param"><span class="n">samp</span></em>, <em class="sig-param"><span class="n">n_boot</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.bootstrap" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.bootstrap">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">bootstrap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_boot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.bootstrap" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.categrnd">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">categrnd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">probs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">logits</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sample_shape</span><span class="o">=</span><span class="default_value">()</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.categrnd" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.categrnd">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">categrnd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.categrnd" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.circdiff">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">circdiff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">angle1</span></em>, <em class="sig-param"><span class="n">angle2</span></em>, <em class="sig-param"><span class="n">maxangle</span><span class="o">=</span><span class="default_value">tensor(6.2832)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.circdiff" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.circdiff">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">circdiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxangle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">tensor(6.2832)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.circdiff" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>angle1</strong> – angle scaled to be between 0 and maxangle</p></li>
 <li><p><strong>angle2</strong> – angle scaled to be between 0 and maxangle</p></li>
 <li><p><strong>maxangle</strong> – max angle. defaults to 2 * pi.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>angular difference, between -.5 and +.5 * maxangle</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.conv_t">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">conv_t</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">kernel</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.conv_t" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.conv_t">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">conv_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.conv_t" title="Permalink to this definition">¶</a></dt>
 <dd><p>1D convolution with the starting time of the signal and kernel anchored.</p>
 <p>EXAMPLE:
 p_cond_rt = npt.conv_t(</p>
@@ -581,10 +573,10 @@ groups=n_cond</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.crossvalincl">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">crossvalincl</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_tr</span></em>, <em class="sig-param"><span class="n">i_fold</span></em>, <em class="sig-param"><span class="n">n_fold</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'consec'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.crossvalincl" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.crossvalincl">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">crossvalincl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_tr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_fold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_fold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'consec'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.crossvalincl" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>n_tr</strong> – Number of trials</p></li>
 <li><p><strong>i_fold</strong> – Index of fold</p></li>
@@ -592,20 +584,20 @@ groups=n_cond</p>
 <li><p><strong>mode</strong> – ‘consec’: consecutive trials; ‘mod’: interleaved</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>boolean (Byte) tensor</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.deg2rad">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">deg2rad</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">deg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.deg2rad" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.deg2rad">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">deg2rad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.deg2rad" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.delta">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">delta</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">levels</span></em>, <em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">dlevel</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.delta" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.delta">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">levels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dlevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.delta" title="Permalink to this definition">¶</a></dt>
 <dd><p>&#64;type levels: torch.Tensor
 &#64;type v: torch.Tensor
 &#64;type dlevel: torch.Tensor
@@ -613,8 +605,8 @@ groups=n_cond</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.enforce_tensor">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">enforce_tensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference internal" href="#meslas.external_dependencies.numpytorch.float" title="meslas.external_dependencies.numpytorch.float">float</a><span class="p">, </span>numpy.ndarray<span class="p">, </span>torch.Tensor<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">min_ndim</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.enforce_tensor" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.enforce_tensor">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">enforce_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_ndim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.enforce_tensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct a tensor if the input is not; otherwise return the input as is.
 Same as enforce_tensor
 :param v:
@@ -624,10 +616,10 @@ Same as enforce_tensor
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.entropy">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tensor</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.entropy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.entropy">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.entropy" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>tensor</strong> (<em>torch.Tensor</em>) – probability. Optionally provide dim and keepdim for</p>
 </dd>
 </dl>
@@ -636,8 +628,8 @@ Same as enforce_tensor
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.expand_all">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">expand_all</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.expand_all" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.expand_all">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">expand_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.expand_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Expand tensors so that all tensors are of the same size.
 Tensors must have the same number of dimensions;
 otherwise, use expand_batch() to prepend dimensions.
@@ -647,8 +639,8 @@ otherwise, use expand_batch() to prepend dimensions.
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.expand_batch">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">expand_batch</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.expand_batch" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.expand_batch">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">expand_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.expand_batch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Same as repeat_batch except forcing use_expand=True, to share memory
 across repeats, i.e., expand first dimensions, while keeping last
 dimensions the same
@@ -661,8 +653,8 @@ of each dim. Give -1 at dims where the max shape is desired.
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.expand_upto_dim">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">expand_upto_dim</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span></em>, <em class="sig-param"><span class="n">dim</span></em>, <em class="sig-param"><span class="n">to_expand_left</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.expand_upto_dim" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.expand_upto_dim">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">expand_upto_dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_expand_left</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.expand_upto_dim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Similar to expand_batch(), but keeps some dims unexpanded even if they
 don’t match.
 :param args: iterable yielding torch.Tensor
@@ -673,7 +665,7 @@ Note that dim=-1 leaves the last dim unexpanded.
 This is necessary to make dim=0 expand the first.</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>to_expand_left</strong> – if True, left of dim is expanded while the rest of</p>
 </dd>
 </dl>
@@ -682,18 +674,18 @@ This is necessary to make dim=0 expand the first.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.float">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">float</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.float" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.float">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.float" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.freeze">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">freeze</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.freeze" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.freeze">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">freeze</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.freeze" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.get_jacobian">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">get_jacobian</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">net</span></em>, <em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">noutputs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.get_jacobian" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.get_jacobian">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">get_jacobian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noutputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.get_jacobian" title="Permalink to this definition">¶</a></dt>
 <dd><p>From <a class="reference external" href="https://gist.github.com/sbarratt/37356c46ad1350d4c30aefbd488a4faa">https://gist.github.com/sbarratt/37356c46ad1350d4c30aefbd488a4faa</a>
 :type net: torch.nn.Module
 :type x: torch.Tensor
@@ -702,36 +694,36 @@ This is necessary to make dim=0 expand the first.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.interp1d">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">interp1d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">query</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">dim</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="headerlink" href="#meslas.external_dependencies.numpytorch.interp1d" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.interp1d">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">interp1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.interp1d" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>query</strong> – index on dim. Should be a FloatTensor for gradient.</p></li>
 <li><p><strong>value</strong> – </p></li>
 <li><p><strong>dim</strong> – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>interpolated to give value[query] (when dim=0)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.inv_gaussian_cdf">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">inv_gaussian_cdf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">lam</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.inv_gaussian_cdf" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.inv_gaussian_cdf">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">inv_gaussian_cdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.inv_gaussian_cdf" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.inv_gaussian_mean_std2params">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">inv_gaussian_mean_std2params</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">std</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.inv_gaussian_mean_std2params" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.inv_gaussian_mean_std2params">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">inv_gaussian_mean_std2params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.inv_gaussian_mean_std2params" title="Permalink to this definition">¶</a></dt>
 <dd><p>mu, std -&gt; mu, lam</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.inv_gaussian_pdf">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">inv_gaussian_pdf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">lam</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.inv_gaussian_pdf" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.inv_gaussian_pdf">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">inv_gaussian_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.inv_gaussian_pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>As in <a class="reference external" href="https://en.wikipedia.org/wiki/Inverse_Gaussian_distribution">https://en.wikipedia.org/wiki/Inverse_Gaussian_distribution</a>
 &#64;param x: values to query. Must be positive.
 &#64;param mu: the expectation
@@ -740,10 +732,10 @@ This is necessary to make dim=0 expand the first.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.inv_gaussian_pmf_mean_stdev">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">inv_gaussian_pmf_mean_stdev</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">mu</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">std</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">dx</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">algo</span><span class="o">=</span><span class="default_value">'diff_cdf'</span></em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="headerlink" href="#meslas.external_dependencies.numpytorch.inv_gaussian_pmf_mean_stdev" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.inv_gaussian_pmf_mean_stdev">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">inv_gaussian_pmf_mean_stdev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff_cdf'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.inv_gaussian_pmf_mean_stdev" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – must be a 1-dim tensor along dim.</p></li>
 <li><p><strong>mu</strong> – </p></li>
@@ -751,15 +743,15 @@ This is necessary to make dim=0 expand the first.</p>
 <li><p><strong>dx</strong> – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.inv_gaussian_variance">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">inv_gaussian_variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">lam</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.inv_gaussian_variance" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.inv_gaussian_variance">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">inv_gaussian_variance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.inv_gaussian_variance" title="Permalink to this definition">¶</a></dt>
 <dd><p>As in <a class="reference external" href="https://en.wikipedia.org/wiki/Inverse_Gaussian_distribution">https://en.wikipedia.org/wiki/Inverse_Gaussian_distribution</a>
 &#64;param mu: the expectation
 &#64;param lam: lambda in Wikipedia’s notation
@@ -767,18 +759,18 @@ This is necessary to make dim=0 expand the first.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.inv_gaussian_variance2lam">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">inv_gaussian_variance2lam</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">var</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.inv_gaussian_variance2lam" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.inv_gaussian_variance2lam">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">inv_gaussian_variance2lam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.inv_gaussian_variance2lam" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.isnan">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">isnan</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.isnan" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.isnan">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">isnan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.isnan" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.kron">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">kron</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.kron" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.kron">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">kron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.kron" title="Permalink to this definition">¶</a></dt>
 <dd><p>Kronecker product of matrices a and b with leading batch dimensions.
 Batch dimensions are broadcast. The number of them mush
 :type a: torch.Tensor
@@ -787,93 +779,93 @@ Batch dimensions are broadcast. The number of them mush
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.kw_np2torch">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">kw_np2torch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">kw</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.kw_np2torch" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.kw_np2torch">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">kw_np2torch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.kw_np2torch" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.log_normpdf">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">log_normpdf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sample</span></em>, <em class="sig-param"><span class="n">mu</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.log_normpdf" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.log_normpdf">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">log_normpdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.log_normpdf" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.logistic">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">logistic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">torch.Tensor</span></em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="headerlink" href="#meslas.external_dependencies.numpytorch.logistic" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.logistic">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">logistic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.logistic" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.logit">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">logit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span><span class="p">:</span> <span class="n">torch.Tensor</span></em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="headerlink" href="#meslas.external_dependencies.numpytorch.logit" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.logit">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">logit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.logit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.lognorm_params_given_mean_stdev">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">lognorm_params_given_mean_stdev</code><span class="sig-paren">(</span><em class="sig-param">mean: torch.Tensor</em>, <em class="sig-param">stdev: torch.Tensor) -&gt; (&lt;class 'torch.Tensor'&gt;</em>, <em class="sig-param">&lt;class 'torch.Tensor'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.lognorm_params_given_mean_stdev" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.lognorm_params_given_mean_stdev">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">lognorm_params_given_mean_stdev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean:</span> <span class="pre">~torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdev:</span> <span class="pre">~torch.Tensor)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'torch.Tensor'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'torch.Tensor'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.lognorm_params_given_mean_stdev" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.lognorm_pmf">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">lognorm_pmf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">mean</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">stdev</span><span class="p">:</span> <span class="n">torch.Tensor</span></em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="headerlink" href="#meslas.external_dependencies.numpytorch.lognorm_pmf" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.lognorm_pmf">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">lognorm_pmf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdev</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.lognorm_pmf" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – must be monotonic increasing with equal increment on dim 0</p></li>
 <li><p><strong>mean</strong> – </p></li>
 <li><p><strong>stdev</strong> – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>p[k] = P(x[k] &lt; X &lt; x[k + 1]; mean, stdev)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.lognormal_params2mean_stdev">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">lognormal_params2mean_stdev</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">scale</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.lognormal_params2mean_stdev" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.lognormal_params2mean_stdev">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">lognormal_params2mean_stdev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.lognormal_params2mean_stdev" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.m2v">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">m2v</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.m2v" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.m2v">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">m2v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.m2v" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>torch.Tensor</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.m2v0">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">m2v0</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.m2v0" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.m2v0">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">m2v0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.m2v0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Matrix dims come first, unlike v2m</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.mat2vec0">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">mat2vec0</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.mat2vec0" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.mat2vec0">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">mat2vec0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.mat2vec0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Matrix dims come first, unlike v2m</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.matmul0">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">matmul0</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.matmul0" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.matmul0">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">matmul0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.matmul0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Matrix dims come first, unlike torch.matmul</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.matmul2vec">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">matmul2vec</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.matmul2vec" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.matmul2vec">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">matmul2vec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.matmul2vec" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>torch.Tensor</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.matsum">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">matsum</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">tensors</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.matsum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.matsum">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">matsum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">tensors</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.matsum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply expand_upto_dim(tensors, -2) before adding them together,
 consistent with torch.matmul()
 :param tensors: iterable of tensors
@@ -881,14 +873,14 @@ consistent with torch.matmul()
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.matvecmul0">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">matvecmul0</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mat</span></em>, <em class="sig-param"><span class="n">vec</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.matvecmul0" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.matvecmul0">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">matvecmul0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.matvecmul0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Matrix and vec dims come first. Vec is expanded to mat first.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.max_distrib">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">max_distrib</code><span class="sig-paren">(</span><em class="sig-param">p: torch.Tensor) -&gt; (&lt;class 'torch.Tensor'&gt;</em>, <em class="sig-param">&lt;class 'torch.Tensor'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.max_distrib" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.max_distrib">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">max_distrib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p:</span> <span class="pre">~torch.Tensor)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'torch.Tensor'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'torch.Tensor'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.max_distrib" title="Permalink to this definition">¶</a></dt>
 <dd><p>Distribution of the max of independent RVs R0 ~ p[0] and R1 ~ p[1].
 When ndims(p) &gt; 2, each pair of p[0, r0, :] and p[1, r1, :] is processed
 separately. p.sum(1) is taken as the number of trials.</p>
@@ -900,28 +892,28 @@ p_last(t,k,:): Probability of t_k happening first at t.</p>
 </div></blockquote>
 <p>Formula from: <a class="reference external" href="http://math.stackexchange.com/questions/308230/expectation-of-the-min-of-two-independent-random-variables">http://math.stackexchange.com/questions/308230/expectation-of-the-min-of-two-independent-random-variables</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>p</strong> – [id, value, [batch, …]]</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>p_max[value, batch, …], p_last[id, value, batch, …]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.max_shape">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">max_shape</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shapes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.max_shape" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.max_shape">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">max_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shapes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.max_shape" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.mean_distrib">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">mean_distrib</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.mean_distrib" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.mean_distrib">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">mean_distrib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.mean_distrib" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.min_distrib">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">min_distrib</code><span class="sig-paren">(</span><em class="sig-param">p: torch.Tensor) -&gt; (&lt;class 'torch.Tensor'&gt;</em>, <em class="sig-param">&lt;class 'torch.Tensor'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.min_distrib" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.min_distrib">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">min_distrib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p:</span> <span class="pre">~torch.Tensor)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'torch.Tensor'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'torch.Tensor'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.min_distrib" title="Permalink to this definition">¶</a></dt>
 <dd><p>Distribution of the min of independent RVs R0 ~ p[0] and R1 ~ p[1].
 When ndims(p) &gt; 2, each pair of p[0, r0, :] and p[1, r1, :] is processed
 separately. p.sum(1) is taken as the number of trials.</p>
@@ -933,70 +925,70 @@ p_1st(t,k,:): Probability of t_k happening first at t.</p>
 </div></blockquote>
 <p>Formula from: <a class="reference external" href="http://math.stackexchange.com/questions/308230/expectation-of-the-min-of-two-independent-random-variables">http://math.stackexchange.com/questions/308230/expectation-of-the-min-of-two-independent-random-variables</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>p</strong> – [id, value, [batch, …]]</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>p_min[value, batch, …], p_1st[id, value, batch, …]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.mm0">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">mm0</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.mm0" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.mm0">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">mm0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.mm0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Matrix dims come first, unlike torch.matmul</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.mvm0">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">mvm0</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mat</span></em>, <em class="sig-param"><span class="n">vec</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.mvm0" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.mvm0">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">mvm0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.mvm0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Matrix and vec dims come first. Vec is expanded to mat first.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.mvnpdf_log">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">mvnpdf_log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">mu</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.mvnpdf_log" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.mvnpdf_log">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">mvnpdf_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.mvnpdf_log" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – [batch, ndim]</p></li>
 <li><p><strong>mu</strong> – [batch, ndim]</p></li>
 <li><p><strong>sigma</strong> – [batch, ndim, ndim]</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>log_prob [batch]</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>torch.FloatTensor</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.mvnrnd">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">mvnrnd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">sigma</span></em>, <em class="sig-param"><span class="n">sample_shape</span><span class="o">=</span><span class="default_value">()</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.mvnrnd" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.mvnrnd">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">mvnrnd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.mvnrnd" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.nan2v">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">nan2v</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">fill</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.nan2v" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.nan2v">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">nan2v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.nan2v" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.nanmean">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">nanmean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.nanmean" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.nanmean">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">nanmean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.nanmean" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.nansum">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">nansum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.nansum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.nansum">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">nansum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.nansum" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.normrnd">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">normrnd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mu</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">sample_shape</span><span class="o">=</span><span class="default_value">()</span></em>, <em class="sig-param"><span class="n">return_distrib</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.normrnd" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.normrnd">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">normrnd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_distrib</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.normrnd" title="Permalink to this definition">¶</a></dt>
 <dd><p>&#64;param mu:
 &#64;param sigma:
 &#64;param sample_shape:
@@ -1006,34 +998,34 @@ torch.Tensor]</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.npy">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">npy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>torch.Tensor<span class="p">, </span>numpy.ndarray<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.npy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.npy">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">npy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.npy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct a np.ndarray from tensor; otherwise return the input as is
 :type v: torch.Tensor
 :rtype: np.ndarray</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.npys">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">npys</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.npys" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.npys">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">npys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.npys" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.numpy">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">numpy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>torch.Tensor<span class="p">, </span>numpy.ndarray<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.numpy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.numpy">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.numpy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct a np.ndarray from tensor; otherwise return the input as is
 :type v: torch.Tensor
 :rtype: np.ndarray</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.onehotrnd">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">onehotrnd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">probs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">logits</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sample_shape</span><span class="o">=</span><span class="default_value">()</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.onehotrnd" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.onehotrnd">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">onehotrnd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.onehotrnd" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.p2en">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">p2en</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">ndim_st</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.p2en" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.p2en">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">p2en</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim_st</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.p2en" title="Permalink to this definition">¶</a></dt>
 <dd><p>Permute first ndim_en of an array v to the last
 :type v: torch.Tensor
 :type ndim_st: int
@@ -1041,8 +1033,8 @@ torch.Tensor]</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.p2st">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">p2st</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">ndim_en</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.p2st" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.p2st">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">p2st</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim_en</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.p2st" title="Permalink to this definition">¶</a></dt>
 <dd><p>Permute last ndim_en of an array v to the first
 :type v: torch.Tensor
 :type ndim_en: int
@@ -1050,13 +1042,13 @@ torch.Tensor]</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.pconc2conc">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">pconc2conc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pconc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.pconc2conc" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.pconc2conc">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">pconc2conc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pconc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.pconc2conc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.permute2en">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">permute2en</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">ndim_st</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.permute2en" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.permute2en">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">permute2en</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim_st</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.permute2en" title="Permalink to this definition">¶</a></dt>
 <dd><p>Permute first ndim_en of an array v to the last
 :type v: torch.Tensor
 :type ndim_st: int
@@ -1064,8 +1056,8 @@ torch.Tensor]</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.permute2st">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">permute2st</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">ndim_en</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.permute2st" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.permute2st">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">permute2st</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim_en</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.permute2st" title="Permalink to this definition">¶</a></dt>
 <dd><p>Permute last ndim_en of an array v to the first
 :type v: torch.Tensor
 :type ndim_en: int
@@ -1073,33 +1065,33 @@ torch.Tensor]</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.prad2unitvec">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">prad2unitvec</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prad</span></em>, <em class="sig-param"><span class="n">dim</span><span class="o">=</span><span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.prad2unitvec" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.prad2unitvec">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">prad2unitvec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prad</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.prad2unitvec" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.prepend_dim">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">prepend_dim</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">n_dim_to_prepend</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.prepend_dim" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.prepend_dim">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">prepend_dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_dim_to_prepend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.prepend_dim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.prepend_to_ndim">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">prepend_to_ndim</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">n_dim_desired</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.prepend_to_ndim" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.prepend_to_ndim">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">prepend_to_ndim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_dim_desired</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.prepend_to_ndim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.rad2deg">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">rad2deg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rad</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.rad2deg" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.rad2deg">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">rad2deg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rad</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.rad2deg" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.rand">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">rand</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="n">low</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">high</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.rand" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.rand">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">rand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.rand" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.ravel_multi_index">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">ravel_multi_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.ravel_multi_index" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.ravel_multi_index">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">ravel_multi_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.ravel_multi_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>For now, just use np.ravel_multi_index()
 :type v: torch.LongTensor
 :type shape: torch.Size, tuple, list
@@ -1108,8 +1100,8 @@ torch.Tensor]</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.repeat_all">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">repeat_all</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">use_expand</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.repeat_all" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.repeat_all">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">repeat_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_expand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.repeat_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Repeat tensors so that all tensors are of the same size.
 Tensors must have the same number of dimensions;
 otherwise, use repeat_batch() to prepend dimensions.
@@ -1118,8 +1110,8 @@ of each dim. Give -1 at dims where the max shape is desired.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.repeat_batch">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">repeat_batch</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">repeat_existing_dims</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">to_append_dims</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">use_expand</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.repeat_batch" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.repeat_batch">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">repeat_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat_existing_dims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_append_dims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_expand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.repeat_batch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Repeat first dimensions, while keeping last dimensions the same.
 :param args: tuple of tensors to repeat.
 :param repeat_existing_dims: whether to repeat singleton dims.
@@ -1132,28 +1124,28 @@ to share the same memory across repeats.
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.repeat_dim">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">repeat_dim</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tensor</span></em>, <em class="sig-param"><span class="n">repeat</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.repeat_dim" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.repeat_dim">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">repeat_dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.repeat_dim" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.repeat_to_shape">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">repeat_to_shape</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg</span></em>, <em class="sig-param"><span class="n">shape</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.repeat_to_shape" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.repeat_to_shape">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">repeat_to_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.repeat_to_shape" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>shape</strong> – desired shape of the output</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>torch.Tensor</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.scatter_add">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">scatter_add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">subs</span></em>, <em class="sig-param"><span class="n">val</span></em>, <em class="sig-param"><span class="n">dim</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.scatter_add" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.scatter_add">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">scatter_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.scatter_add" title="Permalink to this definition">¶</a></dt>
 <dd><p>&#64;param subs: ndim x n indices, suitable for np.ravel_multi_index
 &#64;type subs: Union[np.ndarray, torch.LongTensor])
 &#64;param val: n x … values to add
@@ -1162,23 +1154,23 @@ to share the same memory across repeats.
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.sem">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">sem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">dim</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.sem" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.sem">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">sem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.sem" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.sem_distrib">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">sem_distrib</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.sem_distrib" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.sem_distrib">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">sem_distrib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.sem_distrib" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.shiftdim">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">shiftdim</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">shift</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">dim</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">'repeat'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.shiftdim" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.shiftdim">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">shiftdim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'repeat'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.shiftdim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.softmax_bias">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">softmax_bias</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">slope</span></em>, <em class="sig-param"><span class="n">bias</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.softmax_bias" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.softmax_bias">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">softmax_bias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.softmax_bias" title="Permalink to this definition">¶</a></dt>
 <dd><p>Symmetric softmax with bias. Only works for binary. Works elementwise.
 Cannot use too small or large bias (roughly &lt; 1e-3 or &gt; 1 - 1e-3)
 :param p: between 0 and 1.
@@ -1192,8 +1184,8 @@ Cannot use too small or large bias (roughly &lt; 1e-3 or &gt; 1 - 1e-3)
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.softmax_mask">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">softmax_mask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">w</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">dim</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">mask</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>torch.BoolTensor<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="headerlink" href="#meslas.external_dependencies.numpytorch.softmax_mask" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.softmax_mask">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">softmax_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BoolTensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.softmax_mask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Allows having -np.inf in w to mask out, or give explicit bool mask
 :param w:
 :param dim:
@@ -1202,40 +1194,40 @@ Cannot use too small or large bias (roughly &lt; 1e-3 or &gt; 1 - 1e-3)
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.std_distrib">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">std_distrib</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.std_distrib" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.std_distrib">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">std_distrib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.std_distrib" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.sumto1">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">sumto1</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">dim</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">keepdim</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.sumto1" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.sumto1">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">sumto1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.sumto1" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make v sum to 1 across dim, i.e., make dim conditioned on the rest.
 dim can be a tuple.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>v</strong> – tensor.</p></li>
 <li><p><strong>dim</strong> – dimensions to be conditioned upon the rest.</p></li>
 <li><p><strong>axis</strong> – if given, overrides dim.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>tensor of the same shape as v.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>torch.Tensor</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.t">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">t</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.t" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.t">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.t" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.tensor">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">tensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference internal" href="#meslas.external_dependencies.numpytorch.float" title="meslas.external_dependencies.numpytorch.float">float</a><span class="p">, </span>numpy.ndarray<span class="p">, </span>torch.Tensor<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">min_ndim</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.tensor" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.tensor">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_ndim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.tensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct a tensor if the input is not; otherwise return the input as is.
 Same as enforce_tensor
 :param v:
@@ -1245,18 +1237,18 @@ Same as enforce_tensor
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.test_kron">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">test_kron</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.test_kron" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.test_kron">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">test_kron</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.test_kron" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.test_softmax_bias">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">test_softmax_bias</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.test_softmax_bias" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.test_softmax_bias">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">test_softmax_bias</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.test_softmax_bias" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.unblock_diag">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">unblock_diag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">size_block</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.unblock_diag" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.unblock_diag">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">unblock_diag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.unblock_diag" title="Permalink to this definition">¶</a></dt>
 <dd><p>The inverse of block_diag(). Not vectorized yet.
 :param m: block diagonal matrix
 :param n: int. Number of blocks
@@ -1265,8 +1257,8 @@ Same as enforce_tensor
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.unravel_index">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">unravel_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.unravel_index" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.unravel_index">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">unravel_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.unravel_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>For now, just use np.unravel_index()
 :type v: torch.LongTensor
 :type shape: torch.Size, tuple, list
@@ -1275,98 +1267,98 @@ Same as enforce_tensor
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.v2m">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">v2m</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vec</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.v2m" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.v2m">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">v2m</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.v2m" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>torch.Tensor</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.v2m0">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">v2m0</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vec</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.v2m0" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.v2m0">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">v2m0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.v2m0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Vector dim comes first, unlike v2m</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.var_distrib">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">var_distrib</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.var_distrib" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.var_distrib">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">var_distrib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.var_distrib" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.vec2mat0">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">vec2mat0</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vec</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vec2mat0" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.vec2mat0">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">vec2mat0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vec2mat0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Vector dim comes first, unlike v2m</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.vec2matmul">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">vec2matmul</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vec</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vec2matmul" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.vec2matmul">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">vec2matmul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vec2matmul" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>torch.Tensor</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.vec_on">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">vec_on</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">dim</span></em>, <em class="sig-param"><span class="n">ndim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vec_on" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.vec_on">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">vec_on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vec_on" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.vec_on_dim">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">vec_on_dim</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">dim</span></em>, <em class="sig-param"><span class="n">ndim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vec_on_dim" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.vec_on_dim">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">vec_on_dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vec_on_dim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.vmpdf">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">vmpdf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">normalize</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vmpdf" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.vmpdf">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">vmpdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vmpdf" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.vmpdf_a_given_b">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">vmpdf_a_given_b</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a_prad</span></em>, <em class="sig-param"><span class="n">b_prad</span></em>, <em class="sig-param"><span class="n">pconc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vmpdf_a_given_b" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.vmpdf_a_given_b">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">vmpdf_a_given_b</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a_prad</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_prad</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pconc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vmpdf_a_given_b" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a_prad</strong> (<em>torch.Tensor</em>) – between 0 and 1. Maps to 0 and 2*pi.</p></li>
 <li><p><strong>b_prad</strong> (<em>torch.Tensor</em>) – between 0 and 1. Maps to 0 and 2*pi.</p></li>
 <li><p><strong>pconc</strong> – float</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>p_a_given_b[index_a, index_b]</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>torch.Tensor</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="meslas.external_dependencies.numpytorch.vmpdf_prad_pconc">
-<code class="sig-prename descclassname">meslas.external_dependencies.numpytorch.</code><code class="sig-name descname">vmpdf_prad_pconc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prad</span></em>, <em class="sig-param"><span class="n">ploc</span></em>, <em class="sig-param"><span class="n">pconc</span></em>, <em class="sig-param"><span class="n">normalize</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vmpdf_prad_pconc" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.external_dependencies.numpytorch.vmpdf_prad_pconc">
+<span class="sig-prename descclassname"><span class="pre">meslas.external_dependencies.numpytorch.</span></span><span class="sig-name descname"><span class="pre">vmpdf_prad_pconc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prad</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ploc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pconc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.external_dependencies.numpytorch.vmpdf_prad_pconc" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>prad</strong> – 0 to 1 maps to 0 to 2*pi radians</p></li>
 <li><p><strong>pconc</strong> – 0 to 1 maps to 0 to inf concentration</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>torch.Tensor</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="module-meslas.external_dependencies">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-meslas.external_dependencies" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="module-meslas.external_dependencies">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-meslas.external_dependencies" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
 
 
            </div>

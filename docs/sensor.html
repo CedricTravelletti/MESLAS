@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Sensor Module &mdash; MESLAS 0.1 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,10 +32,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -87,19 +89,35 @@
               
             
             
-              <p class="caption"><span class="caption-text">Main Modules:</span></p>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Notations and Conventions for the MESLAS package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Main Modules:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Sensor Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sensor Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#meslas.sensor.DiscreteSensor"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meslas.sensor.DiscreteSensor.choose_next_point_myopic"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.choose_next_point_myopic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meslas.sensor.DiscreteSensor.compute_exursion_prob"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.compute_exursion_prob()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.get_neighbors_isotopic_eibv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meslas.sensor.DiscreteSensor.run_lookahead_stragegy"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.run_lookahead_stragegy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meslas.sensor.DiscreteSensor.run_myopic_stragegy"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.run_myopic_stragegy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meslas.sensor.DiscreteSensor.update_design"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.update_design()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#meslas.sensor.Sensor"><code class="docutils literal notranslate"><span class="pre">Sensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meslas.sensor.Sensor.add_data"><code class="docutils literal notranslate"><span class="pre">Sensor.add_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meslas.sensor.Sensor.compute_exursion_prob"><code class="docutils literal notranslate"><span class="pre">Sensor.compute_exursion_prob()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meslas.sensor.Sensor.compute_neighbors_exursion_prob"><code class="docutils literal notranslate"><span class="pre">Sensor.compute_neighbors_exursion_prob()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meslas.sensor.Sensor.get_current_neighbors"><code class="docutils literal notranslate"><span class="pre">Sensor.get_current_neighbors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meslas.sensor.Sensor.set_location"><code class="docutils literal notranslate"><span class="pre">Sensor.set_location()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="means.html">Means module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Advanced Usage</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy of the MESLAS package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 </ul>
 
             
@@ -167,22 +185,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-meslas.sensor">
-<span id="sensor-module"></span><span id="sensor-label"></span><h1>Sensor Module<a class="headerlink" href="#module-meslas.sensor" title="Permalink to this headline">¶</a></h1>
+  <section id="module-meslas.sensor">
+<span id="sensor-module"></span><span id="sensor-label"></span><h1>Sensor Module<a class="headerlink" href="#module-meslas.sensor" title="Permalink to this heading">¶</a></h1>
 <p>TODO: Maybe add grid, grf, n_ouptuts to the sensor class.</p>
 <dl class="py class">
-<dt id="meslas.sensor.DiscreteSensor">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.sensor.</code><code class="sig-name descname">DiscreteSensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">discrete_grf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#meslas.sensor.Sensor" title="meslas.sensor.Sensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">meslas.sensor.Sensor</span></code></a></p>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">meslas.sensor.</span></span><span class="sig-name descname"><span class="pre">DiscreteSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discrete_grf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#meslas.sensor.Sensor" title="meslas.sensor.Sensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sensor</span></code></a></p>
 <p>Sensor on a fixed discretization.</p>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.choose_next_point_myopic" title="meslas.sensor.DiscreteSensor.choose_next_point_myopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">choose_next_point_myopic</span></code></a>(noise_std, lower[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.choose_next_point_myopic" title="meslas.sensor.DiscreteSensor.choose_next_point_myopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">choose_next_point_myopic</span></code></a>(noise_std, lower[, ...])</p></td>
 <td><p>Choose the next observation location (given the current one) using the myopic strategy.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.compute_exursion_prob" title="meslas.sensor.DiscreteSensor.compute_exursion_prob"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_exursion_prob</span></code></a>(lower[, upper])</p></td>
@@ -191,10 +205,10 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv" title="meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_neighbors_isotopic_eibv</span></code></a>(noise_std, lower)</p></td>
 <td><p>For each neighbouring node of the current sensor location, compute the eibv if we were to measure every response (isotopic) at that node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.run_lookahead_stragegy" title="meslas.sensor.DiscreteSensor.run_lookahead_stragegy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_lookahead_stragegy</span></code></a>(n_steps, data_feed, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.run_lookahead_stragegy" title="meslas.sensor.DiscreteSensor.run_lookahead_stragegy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_lookahead_stragegy</span></code></a>(n_steps, data_feed, ...)</p></td>
 <td><p>Run the myopic strategy for n_steps, starting from the current location.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.run_myopic_stragegy" title="meslas.sensor.DiscreteSensor.run_myopic_stragegy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_myopic_stragegy</span></code></a>(n_steps, data_feed, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.run_myopic_stragegy" title="meslas.sensor.DiscreteSensor.run_myopic_stragegy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_myopic_stragegy</span></code></a>(n_steps, data_feed, ...)</p></td>
 <td><p>Run the myopic strategy for n_steps, starting from the current location.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#meslas.sensor.DiscreteSensor.update_design" title="meslas.sensor.DiscreteSensor.update_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_design</span></code></a>(S_y_inds, L_y, y[, noise_std])</p></td>
@@ -203,12 +217,12 @@
 </tbody>
 </table>
 <dl class="py method">
-<dt id="meslas.sensor.DiscreteSensor.choose_next_point_myopic">
-<code class="sig-name descname">choose_next_point_myopic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.choose_next_point_myopic" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor.choose_next_point_myopic">
+<span class="sig-name descname"><span class="pre">choose_next_point_myopic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.choose_next_point_myopic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Choose the next observation location (given the current one)
 using the myopic strategy.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>noise_std: float</strong></dt><dd><p>Standar deviation of measurement noise.</p>
 </dd>
@@ -221,7 +235,7 @@ threshold).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>next_point_ind: (1) Tensor</dt><dd><p>Grid index of next observation location chosen according to the
 myopic strategy.</p>
@@ -234,12 +248,12 @@ myopic strategy.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.DiscreteSensor.compute_exursion_prob">
-<code class="sig-name descname">compute_exursion_prob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor.compute_exursion_prob">
+<span class="sig-name descname"><span class="pre">compute_exursion_prob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the excursion probability on the whole grid, given the
 currently available data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>lower: (p) Tensor</strong></dt><dd><p>List of lower threshold for each response. The excursion set is the set
 where responses are above the specified threshold.
@@ -251,7 +265,7 @@ If not provided, defaults to + infinity.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>excursion_proba: (self.grid.n_points) Tensor</dt><dd><p>Excursion probability at each point.</p>
 </dd>
@@ -261,13 +275,13 @@ If not provided, defaults to + infinity.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv">
-<code class="sig-name descname">get_neighbors_isotopic_eibv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv">
+<span class="sig-name descname"><span class="pre">get_neighbors_isotopic_eibv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv" title="Permalink to this definition">¶</a></dt>
 <dd><p>For each neighbouring node of the current sensor location, compute
 the eibv if we were to measure every response (isotopic) at that node.
 Returns a list containing the EIBV for each neighbor.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>noise_std: float</strong></dt><dd><p>Standar deviation of measurement noise.</p>
 </dd>
@@ -280,7 +294,7 @@ threshold).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>neighbors_eibv: (n_neighbors) Tensor</dt><dd><p>EIBV for each neighbouring cell.</p>
 </dd>
@@ -292,13 +306,13 @@ threshold).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.DiscreteSensor.run_lookahead_stragegy">
-<code class="sig-name descname">run_lookahead_stragegy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_steps</span></em>, <em class="sig-param"><span class="n">data_feed</span></em>, <em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_prune</span><span class="o">=</span><span class="default_value">3</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.run_lookahead_stragegy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor.run_lookahead_stragegy">
+<span class="sig-name descname"><span class="pre">run_lookahead_stragegy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_feed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_prune</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.run_lookahead_stragegy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the myopic strategy for n_steps, starting from the current
 location. That is, at each point, pick the neighbors with the smallest
 EIBV, move there, observe, update model, repeat.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>n_steps: int</strong></dt><dd><p>Number of steps (observations) to run the strategy for.</p>
 </dd>
@@ -318,13 +332,13 @@ the myopic strategy.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.DiscreteSensor.run_myopic_stragegy">
-<code class="sig-name descname">run_myopic_stragegy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_steps</span></em>, <em class="sig-param"><span class="n">data_feed</span></em>, <em class="sig-param"><span class="n">noise_std</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.run_myopic_stragegy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor.run_myopic_stragegy">
+<span class="sig-name descname"><span class="pre">run_myopic_stragegy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_feed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.run_myopic_stragegy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the myopic strategy for n_steps, starting from the current
 location. That is, at each point, pick the neighbors with the smallest
 EIBV, move there, observe, update model, repeat.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>n_steps: int</strong></dt><dd><p>Number of steps (observations) to run the strategy for.</p>
 </dd>
@@ -337,12 +351,12 @@ EIBV, move there, observe, update model, repeat.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.DiscreteSensor.update_design">
-<code class="sig-name descname">update_design</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">noise_std</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.update_design" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.DiscreteSensor.update_design">
+<span class="sig-name descname"><span class="pre">update_design</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S_y_inds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.DiscreteSensor.update_design" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates the full design grid by computing current conditional mean and covariance.
 Note that this updates the internal of the discrete GRF.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>mu_cond_iso: (self.grid.n_points, self.grf.n_out)</dt><dd><p>Conditional mean.</p>
 </dd>
@@ -358,14 +372,14 @@ subsetting K_cond_iso[i, i, :, :].</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="meslas.sensor.Sensor">
-<em class="property">class </em><code class="sig-prename descclassname">meslas.sensor.</code><code class="sig-name descname">Sensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">grf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.Sensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">meslas.sensor.</span></span><span class="sig-name descname"><span class="pre">Sensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Implements the data collection process.
 Will be responsible for querying the GP for mean and variances conditional
 on the already collected data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>S_y_tot: (N, d) Tensor</strong></dt><dd><p>Spatial locations of the already collected data.</p>
 </dd>
@@ -389,11 +403,7 @@ TODO: allow different noises for each component.</p>
 </dd>
 </dl>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#meslas.sensor.Sensor.add_data" title="meslas.sensor.Sensor.add_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_data</span></code></a>(S_y_inds, L_y, y)</p></td>
 <td><p>Add new data to the already collected one.</p></td>
@@ -413,13 +423,13 @@ TODO: allow different noises for each component.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="meslas.sensor.Sensor.add_data">
-<code class="sig-name descname">add_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S_y_inds</span></em>, <em class="sig-param"><span class="n">L_y</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.add_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.Sensor.add_data">
+<span class="sig-name descname"><span class="pre">add_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S_y_inds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.add_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add new data to the already collected one.
 Can also handle batches.
 This will just concatenate the new data vectors with the current ones.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>S_y_inds: (n) Tensor</strong></dt><dd><p>Grind index of spatial locations of the new measurements.</p>
 </dd>
@@ -433,13 +443,13 @@ This will just concatenate the new data vectors with the current ones.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.Sensor.compute_exursion_prob">
-<code class="sig-name descname">compute_exursion_prob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.Sensor.compute_exursion_prob">
+<span class="sig-name descname"><span class="pre">compute_exursion_prob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.compute_exursion_prob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the excursion probability at a set of points given the
 currently available data.</p>
 <p>Note this is a helper function that take an index in the grid as input.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>points: (N, d) Tensor</strong></dt><dd><p>List of points (coordinates) at which to compute the excursion probability.</p>
 </dd>
@@ -453,7 +463,7 @@ If not provided, defaults to + infinity.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>excursion_proba: (N) Tensor</dt><dd><p>Excursion probability at each point.</p>
 </dd>
@@ -463,12 +473,12 @@ If not provided, defaults to + infinity.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.Sensor.compute_neighbors_exursion_prob">
-<code class="sig-name descname">compute_neighbors_exursion_prob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lower</span></em>, <em class="sig-param"><span class="n">upper</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.compute_neighbors_exursion_prob" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.Sensor.compute_neighbors_exursion_prob">
+<span class="sig-name descname"><span class="pre">compute_neighbors_exursion_prob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.compute_neighbors_exursion_prob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the excursion probability of the neighbors of the current
 location.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>lower: (p) Tensor</strong></dt><dd><p>List of lower threshold for each response. The excursion set is the set
 where responses are above the specified threshold.
@@ -484,13 +494,13 @@ If not provided, defaults to + infinity.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.Sensor.get_current_neighbors">
-<code class="sig-name descname">get_current_neighbors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.get_current_neighbors" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.Sensor.get_current_neighbors">
+<span class="sig-name descname"><span class="pre">get_current_neighbors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.get_current_neighbors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the neighbouring grid nodes of the current sensor location.</p>
 <p>This is done by first finding the node closes to the sensor location,
 and then returning its neighbors.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>neighbors_inds: (n_neighbors)</dt><dd><p>Grid indices of the neighbors.</p>
 </dd>
@@ -500,11 +510,11 @@ and then returning its neighbors.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="meslas.sensor.Sensor.set_location">
-<code class="sig-name descname">set_location</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">location</span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.set_location" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="meslas.sensor.Sensor.set_location">
+<span class="sig-name descname"><span class="pre">set_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meslas.sensor.Sensor.set_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setter for the location.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>location: (d) array_like</strong></dt><dd></dd>
 </dl>
@@ -514,7 +524,7 @@ and then returning its neighbors.</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>

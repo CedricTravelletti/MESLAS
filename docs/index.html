@@ -4,15 +4,18 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>MESLAS: Multivariate Excurions Set Learning by Adaptive Sampling &mdash; MESLAS 0.1 documentation</title>
+  <title>MESLAS: Multivariate Excursion Set Learning by Adaptive Sampling &mdash; MESLAS 0.1 documentation</title>
   
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,10 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -89,7 +92,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="philosophy.html">Notations and Conventions for the MESLAS package</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Main Modules:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Main Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
@@ -146,7 +149,7 @@
     
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
-      <li>MESLAS: Multivariate Excurions Set Learning by Adaptive Sampling</li>
+      <li>MESLAS: Multivariate Excursion Set Learning by Adaptive Sampling</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -168,8 +171,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="meslas-multivariate-excurions-set-learning-by-adaptive-sampling">
-<h1>MESLAS: Multivariate Excurions Set Learning by Adaptive Sampling<a class="headerlink" href="#meslas-multivariate-excurions-set-learning-by-adaptive-sampling" title="Permalink to this headline">¶</a></h1>
+  <section id="meslas-multivariate-excursion-set-learning-by-adaptive-sampling">
+<h1>MESLAS: Multivariate Excursion Set Learning by Adaptive Sampling<a class="headerlink" href="#meslas-multivariate-excursion-set-learning-by-adaptive-sampling" title="Permalink to this heading">¶</a></h1>
 <p>The goal of the MESLAS package is to provide functionalities for simulation and
 estimation of physical phenomenon using multivariate random fields.</p>
 <p>As an example, consider the Temperature and Salinity in the ocean. These two
@@ -177,17 +180,19 @@ variables can be modelled as a bivariate Gaussian random field (GRF) with some
 correlation between the outputs.
 One can then draw realizations of the GRF to get plausible spatial distributions
 of oceanographic properties (see Figure).</p>
-<div class="figure align-center" id="id12">
+<figure class="align-center" id="id12">
 <img alt="_images/uncond_real_cropped.png" src="_images/uncond_real_cropped.png" />
-<p class="caption"><span class="caption-text">Simulated realization of Temperature and Salinity field drawn from a GRF
+<figcaption>
+<p><span class="caption-text">Simulated realization of Temperature and Salinity field drawn from a GRF
 model.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 <p>Having a probabilistic model of the physical phenomenon of interest allows one
 to extract more information than a purely deterministic model would allow. For
 example, the question that triggered the development of MESLAS was the
-indentification of river plumes in coastal regions (<span id="id1">[<a class="reference internal" href="#id11"><span>FTE+20</span></a>]</span>).</p>
-<div class="section" id="excursion-sets">
-<h2>Excursion Sets<a class="headerlink" href="#excursion-sets" title="Permalink to this headline">¶</a></h2>
+indentification of river plumes in coastal regions (<span id="id1">[<a class="reference internal" href="#id11" title="Trygve Olav Fossum, Cédric Travelletti, Jo Eidsvik, David Ginsbourger, and Kanna Rajan. Learning excursion sets of vector-valued gaussian random fields for autonomous ocean sampling. 2020. arXiv:2007.03722.">FTE+20</a>]</span>).</p>
+<section id="excursion-sets">
+<h2>Excursion Sets<a class="headerlink" href="#excursion-sets" title="Permalink to this heading">¶</a></h2>
 <p>One of the main functionality of MESLAS is the estimation of excursion sets of
 GRFs. Given an <span class="math notranslate nohighlight">\(n\)</span>-dimensional multivariate GRF <span class="math notranslate nohighlight">\(\boldsymbol{Z}\)</span>,
 an excursion set is defined as</p>
@@ -196,35 +201,32 @@ an excursion set is defined as</p>
 <p>where the thresholds are allowed to be infinite.</p>
 <p>In the context of river plume indentification, the river can be modelled as an
 excursion set where the salinity and temperature are below a certain threshold.</p>
-</div>
-<div class="section" id="data-collection-and-conditional-distribution">
-<h2>Data Collection and Conditional Distribution<a class="headerlink" href="#data-collection-and-conditional-distribution" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="data-collection-and-conditional-distribution">
+<h2>Data Collection and Conditional Distribution<a class="headerlink" href="#data-collection-and-conditional-distribution" title="Permalink to this heading">¶</a></h2>
 <p>Data is integrated to the GRF model by considering the <em>conditional
 distribution</em> of the GRF, conditional on the data. Excursion sets may then be
 estimated by looking at the <em>pointwise excursion probability</em>, i.e. the
 probability (under the conditional distribution) that a point lies in the excursion set.</p>
-<div class="figure align-center" id="id13">
+<figure class="align-center" id="id13">
 <img alt="_images/excu_proba_cropped.png" src="_images/excu_proba_cropped.png" />
-<p class="caption"><span class="caption-text">Conditional pointwise excursion probability. Data collection locations in
+<figcaption>
+<p><span class="caption-text">Conditional pointwise excursion probability. Data collection locations in
 green.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="autonomous-adaptive-sampling">
-<h2>Autonomous Adaptive Sampling<a class="headerlink" href="#autonomous-adaptive-sampling" title="Permalink to this headline">¶</a></h2>
+</figcaption>
+</figure>
+</section>
+<section id="autonomous-adaptive-sampling">
+<h2>Autonomous Adaptive Sampling<a class="headerlink" href="#autonomous-adaptive-sampling" title="Permalink to this heading">¶</a></h2>
 <p>The main application for the MESLAS package is adaptive sampling for
 (multivariate) excursion set recovery. Considering again the
 temperature/salinity river plume example, one can use an autonomous underwater
 vehicle (AUV) to collect temperature and salinity data in the coastal region. The
 data collection process may then be guided using a (multivariate) GRF model.</p>
-
-    <video width="900" height="600" playsinline autoplay muted loop controls>
-    <source src="output_new.mp4" type="video/mp4">
-    Video
-    </video>
-    <p>The above video shows a simulated autonomous data collection process for the
+<video autoplay="True" height="600" preload="auto" width="900"><source src="output_new.mp4" type="video/mp4"></video><p>The above video shows a simulated autonomous data collection process for the
 river plume example computed
 using MESLAS. The data collection locations are chosen by myopic optimization
-of the integrated Bernoulli variance criterion (IBV) available in MESLAS (see <span id="id2">[<a class="reference internal" href="#id11"><span>FTE+20</span></a>]</span> for more details).</p>
+of the integrated Bernoulli variance criterion (IBV) available in MESLAS (see <span id="id2">[<a class="reference internal" href="#id11" title="Trygve Olav Fossum, Cédric Travelletti, Jo Eidsvik, David Ginsbourger, and Kanna Rajan. Learning excursion sets of vector-valued gaussian random fields for autonomous ocean sampling. 2020. arXiv:2007.03722.">FTE+20</a>]</span> for more details).</p>
 <p>The left-hand plot shows the (simulated) ground truth. One is interested in
 recovering the red regions. The right-hand plot shows the data collection path
 travelled by the AUV, computed by myopic optimization of the IBV criterion and
@@ -233,9 +235,9 @@ to the target excursion set under the posterior law of the GRF model after data
 collection). The radar shows how informative the potential next sampling
 locations are, ranked according to IBV.</p>
 <p>(For implementation, see <a class="reference internal" href="sensor.html#sensor-label"><span class="std std-ref">Sensor Module</span></a>.)</p>
-</div>
-<div class="section" id="implementation">
-<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">¶</a></h2>
 <p>MESLAS aims at providing GRF functionalities that are easy to
 use, fully modular and reusable.</p>
 <p>For example, the GRF <span class="math notranslate nohighlight">\(\boldsymbol{Z}\)</span> used in Fig.1 with linear trend</p>
@@ -288,34 +290,43 @@ to handle multivariate random fields may be found at <a class="reference interna
 </ul>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Main Modules:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Main Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="grid.html#module-meslas.geometry.grid">Module Implementation Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html#module-implementation-details">Module Implementation Details</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sensor.html">Sensor Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="means.html">Means module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensor.html">Sensor Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sensor.html#meslas.sensor.DiscreteSensor"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensor.html#meslas.sensor.Sensor"><code class="docutils literal notranslate"><span class="pre">Sensor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="means.html">Means module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="means.html#meslas.means.ConstantMean"><code class="docutils literal notranslate"><span class="pre">ConstantMean</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="means.html#meslas.means.LinearMean"><code class="docutils literal notranslate"><span class="pre">LinearMean</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
 </ul>
 </div>
-<p id="id3"><dl class="citation">
-<dt class="label" id="id11"><span class="brackets">FTE+20</span></dt>
-<dd><p>Trygve Olav Fossum, Cédric Travelletti, Jo Eidsvik, David Ginsbourger, and Kanna Rajan. Learning excursion sets of vector-valued gaussian random fields for autonomous ocean sampling. 2020. <a class="reference external" href="https://arxiv.org/abs/2007.03722">arXiv:2007.03722</a>.</p>
-</dd>
-</dl>
-</p>
+<div class="docutils container" id="id3">
+<div class="citation" id="id11" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>FTE+20<span class="fn-bracket">]</span></span>
+<p>Trygve Olav Fossum, Cédric Travelletti, Jo Eidsvik, David Ginsbourger, and Kanna Rajan. Learning excursion sets of vector-valued gaussian random fields for autonomous ocean sampling. 2020. <a class="reference external" href="https://arxiv.org/abs/2007.03722">arXiv:2007.03722</a>.</p>
 </div>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+</div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
+</section>
 
 
            </div>

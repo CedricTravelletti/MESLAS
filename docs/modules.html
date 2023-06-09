@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>meslas &mdash; MESLAS 0.1 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,10 +32,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -85,19 +87,16 @@
               
             
             
-              <p class="caption"><span class="caption-text">Main Modules:</span></p>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Notations and Conventions for the MESLAS package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Main Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensor.html">Sensor Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="means.html">Means module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Advanced Usage</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy of the MESLAS package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 </ul>
 
             
@@ -165,8 +164,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="meslas">
-<h1>meslas<a class="headerlink" href="#meslas" title="Permalink to this headline">¶</a></h1>
+  <section id="meslas">
+<h1>meslas<a class="headerlink" href="#meslas" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="meslas.html">meslas package</a><ul>
@@ -188,7 +187,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="meslas.geometry.html">meslas.geometry package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="meslas.geometry.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="meslas.geometry.html#module-meslas.geometry.grid">meslas.geometry.grid module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.geometry.html#meslas-geometry-grid-module">meslas.geometry.grid module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="meslas.geometry.html#module-meslas.geometry.tilings">meslas.geometry.tilings module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="meslas.geometry.html#module-meslas.geometry">Module contents</a></li>
 </ul>
@@ -196,21 +195,87 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="meslas.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.excursion">meslas.excursion module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.inverse_random_fields">meslas.inverse_random_fields module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.means">meslas.means module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.plotting">meslas.plotting module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.plotting_physical">meslas.plotting_physical module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.random_fields">meslas.random_fields module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.sensor">meslas.sensor module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.sensor_plotting">meslas.sensor_plotting module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.vectors">meslas.vectors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.excursion">meslas.excursion module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="meslas.html#meslas.excursion.coverage_fct_fixed_location"><code class="docutils literal notranslate"><span class="pre">coverage_fct_fixed_location()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.html#meslas-inverse-random-fields-module">meslas.inverse_random_fields module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.means">meslas.means module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="meslas.html#meslas.means.ConstantMean"><code class="docutils literal notranslate"><span class="pre">ConstantMean</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.html#meslas.means.LinearMean"><code class="docutils literal notranslate"><span class="pre">LinearMean</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.html#meslas-plotting-module">meslas.plotting module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.html#meslas-plotting-physical-module">meslas.plotting_physical module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.html#meslas-random-fields-module">meslas.random_fields module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.sensor">meslas.sensor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="meslas.html#meslas.sensor.DiscreteSensor"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor.DiscreteSensor.choose_next_point_myopic"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.choose_next_point_myopic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor.DiscreteSensor.compute_exursion_prob"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.compute_exursion_prob()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor.DiscreteSensor.get_neighbors_isotopic_eibv"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.get_neighbors_isotopic_eibv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor.DiscreteSensor.run_lookahead_stragegy"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.run_lookahead_stragegy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor.DiscreteSensor.run_myopic_stragegy"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.run_myopic_stragegy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor.DiscreteSensor.update_design"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.update_design()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.html#meslas.sensor.Sensor"><code class="docutils literal notranslate"><span class="pre">Sensor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor.Sensor.add_data"><code class="docutils literal notranslate"><span class="pre">Sensor.add_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor.Sensor.compute_exursion_prob"><code class="docutils literal notranslate"><span class="pre">Sensor.compute_exursion_prob()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor.Sensor.compute_neighbors_exursion_prob"><code class="docutils literal notranslate"><span class="pre">Sensor.compute_neighbors_exursion_prob()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor.Sensor.get_current_neighbors"><code class="docutils literal notranslate"><span class="pre">Sensor.get_current_neighbors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor.Sensor.set_location"><code class="docutils literal notranslate"><span class="pre">Sensor.set_location()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.sensor_plotting">meslas.sensor_plotting module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="meslas.html#meslas.sensor_plotting.DiscreteSensor"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor_plotting.DiscreteSensor.choose_next_point_myopic"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.choose_next_point_myopic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor_plotting.DiscreteSensor.compute_exursion_prob"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.compute_exursion_prob()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor_plotting.DiscreteSensor.get_neighbors_isotopic_eibv"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.get_neighbors_isotopic_eibv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor_plotting.DiscreteSensor.run_myopic_stragegy"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.run_myopic_stragegy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor_plotting.DiscreteSensor.update_design"><code class="docutils literal notranslate"><span class="pre">DiscreteSensor.update_design()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.html#meslas.sensor_plotting.Sensor"><code class="docutils literal notranslate"><span class="pre">Sensor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor_plotting.Sensor.add_data"><code class="docutils literal notranslate"><span class="pre">Sensor.add_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor_plotting.Sensor.compute_exursion_prob"><code class="docutils literal notranslate"><span class="pre">Sensor.compute_exursion_prob()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor_plotting.Sensor.compute_neighbors_exursion_prob"><code class="docutils literal notranslate"><span class="pre">Sensor.compute_neighbors_exursion_prob()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor_plotting.Sensor.get_current_neighbors"><code class="docutils literal notranslate"><span class="pre">Sensor.get_current_neighbors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.sensor_plotting.Sensor.set_location"><code class="docutils literal notranslate"><span class="pre">Sensor.set_location()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas.vectors">meslas.vectors module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedMatrix"><code class="docutils literal notranslate"><span class="pre">GeneralizedMatrix</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedMatrix.from_isotopic"><code class="docutils literal notranslate"><span class="pre">GeneralizedMatrix.from_isotopic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedMatrix.from_list"><code class="docutils literal notranslate"><span class="pre">GeneralizedMatrix.from_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedMatrix.isotopic"><code class="docutils literal notranslate"><span class="pre">GeneralizedMatrix.isotopic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedMatrix.list"><code class="docutils literal notranslate"><span class="pre">GeneralizedMatrix.list</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedMatrix.numpy"><code class="docutils literal notranslate"><span class="pre">GeneralizedMatrix.numpy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedMatrix.set_vals"><code class="docutils literal notranslate"><span class="pre">GeneralizedMatrix.set_vals()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedMatrix.shape"><code class="docutils literal notranslate"><span class="pre">GeneralizedMatrix.shape</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedVector"><code class="docutils literal notranslate"><span class="pre">GeneralizedVector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedVector.from_isotopic"><code class="docutils literal notranslate"><span class="pre">GeneralizedVector.from_isotopic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedVector.from_list"><code class="docutils literal notranslate"><span class="pre">GeneralizedVector.from_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedVector.isotopic"><code class="docutils literal notranslate"><span class="pre">GeneralizedVector.isotopic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedVector.list"><code class="docutils literal notranslate"><span class="pre">GeneralizedVector.list</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedVector.numpy"><code class="docutils literal notranslate"><span class="pre">GeneralizedVector.numpy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedVector.set_vals"><code class="docutils literal notranslate"><span class="pre">GeneralizedVector.set_vals()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="meslas.html#meslas.vectors.GeneralizedVector.shape"><code class="docutils literal notranslate"><span class="pre">GeneralizedVector.shape</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="meslas.html#module-meslas">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
+</section>
 
 
            </div>

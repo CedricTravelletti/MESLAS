@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Notations and Conventions for the MESLAS package &mdash; MESLAS 0.1 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,10 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -40,7 +43,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Gridding Module" href="grid.html" />
-    <link rel="prev" title="MESLAS: Multivariate Excurions Set Learning by Adaptive Sampling" href="index.html" />
+    <link rel="prev" title="MESLAS: Multivariate Excursion Set Learning by Adaptive Sampling" href="index.html" />
     <link href="_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -93,7 +96,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Main Modules:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Main Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="grid.html">Gridding Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="random_fields.html">Gaussian Random Field Module</a></li>
@@ -167,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="notations-and-conventions-for-the-meslas-package">
-<span id="philosophy-label"></span><h1>Notations and Conventions for the MESLAS package<a class="headerlink" href="#notations-and-conventions-for-the-meslas-package" title="Permalink to this headline">¶</a></h1>
+  <section id="notations-and-conventions-for-the-meslas-package">
+<span id="philosophy-label"></span><h1>Notations and Conventions for the MESLAS package<a class="headerlink" href="#notations-and-conventions-for-the-meslas-package" title="Permalink to this heading">¶</a></h1>
 <p>The MESLAS package (<strong>M</strong>ulti-variate <strong>E</strong>xcursion <strong>S</strong>et <strong>L</strong>earning by <strong>A</strong>daptive <strong>S</strong>ampling) is a toolbox for simulation and prediction of mulitivariate Gaussian random fields.</p>
 <p>The setup of the package is the following: <span class="math notranslate nohighlight">\(Z\)</span> is a <span class="math notranslate nohighlight">\(p\)</span>-dimensional random
 field on a <span class="math notranslate nohighlight">\(d\)</span>-dimensional
@@ -193,8 +196,8 @@ The shortcut notation <span class="math notranslate nohighlight">\(Z_{\boldsymbo
 vector</p>
 <div class="math notranslate nohighlight">
 \[Z_{\boldsymbol{x}}:=\left(Z_{s_1}^{\ell_1}, ..., Z_{s_n}^{\ell_n}\right) \in \mathbb{R}^n.\]</div>
-<div class="section" id="generalized-vectors">
-<h2>Generalized Vectors<a class="headerlink" href="#generalized-vectors" title="Permalink to this headline">¶</a></h2>
+<section id="generalized-vectors">
+<h2>Generalized Vectors<a class="headerlink" href="#generalized-vectors" title="Permalink to this heading">¶</a></h2>
 <p>Say we have a <span class="math notranslate nohighlight">\(p\)</span>-dimensional random field <span class="math notranslate nohighlight">\(Z\)</span>, which we observe at
 <span class="math notranslate nohighlight">\(n\)</span> different spatial locations <span class="math notranslate nohighlight">\(s_1,...,s_n\)</span>. Then the most
 natural way to organize the observation in a single object is to bundle them
@@ -245,8 +248,8 @@ sense to have covariance matrices between couple of points. I.e., to organise
 covariance information into a <span class="math notranslate nohighlight">\(n\times m \times p \times q\)</span> matrix, such
 that at index <span class="math notranslate nohighlight">\(i,j\)</span> we have a <span class="math notranslate nohighlight">\(p\times q\)</span> matrix of covariances
 between spatial locations <span class="math notranslate nohighlight">\(s_i\)</span> and <span class="math notranslate nohighlight">\(t_j\)</span>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -255,7 +258,7 @@ between spatial locations <span class="math notranslate nohighlight">\(s_i\)</sp
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="grid.html" class="btn btn-neutral float-right" title="Gridding Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="MESLAS: Multivariate Excurions Set Learning by Adaptive Sampling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="MESLAS: Multivariate Excursion Set Learning by Adaptive Sampling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
