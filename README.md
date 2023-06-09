@@ -10,8 +10,8 @@ of vector-valued random fields for applications in autonomous ocean sampling.
 More information may be found in the resulting [article](https://arxiv.org/abs/2007.03722).
 
 
-The package documentation and more details may be found on the [Project Website](https://cedrictravelletti.github.io/MESLAS/).
+The package documentation and more details may be found on the [Package Website](https://cedrictravelletti.github.io/MESLAS/).
 
 
-The authors of the package gratefully acknowledge funding from the **Swiss National Science Fundation
+Cédric Travelletti gratefully acknowledges funding from the **Swiss National Science Fundation
 (SNF)** through project no. 178858.
