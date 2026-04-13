@@ -5,7 +5,7 @@ seaborn
 torch
 torchvision
 sphinx>=2.0
-pytest==3.10.0
+pytest==9.0.3
 sphinxcontrib-bibtex
 numpydoc
 sphinx-rtd-theme
